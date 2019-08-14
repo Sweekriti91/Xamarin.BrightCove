@@ -19,6 +19,8 @@ namespace Sample.Brightcove.tvOS
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
+            // see https://developer.apple.com/documentation/avfoundation/avaudiosessioncategoryplayback
+            // and https://developer.apple.com/documentation/avfoundation/avaudiosessionmodemovieplayback
 
             AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.Playback, AVAudioSessionCategoryOptions.DuckOthers);
 
