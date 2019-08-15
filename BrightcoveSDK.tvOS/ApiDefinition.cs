@@ -1751,7 +1751,7 @@ namespace BrightcoveSDK.tvOS
     // @interface BCOVPlayerSDKManager : NSObject
     [BaseType(typeof(NSObject))]
     [Protocol]
-    interface BCOVPlayerSDKManager
+    interface BCOVPlayerSDKManager : BCOVPlayerSDKManager_BCOVFPSAdditions, BCOVPlayerSDKManager_BCOVSSAdditions, BCOVPlayerSDKManager_BCOVSSAdditionsDepricated
     {
         // +(NSString *)version;
         [Static]
@@ -1855,12 +1855,12 @@ namespace BrightcoveSDK.tvOS
       protocol, then [Model] is redundant and will generate code that will never
       be used.
     */
-    [Protocol]
+    [Protocol,Model]
     [BaseType(typeof(NSObject))]
-    interface BCOVPlaybackSessionProvider
+    interface BCOVPlaybackSessionProvider : BCOVBasicSessionProvider
     {
         // @required -(id)playbackSessionsForVideos:(id<NSFastEnumeration>)videos __attribute__((deprecated("Do not use")));
-        [Abstract]
+        //[Abstract]
         [Export("playbackSessionsForVideos:")]
         //Hack
         NSObject PlaybackSessionsForVideos(NSObject videos);
@@ -1871,7 +1871,7 @@ namespace BrightcoveSDK.tvOS
 
     // @interface BCOVBasicSessionProvider : NSObject <BCOVPlaybackSessionProvider>
     [BaseType(typeof(NSObject))]
-    interface BCOVBasicSessionProvider : BCOVPlaybackSessionProvider
+    interface BCOVBasicSessionProvider //: BCOVPlaybackSessionProvider
     {
         // -(instancetype)initWithOptions:(BCOVBasicSessionProviderOptions *)options;
         [Export("initWithOptions:")]
@@ -1895,6 +1895,7 @@ namespace BrightcoveSDK.tvOS
     }
 
     // @interface BCOVBasicSessionLoadingPolicy : NSObject <NSCopying>
+    [Protocol]
     [BaseType(typeof(NSObject))]
     interface BCOVBasicSessionLoadingPolicy : INSCopying
     {
@@ -2214,7 +2215,7 @@ namespace BrightcoveSDK.tvOS
         NSData ContentIdentifierFromLoadingRequest(AVAssetResourceLoadingRequest loadingRequest);
 
         // @required -(void)encryptedContentKeyForLoadingRequest:(AVAssetResourceLoadingRequest * _Nonnull)loadingRequest contentKeyRequest:(NSData * _Nonnull)keyRequest source:(BCOVSource * _Nonnull)source completionHandler:(void (^ _Nonnull)(NSURLResponse * _Nullable, NSData * _Nullable, NSError * _Nullable))completionHandler;
-        [Abstract]
+        //[Abstract]
         [Export("encryptedContentKeyForLoadingRequest:contentKeyRequest:source:completionHandler:")]
         void EncryptedContentKeyForLoadingRequest(AVAssetResourceLoadingRequest loadingRequest, NSData keyRequest, BCOVSource source, Action<NSUrlResponse, NSData, NSError> completionHandler);
 
@@ -2228,7 +2229,7 @@ namespace BrightcoveSDK.tvOS
     //[BaseType(typeof(BCOVPlayerSDKManager))]
     [BaseType(typeof(NSObject))]
     [Protocol]
-    interface BCOVPlayerSDKManager_BCOVFPSAdditions : BCOVPlayerSDKManager
+    interface BCOVPlayerSDKManager_BCOVFPSAdditions
     {
         // -(id<BCOVPlaybackController> _Nonnull)createFairPlayPlaybackControllerWithAuthorizationProxy:(id<BCOVFPSAuthorizationProxy> _Nonnull)proxy;
         [Export("createFairPlayPlaybackControllerWithAuthorizationProxy:")]
@@ -2277,8 +2278,9 @@ namespace BrightcoveSDK.tvOS
     }
 
     // @interface BCOVFPSBrightcoveAuthProxy : NSObject <BCOVFPSAuthorizationProxy>
+    [Protocol]
     [BaseType(typeof(NSObject))]
-    interface BCOVFPSBrightcoveAuthProxy : BCOVFPSAuthorizationProxy
+    interface BCOVFPSBrightcoveAuthProxy : BCOVFPSAuthorizationProxy, BCOVFPSBrightcoveAuthProxy_Unavailable, BCOVFPSBrightcoveAuthProxy_Deprecated
     {
         // @property (nonatomic, strong) NSURL * _Null_unspecified fpsBaseURL;
         [Export("fpsBaseURL", ArgumentSemantic.Strong)]
@@ -2308,7 +2310,7 @@ namespace BrightcoveSDK.tvOS
     [BaseType(typeof(NSObject))]
     [Protocol]
     [DisableDefaultCtor]
-    interface BCOVFPSBrightcoveAuthProxy_Unavailable : BCOVFPSBrightcoveAuthProxy
+    interface BCOVFPSBrightcoveAuthProxy_Unavailable
     {
     }
 
@@ -2317,7 +2319,7 @@ namespace BrightcoveSDK.tvOS
     //[BaseType(typeof(BCOVFPSBrightcoveAuthProxy))]
     [BaseType(typeof(NSObject))]
     [Protocol]
-    interface BCOVFPSBrightcoveAuthProxy_Deprecated : BCOVFPSBrightcoveAuthProxy
+    interface BCOVFPSBrightcoveAuthProxy_Deprecated
     {
         // -(instancetype _Nullable)initWithApplicationId:(NSString * _Nonnull)appId publisherId:(NSString * _Nonnull)pubId __attribute__((deprecated("Use -BCOVFPSBrightcoveAuthProxy initWithPublisherId:applicationId: instead")));
         //[Export("initWithApplicationId:publisherId:")]
@@ -2386,7 +2388,7 @@ namespace BrightcoveSDK.tvOS
     //[BaseType(typeof(BCOVPlayerSDKManager))]
     [BaseType(typeof(NSObject))]
     [Protocol]
-    interface BCOVPlayerSDKManager_BCOVSSAdditions : BCOVPlayerSDKManager
+    interface BCOVPlayerSDKManager_BCOVSSAdditions
     {
         // -(id<BCOVPlaybackController>)createSidecarSubtitlesPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)viewStrategy;
         [Export("createSidecarSubtitlesPlaybackControllerWithViewStrategy:")]
@@ -2402,7 +2404,7 @@ namespace BrightcoveSDK.tvOS
     //[BaseType(typeof(BCOVPlayerSDKManager))]
     [BaseType(typeof(NSObject))]
     [Protocol]
-    interface BCOVPlayerSDKManager_BCOVSSAdditionsDepricated : BCOVPlayerSDKManager
+    interface BCOVPlayerSDKManager_BCOVSSAdditionsDepricated
     {
         // -(id<BCOVPlaybackSessionProvider>)createSidecarSubtitlesSessionProviderWithOptions:(BCOVSSSessionProviderOption *)options __attribute__((deprecated("Use -[BCOVPlayerSDKManager createSidecarSubtitlesSessionWithUpstreamSessionProvider:] with a nil upstream session provider instead.")));
         //[Export("createSidecarSubtitlesSessionProviderWithOptions:")]
