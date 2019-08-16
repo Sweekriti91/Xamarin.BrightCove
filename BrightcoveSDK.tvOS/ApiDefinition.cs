@@ -1654,7 +1654,7 @@ namespace BrightcoveSDK.tvOS
         // @optional -(void)didCompletePlaylist:(id<NSFastEnumeration>)playlist;
         [Export("didCompletePlaylist:")]
         //Hack
-        void DidCompletePlaylist(NSObject playlist);
+        void DidCompletePlaylist(NSArray playlist);
 
         // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent;
         [Export("playbackSession:didReceiveLifecycleEvent:")]
@@ -1751,7 +1751,7 @@ namespace BrightcoveSDK.tvOS
     // @interface BCOVPlayerSDKManager : NSObject
     [BaseType(typeof(NSObject))]
     [Protocol]
-    interface BCOVPlayerSDKManager : BCOVPlayerSDKManager_BCOVFPSAdditions, BCOVPlayerSDKManager_BCOVSSAdditions, BCOVPlayerSDKManager_BCOVSSAdditionsDepricated
+    interface BCOVPlayerSDKManager : BCOVPlayerSDKManager_BCOVFPSAdditions, BCOVPlayerSDKManager_BCOVSSAdditions
     {
         // +(NSString *)version;
         [Static]
@@ -1784,11 +1784,11 @@ namespace BrightcoveSDK.tvOS
         [Export("registerComponent:")]
         void RegisterComponent(BCOVComponent component);
 
-		// +(BCOVPlayerSDKManager *)sharedManager;
-		[Static]
-		[Export("sharedManager")]
+        // +(BCOVPlayerSDKManager *)sharedManager;
+        [Static]
+        [Export("sharedManager")]
         //[Verify(MethodToProperty)]
-        BCOVPlayerSDKManager SharedManager { get; }
+        BCOVPlayerSDKManager SharedManager();
 
 		// +(BCOVPlayerSDKManager *)sharedManagerWithOptions:(NSDictionary *)options;
 		[Static]
@@ -1855,15 +1855,15 @@ namespace BrightcoveSDK.tvOS
       protocol, then [Model] is redundant and will generate code that will never
       be used.
     */
-    [Protocol,Model]
+    [Protocol]
     [BaseType(typeof(NSObject))]
-    interface BCOVPlaybackSessionProvider : BCOVBasicSessionProvider
+    interface BCOVPlaybackSessionProvider 
     {
         // @required -(id)playbackSessionsForVideos:(id<NSFastEnumeration>)videos __attribute__((deprecated("Do not use")));
         //[Abstract]
-        [Export("playbackSessionsForVideos:")]
-        //Hack
-        NSObject PlaybackSessionsForVideos(NSObject videos);
+        //[Export("playbackSessionsForVideos:")]
+        ////Hack
+        //NSObject PlaybackSessionsForVideos(NSArray videos);
     }
 
     // typedef BCOVSource * (^BCOVBasicSessionProviderSourceSelectionPolicy)(BCOVVideo *);
@@ -1871,7 +1871,7 @@ namespace BrightcoveSDK.tvOS
 
     // @interface BCOVBasicSessionProvider : NSObject <BCOVPlaybackSessionProvider>
     [BaseType(typeof(NSObject))]
-    interface BCOVBasicSessionProvider //: BCOVPlaybackSessionProvider
+    interface BCOVBasicSessionProvider : BCOVPlaybackSessionProvider
     {
         // -(instancetype)initWithOptions:(BCOVBasicSessionProviderOptions *)options;
         [Export("initWithOptions:")]
@@ -2205,7 +2205,7 @@ namespace BrightcoveSDK.tvOS
       protocol, then [Model] is redundant and will generate code that will never
       be used.
     */
-    [Protocol, Model]
+    [Protocol,Model]
     [BaseType(typeof(NSObject))]
     interface BCOVFPSAuthorizationProxy
     {
@@ -2227,8 +2227,8 @@ namespace BrightcoveSDK.tvOS
     // @interface BCOVFPSAdditions (BCOVPlayerSDKManager)
     //[Category]
     //[BaseType(typeof(BCOVPlayerSDKManager))]
-    [BaseType(typeof(NSObject))]
     [Protocol]
+    [BaseType(typeof(NSObject))]
     interface BCOVPlayerSDKManager_BCOVFPSAdditions
     {
         // -(id<BCOVPlaybackController> _Nonnull)createFairPlayPlaybackControllerWithAuthorizationProxy:(id<BCOVFPSAuthorizationProxy> _Nonnull)proxy;

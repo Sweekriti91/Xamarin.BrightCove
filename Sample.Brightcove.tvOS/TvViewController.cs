@@ -31,29 +31,24 @@ namespace Sample.Brightcove.tvOS
 
         BCOVFPSAuthorizationProxy fairPlayAuthProxy;
         BCOVPlaybackController playbackController;
-        BCOVPlayerSDKManager sdkManager = BCOVPlayerSDKManager.SharedManager;
+        BCOVPlayerSDKManager sdkManager = BCOVPlayerSDKManager.SharedManager();
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            // If you're using Dynamic Delivery, you don't need to load
-            // an application certificate. The FairPlay session will load an
-            // application certificate for you if needed.
-            // You can just load and play your FairPlay videos.
 
-            // If you are using Dynamic Delivery, you can pass nil for the publisherId and applicationId,
             fairPlayAuthProxy = new BCOVFPSAuthorizationProxy();
 
             // Create chain of session providers
-            //var psp = new BCOVPlaybackSessionProvider();
-            //psp
-            //var fps = sdkManager.CreateFairPlaySessionProviderWithAuthorizationProxy(fairPlayAuthProxy, null);
+            //var psp = sdkManager.CreateBasicSessionProviderWithOptions(new BCOVBasicSessionProviderOptions());
+            var psp = sdkManager.CreateFairPlaySessionProviderWithAuthorizationProxy(fairPlayAuthProxy, null);
+            var fps = sdkManager.CreateFairPlaySessionProviderWithApplicationCertificate(null,fairPlayAuthProxy, psp);
 
             // Create the playback controller
-            playbackController = sdkManager.CreateFairPlayPlaybackControllerWithAuthorizationProxy(fairPlayAuthProxy);
+            playbackController = sdkManager.CreatePlaybackController();
             playbackController.SetAutoPlay(true);
-            playbackController.SetAutoAdvance(true);
+            playbackController.SetAutoAdvance(false);
             playbackController.Delegate = new BCPlaybackControllerDelegate();
 
             //create the playerview
