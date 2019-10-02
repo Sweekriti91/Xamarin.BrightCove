@@ -1790,9 +1790,9 @@ namespace BrightcoveSDK.tvOS
         //[Verify(MethodToProperty)]
         BCOVPlayerSDKManager SharedManager();
 
-		// +(BCOVPlayerSDKManager *)sharedManagerWithOptions:(NSDictionary *)options;
-		[Static]
-		[Export("sharedManagerWithOptions:")]
+        // +(BCOVPlayerSDKManager *)sharedManagerWithOptions:(NSDictionary *)options;
+        [Static]
+        [Export("sharedManagerWithOptions:")]
         BCOVPlayerSDKManager SharedManagerWithOptions(NSDictionary options);
     }
 
@@ -1857,7 +1857,7 @@ namespace BrightcoveSDK.tvOS
     */
     [Protocol]
     [BaseType(typeof(NSObject))]
-    interface BCOVPlaybackSessionProvider 
+    interface BCOVPlaybackSessionProvider
     {
         // @required -(id)playbackSessionsForVideos:(id<NSFastEnumeration>)videos __attribute__((deprecated("Do not use")));
         //[Abstract]
@@ -2205,7 +2205,7 @@ namespace BrightcoveSDK.tvOS
       protocol, then [Model] is redundant and will generate code that will never
       be used.
     */
-    [Protocol,Model]
+    [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface BCOVFPSAuthorizationProxy
     {
@@ -2277,10 +2277,10 @@ namespace BrightcoveSDK.tvOS
         //nint kBCOVFPSAuthProxyErrorCodeContentKeyGenerationFailed { get; }
     }
 
-    // @interface BCOVFPSBrightcoveAuthProxy : NSObject <BCOVFPSAuthorizationProxy>
-    [Protocol]
-    [BaseType(typeof(NSObject))]
-    interface BCOVFPSBrightcoveAuthProxy : BCOVFPSAuthorizationProxy, BCOVFPSBrightcoveAuthProxy_Unavailable, BCOVFPSBrightcoveAuthProxy_Deprecated
+    // @interface BCOVFPSBrightcoveAuthProxy : NSObject <BCOVFPSAutorizationProxy>
+    [Protocol, Model]
+    [BaseType(typeof(BCOVFPSAuthorizationProxy))]
+    interface BCOVFPSBrightcoveAuthProxy
     {
         // @property (nonatomic, strong) NSURL * _Null_unspecified fpsBaseURL;
         [Export("fpsBaseURL", ArgumentSemantic.Strong)]
