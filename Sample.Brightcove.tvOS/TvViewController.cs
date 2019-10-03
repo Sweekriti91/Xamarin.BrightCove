@@ -38,7 +38,7 @@ namespace Sample.Brightcove.tvOS
             base.ViewDidLoad();
 
 
-            var fairPlayAuthProxy = new BCOVFPSBrightcoveAuthProxy();
+            var fairPlayAuthProxy = new BCOVFPSBrightcoveAuthProxy (null, null);
 
             // Create chain of session providers
             // And upstream session provider to link to. If nil, a BCOVBasicSessionProvider will be used.
