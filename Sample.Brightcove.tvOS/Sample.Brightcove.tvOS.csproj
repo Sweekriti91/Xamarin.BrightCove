@@ -159,6 +159,7 @@
         <Compile Include="Main.cs" />
         <Compile Include="AppDelegate.cs" />
         <Compile Include="TvViewController.cs" />
+        <Compile Include="BasicPlayerViewController.cs" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\BrightcoveSDK.tvOS\BrightcoveSDK.tvOS.csproj">

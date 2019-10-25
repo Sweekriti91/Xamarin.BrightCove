@@ -42,10 +42,9 @@
     <ObjcBindingCoreSource Include="Structs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="..\BrightcovePlayerSDK.framework">
+    <NativeReference Include="BrightcovePlayerSDK.framework">
       <Kind>Framework</Kind>
-       <SmartLink>True</SmartLink>
-      <LinkerFlags>-ObjC</LinkerFlags>
+      <SmartLink>False</SmartLink>
     </NativeReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\TVOS\Xamarin.TVOS.ObjCBinding.CSharp.targets" />

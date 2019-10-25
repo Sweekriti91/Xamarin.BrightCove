@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Brightcove.tvOS", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrightcoveSDK.tvOS", "BrightcoveSDK.tvOS\BrightcoveSDK.tvOS.csproj", "{3D1AC6F3-EEAF-4355-A20A-F6E60B5DA935}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrightcoveSDK.iOS", "BrightcoveSDK.iOS\BrightcoveSDK.iOS.csproj", "{EFBF4F66-E60D-4770-8515-E8BC5D8A7302}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Brightcove.iOS", "Sample.Brightcove.iOS\Sample.Brightcove.iOS.csproj", "{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -29,5 +33,21 @@ Global
 		{3D1AC6F3-EEAF-4355-A20A-F6E60B5DA935}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{3D1AC6F3-EEAF-4355-A20A-F6E60B5DA935}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{3D1AC6F3-EEAF-4355-A20A-F6E60B5DA935}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{EFBF4F66-E60D-4770-8515-E8BC5D8A7302}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{EFBF4F66-E60D-4770-8515-E8BC5D8A7302}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{EFBF4F66-E60D-4770-8515-E8BC5D8A7302}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{EFBF4F66-E60D-4770-8515-E8BC5D8A7302}.Release|iPhone.Build.0 = Release|Any CPU
+		{EFBF4F66-E60D-4770-8515-E8BC5D8A7302}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{EFBF4F66-E60D-4770-8515-E8BC5D8A7302}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{EFBF4F66-E60D-4770-8515-E8BC5D8A7302}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{EFBF4F66-E60D-4770-8515-E8BC5D8A7302}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}.Release|iPhone.ActiveCfg = Release|iPhone
+		{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}.Release|iPhone.Build.0 = Release|iPhone
+		{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}.Debug|iPhone.Build.0 = Debug|iPhone
 	EndGlobalSection
 EndGlobal

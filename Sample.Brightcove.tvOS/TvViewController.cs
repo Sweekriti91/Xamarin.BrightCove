@@ -23,27 +23,42 @@ namespace Sample.Brightcove.tvOS
             }
         }
 
-        public TvViewController()
-        {
-        }
+        static string policyKEY = "";
+        static string accountID = "";
+        string videoId = "";
 
-        string policyKEY = "BCpkADawqM3n0ImwKortQqSZCgJMcyVbb8lJVwt0z16UD0a_h8MpEYcHyKbM8CGOPxBRp0nfSVdfokXBrUu3Sso7Nujv3dnLo0JxC_lNXCl88O7NJ0PR0z2AprnJ_Lwnq7nTcy1GBUrQPr5e";
-        string accountID = "4800266849001";
-        string videoId = "5754208017001";
+        BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
 
+        BCOVPlaybackController playbackController;
+        BCOVPlayerSDKManager sdkManager = BCOVPlayerSDKManager.SharedManager();
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            var options = new BCOVTVPlayerViewOptions() { PresentingViewController = this,  };
-            var playerView = new BCOVTVPlayerView(options);
-            var playbackController = BCOVPlayerSDKManager.SharedManager.CreatePlaybackController();
+            var fairPlayAuthProxy = new BCOVFPSBrightcoveAuthProxy(null, null);
+
+            // Create chain of session providers
+            // And upstream session provider to link to. If nil, a BCOVBasicSessionProvider will be used.
+            var fps = sdkManager.CreateFairPlaySessionProviderWithAuthorizationProxy(fairPlayAuthProxy, null);
+
+            // Create the playback controller
+            playbackController = sdkManager.CreateFairPlayPlaybackControllerWithAuthorizationProxy(fairPlayAuthProxy);
             playbackController.SetAutoPlay(true);
-            playbackController.SetAutoAdvance(true);
+            playbackController.SetAutoAdvance(false);
             playbackController.Delegate = new BCPlaybackControllerDelegate();
 
-            BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
+            //create the playerview
+            var options = new BCOVTVPlayerViewOptions() { PresentingViewController = this, };
+            var playerView = new BCOVTVPlayerView(options);
+            playerView.PlaybackController = playbackController;
+            playerView.ControlsView.ProgressView.MinimumTrackTintColor = UIColor.Blue;
+            playerView.SettingsView.TopTabBarItemViews = new BCOVTVTabBarItemView[0];
+
+            playerView.ShowView(BCOVTVShowViewType.Controls);
+            playerView.Frame = View.Frame;
+            View.AddSubview(playerView);
+
             playbackService.FindVideoWithVideoID(videoID: videoId, parameters: new NSDictionary(), completionHandler: (arg1, arg2, arg3) =>
             {
                 if (arg1 != null)
@@ -54,10 +69,6 @@ namespace Sample.Brightcove.tvOS
                     Debug.WriteLine($"View Controller Debug - Error retrieving video : {arg3.LocalizedDescription} ");
             });
 
-            playerView.PlaybackController = playbackController;
-            //playerView.TranslatesAutoresizingMaskIntoConstraints = false;
-            playerView.Frame = View.Frame;
-            View.AddSubview(playerView);
         }
     }
 }

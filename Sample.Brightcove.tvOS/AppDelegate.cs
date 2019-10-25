@@ -25,7 +25,10 @@ namespace Sample.Brightcove.tvOS
             AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.Playback, AVAudioSessionCategoryOptions.DuckOthers);
 
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            //fairplay player
             Window.RootViewController = new TvViewController();
+            // uncomment for BasicPlayer
+            //Window.RootViewController = new BasicPlayerViewController();
             Window.MakeKeyAndVisible();
 
             return true;
