@@ -6,7 +6,7 @@ using Foundation;
 using ObjCRuntime;
 using UIKit;
 
-namespace NativeLibrary
+namespace BrightcoveSDK.iOS
 {
     //[Static]
     //[Verify(ConstantsInterfaceAssociation)]
@@ -751,7 +751,7 @@ namespace NativeLibrary
     }
 
     // @protocol BCOVPlaybackControllerAdsDelegate <NSObject>
-    [Protocol]
+    [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface IBCOVPlaybackControllerAdsDelegate
     {
@@ -921,7 +921,7 @@ namespace NativeLibrary
     delegate UIView BCOVPlaybackControllerViewStrategy(UIView arg0, BCOVPlaybackController arg1);
 
     // @protocol BCOVPlaybackController <NSObject>
-    [Protocol, Model]
+    [Protocol]
     [BaseType(typeof(NSObject))]
     interface BCOVPlaybackController
     {
@@ -1115,14 +1115,14 @@ namespace NativeLibrary
     }
 
     // @protocol BCOVPlaybackControllerDelegate <BCOVPlaybackControllerBasicDelegate, BCOVPlaybackControllerAdsDelegate>
-    [Protocol]
+    [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface BCOVPlaybackControllerDelegate : IBCOVPlaybackControllerBasicDelegate, IBCOVPlaybackControllerAdsDelegate
     {
     }
 
     // @protocol BCOVPlaybackControllerBasicDelegate <NSObject>
-    [Protocol]
+    [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface IBCOVPlaybackControllerBasicDelegate
     {
@@ -1162,27 +1162,27 @@ namespace NativeLibrary
     }
 
     // @protocol BCOVMutableAnalytics <NSObject>
-    [Protocol, Model]
+    [Protocol]
     [BaseType(typeof(NSObject))]
     interface BCOVMutableAnalytics
     {
         // @required @property (copy, nonatomic) NSString * account;
-        //[Abstract]
+        [Abstract]
         [Export("account")]
         string Account { get; set; }
 
         // @required @property (copy, nonatomic) NSString * destination;
-        //[Abstract]
+        [Abstract]
         [Export("destination")]
         string Destination { get; set; }
 
         // @required @property (copy, nonatomic) NSString * source;
-        //[Abstract]
+        [Abstract]
         [Export("source")]
         string Source { get; set; }
 
         // @required @property (getter = isUniqueIdentifierEnabled, assign, nonatomic) BOOL uniqueIdentifierEnabled;
-        //[Abstract]
+        [Abstract]
         [Export("uniqueIdentifierEnabled")]
         bool UniqueIdentifierEnabled { [Bind("isUniqueIdentifierEnabled")] get; set; }
     }
@@ -1203,7 +1203,8 @@ namespace NativeLibrary
         // -(id<BCOVPlaybackController>)createPlaybackController;
         [Export("createPlaybackController")]
         //[Verify(MethodToProperty)]
-        BCOVPlaybackController CreatePlaybackController { get; }
+        //Hack
+        BCOVPlaybackController CreatePlaybackController();
 
         // -(id<BCOVPlaybackController>)createPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)viewStrategy;
         [Export("createPlaybackControllerWithViewStrategy:")]
@@ -1225,7 +1226,8 @@ namespace NativeLibrary
         [Static]
         [Export("sharedManager")]
         //[Verify(MethodToProperty)]
-        BCOVPlayerSDKManager SharedManager { get; }
+        //BCOVPlayerSDKManager SharedManager { get; }
+        BCOVPlayerSDKManager SharedManager();
 
         // +(BCOVPlayerSDKManager *)sharedManagerWithOptions:(NSDictionary *)options;
         [Static]
@@ -1505,77 +1507,77 @@ namespace NativeLibrary
     //}
 
     // @protocol BCOVPlaybackSession <NSObject>
-    [Protocol, Model]
+    [Protocol]
     [BaseType(typeof(NSObject))]
     interface BCOVPlaybackSession
     {
         // @required @property (readonly, copy, nonatomic) BCOVVideo * video;
-        [Abstract]
+        //[Abstract]
         [Export("video", ArgumentSemantic.Copy)]
         BCOVVideo Video { get; }
 
         // @required @property (readonly, copy, nonatomic) BCOVSource * source;
-        [Abstract]
+        //[Abstract]
         [Export("source", ArgumentSemantic.Copy)]
         BCOVSource Source { get; }
 
         // @required @property (readonly, nonatomic, strong) AVPlayer * player;
-        [Abstract]
+        //[Abstract]
         [Export("player", ArgumentSemantic.Strong)]
         AVPlayer Player { get; }
 
         // @required @property (readonly, nonatomic, strong) AVPlayerLayer * playerLayer;
-        [Abstract]
+        //[Abstract]
         [Export("playerLayer", ArgumentSemantic.Strong)]
         AVPlayerLayer PlayerLayer { get; }
 
         // @required @property (readonly, nonatomic) AVMediaSelectionGroup * audibleMediaSelectionGroup;
-        [Abstract]
+        //[Abstract]
         [Export("audibleMediaSelectionGroup")]
         AVMediaSelectionGroup AudibleMediaSelectionGroup { get; }
 
         // @required @property (readwrite, nonatomic) AVMediaSelectionOption * selectedAudibleMediaOption;
-        [Abstract]
+        //[Abstract]
         [Export("selectedAudibleMediaOption", ArgumentSemantic.Assign)]
         AVMediaSelectionOption SelectedAudibleMediaOption { get; set; }
 
         // @required @property (readonly, nonatomic) AVMediaSelectionGroup * legibleMediaSelectionGroup;
-        [Abstract]
+        //[Abstract]
         [Export("legibleMediaSelectionGroup")]
         AVMediaSelectionGroup LegibleMediaSelectionGroup { get; }
 
         // @required @property (readwrite, nonatomic) AVMediaSelectionOption * selectedLegibleMediaOption;
-        [Abstract]
+        //[Abstract]
         [Export("selectedLegibleMediaOption", ArgumentSemantic.Assign)]
         AVMediaSelectionOption SelectedLegibleMediaOption { get; set; }
 
         // @required @property (readonly, nonatomic, strong) BCOVSessionProviderExtension * providerExtension;
-        [Abstract]
+        //[Abstract]
         [Export("providerExtension", ArgumentSemantic.Strong)]
         BCOVSessionProviderExtension ProviderExtension { get; }
 
         // @required -(void)selectAudibleMediaOptionAutomatically;
-        [Abstract]
+        //[Abstract]
         [Export("selectAudibleMediaOptionAutomatically")]
         void SelectAudibleMediaOptionAutomatically();
 
         // @required -(void)selectLegibleMediaOptionAutomatically;
-        [Abstract]
+        //[Abstract]
         [Export("selectLegibleMediaOptionAutomatically")]
         void SelectLegibleMediaOptionAutomatically();
 
         // @required -(NSString *)displayNameFromAudibleMediaSelectionOption:(AVMediaSelectionOption *)option;
-        [Abstract]
+        //[Abstract]
         [Export("displayNameFromAudibleMediaSelectionOption:")]
         string DisplayNameFromAudibleMediaSelectionOption(AVMediaSelectionOption option);
 
         // @required -(NSString *)displayNameFromLegibleMediaSelectionOption:(AVMediaSelectionOption *)option;
-        [Abstract]
+        //[Abstract]
         [Export("displayNameFromLegibleMediaSelectionOption:")]
         string DisplayNameFromLegibleMediaSelectionOption(AVMediaSelectionOption option);
 
-        // @required -(void)terminate;
-        [Abstract]
+        //@required -(void) terminate;
+        //[Abstract]
         [Export("terminate")]
         void Terminate();
     }

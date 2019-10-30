@@ -25,6 +25,7 @@
         <MtouchArch>x86_64</MtouchArch>
         <MtouchLink>None</MtouchLink>
         <MtouchDebug>true</MtouchDebug>
+        <MtouchExtraArgs>-gcc_flags "-ObjC -framework AVFoundation -framework CoreMedia -framework GLKit -framework MediaPlayer -framework CoreMotion -framework MediaAccessibility -framework SafariServices -framework SystemConfiguration -framework WebKit" -v</MtouchExtraArgs>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
         <DebugType>none</DebugType>
@@ -118,7 +119,6 @@
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="LaunchScreen.storyboard" />
-        <InterfaceDefinition Include="Main.storyboard" />
     </ItemGroup>
     <ItemGroup>
         <None Include="Info.plist" />
@@ -127,11 +127,7 @@
     <ItemGroup>
         <Compile Include="Main.cs" />
         <Compile Include="AppDelegate.cs" />
-        <Compile Include="SceneDelegate.cs" />
-        <Compile Include="ViewController.cs" />
-        <Compile Include="ViewController.designer.cs">
-            <DependentUpon>ViewController.cs</DependentUpon>
-        </Compile>
+        <Compile Include="BasicPlayerViewController.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\BrightcoveSDK.iOS\BrightcoveSDK.iOS.csproj">

@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using ObjCRuntime;
 
-namespace NativeLibrary
+namespace BrightcoveSDK.iOS
 {
     [Native]
 	public enum BCOVEconomics : long
