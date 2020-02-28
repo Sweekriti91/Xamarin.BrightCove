@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrightcoveSDK.iOS", "Bright
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Brightcove.iOS", "Sample.Brightcove.iOS\Sample.Brightcove.iOS.csproj", "{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrightcoveGoogleCast.iOS", "BrightcoveGoogleCast.iOS\BrightcoveGoogleCast.iOS.csproj", "{BF6193FC-0CC3-40A3-A818-316754919691}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -49,5 +51,13 @@ Global
 		{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{F77A2CB6-AF12-41C0-B755-2E2DCB6B57C1}.Debug|iPhone.Build.0 = Debug|iPhone
+		{BF6193FC-0CC3-40A3-A818-316754919691}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{BF6193FC-0CC3-40A3-A818-316754919691}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{BF6193FC-0CC3-40A3-A818-316754919691}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{BF6193FC-0CC3-40A3-A818-316754919691}.Release|iPhone.Build.0 = Release|Any CPU
+		{BF6193FC-0CC3-40A3-A818-316754919691}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{BF6193FC-0CC3-40A3-A818-316754919691}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{BF6193FC-0CC3-40A3-A818-316754919691}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{BF6193FC-0CC3-40A3-A818-316754919691}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
