@@ -1,6 +1,0 @@
-framework module BrightcoveGoogleCast {
-  umbrella header "BrightcoveGoogleCast.h"
-
-  export *
-  module * { export * }
-}
