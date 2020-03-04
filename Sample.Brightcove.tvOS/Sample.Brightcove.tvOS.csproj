@@ -22,7 +22,7 @@
         <DefineConstants>DEBUG;</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
-        <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignKey>iPhone Developer: Sweekriti Satpathy (9Z5LT543NS)</CodesignKey>
         <MtouchDebug>true</MtouchDebug>
         <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
         <MtouchFastDev>true</MtouchFastDev>
@@ -32,6 +32,7 @@
         <MtouchExtraArgs>-gcc_flags "-ObjC -framework AVFoundation -framework CoreMedia -framework GLKit -framework MediaPlayer" -v</MtouchExtraArgs>
         <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
         <MtouchSdkVersion>12.2</MtouchSdkVersion>
+        <CodesignProvision>VS: tvOS WildCard Development</CodesignProvision>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
         <DebugType>pdbonly</DebugType>
@@ -39,7 +40,7 @@
         <OutputPath>bin\iPhone\Release</OutputPath>
         <WarningLevel>4</WarningLevel>
         <WarningLevel>4</WarningLevel>
-        <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignKey>iPhone Developer: Sweekriti Satpathy (9Z5LT543NS)</CodesignKey>
         <MtouchUseLlvm>true</MtouchUseLlvm>
         <MtouchEnableBitcode>true</MtouchEnableBitcode>
         <MtouchEnableBitcode>true</MtouchEnableBitcode>
@@ -47,6 +48,7 @@
         <MtouchLink>SdkOnly</MtouchLink>
         <MtouchArch>ARM64</MtouchArch>
         <PlatformTarget>x86</PlatformTarget>
+        <CodesignProvision>VS: tvOS WildCard Development</CodesignProvision>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
         <DebugType>pdbonly</DebugType>
@@ -54,12 +56,13 @@
         <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
-        <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignKey>iPhone Developer: Sweekriti Satpathy (9Z5LT543NS)</CodesignKey>
         <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
         <MtouchLink>None</MtouchLink>
         <MtouchArch>x86_64</MtouchArch>
         <PlatformTarget>x86</PlatformTarget>
         <MtouchExtraArgs>-gcc_flags "-ObjC"</MtouchExtraArgs>
+        <CodesignProvision>VS: tvOS WildCard Development</CodesignProvision>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugSymbols>true</DebugSymbols>
@@ -69,19 +72,20 @@
         <DefineConstants>DEBUG;</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
-        <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignKey>iPhone Developer: Sweekriti Satpathy (9Z5LT543NS)</CodesignKey>
         <DeviceSpecificBuild>true</DeviceSpecificBuild>
         <MtouchDebug>true</MtouchDebug>
         <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
         <MtouchFastDev>true</MtouchFastDev>
-        <MtouchFloat32>true</MtouchFloat32>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
         <IOSDebuggerPort>26001</IOSDebuggerPort>
-        <MtouchLink>SdkOnly</MtouchLink>
+        <MtouchLink>None</MtouchLink>
         <MtouchArch>ARM64</MtouchArch>
         <PlatformTarget>x86</PlatformTarget>
-        <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
+        <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
         <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+        <CodesignProvision>VS: tvOS WildCard Development</CodesignProvision>
+        <MtouchExtraArgs>-gcc_flags "-ObjC -framework AVFoundation -framework CoreMedia -framework GLKit -framework MediaPlayer" -v</MtouchExtraArgs>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />
