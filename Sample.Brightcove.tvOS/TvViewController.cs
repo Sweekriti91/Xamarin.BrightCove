@@ -29,7 +29,6 @@ namespace Sample.Brightcove.tvOS
 
         BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
 
-        //BCOVFPSAuthorizationProxy fairPlayAuthProxy;
         BCOVPlaybackController playbackController;
         BCOVPlayerSDKManager sdkManager = BCOVPlayerSDKManager.SharedManager();
 
@@ -37,12 +36,10 @@ namespace Sample.Brightcove.tvOS
         {
             base.ViewDidLoad();
 
-
-            var fairPlayAuthProxy = new BCOVFPSBrightcoveAuthProxy (null, null);
+            var fairPlayAuthProxy = new BCOVFPSBrightcoveAuthProxy(null, null);
 
             // Create chain of session providers
             // And upstream session provider to link to. If nil, a BCOVBasicSessionProvider will be used.
-            //var psp = sdkManager.CreateFairPlaySessionProviderWithAuthorizationProxy(fairPlayAuthProxy, null);
             var fps = sdkManager.CreateFairPlaySessionProviderWithAuthorizationProxy(fairPlayAuthProxy, null);
 
             // Create the playback controller
@@ -55,6 +52,10 @@ namespace Sample.Brightcove.tvOS
             var options = new BCOVTVPlayerViewOptions() { PresentingViewController = this, };
             var playerView = new BCOVTVPlayerView(options);
             playerView.PlaybackController = playbackController;
+            playerView.ControlsView.ProgressView.MinimumTrackTintColor = UIColor.Blue;
+            playerView.SettingsView.TopTabBarItemViews = new BCOVTVTabBarItemView[0];
+
+            playerView.ShowView(BCOVTVShowViewType.Controls);
             playerView.Frame = View.Frame;
             View.AddSubview(playerView);
 

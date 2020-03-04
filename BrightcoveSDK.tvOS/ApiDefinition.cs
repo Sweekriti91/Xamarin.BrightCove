@@ -5,6 +5,7 @@ using Foundation;
 using ObjCRuntime;
 using CoreGraphics;
 using AVFoundation;
+using System.Collections.Generic;
 
 namespace BrightcoveSDK.tvOS
 {
@@ -2224,13 +2225,14 @@ namespace BrightcoveSDK.tvOS
         void EncryptedContentKeyForContentKeyIdentifier(string contentKeyIdentifier, NSData keyRequest, BCOVSource source, [NullAllowed] NSDictionary options, Action<NSUrlResponse, NSData, NSError> completionHandler);
     }
 
+    //Hack: FPS Fix
     interface IBCOVFPSAuthorizationProxy { }
 
     // @interface BCOVFPSAdditions (BCOVPlayerSDKManager)
     //[Category]
     //[BaseType(typeof(BCOVPlayerSDKManager))]
-    [Protocol]
-    [BaseType(typeof(NSObject))]
+    //[Protocol]
+    //[BaseType(typeof(NSObject))]
     interface BCOVPlayerSDKManager_BCOVFPSAdditions
     {
         // -(id<BCOVPlaybackController> _Nonnull)createFairPlayPlaybackControllerWithAuthorizationProxy:(id<BCOVFPSAuthorizationProxy> _Nonnull)proxy;
@@ -2244,6 +2246,8 @@ namespace BrightcoveSDK.tvOS
         // -(id<BCOVPlaybackController> _Nonnull)createFairPlayPlaybackControllerWithApplicationCertificate:(NSData * _Nullable)appCert authorizationProxy:(id<BCOVFPSAuthorizationProxy> _Nonnull)proxy viewStrategy:(BCOVPlaybackControllerViewStrategy _Nullable)viewStrategy;
         [Export("createFairPlayPlaybackControllerWithApplicationCertificate:authorizationProxy:viewStrategy:")]
         BCOVPlaybackController CreateFairPlayPlaybackControllerWithApplicationCertificate([NullAllowed] NSData appCert, IBCOVFPSAuthorizationProxy proxy, [NullAllowed] BCOVPlaybackControllerViewStrategy viewStrategy);
+
+
 
         // -(id<BCOVPlaybackSessionProvider> _Nonnull)createFairPlaySessionProviderWithApplicationCertificate:(NSData * _Nullable)appCert authorizationProxy:(id<BCOVFPSAuthorizationProxy> _Nonnull)proxy upstreamSessionProvider:(id<BCOVPlaybackSessionProvider> _Nullable)provider;
         [Export("createFairPlaySessionProviderWithApplicationCertificate:authorizationProxy:upstreamSessionProvider:")]
