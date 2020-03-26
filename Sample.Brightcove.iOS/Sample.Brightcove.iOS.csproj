@@ -132,6 +132,7 @@
         <Compile Include="AppDelegate.cs" />
         <Compile Include="BasicPlayerViewController.cs" />
         <Compile Include="BasicPlayerCastViewController.cs" />
+        <Compile Include="FairPlayViewController.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\BrightcoveSDK.iOS\BrightcoveSDK.iOS.csproj">

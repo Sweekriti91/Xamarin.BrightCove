@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExoPlayer.SmoothStreaming",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExoPlayer.UI", "ExoPlayer.UI\ExoPlayer.UI.csproj", "{67A0616A-BB76-456C-B747-D704846FDD53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Brightcove.Droid", "Sample.Brightcove.Droid\Sample.Brightcove.Droid.csproj", "{2E2123F8-71F8-434C-81D9-1BEA187CCECC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -159,5 +161,13 @@ Global
 		{67A0616A-BB76-456C-B747-D704846FDD53}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{67A0616A-BB76-456C-B747-D704846FDD53}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{67A0616A-BB76-456C-B747-D704846FDD53}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{2E2123F8-71F8-434C-81D9-1BEA187CCECC}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{2E2123F8-71F8-434C-81D9-1BEA187CCECC}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{2E2123F8-71F8-434C-81D9-1BEA187CCECC}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{2E2123F8-71F8-434C-81D9-1BEA187CCECC}.Release|iPhone.Build.0 = Release|Any CPU
+		{2E2123F8-71F8-434C-81D9-1BEA187CCECC}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{2E2123F8-71F8-434C-81D9-1BEA187CCECC}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{2E2123F8-71F8-434C-81D9-1BEA187CCECC}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{2E2123F8-71F8-434C-81D9-1BEA187CCECC}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

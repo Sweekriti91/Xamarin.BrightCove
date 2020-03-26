@@ -7,7 +7,7 @@ using UIKit;
 
 namespace Sample.Brightcove.iOS
 {
-    public class BasicPlayerViewController : UIViewController
+    public class FairPlayViewController : UIViewController
     {
         //TODO: change delegates from public to internal?
         public class BCPlaybackControllerDelegate : BCOVPlaybackControllerDelegate
@@ -51,28 +51,40 @@ namespace Sample.Brightcove.iOS
             }
         }
 
-        static string policyKEY = "BCpkADawqM3n0ImwKortQqSZCgJMcyVbb8lJVwt0z16UD0a_h8MpEYcHyKbM8CGOPxBRp0nfSVdfokXBrUu3Sso7Nujv3dnLo0JxC_lNXCl88O7NJ0PR0z2AprnJ_Lwnq7nTcy1GBUrQPr5e";
-        static string accountID = "4800266849001";
-        static string videoId = "5754208017001";
+        static string policyKEY = "";
+        static string accountID = "";
+        string videoId = "";
 
         BCOVPlayerSDKManager sDKManager = BCOVPlayerSDKManager.SharedManager();
         BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
         BCOVPlaybackController playbackController;
 
-        public BasicPlayerViewController()
+
+        public FairPlayViewController()
         {
         }
+
+
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
+            //setup fairplay stuffs
+            var fairPlayAuthProxy = new BCOVFPSBrightcoveAuthProxy(null, null);
+
+            // Create chain of session providers
+            // And upstream session provider to link to. If nil, a BCOVBasicSessionProvider will be used.
+            var fps = sDKManager.CreateFairPlaySessionProviderWithAuthorizationProxy(fairPlayAuthProxy, null);
+
+            //Create the playback controller
+            playbackController = sDKManager.CreateFairPlayPlaybackControllerWithAuthorizationProxy(fairPlayAuthProxy);
+            playbackController.SetAutoPlay(true);
+            playbackController.SetAutoAdvance(false);
+            playbackController.Delegate = new BCPlaybackControllerDelegate();
+
             // Set up our player view. Create with a standard VOD layout.
             var options = new BCOVPUIPlayerViewOptions() { ShowPictureInPictureButton = true };
-            playbackController = sDKManager.CreatePlaybackController();
-            playbackController.SetAutoPlay(true);
-            playbackController.SetAutoAdvance(true);
-            playbackController.Delegate = new BCPlaybackControllerDelegate();
             var playerView = new BCOVPUIPlayerView(playbackController, options, BCOVPUIBasicControlView.BasicControlViewWithVODLayout());
             playerView.Delegate = new BCUIPlaybackViewController();
 
@@ -92,6 +104,4 @@ namespace Sample.Brightcove.iOS
             View.AddSubview(playerView);
         }
     }
-
-    
 }

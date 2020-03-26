@@ -65,10 +65,6 @@
       <Project>{336AB544-5B28-4D1B-955A-454E652C16C3}</Project>
       <Name>BrightcoveSDK.Droid.AppCompat</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BrightcoveSDK.Droid.Cast\BrightcoveSDK.Droid.Cast.csproj">
-      <Project>{5E1F84DB-02D6-42E2-89A0-C23BC1CCC731}</Project>
-      <Name>BrightcoveSDK.Droid.Cast</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.AndroidX.Annotation">

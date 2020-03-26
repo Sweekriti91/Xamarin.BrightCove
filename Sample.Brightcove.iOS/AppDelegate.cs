@@ -17,7 +17,8 @@ namespace Sample.Brightcove.iOS
         {
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            Window.RootViewController = new BasicPlayerViewController();
+            //Window.RootViewController = new BasicPlayerViewController();
+            Window.RootViewController = new BasicPlayerCastViewController();
             Window.MakeKeyAndVisible();
             return true;
         }

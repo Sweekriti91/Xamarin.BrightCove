@@ -20,11 +20,13 @@
    --> 
     <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetPlaylistTask']"/>
     
-    <remove-node path="/api/package[@name='com.brightcove.player.event']/class[@name='Event']"/>
+    
+    <attr path="/api/package[@name='com.brightcove.player.event']/class[@name='Event']/method[@name='getProperties' and count(parameter)=0]" name="return">IDictionary</attr>
     <remove-node path="/api/package[@name='com.brightcove.player.event']/class[@name='MediaEvent']"/>
     
-<!--    <attr path="/api/package[@name='com.brightcove.player.event']/class[@name='Event']/method[@name='getProperties' and count(parameter)=0]" name="return">IDictionary</attr>-->
-<!--    <attr path="/api/package[@name='com.brightcove.player.event']/class[@name='Event']/constructor[@name='Event' and count(parameter)=1 and parameter[1][@type='java.lang.String']]" name=" return">Java.Lang.Object</attr>-->
+    <attr path="/api/package[@name='com.brightcove.player.event']/class[@name='Event']" name="managedType">Java.Long>.Object</attr>
+    
+    
    <!-- <attr name="managedReturn" path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']">java.lang.Object</attr>
     <attr name="managedReturn" path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/constructor[@name='GetVideoTask' and count(parameter)=4 and parameter[1][@type='com.brightcove.player.event.EventEmitter'] and parameter[2][@type='java.lang.String'] and parameter[3][@type='com.brightcove.player.network.HttpRequestConfig'] and parameter[4][@type='java.lang.String']]">java.lang.Object</attr>
     <attr name="managedReturn" path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/constructor[@name='GetVideoTask' and count(parameter)=5 and parameter[1][@type='com.brightcove.player.event.EventEmitter'] and parameter[2][@type='java.lang.String'] and parameter[3][@type='com.brightcove.player.network.HttpRequestConfig'] and parameter[4][@type='java.lang.String'] and parameter[5][@type='java.lang.String']]">java.lang.Object</attr>
