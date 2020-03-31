@@ -1,58 +1,25 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-    <!--
-  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
-  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
-  
-  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
-  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
-  -->
-    
-<!--    <attr path="/api/package[@name='com.brightcove.player.display.tasks']/class[@name='LoadImageTask.AsyncTask']/method[@name='doInBackground' and count(parameter)=1 and parameter[1][@type='org.json.JSONObject...']]" name="managedType">Java.Lang.Object</attr>-->
-    
-<!--    <attr name="return" path="/api/package[@name='com.brightcove.player.edge']/class[@name='Catalog.Builder']/method[@name='self' and count(parameter)=0]">java.lang.Object</attr>-->
-<!--    <attr name="type" path="/api/package[@name='com.brightcove.player.edge']/class[@name='Catalog.Builder']/method[@name='self' and count(parameter)=0]">java.lang.Object</attr>-->
-    <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='Catalog.Builder']/method[@name='self' and count(parameter)=0]"/>
+    <!-- Some issues when a type inside a namespace has the same name as the namespace, so make this plural -->
+    <attr path="/api/package[@name='com.brightcove.player.event']" name="managedName">Com.Brightcove.Player.Events</attr>
+    <!-- Remove the properties on the base type since everything subclassing it implements it anyway -->
+    <remove-node path="/api/package[@name='com.brightcove.player.event']/class[@name='AbstractEvent']/method[@name='getProperties' and count(parameter)=0]" />
+    <attr name="managedType" path="/api/package[@name='com.brightcove.player.model']/class[@name='CuePoint']/method[@name='compareTo' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.model.CuePoint']]/parameter[1]">Java.Lang.Object</attr>
+    <attr name="visibility" path="/api/package[@name='com.brightcove.player.mediacontroller.buttons']/class[@name='SeekButtonController']/method[@name='getDidSeekHandler' and count(parameter)=0]">public</attr>
+    <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='Catalog.Builder']/method[@name='self' and count(parameter)=0]" />
     <remove-node path="/api/package[@name='com.brightcove.player.display.tasks']/class[@name='LoadImageTask']"/>
-    
-    <!--<attr name="return" path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetPlaylistTask']">java.lang.Object</attr>
-    <attr name="return" path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetPlaylistTask']/constructor[@name='GetPlaylistTask' and count(parameter)=4 and parameter[1][@type='com.brightcove.player.event.EventEmitter'] and parameter[2][@type='java.lang.String'] and parameter[3][@type='com.brightcove.player.network.HttpRequestConfig'] and parameter[4][@type='java.lang.String']]">java.lang.Object</attr>
-   --> 
     <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetPlaylistTask']"/>
     
+<!--    <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']"/>-->
+    <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/method[@name='processData' and count(parameter)=1 and parameter[1][@type='org.json.JSONObject']]"/>
     
-    <attr path="/api/package[@name='com.brightcove.player.event']/class[@name='Event']/method[@name='getProperties' and count(parameter)=0]" name="return">IDictionary</attr>
-    <remove-node path="/api/package[@name='com.brightcove.player.event']/class[@name='MediaEvent']"/>
-    
-    <attr path="/api/package[@name='com.brightcove.player.event']/class[@name='Event']" name="managedType">Java.Long>.Object</attr>
-    
-    
-   <!-- <attr name="managedReturn" path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']">java.lang.Object</attr>
-    <attr name="managedReturn" path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/constructor[@name='GetVideoTask' and count(parameter)=4 and parameter[1][@type='com.brightcove.player.event.EventEmitter'] and parameter[2][@type='java.lang.String'] and parameter[3][@type='com.brightcove.player.network.HttpRequestConfig'] and parameter[4][@type='java.lang.String']]">java.lang.Object</attr>
-    <attr name="managedReturn" path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/constructor[@name='GetVideoTask' and count(parameter)=5 and parameter[1][@type='com.brightcove.player.event.EventEmitter'] and parameter[2][@type='java.lang.String'] and parameter[3][@type='com.brightcove.player.network.HttpRequestConfig'] and parameter[4][@type='java.lang.String'] and parameter[5][@type='java.lang.String']]">java.lang.Object</attr>
-    <attr name="managedReturn" path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/constructor[@name='GetVideoTask' and count(parameter)=5 and parameter[1][@type='com.brightcove.player.event.EventEmitter'] and parameter[2][@type='java.lang.String'] and parameter[3][@type='java.util.Map&lt;java.lang.String, java.lang.String&gt;'] and parameter[4][@type='java.lang.String'] and parameter[5][@type='java.lang.String']]">java.lang.Object</attr>
-    <attr name="managedReturn" path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/constructor[@name='GetVideoTask' and count(parameter)=6 and parameter[1][@type='com.brightcove.player.event.EventEmitter'] and parameter[2][@type='java.lang.String'] and parameter[3][@type='java.util.Map&lt;java.lang.String, java.lang.String&gt;'] and parameter[4][@type='java.util.Map&lt;java.lang.String, java.lang.String&gt;'] and parameter[5][@type='java.lang.String'] and parameter[6][@type='java.lang.String']]">java.lang.Object</attr>
--->    
-    
-<!--    <attr name="managedName" path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/method[@name='processData' and count(parameter)=1 and parameter[1][@type='org.json.JSONObject']]/parameter[1]">GetNewProcessData</attr>-->
-<!--    <attr path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/method[@name='doInBackground' and count(parameter)=1 and parameter[1][@type='org.json.JSONObject...']]" name="managedType">Java.Lang.Object</attr>-->
-    <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']"/>
-    
-    <attr name="managedType" path="/api/package[@name='com.brightcove.player.model']/class[@name='CuePoint']/method[@name='compareTo' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.model.CuePoint']]/parameter[1]">Java.Lang.Object</attr>
-    
-    <remove-node path="/api/package[@name='com.brightcove.player.captioning.preferences']/class[@name='ListDialogPreference']"/>    
+    <remove-node path="/api/package[@name='com.brightcove.player.captioning.tasks']/class[@name='LoadCaptionsTask']"/>
+    <remove-node path="/api/package[@name='com.brightcove.player.captioning.preferences']/class[@name='ListDialogPreference']"/>
     <remove-node path="/api/package[@name='com.brightcove.player.analytics']/class[@name='DefaultAnalyticsHandler']/method[@name='getProcessListener' and count(parameter)=0]"/>
     <remove-node path="/api/package[@name='com.brightcove.player.analytics']/class[@name='DefaultAnalyticsHandler']/method[@name='setProcessListener' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.analytics.IAnalyticsHandler.ProcessListener']]"/>
-    <remove-node path="/api/package[@name='com.brightcove.player.event']/class[@name='MediaEvent']/method[@name='getProperties' and count(parameter)=0]"/>
     <remove-node path="/api/package[@name='com.brightcove.player.view']/class[@name='BrightcoveTextureView']"/>
-    <remove-node path="/api/package[@name='com.brightcove.player.captioning.tasks']/class[@name='LoadCaptionsTask']"/>
     <remove-node path="/api/package[@name='com.brightcove.player.view']/class[@name='BrightcoveSurfaceView']"/>
     <remove-node path="/api/package[@name='com.brightcove.player.event']/class[@name='EventEmitterImpl']/method[@name='getInvocationContainerByToken' and count(parameter)=2 and parameter[1][@type='java.util.List&lt;com.brightcove.player.event.InvocationContainer&gt;'] and parameter[2][@type='int']]"/>
     <remove-node path="/api/package[@name='com.brightcove.player.event']/class[@name='EventEmitterImpl']/method[@name='getInvocationContainerPositionByToken' and count(parameter)=2 and parameter[1][@type='java.util.List&lt;com.brightcove.player.event.InvocationContainer&gt;'] and parameter[2][@type='int']]"/>
-    
-    <attr name="visibility" path="/api/package[@name='com.brightcove.player.mediacontroller.buttons']/class[@name='SeekButtonController']/method[@name='getDidSeekHandler' and count(parameter)=0]">public</attr>
-<!--    <attr name="visibility" path="/api/package[@name='com.brightcove.player.mediacontroller.buttons']/class[@name='RewindButtonController']/method[@name='getDidSeekHandler' and count(parameter)=0]">public</attr>-->
-
-    <attr name="type" path="/api/package[@name='com.brightcove.player.event']/class[@name='MediaEvent']/method[@name='getProperties' and count(parameter)=0]">IDictionary</attr>
-
 </metadata>
+

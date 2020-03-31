@@ -29,11 +29,18 @@ namespace Sample.Brightcove.Droid
             //native code below, fix
             // brightcoveVideoView = (BrightcoveExoPlayerVideoView) findViewById(R.id.brightcove_video_view);
 
-            BrightcoveVideoView.FindViewById(Resource.Id.brightcove_video_view);
+            //BrightcoveVideoView.FindViewById(Resource.Id.brightcove_video_view);
             //BaseVideoView baseVideoView = new BrightcoveVideoView(context: ApplicationContext);
             //baseVideoView = (BrightcoveVideoView)FindViewById(Resource.Id.brightcove_video_view);
-            //EventEmitter eventEmitter =
             //Catalog catalog = new Catalog(baseVideoV, "3303963094001", "BCpkADawqM3zXLtsEM0nAyA_3o3TmZnG6bZTXFmjZ8X_rmFMqlpB78l0aiRELs7MWACf4mYN92qMOLMxfZN6Xr3cQ_0R3G2qBiho3X3Nc2yTv7DH4APQ-EimMJQ3crX0zc0mJMy9CtSqkmli");
+
+            var brightcoveVideoView = FindViewById<BrightcoveVideoView>(Resource.Id.brightcove_video_view);
+            var catalog = new Catalog(brightcoveVideoView.EventEmitter, "3303963094001", "BCpkADawqM3zXLtsEM0nAyA_3o3TmZnG6bZTXFmjZ8X_rmFMqlpB78l0aiRELs7MWACf4mYN92qMOLMxfZN6Xr3cQ_0R3G2qBiho3X3Nc2yTv7DH4APQ-EimMJQ3crX0zc0mJMy9CtSqkmli");
+
+            catalog.FindVideoByID(videoID: "4283173439001", new VideoListener()
+            {
+                
+            });
 
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
