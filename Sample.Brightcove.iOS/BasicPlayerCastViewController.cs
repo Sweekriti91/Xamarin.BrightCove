@@ -56,6 +56,8 @@ namespace Sample.Brightcove.iOS
 
         public class BCGoogleCastManagerDelegate : BCOVGoogleCastManagerDelegate
         {
+            public override BCOVPlaybackController PlaybackController => throw new NotImplementedException();
+
             public override void SwitchedToLocalPlayback(NSObject lastKnownStreamPosition, NSObject error)
             {
                 //base.SwitchedToLocalPlayback(lastKnownStreamPosition, error);
@@ -117,7 +119,7 @@ namespace Sample.Brightcove.iOS
             playbackController.SetAutoPlay(true);
             playbackController.SetAutoAdvance(true);
             playbackController.Delegate = new BCPlaybackControllerDelegate();
-            googleCastManager.Delegate = new BCOVGoogleCastManagerDelegate();
+            googleCastManager.Delegate = new BCGoogleCastManagerDelegate();
             playbackController.AddSessionConsumer(googleCastManager);
             var playerView = new BCOVPUIPlayerView(playbackController, options, BCOVPUIBasicControlView.BasicControlViewWithVODLayout());
             playerView.Delegate = new BCUIPlaybackViewController();
