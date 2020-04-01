@@ -37,10 +37,10 @@ namespace Sample.Brightcove.Droid
             var brightcoveVideoView = FindViewById<BrightcoveVideoView>(Resource.Id.brightcove_video_view);
             var catalog = new Catalog(brightcoveVideoView.EventEmitter, "3303963094001", "BCpkADawqM3zXLtsEM0nAyA_3o3TmZnG6bZTXFmjZ8X_rmFMqlpB78l0aiRELs7MWACf4mYN92qMOLMxfZN6Xr3cQ_0R3G2qBiho3X3Nc2yTv7DH4APQ-EimMJQ3crX0zc0mJMy9CtSqkmli");
 
-            catalog.FindVideoByID(videoID: "4283173439001", new VideoListener()
-            {
+            //catalog.FindVideoByID(videoID: "4283173439001", new VideoListener()
+            //{
                 
-            });
+            //});
 
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
