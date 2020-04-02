@@ -10,7 +10,7 @@ using UIKit;
 
 namespace Sample.Brightcove.iOS
 {
-    public class BasicPlayerCastViewController : UIViewController
+    public class BasicPlayerCastViewController : UINavigationController
     {
         //TODO: change delegates from public to internal?
         public class BCPlaybackControllerDelegate : BCOVPlaybackControllerDelegate

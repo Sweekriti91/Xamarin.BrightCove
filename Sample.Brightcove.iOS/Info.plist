@@ -34,5 +34,7 @@
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleName</key>
 	<string>Sample.Brightcove.iOS</string>
+	<key>Privacy - Bluetooth Always Usage Description</key>
+	<string>${PRODUCT_NAME} uses Bluetooth to discover nearby Cast devices.</string>
 </dict>
 </plist>
