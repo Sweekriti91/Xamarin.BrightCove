@@ -139,7 +139,6 @@
         <Compile Include="BasicPlayerViewController.cs" />
         <Compile Include="BasicPlayerCastViewController.cs" />
         <Compile Include="FairPlayViewController.cs" />
-        <Compile Include="TableSource.cs" />
         <Compile Include="CastVideoListViewController.cs" />
     </ItemGroup>
     <ItemGroup>

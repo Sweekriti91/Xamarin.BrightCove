@@ -18,10 +18,11 @@ namespace Sample.Brightcove.iOS
         static string videoId = "5754208017001";
 
         SessionManager sessionManager;
-        UITableView table;
+        //UITableView table;
         UIView videoController;
         BCOVPlaybackController playbackController;
         BCOVPlayerSDKManager sDKManager = BCOVPlayerSDKManager.SharedManager();
+        BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
 
         public CastVideoListViewController()
         {
@@ -96,19 +97,7 @@ namespace Sample.Brightcove.iOS
             var castButton = new GCKUIButton(new CGRect(0, 0, 24, 24)) { TintColor = UIColor.White };
             NavigationItem.RightBarButtonItem = new UIBarButtonItem(castButton);
 
-
-
-            /*
-             * *
-             * NotificationCenter.default.addObserver(self, selector: #selector(self.castStateDidChange),
-                                               name: NSNotification.Name.gckCastStateDidChange,
-                                               object: GCKCastContext.sharedInstance())
-              *
-              */
-
-
             //NSNotificationCenter.DefaultCenter.AddObserver(this,castDidChangeState(),CastContext.CastStateDidChangeNotification, CastContext.SharedInstance);
-
             sessionManager = CastContext.SharedInstance.SessionManager;
             sessionManager.AddListener(this);
 
@@ -116,10 +105,10 @@ namespace Sample.Brightcove.iOS
             videoController.BackgroundColor = UIColor.Red;
             videoController.Frame = new CGRect(0, 100, 375, 207.5);
 
-            table = new UITableView(); // defaults to Plain style
-            table.Frame = new CGRect(0, 335, View.Frame.Width, View.Frame.Height - 215);
-            string[] tableItems = new string[] { "Basic Video", "DRM Video" };
-            table.Source = new TableSource(tableItems, this);
+            //table = new UITableView(); // defaults to Plain style
+            //table.Frame = new CGRect(0, 335, View.Frame.Width, View.Frame.Height - 215);
+            //string[] tableItems = new string[] { "Basic Video", "DRM Video" };
+            //table.Source = new TableSource(tableItems, this);
 
             //playbackController Setup
             playbackController = sDKManager.CreatePlaybackController();
@@ -136,35 +125,46 @@ namespace Sample.Brightcove.iOS
             var playerView = new BCOVPUIPlayerView(playbackController, options, BCOVPUIBasicControlView.BasicControlViewWithVODLayout());
             playerView.Frame = new CGRect(0, 0, 375, 207.5);
 
+
+            playbackService.FindVideoWithVideoID(videoID: videoId, parameters: new NSDictionary(), completionHandler: (arg0, arg1, arg2) =>
+            {
+                if (arg0 != null)
+                {
+                    playbackController.SetVideos(NSArray.FromObjects(arg0));
+                }
+                else
+                    Debug.WriteLine($"View Controller Debug - Error retrieving video : {arg2.LocalizedDescription} ");
+            });
+
             playerView.PlaybackController = playbackController;
             videoController.AddSubview(playerView);
             View.AddSubview(videoController);
-            View.AddSubview(table);
+            //View.AddSubview(table);
         }
 
 
-        [Export("sessionManager:didStartSession:")]
-        public void DidStartSession(SessionManager sessionManager, Session session)
-        {
-            Console.WriteLine("Session Started.");
-        }
+        //[Export("sessionManager:didStartSession:")]
+        //public void DidStartSession(SessionManager sessionManager, Session session)
+        //{
+        //    Console.WriteLine("Session Started.");
+        //}
 
-        [Export("sessionManager:didResumeSession:")]
-        public void DidResumeSession(SessionManager sessionManager, Session session)
-        {
-            Console.WriteLine("Session Resumed.");
-        }
+        //[Export("sessionManager:didResumeSession:")]
+        //public void DidResumeSession(SessionManager sessionManager, Session session)
+        //{
+        //    Console.WriteLine("Session Resumed.");
+        //}
 
-        [Export("sessionManager:didEndSession:withError:")]
-        public void DidEndSession(SessionManager sessionManager, Session session, NSError error)
-        {
-            Console.WriteLine("Session Ended.");
-        }
+        //[Export("sessionManager:didEndSession:withError:")]
+        //public void DidEndSession(SessionManager sessionManager, Session session, NSError error)
+        //{
+        //    Console.WriteLine("Session Ended.");
+        //}
 
-        [Export("sessionManager:didFailToStartSession:withError:")]
-        public void DidFailToStartSession(SessionManager sessionManager, Session session, NSError error)
-        {
-            Console.WriteLine("Session Failed");
-        }
+        //[Export("sessionManager:didFailToStartSession:withError:")]
+        //public void DidFailToStartSession(SessionManager sessionManager, Session session, NSError error)
+        //{
+        //    Console.WriteLine("Session Failed");
+        //}
     }
 }
