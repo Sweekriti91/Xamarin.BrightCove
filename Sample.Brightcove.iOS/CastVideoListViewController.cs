@@ -94,7 +94,7 @@ namespace Sample.Brightcove.iOS
             base.ViewDidLoad();
 
             //Google Cast button
-            var castButton = new GCKUIButton(new CGRect(0, 0, 24, 24)) { TintColor = UIColor.White };
+            var castButton = new GCKUIButton(new CGRect(0, 0, 24, 24)) { TintColor = UIColor.Blue };
             NavigationItem.RightBarButtonItem = new UIBarButtonItem(castButton);
 
             //NSNotificationCenter.DefaultCenter.AddObserver(this,castDidChangeState(),CastContext.CastStateDidChangeNotification, CastContext.SharedInstance);
@@ -141,30 +141,5 @@ namespace Sample.Brightcove.iOS
             View.AddSubview(videoController);
             //View.AddSubview(table);
         }
-
-
-        //[Export("sessionManager:didStartSession:")]
-        //public void DidStartSession(SessionManager sessionManager, Session session)
-        //{
-        //    Console.WriteLine("Session Started.");
-        //}
-
-        //[Export("sessionManager:didResumeSession:")]
-        //public void DidResumeSession(SessionManager sessionManager, Session session)
-        //{
-        //    Console.WriteLine("Session Resumed.");
-        //}
-
-        //[Export("sessionManager:didEndSession:withError:")]
-        //public void DidEndSession(SessionManager sessionManager, Session session, NSError error)
-        //{
-        //    Console.WriteLine("Session Ended.");
-        //}
-
-        //[Export("sessionManager:didFailToStartSession:withError:")]
-        //public void DidFailToStartSession(SessionManager sessionManager, Session session, NSError error)
-        //{
-        //    Console.WriteLine("Session Failed");
-        //}
     }
 }

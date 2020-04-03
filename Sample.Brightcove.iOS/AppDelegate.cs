@@ -18,7 +18,7 @@ namespace Sample.Brightcove.iOS
             var discoveryCriteria = new DiscoveryCriteria("4F8B3483");
             var options = new CastOptions(discoveryCriteria);
             CastContext.SetSharedInstance(options);
-            Logger.SharedInstance.Delegate = this;
+            Logger.SharedInstance.Delegate = new LoggerDelegate();
 
 
             var navigationController = new UINavigationController(new CastVideoListViewController());
@@ -33,11 +33,11 @@ namespace Sample.Brightcove.iOS
             return true;
         }
 
-        [Export("logMessage:fromFunction:")]
-        void LogMessage(string message, string function)
-        {
-            Console.WriteLine($"{function} {message}");
-        }
+        //[Export("logMessage:fromFunction:")]
+        //void LogMessage(string message, string function)
+        //{
+        //    Console.WriteLine($"{function} {message}");
+        //}
 
         public bool CastControlBarsEnabled
         {
