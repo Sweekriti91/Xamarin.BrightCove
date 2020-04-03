@@ -25,9 +25,8 @@ namespace Sample.Brightcove.Droid
 
             catalog.FindVideoByID(videoID: "4283173439001", new VideoListener()
             {
-
+                //override OnVideo(Video vid);
             });
-            //brightcoveVideoView.Add()
 
 
         }
