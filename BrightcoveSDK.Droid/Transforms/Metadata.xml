@@ -9,7 +9,7 @@
     <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='Catalog.Builder']/method[@name='self' and count(parameter)=0]" />
 <!--    <remove-node path="/api/package[@name='com.brightcove.player.display.tasks']/class[@name='LoadImageTask']"/>-->
     <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetPlaylistTask']"/>
-    
+
 <!--    <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']"/>-->
     <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/method[@name='processData' and count(parameter)=1 and parameter[1][@type='org.json.JSONObject']]"/>
     
