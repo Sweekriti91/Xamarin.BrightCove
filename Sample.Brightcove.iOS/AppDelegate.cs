@@ -2,6 +2,7 @@
 using UIKit;
 using Google.Cast;
 using System;
+using AVFoundation;
 
 namespace Sample.Brightcove.iOS
 {
@@ -14,6 +15,7 @@ namespace Sample.Brightcove.iOS
         [Export("application:didFinishLaunchingWithOptions:")]
         public bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
+            AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.Playback, AVAudioSessionCategoryOptions.DuckOthers);
             var discoveryCriteria = new DiscoveryCriteria("0A6928D1");
             var options = new CastOptions(discoveryCriteria);
             CastContext.SetSharedInstance(options);
