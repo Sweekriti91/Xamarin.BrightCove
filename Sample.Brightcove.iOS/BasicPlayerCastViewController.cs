@@ -130,15 +130,15 @@ namespace Sample.Brightcove.iOS
             var playerView = new BCOVPUIPlayerView(playbackController, options, BCOVPUIBasicControlView.BasicControlViewWithVODLayout());
             playerView.Delegate = new BCUIPlaybackViewController();
 
-            playbackService.FindVideoWithVideoID(videoID: videoId, parameters: new NSDictionary(), completionHandler: (arg0, arg1, arg2) =>
-            {
-                if (arg0 != null)
-                {
-                    playbackController.SetVideos(NSArray.FromObjects(arg0));
-                }
-                else
-                    Debug.WriteLine($"View Controller Debug - Error retrieving video : {arg2.LocalizedDescription} ");
-            });
+            //playbackService.FindVideoWithVideoID(videoID: videoId, parameters: new NSDictionary(), completionHandler: (arg0, arg1, arg2) =>
+            //{
+            //    if (arg0 != null)
+            //    {
+            //        playbackController.SetVideos(NSArray.FromObjects(arg0));
+            //    }
+            //    else
+            //        Debug.WriteLine($"View Controller Debug - Error retrieving video : {arg2.LocalizedDescription} ");
+            //});
 
             NavigationItem.RightBarButtonItem = new UIBarButtonItem(castButton);
 
