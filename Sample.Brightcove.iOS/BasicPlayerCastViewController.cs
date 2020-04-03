@@ -56,6 +56,14 @@ namespace Sample.Brightcove.iOS
 
         public class BCGoogleCastManagerDelegate : BCOVGoogleCastManagerDelegate
         {
+            BCOVPlaybackController controller;
+            public BCGoogleCastManagerDelegate(BCOVPlaybackController controller)
+            {
+                this.controller = controller;
+            }
+
+            public override BCOVPlaybackController PlaybackController => controller;
+
             public override void SwitchedToLocalPlayback(NSObject lastKnownStreamPosition, NSObject error)
             {
                 //base.SwitchedToLocalPlayback(lastKnownStreamPosition, error);
@@ -117,20 +125,20 @@ namespace Sample.Brightcove.iOS
             playbackController.SetAutoPlay(true);
             playbackController.SetAutoAdvance(true);
             playbackController.Delegate = new BCPlaybackControllerDelegate();
-            googleCastManager.Delegate = new BCOVGoogleCastManagerDelegate();
+            googleCastManager.Delegate = new BCGoogleCastManagerDelegate(playbackController);
             playbackController.AddSessionConsumer(googleCastManager);
             var playerView = new BCOVPUIPlayerView(playbackController, options, BCOVPUIBasicControlView.BasicControlViewWithVODLayout());
             playerView.Delegate = new BCUIPlaybackViewController();
 
-            playbackService.FindVideoWithVideoID(videoID: videoId, parameters: new NSDictionary(), completionHandler: (arg0, arg1, arg2) =>
-            {
-                if (arg0 != null)
-                {
-                    playbackController.SetVideos(NSArray.FromObjects(arg0));
-                }
-                else
-                    Debug.WriteLine($"View Controller Debug - Error retrieving video : {arg2.LocalizedDescription} ");
-            });
+            //playbackService.FindVideoWithVideoID(videoID: videoId, parameters: new NSDictionary(), completionHandler: (arg0, arg1, arg2) =>
+            //{
+            //    if (arg0 != null)
+            //    {
+            //        playbackController.SetVideos(NSArray.FromObjects(arg0));
+            //    }
+            //    else
+            //        Debug.WriteLine($"View Controller Debug - Error retrieving video : {arg2.LocalizedDescription} ");
+            //});
 
             NavigationItem.RightBarButtonItem = new UIBarButtonItem(castButton);
 

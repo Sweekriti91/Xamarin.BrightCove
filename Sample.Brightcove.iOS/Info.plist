@@ -30,9 +30,18 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleName</key>
 	<string>Sample.Brightcove.iOS</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>This uses Bluetooth to discover nearby Cast devices.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>This uses Bluetooth to discover nearby Cast devices.</string>
 </dict>
 </plist>

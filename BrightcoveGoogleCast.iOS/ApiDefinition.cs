@@ -12,9 +12,9 @@ namespace BrightcoveGoogleCast.iOS
 	[BaseType(typeof(NSObject))]
 	interface BCOVGoogleCastManagerDelegate
 	{
-		// @required @property (readonly, nonatomic, strong) id _Nullable playbackController;
-		//[Abstract]
-		[NullAllowed, Export("playbackController", ArgumentSemantic.Strong)]
+        // @required @property (readonly, nonatomic, strong) id _Nullable playbackController;
+        [Abstract]
+        [NullAllowed, Export("playbackController", ArgumentSemantic.Strong)]
 		BCOVPlaybackController PlaybackController { get; }
 
 		// @optional -(void)switchedToLocalPlayback:(id)lastKnownStreamPosition withError:(id)error;
