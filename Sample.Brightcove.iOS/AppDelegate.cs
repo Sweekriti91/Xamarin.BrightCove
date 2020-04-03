@@ -14,7 +14,7 @@ namespace Sample.Brightcove.iOS
         [Export("application:didFinishLaunchingWithOptions:")]
         public bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            var discoveryCriteria = new DiscoveryCriteria("4F8B3483");
+            var discoveryCriteria = new DiscoveryCriteria("0A6928D1");
             var options = new CastOptions(discoveryCriteria);
             CastContext.SetSharedInstance(options);
             Logger.SharedInstance.Delegate = new LoggerDelegate();
