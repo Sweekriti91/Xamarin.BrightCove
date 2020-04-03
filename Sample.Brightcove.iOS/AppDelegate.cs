@@ -8,7 +8,6 @@ namespace Sample.Brightcove.iOS
     [Register("AppDelegate")]
     public class AppDelegate : UIResponder, IUIApplicationDelegate, ILoggerDelegate
     {
-
         [Export("window")]
         public UIWindow Window { get; set; }
 
@@ -32,12 +31,6 @@ namespace Sample.Brightcove.iOS
             Window.MakeKeyAndVisible();
             return true;
         }
-
-        //[Export("logMessage:fromFunction:")]
-        //void LogMessage(string message, string function)
-        //{
-        //    Console.WriteLine($"{function} {message}");
-        //}
 
         public bool CastControlBarsEnabled
         {

@@ -17,8 +17,8 @@ namespace Sample.Brightcove.iOS
         static string accountID = "4800266849001";
         static string videoId = "5754208017001";
 
-        SessionManager sessionManager;
         //UITableView table;
+        SessionManager sessionManager;
         UIView videoController;
         BCOVPlaybackController playbackController;
         BCOVPlayerSDKManager sDKManager = BCOVPlayerSDKManager.SharedManager();
@@ -89,17 +89,23 @@ namespace Sample.Brightcove.iOS
             }
         }
 
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
             //Google Cast button
-            var castButton = new GCKUIButton(new CGRect(0, 0, 24, 24)) { TintColor = UIColor.Blue };
+            var castButton = new GCKUIButton(new CGRect(0, 0, 24, 24));
             NavigationItem.RightBarButtonItem = new UIBarButtonItem(castButton);
 
-            //NSNotificationCenter.DefaultCenter.AddObserver(this,castDidChangeState(),CastContext.CastStateDidChangeNotification, CastContext.SharedInstance);
+            //NSNotificationCenter.DefaultCenter.AddObserver(this, castDidChangeState(), CastContext.CastStateDidChangeNotification, CastContext.SharedInstance);
             sessionManager = CastContext.SharedInstance.SessionManager;
-            sessionManager.AddListener(this);
+            CastContext.SharedInstance.SessionManager.AddListener(this);
+
+            NSNotificationCenter aNotificationCenter = NSNotificationCenter.DefaultCenter;
+
+            aNotificationCenter.AddObserver(this, new ObjCRuntime.Selector("castDidChangeState:"), CastContext.CastStateDidChangeNotification, CastContext.SharedInstance);
+
 
             videoController = new UIView();
             videoController.BackgroundColor = UIColor.Red;
@@ -141,5 +147,26 @@ namespace Sample.Brightcove.iOS
             View.AddSubview(videoController);
             //View.AddSubview(table);
         }
+
+        [Export("castDidChangeState:")]
+        private void castDidChangeState(NSNotification obj)
+        {
+            switch (CastContext.SharedInstance.CastState)
+            {
+                case CastState.NoDevicesAvailable:
+                    Console.WriteLine("Cast Status: No Devices Available");
+                    break;
+                case CastState.NotConnected:
+                    Console.WriteLine("Cast Status: Not Connected");
+                    break;
+                case CastState.Connecting:
+                    Console.WriteLine("Cast Status: Connecting");
+                    break;
+                case CastState.Connected:
+                    Console.WriteLine("Cast Status: Connected");
+                    break;
+            }
+        }
+
     }
 }

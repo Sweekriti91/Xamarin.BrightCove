@@ -53,6 +53,9 @@
         <CodesignKey>Apple Development: Sweekriti Satpathy (9Z5LT543NS)</CodesignKey>
         <MtouchDebug>true</MtouchDebug>
         <CodesignProvision>Sweeky Wildcard</CodesignProvision>
+        <DeviceSpecificBuild>false</DeviceSpecificBuild>
+        <MtouchExtraArgs>-gcc_flags "-ObjC -framework AVFoundation -framework CoreMedia -framework GLKit -framework MediaPlayer -framework CoreMotion -framework MediaAccessibility -framework SafariServices -framework SystemConfiguration -framework WebKit" -v</MtouchExtraArgs>
+        <MtouchLink>None</MtouchLink>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
         <DebugType>none</DebugType>
