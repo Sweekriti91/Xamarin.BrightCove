@@ -95,7 +95,7 @@ namespace Sample.Brightcove.iOS
             base.ViewDidLoad();
 
             //Google Cast button
-            var castButton = new GCKUIButton(new CGRect(0, 0, 24, 24));
+            var castButton = new UICastButton(new CGRect(0, 0, 24, 24));
             NavigationItem.RightBarButtonItem = new UIBarButtonItem(castButton);
 
             //NSNotificationCenter.DefaultCenter.AddObserver(this, castDidChangeState(), CastContext.CastStateDidChangeNotification, CastContext.SharedInstance);
