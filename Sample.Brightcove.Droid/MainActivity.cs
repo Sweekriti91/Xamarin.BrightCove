@@ -13,6 +13,8 @@ namespace Sample.Brightcove.Droid
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : BrightcovePlayer
     {
+        static BrightcoveVideoView brightcoveVideoView;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -20,15 +22,24 @@ namespace Sample.Brightcove.Droid
 
             SetContentView(Resource.Layout.activity_main);
 
-            var brightcoveVideoView = FindViewById<BrightcoveVideoView>(Resource.Id.brightcove_video_view);
-            var catalog = new Catalog(brightcoveVideoView.EventEmitter, "3303963094001", "BCpkADawqM3zXLtsEM0nAyA_3o3TmZnG6bZTXFmjZ8X_rmFMqlpB78l0aiRELs7MWACf4mYN92qMOLMxfZN6Xr3cQ_0R3G2qBiho3X3Nc2yTv7DH4APQ-EimMJQ3crX0zc0mJMy9CtSqkmli");
+            brightcoveVideoView = FindViewById<BrightcoveVideoView>(Resource.Id.brightcove_video_view);
+            Catalog catalog = new Catalog(brightcoveVideoView.EventEmitter, "3303963094001", "BCpkADawqM3zXLtsEM0nAyA_3o3TmZnG6bZTXFmjZ8X_rmFMqlpB78l0aiRELs7MWACf4mYN92qMOLMxfZN6Xr3cQ_0R3G2qBiho3X3Nc2yTv7DH4APQ-EimMJQ3crX0zc0mJMy9CtSqkmli");
 
-            catalog.FindVideoByID(videoID: "4283173439001", new VideoListener()
+            catalog.FindVideoByID(videoID: "4283173439001", new VideoListenerR());
+        }
+
+        public partial class VideoListenerR : VideoListener
+        {
+            public override void OnVideo(Video video)
             {
-                //override OnVideo(Video vid);
-            });
+                brightcoveVideoView.Add(video);
+                brightcoveVideoView.Start();
+            }
 
-
+            public override void OnError(string error)
+            {
+                throw new Java.Lang.RuntimeException(error);
+            }
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
