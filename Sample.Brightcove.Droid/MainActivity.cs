@@ -1,19 +1,16 @@
 ﻿using Android.App;
 using Android.OS;
 using Android.Runtime;
-using Android.Widget;
-using AndroidX.AppCompat.App;
 using Com.Brightcove.Player.Edge;
 using Com.Brightcove.Player.View;
-
 using Com.Brightcove.Player.Model;
 
 namespace Sample.Brightcove.Droid
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class MainActivity : BrightcovePlayer
+    public class MainActivity : Activity
     {
-        static BrightcoveVideoView brightcoveVideoView;
+        static BrightcoveExoPlayerVideoView  brightcoveVideoView;
 
         static string policyKEY = "BCpkADawqM3zXLtsEM0nAyA_3o3TmZnG6bZTXFmjZ8X_rmFMqlpB78l0aiRELs7MWACf4mYN92qMOLMxfZN6Xr3cQ_0R3G2qBiho3X3Nc2yTv7DH4APQ-EimMJQ3crX0zc0mJMy9CtSqkmli";
         static string accountID = "3303963094001";
@@ -26,7 +23,7 @@ namespace Sample.Brightcove.Droid
 
             SetContentView(Resource.Layout.activity_main);
 
-            brightcoveVideoView = FindViewById<BrightcoveVideoView>(Resource.Id.brightcove_video_view);
+            brightcoveVideoView = FindViewById<BrightcoveExoPlayerVideoView>(Resource.Id.brightcove_video_view);
             Catalog catalog = new Catalog(brightcoveVideoView.EventEmitter, accountID, policyKEY);
 
             catalog.FindVideoByID(videoID: videoId, new VideoListenerR());

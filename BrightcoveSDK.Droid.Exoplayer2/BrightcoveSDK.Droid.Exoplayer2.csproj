@@ -57,8 +57,16 @@
     <LibraryProjectZip Include="Jars\android-exoplayer2-player-6.11.0.aar" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BrightcoveSDK.Droid.AppCompat\BrightcoveSDK.Droid.AppCompat.csproj">
+      <Project>{336ab544-5b28-4d1b-955a-454e652c16c3}</Project>
+      <Name>BrightcoveSDK.Droid.AppCompat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BrightcoveSDK.Droid\BrightcoveSDK.Droid.csproj">
+      <Project>{dea73147-883e-4a6c-9c1f-2b7ce6b13783}</Project>
+      <Name>BrightcoveSDK.Droid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExoPlayer\ExoPlayer.csproj">
-      <Project>{60EA5A99-C01B-43AE-B843-D8D482A1FB80}</Project>
+      <Project>{60ea5a99-c01b-43ae-b843-d8d482a1fb80}</Project>
       <Name>ExoPlayer</Name>
     </ProjectReference>
   </ItemGroup>

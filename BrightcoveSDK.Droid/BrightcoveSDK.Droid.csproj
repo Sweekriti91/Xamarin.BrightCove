@@ -59,16 +59,6 @@
     <LibraryProjectZip Include="Jars\android-sdk-6.11.0.aar" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BrightcoveSDK.Droid.Exoplayer2\BrightcoveSDK.Droid.Exoplayer2.csproj">
-      <Project>{504627F1-D77C-4043-B27D-8582C1B2335C}</Project>
-      <Name>BrightcoveSDK.Droid.Exoplayer2</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BrightcoveSDK.Droid.AppCompat\BrightcoveSDK.Droid.AppCompat.csproj">
-      <Project>{336AB544-5B28-4D1B-955A-454E652C16C3}</Project>
-      <Name>BrightcoveSDK.Droid.AppCompat</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Xamarin.AndroidX.Annotation">
       <Version>1.1.0</Version>
     </PackageReference>
@@ -96,6 +86,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedReferenceJar Include="Jars\offline.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BrightcoveSDK.Droid.AppCompat\BrightcoveSDK.Droid.AppCompat.csproj">
+      <Project>{336ab544-5b28-4d1b-955a-454e652c16c3}</Project>
+      <Name>BrightcoveSDK.Droid.AppCompat</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
