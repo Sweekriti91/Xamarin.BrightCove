@@ -8,7 +8,7 @@ using Com.Brightcove.Player.Model;
 namespace Sample.Brightcove.Droid
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class MainActivity : Activity
+    public class MainActivity : BrightcovePlayer
     {
         static BrightcoveExoPlayerVideoView  brightcoveVideoView;
 

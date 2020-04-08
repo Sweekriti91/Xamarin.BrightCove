@@ -37,7 +37,7 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-    <AndroidDexTool>dx</AndroidDexTool>
+    <AndroidDexTool>d8</AndroidDexTool>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -113,30 +113,19 @@
     <PackageReference Include="Xamarin.Google.Android.Material">
       <Version>1.0.0</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Media">
-      <Version>1.1.0</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BrightcoveSDK.Droid.AppCompat\BrightcoveSDK.Droid.AppCompat.csproj">
-      <Project>{336ab544-5b28-4d1b-955a-454e652c16c3}</Project>
-      <Name>BrightcoveSDK.Droid.AppCompat</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BrightcoveSDK.Droid.Exoplayer2\BrightcoveSDK.Droid.Exoplayer2.csproj">
       <Project>{504627f1-d77c-4043-b27d-8582c1b2335c}</Project>
       <Name>BrightcoveSDK.Droid.Exoplayer2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BrightcoveSDK.Droid\BrightcoveSDK.Droid.csproj">
-      <Project>{dea73147-883e-4a6c-9c1f-2b7ce6b13783}</Project>
-      <Name>BrightcoveSDK.Droid</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ExoPlayer\ExoPlayer.csproj">
-      <Project>{60ea5a99-c01b-43ae-b843-d8d482a1fb80}</Project>
-      <Name>ExoPlayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ExoPlayer.UI\ExoPlayer.UI.csproj">
       <Project>{67A0616A-BB76-456C-B747-D704846FDD53}</Project>
       <Name>ExoPlayer.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BrightcoveSDK.Droid\BrightcoveSDK.Droid.csproj">
+      <Project>{DEA73147-883E-4A6C-9C1F-2B7CE6B13783}</Project>
+      <Name>BrightcoveSDK.Droid</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
