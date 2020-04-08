@@ -73,6 +73,9 @@
     <EmbeddedReferenceJar Include="Jars\requery-android.jar" />
     <EmbeddedReferenceJar Include="Jars\rxandroid-2.0.1.jar" />
     <EmbeddedReferenceJar Include="Jars\rxjava-2.0.1.jar" />
+    <EmbeddedReferenceJar Include="Jars\exoplayerdash.jar" />
+    <EmbeddedReferenceJar Include="Jars\exo-hls.jar" />
+    <EmbeddedReferenceJar Include="Jars\exo-core.jar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
