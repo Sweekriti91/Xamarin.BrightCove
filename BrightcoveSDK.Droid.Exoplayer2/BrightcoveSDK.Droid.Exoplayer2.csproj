@@ -47,6 +47,7 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
+    <LibraryProjectZip Include="Jars\android-exoplayer2-player-6.12.0.aar" />
   </ItemGroup>
   <ItemGroup>
     <TransformFile Include="Transforms\Metadata.xml" />
@@ -54,13 +55,6 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\android-exoplayer2-player-6.11.0.aar" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BrightcoveSDK.Droid.AppCompat\BrightcoveSDK.Droid.AppCompat.csproj">
-      <Project>{336ab544-5b28-4d1b-955a-454e652c16c3}</Project>
-      <Name>BrightcoveSDK.Droid.AppCompat</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BrightcoveSDK.Droid\BrightcoveSDK.Droid.csproj">
       <Project>{dea73147-883e-4a6c-9c1f-2b7ce6b13783}</Project>
       <Name>BrightcoveSDK.Droid</Name>

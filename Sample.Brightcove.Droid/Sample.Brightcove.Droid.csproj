@@ -120,11 +120,11 @@
       <Name>BrightcoveSDK.Droid.AppCompat</Name>
     </ProjectReference>
     <ProjectReference Include="..\BrightcoveSDK.Droid.Exoplayer2\BrightcoveSDK.Droid.Exoplayer2.csproj">
-      <Project>{504627F1-D77C-4043-B27D-8582C1B2335C}</Project>
+      <Project>{504627f1-d77c-4043-b27d-8582c1b2335c}</Project>
       <Name>BrightcoveSDK.Droid.Exoplayer2</Name>
     </ProjectReference>
     <ProjectReference Include="..\BrightcoveSDK.Droid\BrightcoveSDK.Droid.csproj">
-      <Project>{DEA73147-883E-4A6C-9C1F-2B7CE6B13783}</Project>
+      <Project>{dea73147-883e-4a6c-9c1f-2b7ce6b13783}</Project>
       <Name>BrightcoveSDK.Droid</Name>
     </ProjectReference>
   </ItemGroup>
