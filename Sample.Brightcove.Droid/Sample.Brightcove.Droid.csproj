@@ -127,6 +127,10 @@
       <Project>{dea73147-883e-4a6c-9c1f-2b7ce6b13783}</Project>
       <Name>BrightcoveSDK.Droid</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExoPlayer\ExoPlayer.csproj">
+      <Project>{60ea5a99-c01b-43ae-b843-d8d482a1fb80}</Project>
+      <Name>ExoPlayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

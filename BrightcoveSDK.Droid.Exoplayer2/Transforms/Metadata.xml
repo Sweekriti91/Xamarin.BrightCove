@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
 
-  <remove-node path="/api/package[@name='com.brightcove.player.display']/class[@name='ExoPlayerVideoDisplayComponent']/method[@name='setMetadataListener' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.display.ExoPlayerVideoDisplayComponent.MetadataListener']]" />
-    <!--<attr path="/api/package[@name='com.brightcove.player.display']/class[@name='ExoPlayerVideoDisplayComponent']/method[@name='setMetadataListener' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.display.ExoPlayerVideoDisplayComponent.MetadataListener']]" name="managedName" >SetVideoComponentListener</attr>-->
-  <!--<attr path="/api/package[@name='com.brightcove.player.display']/class[@name='ExoPlayerVideoDisplayComponent']/method[@name='setMetadataListener' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.display.ExoPlayerVideoDisplayComponent.MetadataListener']]" name="argsType" >SetVideoComponentListenerArgs</attr>-->
+  <!--<remove-node path="/api/package[@name='com.brightcove.player.display']/class[@name='ExoPlayerVideoDisplayComponent']/method[@name='setMetadataListener' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.display.ExoPlayerVideoDisplayComponent.MetadataListener']]" />-->
+    <attr path="/api/package[@name='com.brightcove.player.display']/class[@name='ExoPlayerVideoDisplayComponent']/method[@name='setMetadataListener' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.display.ExoPlayerVideoDisplayComponent.MetadataListener']]" name="managedName" >SetVideoComponentListener</attr>
+  <attr path="/api/package[@name='com.brightcove.player.display']/class[@name='ExoPlayerVideoDisplayComponent']/method[@name='setMetadataListener' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.display.ExoPlayerVideoDisplayComponent.MetadataListener']]" name="argsType" >SetVideoComponentListenerArgs</attr>
   
-  <remove-node path="/api/package[@name='com.brightcove.player.ads']/class[@name='ExoAdPlayer']"></remove-node>
-  <!--<attr path="/api/package[@name='com.brightcove.player.ads']/class[@name='ExoAdPlayer']/method[@name='loadAd' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.ads.AdAsset']]" name="managedName">LoadAd</attr>-->
+  <!--<remove-node path="/api/package[@name='com.brightcove.player.ads']/class[@name='ExoAdPlayer']"></remove-node>-->
+  <attr path="/api/package[@name='com.brightcove.player.ads']/class[@name='ExoAdPlayer']/method[@name='loadAd' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.ads.AdAsset']]" name="managedType">Java.Lang.Object</attr>
+  <!--<remove-node path="/api/package[@name='com.brightcove.player.ads']/class[@name='ExoAdPlayer']/method[@name='loadAd' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.ads.AdAsset']]" />-->
 </metadata>
