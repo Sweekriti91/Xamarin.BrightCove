@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
     
-      
+      <remove-node path="/api/package[@name='com.google.android.exoplayer2.ui']/interface[@name='TrackSelectionView.TrackSelectionListener']"/>
     
 </metadata>

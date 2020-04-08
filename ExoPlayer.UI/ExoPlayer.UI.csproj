@@ -58,12 +58,6 @@
     <LibraryProjectZip Include="Jars\exoplayer-ui-2.11.3.aar" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExoPlayer.Core\ExoPlayer.Core.csproj">
-      <Project>{317BE255-0350-45AE-A008-D361326611A5}</Project>
-      <Name>ExoPlayer.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Xamarin.AndroidX.Media">
       <Version>1.1.0</Version>
     </PackageReference>

@@ -224,5 +224,14 @@
   <remove-node path="/api/package[@name='com.google.android.exoplayer2.offline']/class[@name='SegmentDownloader']/method[@name='getManifest' and count(parameter)=2 and parameter[1][@type='com.google.android.exoplayer2.upstream.DataSource'] and parameter[2][@type='com.google.android.exoplayer2.upstream.DataSpec']]" />
 
   <!--<remove-node path="/api/package[@name='com.google.android.exoplayer2.source']/interface[@name='MediaSource']/method[@name='releasePeriod' and count(parameter)=1 and parameter[1][@type='com.google.android.exoplayer2.source.MediaPeriod']]" />-->
-
+  
+    <remove-node path="/api/package[@name='com.google.android.exoplayer2.drm']/interface[@name='DefaultDrmSessionEventListener']"/>
+    <remove-node path="/api/package[@name='com.google.android.exoplayer2.video']/interface[@name='VideoFrameMetadataListener']"/>
+    <remove-node path="/api/package[@name='com.google.android.exoplayer2.source']/class[@name='MediaSourceEventListener.EventDispatcher']"/>
+    <remove-node path="/api/package[@name='com.google.android.exoplayer2.source']/interface[@name='MediaSource']/method[@name='addEventListener' and count(parameter)=2 and parameter[1][@type='android.os.Handler'] and parameter[2][@type='com.google.android.exoplayer2.source.MediaSourceEventListener']]"/>
+    <remove-node path="/api/package[@name='com.google.android.exoplayer2.source']/class[@name='MediaSourceEventListener.LoadEventInfo']"/>
+    <remove-node path="/api/package[@name='com.google.android.exoplayer2.source']/class[@name='MediaSourceEventListener.MediaLoadData']"/>
+    <remove-node path="/api/package[@name='com.google.android.exoplayer2.source']/interface[@name='MediaSourceEventListener']"/>
+    
+    <remove-node path="/api/package[@name='com.google.android.exoplayer2.source']/interface[@name='MediaSource']/method[@name='removeEventListener' and count(parameter)=1 and parameter[1][@type='com.google.android.exoplayer2.source.MediaSourceEventListener']]"/>
 </metadata>
