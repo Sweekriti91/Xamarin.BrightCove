@@ -5,7 +5,13 @@
     <attr path="/api/package[@name='com.brightcove.player.display']/class[@name='ExoPlayerVideoDisplayComponent']/method[@name='setMetadataListener' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.display.ExoPlayerVideoDisplayComponent.MetadataListener']]" name="managedName" >SetVideoComponentListener</attr>
   <attr path="/api/package[@name='com.brightcove.player.display']/class[@name='ExoPlayerVideoDisplayComponent']/method[@name='setMetadataListener' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.display.ExoPlayerVideoDisplayComponent.MetadataListener']]" name="argsType" >SetVideoComponentListenerArgs</attr>
   
+    
+    <remove-node path="/api/package[@name='com.brightcove.player.display']/interface[@name='ExoPlayerVideoDisplayComponent.CaptionListener']"/>
+    <remove-node path="/api/package[@name='com.brightcove.player.display']/interface[@name='ExoPlayerVideoDisplayComponent.Id3MetadataListener']"/>
+    <remove-node path="/api/package[@name='com.brightcove.player.display']/interface[@name='ExoPlayerVideoDisplayComponent.InfoListener']"/>
+       <remove-node path="/api/package[@name='com.brightcove.player.display']/interface[@name='ExoPlayerVideoDisplayComponent.MetadataListener']"/>
+    
   <!--<remove-node path="/api/package[@name='com.brightcove.player.ads']/class[@name='ExoAdPlayer']"></remove-node>-->
-  <attr path="/api/package[@name='com.brightcove.player.ads']/class[@name='ExoAdPlayer']/method[@name='loadAd' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.ads.AdAsset']]" name="managedType">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='com.brightcove.player.ads']/class[@name='ExoAdPlayer']/method[@name='loadAd' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.ads.AdAsset']]/parameter[1]" name="managedType">Java.Lang.Object</attr>
   <!--<remove-node path="/api/package[@name='com.brightcove.player.ads']/class[@name='ExoAdPlayer']/method[@name='loadAd' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.ads.AdAsset']]" />-->
 </metadata>
