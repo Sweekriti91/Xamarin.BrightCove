@@ -57,10 +57,6 @@
     <LibraryProjectZip Include="Jars\exoplayer-2.11.3.aar" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExoPlayer.Core\ExoPlayer.Core.csproj">
-      <Project>{317BE255-0350-45AE-A008-D361326611A5}</Project>
-      <Name>ExoPlayer.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ExoPlayer.Dash\ExoPlayer.Dash.csproj">
       <Project>{966278DA-7E5D-4CA6-BB77-85E3BA40B0F0}</Project>
       <Name>ExoPlayer.Dash</Name>

@@ -7,6 +7,8 @@ using Com.Brightcove.Player.Model;
 using Android.Views;
 using Com.Brightcove.Cast;
 using Com.Brightcove.Player.Events;
+using AndroidX.Fragment.App;
+using Android.Gms.Cast.Framework.Media.Widget;
 
 namespace Sample.Brightcove.Droid
 {
@@ -40,10 +42,11 @@ namespace Sample.Brightcove.Droid
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            base.OnCreateOptionsMenu(menu);
             GoogleCastComponent.SetUpMediaRouteButton(this, menu);
 
-            return true;
+            this.MenuInflater.Inflate(Resource.Menu.main, menu);
+
+            return base.OnCreateOptionsMenu(menu); ;
         }
 
         public partial class VideoListenerR : VideoListener
