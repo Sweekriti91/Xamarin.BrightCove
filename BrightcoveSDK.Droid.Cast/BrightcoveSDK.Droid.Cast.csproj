@@ -54,6 +54,36 @@
     <TransformFile Include="Transforms\EnumFields.xml" />
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Android.Support.v4">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedReferenceJar Include="Jars\exo-cast.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedReferenceJar Include="Jars\gms-cast.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedReferenceJar Include="Jars\gms-cast-framework.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BrightcoveSDK.Droid\BrightcoveSDK.Droid.csproj">
+      <Project>{dea73147-883e-4a6c-9c1f-2b7ce6b13783}</Project>
+      <Name>BrightcoveSDK.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExoPlayer.UI\ExoPlayer.UI.csproj">
+      <Project>{67a0616a-bb76-456c-b747-d704846fdd53}</Project>
+      <Name>ExoPlayer.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

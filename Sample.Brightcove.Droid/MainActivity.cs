@@ -4,6 +4,9 @@ using Android.Runtime;
 using Com.Brightcove.Player.Edge;
 using Com.Brightcove.Player.View;
 using Com.Brightcove.Player.Model;
+using Android.Views;
+using Com.Brightcove.Cast;
+using Com.Brightcove.Player.Events;
 
 namespace Sample.Brightcove.Droid
 {
@@ -27,6 +30,20 @@ namespace Sample.Brightcove.Droid
             Catalog catalog = new Catalog(brightcoveVideoView.EventEmitter, accountID, policyKEY);
 
             catalog.FindVideoByID(videoID: videoId, new VideoListenerR());
+
+            var eventEmitter = brightcoveVideoView.EventEmitter;
+
+
+            GoogleCastComponent googleCastComponent = new GoogleCastComponent(eventEmitter, this);
+            //googleCastComponent.IsSessionAvailable;
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            base.OnCreateOptionsMenu(menu);
+            GoogleCastComponent.SetUpMediaRouteButton(this, menu);
+
+            return true;
         }
 
         public partial class VideoListenerR : VideoListener

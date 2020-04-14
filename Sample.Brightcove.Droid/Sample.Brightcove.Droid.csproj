@@ -18,7 +18,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
@@ -100,6 +100,12 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V4">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.MediaRouter">
+      <Version>1.1.0</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Essentials" Version="1.5.0" />
     <PackageReference Include="Xamarin.AndroidX.Migration">
       <Version>1.0.0</Version>
@@ -115,6 +121,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BrightcoveSDK.Droid.Cast\BrightcoveSDK.Droid.Cast.csproj">
+      <Project>{5e1f84db-02d6-42e2-89a0-c23bc1ccc731}</Project>
+      <Name>BrightcoveSDK.Droid.Cast</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BrightcoveSDK.Droid.Exoplayer2\BrightcoveSDK.Droid.Exoplayer2.csproj">
       <Project>{504627f1-d77c-4043-b27d-8582c1b2335c}</Project>
       <Name>BrightcoveSDK.Droid.Exoplayer2</Name>
