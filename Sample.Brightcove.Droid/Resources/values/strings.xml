@@ -2,4 +2,7 @@
 <resources>
     <string name="app_name">Sample.Brightcove.Droid</string>
     <string name="action_settings">Settings</string>
+
+  <!-- The application ID for the receiver applicaton. -->
+  <string name="cast_receiver_app_id">0A6928D1</string>
 </resources>
