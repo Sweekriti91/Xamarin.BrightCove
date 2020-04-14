@@ -9,11 +9,12 @@ using Com.Brightcove.Cast;
 using Com.Brightcove.Player.Events;
 using AndroidX.Fragment.App;
 using Android.Gms.Cast.Framework.Media.Widget;
+using AndroidX.AppCompat.App;
 
 namespace Sample.Brightcove.Droid
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class MainActivity : BrightcovePlayer
+    public class MainActivity : AppCompatActivity
     {
         static BrightcoveExoPlayerVideoView  brightcoveVideoView;
 
