@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.brightcove.player.view.BrightcoveExoPlayerVideoView
-        android:id="@+id/brightcove_video_view"
+  <com.brightcove.player.view.BrightcoveVideoView
+      android:id="@+id/brightcove_video_view"
         android:layout_width="match_parent"
         android:layout_height="280dp"
         android:layout_gravity="center_horizontal|top"/>
