@@ -106,6 +106,7 @@ namespace Sample.Brightcove.iOS
         static string accountID = "";
         string videoId = "";
 
+        SessionManager sessionManager;
         BCOVPlayerSDKManager sDKManager = BCOVPlayerSDKManager.SharedManager();
         BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
         BCOVPlaybackController playbackController;
