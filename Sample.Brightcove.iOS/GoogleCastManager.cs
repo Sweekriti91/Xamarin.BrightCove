@@ -222,6 +222,8 @@ namespace Sample.Brightcove.iOS
 
             var currentprogress = currentProgress;
             var playbackcontroller = gcmDelegate.playbackController;
+            if (playbackcontroller == null)
+                return;
             var options = new MediaLoadOptions();
             options.PlayPosition = currentprogress;
             options.Autoplay = playbackcontroller.AutoPlay;
@@ -272,6 +274,13 @@ namespace Sample.Brightcove.iOS
             this.googleCastManager = gcm;
         }
 
+        public override void DidStartCastSession(SessionManager sessionManager, CastSession session)
+        {
+            //base.DidStartCastSession(sessionManager, session);
+            googleCastManager.SwitchToRemotePlayback();
+            googleCastManager.SetupRemoteMediaClientWithMediaInfo();
+        }
+
         public override void DidStartSession(SessionManager sessionManager, Session session)
         {
             //base.DidStartSession(sessionManager, session);
@@ -309,6 +318,14 @@ namespace Sample.Brightcove.iOS
         {
             this.googleCastManager = gcm;
         }
+
+        //[Export("didAdvanceToPlaybackSession:")]
+        //public void DidAdvanceToPlaybackSession(BCOVPlaybackSession session)
+        //{
+        //    //throw new System.NotImplementedException();
+        //    googleCastManager.CreateMediaInfo(session.Video);
+        //    googleCastManager.SetupRemoteMediaClientWithMediaInfo();
+        //}
 
         public override void DidAdvanceToPlaybackSession(BCOVPlaybackSession session)
         {

@@ -10,7 +10,7 @@ using UIKit;
 
 namespace Sample.Brightcove.iOS
 {
-    public class FairPlayCastViewController : UIViewController, ISessionManagerListener
+    public class FairPlayCastViewController : UIViewController
     {
         //TODO: change delegates from public to internal?
         public class BCPlaybackControllerDelegate : BCOVPlaybackControllerDelegate
@@ -106,7 +106,6 @@ namespace Sample.Brightcove.iOS
         static string accountID = "";
         string videoId = "";
 
-        SessionManager sessionManager;
         BCOVPlayerSDKManager sDKManager = BCOVPlayerSDKManager.SharedManager();
         BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
         BCOVPlaybackController playbackController;
@@ -123,8 +122,6 @@ namespace Sample.Brightcove.iOS
             var castButton = new UICastButton(new CGRect(0, 0, 24, 24));
             NavigationItem.RightBarButtonItem = new UIBarButtonItem(castButton);
 
-            sessionManager = CastContext.SharedInstance.SessionManager;
-            CastContext.SharedInstance.SessionManager.AddListener(this);
             NSNotificationCenter aNotificationCenter = NSNotificationCenter.DefaultCenter;
             aNotificationCenter.AddObserver(this, new ObjCRuntime.Selector("castDidChangeState:"), CastContext.CastStateDidChangeNotification, CastContext.SharedInstance);
 
@@ -134,7 +131,7 @@ namespace Sample.Brightcove.iOS
 
             //Create the playback controller
             playbackController = sDKManager.CreateFairPlayPlaybackControllerWithAuthorizationProxy(fairPlayAuthProxy);
-            playbackController.SetAutoPlay(true);
+            playbackController.SetAutoPlay(false);
             playbackController.SetAutoAdvance(false);
             playbackController.Delegate = new BCPlaybackControllerDelegate();
 
