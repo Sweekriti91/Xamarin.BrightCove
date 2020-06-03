@@ -416,7 +416,7 @@ namespace BrightcoveSDK.iOS
         // @required @property (readonly, copy, nonatomic) NSArray * sources;
         [Abstract]
         [Export("sources", ArgumentSemantic.Copy)]
-        NSObject[] Sources { get; }
+        BCOVSource[] Sources { get; }
 
         // @required -(instancetype)update:(void (^)(id<BCOVMutableVideo>))updateBlock;
         [Abstract]
@@ -467,7 +467,7 @@ namespace BrightcoveSDK.iOS
 
         // -(instancetype)initWithSources:(NSArray *)sources cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
         [Export("initWithSources:cuePoints:properties:")]
-        IntPtr Constructor(NSObject[] sources, BCOVCuePointCollection cuePoints, NSDictionary properties);
+        IntPtr Constructor(BCOVSource[] sources, BCOVCuePointCollection cuePoints, NSDictionary properties);
 
         // -(instancetype)initWithSource:(BCOVSource *)source cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
         [Export("initWithSource:cuePoints:properties:")]
@@ -1267,15 +1267,15 @@ namespace BrightcoveSDK.iOS
     }
 
     // @protocol BCOVPlaybackSessionProvider <NSObject>
-    [Protocol, Model]
+    [Protocol]
     [BaseType(typeof(NSObject))]
     interface BCOVPlaybackSessionProvider
     {
         // @required -(id)playbackSessionsForVideos:(id<NSFastEnumeration>)videos __attribute__((deprecated("Do not use")));
-        [Abstract]
-        [Export("playbackSessionsForVideos:")]
-        //Hack
-        NSObject PlaybackSessionsForVideos(NSObject videos);
+        //[Abstract]
+        //[Export("playbackSessionsForVideos:")]
+        ////Hack
+        //NSObject PlaybackSessionsForVideos(NSObject videos);
     }
 
     // typedef BCOVSource * (^BCOVBasicSessionProviderSourceSelectionPolicy)(BCOVVideo *);

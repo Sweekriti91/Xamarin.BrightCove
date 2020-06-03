@@ -54,53 +54,6 @@ namespace Sample.Brightcove.iOS
             }
         }
 
-        //public class BCGoogleCastManagerDelegate : BCOVGoogleCastManagerDelegate
-        //{
-        //    BCOVPlaybackController controller;
-        //    public BCGoogleCastManagerDelegate(BCOVPlaybackController controller)
-        //    {
-        //        this.controller = controller;
-        //    }
-
-        //    public override BCOVPlaybackController PlaybackController => controller;
-
-        //    public override void SwitchedToLocalPlayback(NSObject lastKnownStreamPosition, NSObject error)
-        //    {
-        //        //base.SwitchedToLocalPlayback(lastKnownStreamPosition, error);
-        //        var x = (NSNumber)lastKnownStreamPosition;
-        //        if (x.Int32Value > 0)
-        //        {
-        //            PlaybackController.Play();
-        //        }
-
-        //        Debug.WriteLine("Switched to Local Playback");
-        //    }
-
-        //    public override void SwitchedToRemotePlayback()
-        //    {
-        //        //base.SwitchedToRemotePlayback();
-        //        Debug.WriteLine("Switched to Remote Playback");
-        //    }
-
-        //    public override void CurrentCastedVideoDidComplete()
-        //    {
-        //        //base.CurrentCastedVideoDidComplete();
-        //        Debug.WriteLine("Current Cast Video Did Complete");
-        //    }
-
-        //    public override void CastedVideoFailedToPlay()
-        //    {
-        //        //base.CastedVideoFailedToPlay();
-        //        Debug.WriteLine("Casted video Failed to play");
-        //    }
-
-        //    public override void SuitableSourceNotFound()
-        //    {
-        //        //base.SuitableSourceNotFound();
-        //        Debug.WriteLine("Suitable Source not Found");
-        //    }
-        //}
-
         public class BCGoogleCastManagerDelegate : GoogleCastManagerDelegate
         {
 
@@ -153,7 +106,6 @@ namespace Sample.Brightcove.iOS
         static string accountID = "";
         string videoId = "";
 
-        SessionManager sessionManager;
         BCOVPlayerSDKManager sDKManager = BCOVPlayerSDKManager.SharedManager();
         BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
         BCOVPlaybackController playbackController;
@@ -175,12 +127,8 @@ namespace Sample.Brightcove.iOS
             NSNotificationCenter aNotificationCenter = NSNotificationCenter.DefaultCenter;
             aNotificationCenter.AddObserver(this, new ObjCRuntime.Selector("castDidChangeState:"), CastContext.CastStateDidChangeNotification, CastContext.SharedInstance);
 
-
             //setup fairplay stuffs
             var fairPlayAuthProxy = new BCOVFPSBrightcoveAuthProxy(null, null);
-
-            // Create chain of session providers
-            // And upstream session provider to link to. If nil, a BCOVBasicSessionProvider will be used.
             var fps = sDKManager.CreateFairPlaySessionProviderWithAuthorizationProxy(fairPlayAuthProxy, null);
 
             //Create the playback controller
@@ -189,15 +137,11 @@ namespace Sample.Brightcove.iOS
             playbackController.SetAutoAdvance(false);
             playbackController.Delegate = new BCPlaybackControllerDelegate();
 
-            //USING BrightcoveCastManager
-            //BCOVGoogleCastManager googleCastManager = new BCOVGoogleCastManager();
-            //googleCastManager.Delegate = new BCGoogleCastManagerDelegate(playbackController);
-            //playbackController.AddSessionConsumer(googleCastManager);
-
             //USING CUSTOM GoogleCastManager
             GoogleCastManager googleCastManager = new GoogleCastManager();
             googleCastManager.gcmDelegate = new BCGoogleCastManagerDelegate(playbackController);
-            playbackController.AddSessionConsumer(googleCastManager);
+            var gcmPlaybackSession = new XamBCPlaybackSessionConsumer(googleCastManager);
+            playbackController.AddSessionConsumer(gcmPlaybackSession);
 
             //TODO use CAST STATE TO HIDE PLAYER WHEN IT IS IN CONNECTED MODE
 

@@ -21,7 +21,7 @@ namespace Sample.Brightcove.iOS
     }
 
 
-    public class GoogleCastManager : BCOVPlaybackSessionConsumer
+    public class GoogleCastManager : NSObject
     {
         public GoogleCastManagerDelegate gcmDelegate;
 
@@ -31,8 +31,8 @@ namespace Sample.Brightcove.iOS
         public BCOVVideo currentVideo = null;
         public double castStreamPosition;
         public CGRect posterImageSize = new CGRect(0, 0, width: 480, height: 720);
-        public bool didContinueCurrentVideo;
-        public bool suitableSourceNotFound;
+        public bool didContinueCurrentVideo = false;
+        public bool suitableSourceNotFound = false;
         public MediaInformation castMediaInfo;
 
         public GoogleCastManager()
@@ -153,10 +153,10 @@ namespace Sample.Brightcove.iOS
             suitableSourceNotFound = false;
 
             // Try to find an HTTPS source first
-            source = FindDashSource(video.Sources as BCOVSource[], true);
+            source = FindDashSource(video.Sources, true);
 
             if (source == null)
-                source = FindDashSource(video.Sources as BCOVSource[], false);
+                source = FindDashSource(video.Sources, false);
 
             // If no source was able to be found, let the delegate know
             // and do not continue
@@ -170,25 +170,25 @@ namespace Sample.Brightcove.iOS
             currentVideo = video;
 
             var videoUrl = source.Url.AbsoluteString;
-            var vname = video.Properties["kBCOVVideoPropertyKeyName"];
-            var durationNumber = video.Properties["kBCOVVideoPropertyKeyDuration"];
+            var vname = video.Properties["name"];
+            var durationNumber = video.Properties["duration"];
 
             var metaData = new MediaMetadata(MediaMetadataType.Generic);
             metaData.SetString(vname.ToString(), "kGCKMetadataKeyTitle");
 
-            var poster = video.Properties["kBCOVVideoPropertyKeyPoster"].ToString();
+            var poster = video.Properties["poster"].ToString();
             var posterUrl = new NSUrl(poster);
             metaData.AddImage(new Image(posterUrl, (nint)posterImageSize.Width, (nint)posterImageSize.Height));
 
             //TODO Implement this logic for closed caption cast
             //var mediaTracks = new List<MediaTrack>();
-            //var textTracks = video.Properties["kBCOVVideoPropertyKeyTextTracks"] as NSDictionary;
+            //var textTracks = video.Properties["text_tracks"];
             //var trackIndentifier = 0;
             //foreach (var text in textTracks)
             //{
             //    trackIndentifier += 1;
             //    string src, lang, name, contentType, kind;
-            //    if(text.Key.ToString() == "src")
+            //    if (text.Key.ToString() == "src")
             //        src = text.
             //    //string lang = text["srclang"] as string;
             //    //var name = text["label"] as string;
@@ -226,18 +226,14 @@ namespace Sample.Brightcove.iOS
             options.PlayPosition = currentprogress;
             options.Autoplay = playbackcontroller.AutoPlay;
 
-            try
-            {
-                var castSession = CastContext.SharedInstance.SessionManager.CurrentCastSession;
-                var remoteMediaClient = castSession.RemoteMediaClient;
+            var castSession = CastContext.SharedInstance.SessionManager.CurrentSession;
+            RemoteMediaClient remoteMediaClient = null;
+            if (castSession != null)
+                remoteMediaClient = castSession.RemoteMediaClient;
+            if(castSession != null && remoteMediaClient != null && castMediaInfo != null)
                 remoteMediaClient.LoadMedia(castMediaInfo, options);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("ERROR in SetupRemoteMediaClientWithMediaInfo :: " + ex);
-            }
-
-
+            else
+                Console.WriteLine("ERROR in SetupRemoteMediaClientWithMediaInfo");
         }
 
         public void SwitchToRemotePlayback()
@@ -247,7 +243,7 @@ namespace Sample.Brightcove.iOS
             gcmDelegate?.SwitchedToRemotePlayback();
         }
 
-        public void switchToLocalPlayback(NSError withError)
+        public void SwitchToLocalPlayback(NSError withError)
         {
             // Play local player
             var lastKnownStreamPosition = castMediaController.LastKnownStreamPosition;
@@ -293,13 +289,13 @@ namespace Sample.Brightcove.iOS
         public override void DidEndSession(SessionManager sessionManager, Session session, NSError error)
         {
             //base.DidEndSession(sessionManager, session, error);
-            googleCastManager.switchToLocalPlayback(error);
+            googleCastManager.SwitchToLocalPlayback(error);
         }
 
         public override void DidFailToStartSession(SessionManager sessionManager, Session session, NSError error)
         {
             //base.DidFailToStartSession(sessionManager, session, error);
-            googleCastManager.switchToLocalPlayback(error);
+            googleCastManager.SwitchToLocalPlayback(error);
         }
     }
 
@@ -318,6 +314,7 @@ namespace Sample.Brightcove.iOS
         {
             //base.DidAdvanceToPlaybackSession(session);
             googleCastManager.CreateMediaInfo(session.Video);
+            googleCastManager.SetupRemoteMediaClientWithMediaInfo();
         }
 
         public override void PlaybackSessiondidProgressTo(BCOVPlaybackSession session, double progress)
@@ -330,9 +327,12 @@ namespace Sample.Brightcove.iOS
         public override void PlaybackSession(BCOVPlaybackSession session, BCOVPlaybackSessionLifecycleEvent lifecycleEvent)
         {
             //base.PlaybackSession(session, lifecycleEvent);
-            _ = CastContext.SharedInstance.SessionManager.CurrentSession;
-            if (lifecycleEvent.EventType == "kBCOVPlaybackSessionLifecycleEventReady")
-                googleCastManager.SwitchToRemotePlayback();
+            var sessionCheck = CastContext.SharedInstance.SessionManager.CurrentSession;
+            if (sessionCheck != null)
+            {
+                if (lifecycleEvent.EventType == "kBCOVPlaybackSessionLifecycleEventReady")
+                    googleCastManager.SwitchToRemotePlayback();
+            }
         }
     }
 
@@ -351,34 +351,39 @@ namespace Sample.Brightcove.iOS
             // and attempt to proceed to the next session, if autoAdvance
             // is enabled
 
-            if (mediaStatus.IdleReason == MediaPlayerIdleReason.Finished)
+            if (mediaStatus != null)
             {
-                googleCastManager.currentVideo = null;
-                var xdelegate = googleCastManager.gcmDelegate;
-                if (xdelegate == null)
-                    return;
-
-                xdelegate.CurrentCastedVideoDidComplete();
-
-                var xplaybackController = xdelegate.playbackController;
-                if(xplaybackController != null)
+                if (mediaStatus.IdleReason == MediaPlayerIdleReason.Finished)
                 {
-                    if (xplaybackController.AutoAdvance)
-                        xplaybackController.AdvanceToNext();
+                    googleCastManager.currentVideo = null;
+                    var xdelegate = googleCastManager.gcmDelegate;
+                    if (xdelegate == null)
+                        return;
+
+                    xdelegate.CurrentCastedVideoDidComplete();
+
+                    var xplaybackController = xdelegate.playbackController;
+                    if (xplaybackController != null)
+                    {
+                        if (xplaybackController.AutoAdvance)
+                            xplaybackController.AdvanceToNext();
+                    }
                 }
+
+                if (mediaStatus.IdleReason == MediaPlayerIdleReason.Error)
+                {
+                    googleCastManager.currentVideo = null;
+                    var xdelegate = googleCastManager.gcmDelegate;
+                    if (xdelegate == null)
+                        return;
+
+                    xdelegate.CastedVideoFailedToPlay();
+                }
+
+                googleCastManager.castStreamPosition = mediaStatus.StreamPosition;
             }
-
-            if(mediaStatus.IdleReason == MediaPlayerIdleReason.Error)
-            {
-                googleCastManager.currentVideo = null;
-                var xdelegate = googleCastManager.gcmDelegate;
-                if (xdelegate == null)
-                    return;
-
-                xdelegate.CastedVideoFailedToPlay();
-            }
-
-            googleCastManager.castStreamPosition = mediaStatus.StreamPosition;
+            else
+                googleCastManager.castStreamPosition = 0;
         }
     }
 
