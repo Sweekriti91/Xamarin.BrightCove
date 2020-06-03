@@ -7,7 +7,7 @@ using AVFoundation;
 namespace Sample.Brightcove.iOS
 {
     [Register("AppDelegate")]
-    public class AppDelegate : UIResponder, IUIApplicationDelegate, ILoggerDelegate
+    public class AppDelegate : UIResponder, IUIApplicationDelegate //, ILoggerDelegate
     {
         [Export("window")]
         public UIWindow Window { get; set; }
@@ -16,13 +16,14 @@ namespace Sample.Brightcove.iOS
         public bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.Playback, AVAudioSessionCategoryOptions.DuckOthers);
-            var discoveryCriteria = new DiscoveryCriteria("0A6928D1");
+
+            var discoveryCriteria = new DiscoveryCriteria("17F1E2B1");
             var options = new CastOptions(discoveryCriteria);
             CastContext.SetSharedInstance(options);
             Logger.SharedInstance.Delegate = new LoggerDelegate();
 
+            var navigationController = new UINavigationController(new FairPlayCastViewController());
 
-            var navigationController = new UINavigationController(new CastVideoListViewController());
             var castContainer = CastContext.SharedInstance.CreateCastContainerController(navigationController);
             castContainer.MiniMediaControlsItemEnabled = true;
 
@@ -30,6 +31,10 @@ namespace Sample.Brightcove.iOS
 
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
             Window.RootViewController = castContainer;
+
+            //Window.RootViewController = new BasicPlayerViewController();
+            //Window.RootViewController = new FairPlayViewContoller();
+
             Window.MakeKeyAndVisible();
             return true;
         }

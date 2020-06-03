@@ -7,7 +7,7 @@ using UIKit;
 
 namespace Sample.Brightcove.iOS
 {
-    public class FairPlayViewController : UIViewController
+    public class FairPlayViewContoller : UIViewController
     {
         //TODO: change delegates from public to internal?
         public class BCPlaybackControllerDelegate : BCOVPlaybackControllerDelegate
@@ -51,20 +51,17 @@ namespace Sample.Brightcove.iOS
             }
         }
 
-        static string policyKEY = "";
-        static string accountID = "";
-        string videoId = "";
+        static string policyKEY = "BCpkADawqM3YRyTQ4hZzmqTk-Oegl3lHc_iLPz29j-aHgdZy0hLaKVj-TlITBvYppMXWpz4mGh60AgWogCIF42vzi1lkj9vgAjYNjAwjd8xeW-JwTb1yI4XPq0mGXaXx4KY-Nu7MwFX0QsQi";
+        static string accountID = "6056665239001";
+        string videoId = "6061780418001";
 
         BCOVPlayerSDKManager sDKManager = BCOVPlayerSDKManager.SharedManager();
         BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
         BCOVPlaybackController playbackController;
 
-
-        public FairPlayViewController()
+        public FairPlayViewContoller()
         {
         }
-
-
 
         public override void ViewDidLoad()
         {
