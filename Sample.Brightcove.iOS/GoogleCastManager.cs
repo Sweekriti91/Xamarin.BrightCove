@@ -26,6 +26,7 @@ namespace Sample.Brightcove.iOS
         public GoogleCastManagerDelegate gcmDelegate;
 
         public SessionManager sessionManager;
+        public SessionManagerListener xamaSessionManagerListener;
         public UIMediaController castMediaController;
         public double currentProgress;
         public BCOVVideo currentVideo = null;
@@ -38,8 +39,8 @@ namespace Sample.Brightcove.iOS
         public GoogleCastManager()
         {
             sessionManager = CastContext.SharedInstance.SessionManager;
-            sessionManager.AddListener(new XamSessionManagerListener(this));
-            CastContext.SharedInstance.SessionManager.AddListener(new XamSessionManagerListener(this));
+            xamaSessionManagerListener = new XamSessionManagerListener(this);
+            sessionManager.AddListener(xamaSessionManagerListener);
             castMediaController = new UIMediaController();
             castMediaController.Delegate = new XamMediaControllerDelegate(this);
         }
@@ -275,13 +276,6 @@ namespace Sample.Brightcove.iOS
             this.googleCastManager = gcm;
         }
 
-        public override void DidStartCastSession(SessionManager sessionManager, CastSession session)
-        {
-            //base.DidStartCastSession(sessionManager, session);
-            googleCastManager.SwitchToRemotePlayback();
-            googleCastManager.SetupRemoteMediaClientWithMediaInfo();
-        }
-
         public override void DidStartSession(SessionManager sessionManager, Session session)
         {
             //base.DidStartSession(sessionManager, session);
@@ -338,6 +332,7 @@ namespace Sample.Brightcove.iOS
         {
             //base.PlaybackSession(session, lifecycleEvent);
             var sessionCheck = CastContext.SharedInstance.SessionManager.CurrentSession;
+            Console.WriteLine("SESSIONCHECK  :: " + lifecycleEvent.EventType);
             if (sessionCheck != null)
             {
                 if (lifecycleEvent.EventType == "kBCOVPlaybackSessionLifecycleEventReady")
