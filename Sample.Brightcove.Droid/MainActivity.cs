@@ -103,8 +103,7 @@ namespace Sample.Brightcove.Droid
                 List<Source> dashSource = new List<Source>();
                 foreach(var d in dashSourceCollections)
                 {
-                    //var item = d.Sources.Where(a => a.Url.Contains("dash")).ToList<Source>();
-                    var item = d.Sources.Where(a => a.DeliveryType == DeliveryType.Dash).ToList<Source>();
+                    var item = d.Sources.Where(a => a.Url.Contains("dash")).ToList<Source>();
                     dashSource = item;
                 }
                 
