@@ -38,8 +38,9 @@ namespace Sample.Brightcove.iOS
         public GoogleCastManager()
         {
             sessionManager = CastContext.SharedInstance.SessionManager;
-            castMediaController = new UIMediaController();
             sessionManager.AddListener(new XamSessionManagerListener(this));
+            CastContext.SharedInstance.SessionManager.AddListener(new XamSessionManagerListener(this));
+            castMediaController = new UIMediaController();
             castMediaController.Delegate = new XamMediaControllerDelegate(this);
         }
 
@@ -318,14 +319,6 @@ namespace Sample.Brightcove.iOS
         {
             this.googleCastManager = gcm;
         }
-
-        //[Export("didAdvanceToPlaybackSession:")]
-        //public void DidAdvanceToPlaybackSession(BCOVPlaybackSession session)
-        //{
-        //    //throw new System.NotImplementedException();
-        //    googleCastManager.CreateMediaInfo(session.Video);
-        //    googleCastManager.SetupRemoteMediaClientWithMediaInfo();
-        //}
 
         public override void DidAdvanceToPlaybackSession(BCOVPlaybackSession session)
         {

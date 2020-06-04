@@ -54,11 +54,11 @@ namespace Sample.Brightcove.iOS
             }
         }
 
-        public class BCGoogleCastManagerDelegate : GoogleCastManagerDelegate
+        public class XamGoogleCastManagerDelegate : GoogleCastManagerDelegate
         {
 
             BCOVPlaybackController controller;
-            public BCGoogleCastManagerDelegate(BCOVPlaybackController controller)
+            public XamGoogleCastManagerDelegate(BCOVPlaybackController controller)
             {
                 this.controller = controller;
             }
@@ -75,6 +75,9 @@ namespace Sample.Brightcove.iOS
                 }
 
                 Debug.WriteLine("Switched to Local Playback");
+
+                if (error != null)
+                    Debug.WriteLine("SWITCH TO LOCAL PLAYBACK WITH ERROR :: " + error);
             }
 
             public override void SwitchedToRemotePlayback()
@@ -131,17 +134,15 @@ namespace Sample.Brightcove.iOS
 
             //Create the playback controller
             playbackController = sDKManager.CreateFairPlayPlaybackControllerWithAuthorizationProxy(fairPlayAuthProxy);
-            playbackController.SetAutoPlay(false);
+            playbackController.SetAutoPlay(true);
             playbackController.SetAutoAdvance(false);
             playbackController.Delegate = new BCPlaybackControllerDelegate();
 
             //USING CUSTOM GoogleCastManager
             GoogleCastManager googleCastManager = new GoogleCastManager();
-            googleCastManager.gcmDelegate = new BCGoogleCastManagerDelegate(playbackController);
+            googleCastManager.gcmDelegate = new XamGoogleCastManagerDelegate(playbackController);
             var gcmPlaybackSession = new XamBCPlaybackSessionConsumer(googleCastManager);
             playbackController.AddSessionConsumer(gcmPlaybackSession);
-
-            //TODO use CAST STATE TO HIDE PLAYER WHEN IT IS IN CONNECTED MODE
 
             // Set up our player view. Create with a standard VOD layout.
             var options = new BCOVPUIPlayerViewOptions() { ShowPictureInPictureButton = true };
