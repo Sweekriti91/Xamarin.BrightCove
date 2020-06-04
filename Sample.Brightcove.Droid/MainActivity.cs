@@ -33,13 +33,13 @@ namespace Sample.Brightcove.Droid
 
             SetContentView(Resource.Layout.activity_main);
 
-            brightcoveVideoView = FindViewById<BrightcoveVideoView>(Resource.Id.brightcove_video_view);
-            Catalog catalog = new Catalog(brightcoveVideoView.EventEmitter, accountID, policyKEY);
+            brightcoveVideoView = FindViewById<BrightcoveExoPlayerVideoView>(Resource.Id.brightcove_video_view);
+            var eventEmitter = brightcoveVideoView.EventEmitter;
+            Catalog catalog = new Catalog(eventEmitter, accountID, policyKEY);
 
             catalog.FindVideoByID(videoID: videoId, new VideoListenerR());
 
-            var eventEmitter = brightcoveVideoView.EventEmitter;
-            GoogleCastComponent googleCastComponent = new GoogleCastComponent(eventEmitter, this);
+            //GoogleCastComponent googleCastComponent = new GoogleCastComponent(eventEmitter, this);
             //googleCastComponent.IsSessionAvailable;
         }
 
@@ -58,13 +58,60 @@ namespace Sample.Brightcove.Droid
             {
                 brightcoveVideoView.Add(video);
                 brightcoveVideoView.Start();
+                SetupCast(video);
             }
 
             public override void OnError(string error)
             {
                 throw new Java.Lang.RuntimeException(error);
             }
+
+            public void SetupCast(Video video)
+            {
+                var eventEmitter = brightcoveVideoView.EventEmitter;
+
+                Source source = findCastableSource(video);
+
+                GoogleCastComponent googleCastComponent = new GoogleCastComponent(eventEmitter, Platform.AppContext);
+                //MediaInfo mediaInfo = CastMediaUtil.toMediaInfo(video, source, null, null);
+                //googleCastComponent.loadMediaInfo(mediaInfo);
+
+
+                //You can check if there is a session available
+                //googleCastComponent.isSessionAvailable();
+            }
         }
+        public static Source findCastableSource(Video video)
+        {
+            Source savedDashSource = null;
+
+            if (video.SourceCollections.Count == 0
+                    && video.SourceCollections.ContainsKey(DeliveryType.Dash)
+                    && video.SourceCollections.Values.Where(c => c.DeliveryType == DeliveryType.Dash) != null) 
+            {
+                var dashSourceCollections = video.SourceCollections.Values.Where(c => c.DeliveryType == DeliveryType.Dash);
+                List<Source> dashSource = new List<Source>();
+                foreach(var d in dashSourceCollections)
+                {
+                    var item = d.Sources.Where(a => a.DeliveryType == DeliveryType.Dash).FirstOrDefault();
+                    dashSource.Add(item);
+                }
+                
+                foreach (var src in dashSource)
+                {
+                    savedDashSource = src;
+
+                    if (src.Url.Contains("ac-3_avc1_ec-3_mp4a"))
+                    {
+                        return src;
+                    }
+                }
+                return savedDashSource;
+            }
+            return null;
+        }
+
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
