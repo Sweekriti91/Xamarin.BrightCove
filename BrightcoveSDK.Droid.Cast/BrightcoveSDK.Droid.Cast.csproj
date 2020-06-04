@@ -56,10 +56,6 @@
     </ItemGroup>
     <ItemGroup>
         <EmbeddedReferenceJar Include="Jars\exo-cast.jar" />
-        <EmbeddedReferenceJar Include="Jars\gms-cast-framework.jar" />
-        <EmbeddedReferenceJar Include="Jars\gms-cast.jar" />
-        <EmbeddedReferenceJar Include="Jars\exo-ui.jar" />
-        <EmbeddedReferenceJar Include="Jars\exo-core.jar" />
         <EmbeddedReferenceJar Include="Jars\gson-2.8.5.jar" />
         <EmbeddedReferenceJar Include="Jars\requery-1.4.0.jar" />
         <EmbeddedReferenceJar Include="Jars\requery-android.jar" />
@@ -89,6 +85,12 @@
         </PackageReference>
         <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter">
             <Version>28.0.0.3</Version>
+        </PackageReference>
+        <PackageReference Include="Xamarin.GooglePlayServices.Cast">
+          <Version>71.1602.2</Version>
+        </PackageReference>
+        <PackageReference Include="Xamarin.GooglePlayServices.Cast.Framework">
+          <Version>71.1602.2</Version>
         </PackageReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
