@@ -2,15 +2,12 @@
 // BrightcovePlayerSDK.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
-//! Project version string for BrightcovePlayerSDK.
-FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 // Open Source Software attributions
 #import <BrightcovePlayerSDK/BCOVAttributions.h>
@@ -35,6 +32,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 #import <BrightcovePlayerSDK/BCOVFPSAuthorizationProxy.h>
 #import <BrightcovePlayerSDK/BCOVFPSBrightcoveAuthProxy.h>
 #import <BrightcovePlayerSDK/BCOVFPSComponent.h>
+#import <BrightcovePlayerSDK/BCOVFairPlayManager.h>
 
 // Sidecar Subtitles
 #import <BrightcovePlayerSDK/BCOVSSComponent.h>

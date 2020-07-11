@@ -2,7 +2,7 @@
 // BCOVFPSBrightcoveAuthProxy.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -98,23 +98,6 @@ extern const NSInteger kBCOVFPSAuthProxyErrorCodeContentKeyGenerationFailed;
  */
 - (void)retrieveApplicationCertificate:(void (^)(NSData * __nullable applicationCetificate,
                                                  NSError * __nullable error))completionHandler;
-
-@end
-
-
-@interface BCOVFPSBrightcoveAuthProxy (Unavailable)
-
-- (nullable instancetype)init
-    __attribute__((unavailable("Use `-[BCOVFPSBrightcoveAuthProxy initWithApplicationId:publisherId:]` instead.")));
-
-@end
-
-
-@interface BCOVFPSBrightcoveAuthProxy (Deprecated)
-
-- (nullable instancetype)initWithApplicationId:(NSString *)appId
-                                   publisherId:(NSString *)pubId
-    __attribute__((deprecated("Use -BCOVFPSBrightcoveAuthProxy initWithPublisherId:applicationId: instead")));
 
 @end
 

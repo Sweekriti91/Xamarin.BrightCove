@@ -1307,6 +1307,7 @@ namespace BrightcoveSDK.iOS
     }
 
     // @interface BCOVBasicSessionLoadingPolicy : NSObject <NSCopying>
+    [Protocol]
     [BaseType(typeof(NSObject))]
     interface BCOVBasicSessionLoadingPolicy : INSCopying
     {

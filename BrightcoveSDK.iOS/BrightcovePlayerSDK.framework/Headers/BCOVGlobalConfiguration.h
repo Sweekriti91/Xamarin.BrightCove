@@ -2,7 +2,7 @@
 // BCOVGlobalConfiguration.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
  * reliable content delivery in China and requires particular account arrangements.
  * Setting this property in any other situation will result in unknown behavior.
  */
-@property (nonatomic) NSString *domainNameForChinaDelivery;
+@property (nonatomic, nullable) NSString *domainNameForChinaDelivery;
 
 @end
 

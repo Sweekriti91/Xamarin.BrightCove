@@ -2,7 +2,7 @@
 // BCOVPUICommon.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -79,26 +79,6 @@ typedef NS_ENUM(NSInteger, BCOVPUIViewTag) {
     /** Tag that signifies the end of our reserved range. */
     BCOVPUIViewTagReservedEnd           = 200
 };
-
-
-/**
- * Type of video.
- */
-typedef NS_ENUM(NSUInteger, BCOVPUIVideoType) {
-
-    /** Video type can not be determined. */
-    BCOVPUIVideoTypeUnknown,
-
-    /** Video on demand (has a duration). */
-    BCOVPUIVideoTypeVOD,
-
-    /** Video has no duration, and a limited seekable range. */
-    BCOVPUIVideoTypeLive,
-
-    /** Video has no duration, and a large seekable range. */
-    BCOVPUIVideoTypeLiveDVR
-};
-
 
 /**
  * Distinct Icon types.

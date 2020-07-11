@@ -2,7 +2,7 @@
 // BCOVPlaybackController.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -47,6 +47,24 @@ typedef NS_ENUM(NSInteger, BCOVVideo360ProjectionStyle) {
     
     BCOVVideo360ProjectionStyleVRGoggles  = 1,
     
+};
+
+/**
+ * Type of video.
+ */
+typedef NS_ENUM(NSUInteger, BCOVVideoType) {
+
+    /** Video type can not be determined. */
+    BCOVVideoTypeUnknown,
+
+    /** Video on demand (has a duration). */
+    BCOVVideoTypeVOD,
+
+    /** Video has no duration, and a limited seekable range. */
+    BCOVVideoTypeLive,
+
+    /** Video has no duration, and a large seekable range. */
+    BCOVVideoTypeLiveDVR
 };
 
 // The approximate vertical angle of view when the view orientation's zoom is 1.0.
@@ -276,7 +294,7 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, readonly, copy) id<BCOVMutableAnalytics> analytics;
 
 /**
- * OnceUX Only:
+ * SSAI Only:
  * If using other ad plug-ins, use `seekWithoutAds:completionHandler:` instead.
  *
  * Disables ad playback which otherwise might occur after a forward -seekTo:.
@@ -326,6 +344,25 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * Default value is NO.
  */
 @property (nonatomic, readwrite, assign, getter=isPictureInPictureActive) BOOL pictureInPictureActive;
+
+/**
+ * Set this to your preferred peak bit rate value. This value will be set on the current
+ * session and future sessions unless changed via the (optional) Preferred Bitrate menu.
+ */
+- (void)setPreferredPeakBitRate:(double)preferredPeakBitRate;
+
+/**
+ * Sets the audience segment targeting key/values you want to be be passed on in
+ * ad requests. This is only currently supported with IMA + VAST.
+ */
+- (void)updateAudienceSegmentTargetingValues:(NSDictionary *)audienceSegmentTargetingValues;
+
+/**
+ * Enables or disables thumbnail scrubbing for this playback controller.
+ *
+ * Default value is YES
+ */
+@property (nonatomic, readwrite, assign) BOOL thumbnailScrubbingEnabled;
 
 /**
  * @abstract A view which obscures or reveals the player view.
@@ -792,6 +829,37 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * session seekableRanges.
  */
 - (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didChangeSeekableRanges:(NSArray *)seekableRanges;
+
+/**
+ * Called when the playback controller can find no playable videos
+ * when videos are passed into the playback controller's `setVideos:` method
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param unplayableVideos The videos that were passed into the `setVideos:` method
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller noPlayableVideosFound:(id<NSFastEnumeration>)unplayableVideos;
+
+/**
+ * Called when the video type has been determined for the current video.
+ *
+ * The video type will be determined after `kBCOVPlaybackSessionLifecycleEventReady`
+ * has been received for the session.
+ *
+ * You can use the returned videoType to determine which BCOVPUIControlLayout to
+ * utilize on the current BCOVPUIPlayerView. This can be helpful for dynamically
+ * switching between control layouts if utilizing different video types in a playlist.
+ *
+ * The value can be one of the following:
+ * - BCOVVideoTypeVOD
+ * - BCOVVideoTypeLive
+ * - BCOVVideoTypeLiveDVR
+ * - BCOVVideoTypeUnknown
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param videoType The determined video type.
+ * @param video The video which has had its type determined.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller determinedVideoType:(BCOVVideoType)videoType forVideo:(BCOVVideo *)video;
 
 @end
 

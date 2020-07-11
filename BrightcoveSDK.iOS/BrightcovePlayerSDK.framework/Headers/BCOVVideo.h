@@ -2,11 +2,12 @@
 // BCOVVideo.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
 #import <Foundation/Foundation.h>
+#import <BrightcovePlayerSDK/BCOVVideoErrorCodes.h>
 
 @class BCOVCuePointCollection;
 @class BCOVSource;
@@ -81,7 +82,7 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
  * The sources which comprise the actual destinations at which this video's
  * content can be accessed.
  */
-@property (nonatomic, readonly, copy) NSArray *sources;
+@property (nonatomic, readonly, copy) NSArray<BCOVSource *> *sources;
 
 /**
  * Returns a modified version of this source. Because BCOVVideo objects
@@ -162,8 +163,34 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
  *  or if the video has been purged and needs to be re-downloaded.
  *  This happens automatically if iOS needs to reclaim storage space
  *  for proper functioning of the device.
+ *
+ *  On some versions of iOS `playableOffline` may return NO if the offline video is already
+ *  loaded up in an instance of AVPlayer. Calling `replaceCurrentItemWithPlayerItem`
+ *  on the current instance of `AVPlayer` with a `nil` value prior to checking
+ *  should result in the expected value of TRUE being returned.
  */
 @property (nonatomic, readonly) BOOL playableOffline;
+
+/**
+ * A string representation of an error code for an unplayable video
+ */
+@property (nonatomic, copy) NSString *errorCode;
+
+/**
+ * A string representation of an error sub code for an unplayable video
+ */
+@property (nonatomic, copy) NSString *errorSubCode;
+
+/**
+ * A error emssage string for an unplayable video
+*/
+@property (nonatomic, copy) NSString *errorMessage;
+
+/**
+ * Returns NO if `errorCode`, `errorSubCode` and `errorMessage` are all nil
+ * otherwise if any of those properties have a vaile will return YES
+ */
+@property (nonatomic, readonly) BOOL hasError;
 
 /**
  * @abstract Constructs a new video with the specified sources, cue points, and
@@ -178,7 +205,7 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
  * @param properties The metadata or properties associated to this video.
  * @return A new video with the specified sources, cue points, and properties.
  */
-- (instancetype)initWithSources:(NSArray *)sources cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
+- (instancetype)initWithSources:(NSArray<BCOVSource *> *)sources cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
 
 /**
  * Constructs a new video with a single specified source, the specified cue
@@ -195,6 +222,21 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
  * and properties.
  */
 - (instancetype)initWithSource:(BCOVSource *)source cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
+
+/**
+ * Constructs a new video with with error information.
+ *
+ * @discussion When attempting to retreive a video the server may an
+ * error. The error may be caused due to various restrictions  other reasons.
+ * The information is stored on the BCOVideo object for informative purposes.
+ *
+ * @param errorCode The error code
+ * @param errorSubCode The error sub-code
+ * @param errorMessage The error message
+ * @param properties The metadata or properties associated to this video.
+ * @return A new video with error information attributes
+ */
+- (instancetype)initWithErrorCode:(NSString *)errorCode errorSubCode:(NSString *)errorSubCode errorMessage:(NSString *)errorMessage properties:(NSDictionary *)properties;
 
 /**
  * Returns YES if `video` is equivalent to this instance.

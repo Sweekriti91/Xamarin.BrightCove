@@ -2,7 +2,7 @@
 // BCOVAdvertising.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -258,21 +258,3 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventWillPauseForAd;
 
 @end
 
-
-@interface BCOVAdSequence (Unavailable)
-
-/**
- * Private method.
- */
-- (instancetype)init __attribute__((unavailable("Use `-[BCOVAdSequence initWithAds:properties:]` instead.")));
-
-@end
-
-@interface BCOVAd (Unavailable)
-
-/**
- * Private method.
- */
-- (instancetype)init __attribute__((unavailable("Use `-[BCOVAd initWithTitle:adId:beginTime:duration:properties:]` instead.")));
-
-@end

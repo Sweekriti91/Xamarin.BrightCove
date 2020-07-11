@@ -2,7 +2,7 @@
 // BCOVPlaybackSessionProvider.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -16,6 +16,7 @@
  */
 @protocol BCOVPlaybackSessionProvider <NSObject>
 
+@optional
 /**
  * @warning *Deprecated:* Do not use
  * Returns a series of id<BCOVPlaybackSession> objects that correspond to the
