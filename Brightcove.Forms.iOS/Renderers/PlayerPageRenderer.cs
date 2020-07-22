@@ -18,9 +18,9 @@ namespace Brightcove.Forms.iOS.Renderers
 {
     public class PlayerPageRenderer : PageRenderer
     {
-        static string policyKEY = "";
-        static string accountID = "";
-        static string videoId = "";
+        static string policyKEY = "BCpkADawqM3YRyTQ4hZzmqTk-Oegl3lHc_iLPz29j-aHgdZy0hLaKVj-TlITBvYppMXWpz4mGh60AgWogCIF42vzi1lkj9vgAjYNjAwjd8xeW-JwTb1yI4XPq0mGXaXx4KY-Nu7MwFX0QsQi";
+        static string accountID = "6056665239001";
+        static string videoId = "6093269901001";
 
         BCOVPlayerSDKManager sDKManager = BCOVPlayerSDKManager.SharedManager();
         BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
@@ -29,10 +29,10 @@ namespace Brightcove.Forms.iOS.Renderers
         BCOVPUIPlayerView playerView;
 
         //minicontroller
-        UIView miniMediaControlsContainerView = new UIView();
-        NSLayoutConstraint miniMediaControlsHeightConstraint = new NSLayoutConstraint();
-        UIMiniMediaControlsViewController miniMediaControlsViewController;
-        bool miniMediaControlsViewEnabled = false;
+        //UIView miniMediaControlsContainerView = new UIView();
+        //NSLayoutConstraint miniMediaControlsHeightConstraint = new NSLayoutConstraint();
+        //UIMiniMediaControlsViewController miniMediaControlsViewController;
+        //bool miniMediaControlsViewEnabled = false;
 
         public PlayerPageRenderer()
         {
@@ -64,10 +64,12 @@ namespace Brightcove.Forms.iOS.Renderers
 
         void SetupChromecast()
         {
-            var discoveryCriteria = new DiscoveryCriteria("17F1E2B1");
-            var castOptions = new CastOptions(discoveryCriteria);
-            CastContext.SetSharedInstance(castOptions);
-            CastContext.SharedInstance.UseDefaultExpandedMediaControls = true;
+            //var test = new ChromecastService();
+            //test.SetupChromecast(); 
+            //var discoveryCriteria = new DiscoveryCriteria("17F1E2B1");
+            //var castOptions = new CastOptions(discoveryCriteria);
+            //CastContext.SetSharedInstance(castOptions);
+            //CastContext.SharedInstance.UseDefaultExpandedMediaControls = true;
 
             //GLogger.SharedInstance.Delegate = new LoggerDelegate();
             //var navigationController = new UINavigationController(this);
@@ -98,11 +100,11 @@ namespace Brightcove.Forms.iOS.Renderers
             var castButton = new UICastButton(new CGRect(50, 20, 24, 24));
             View.AddSubview(castButton);
 
-            miniMediaControlsContainerView.Frame = new CGRect(0, 400, View.Frame.Width, 45);
-            View.AddSubview(miniMediaControlsContainerView);
-            UpdateControlBarsVisibility();
-            //InstallViewController(miniMediaControlsViewController, View);
-            InstallViewController(miniMediaControlsViewController, miniMediaControlsContainerView);
+            //miniMediaControlsContainerView.Frame = new CGRect(0, 400, View.Frame.Width, 45);
+            //View.AddSubview(miniMediaControlsContainerView);
+            //UpdateControlBarsVisibility();
+            ////InstallViewController(miniMediaControlsViewController, View);
+            //InstallViewController(miniMediaControlsViewController, miniMediaControlsContainerView);
         }
 
         void SetupEventsAndHooks()
@@ -132,40 +134,40 @@ namespace Brightcove.Forms.iOS.Renderers
             playerView.PlaybackController = playbackController;
 
             //Create MiniControllerGoogleCast
-            var castContext = CastContext.SharedInstance;
-            miniMediaControlsViewController = castContext.CreateMiniMediaControlsViewController();
-            miniMediaControlsViewController.Delegate = new XamGoogleCastMiniControllerDelegate(this);
+            //var castContext = CastContext.SharedInstance;
+            //miniMediaControlsViewController = castContext.CreateMiniMediaControlsViewController();
+            //miniMediaControlsViewController.Delegate = new XamGoogleCastMiniControllerDelegate(this);
         }
 
-        public void UpdateControlBarsVisibility()
-        {
-            Debug.WriteLine("miniMediaControlsViewController Active : " + miniMediaControlsViewController.Active);
-            if (miniMediaControlsViewEnabled == true && miniMediaControlsViewController.Active)
-            {
-                miniMediaControlsContainerView.Hidden = false;
-                View.BringSubviewToFront(miniMediaControlsContainerView);
-            }
-            else
-                miniMediaControlsContainerView.Hidden = true;
+        //public void UpdateControlBarsVisibility()
+        //{
+        //    Debug.WriteLine("miniMediaControlsViewController Active : " + miniMediaControlsViewController.Active);
+        //    if (miniMediaControlsViewEnabled == true && miniMediaControlsViewController.Active)
+        //    {
+        //        miniMediaControlsContainerView.Hidden = false;
+        //        View.BringSubviewToFront(miniMediaControlsContainerView);
+        //    }
+        //    else
+        //        miniMediaControlsContainerView.Hidden = true;
 
-            UIView.Animate(0.2, () =>
-            {
-                View.LayoutIfNeeded();
-            });
+        //    UIView.Animate(0.2, () =>
+        //    {
+        //        View.LayoutIfNeeded();
+        //    });
 
-            View.SetNeedsLayout();
-        }
+        //    View.SetNeedsLayout();
+        //}
 
-        public void InstallViewController(UIMiniMediaControlsViewController viewController, UIView containerView)
-        {
-            if (viewController != null)
-            {
-                this.ViewController.AddChildViewController(viewController);
-                viewController.View.Frame = containerView.Bounds;
-                containerView.AddSubview(viewController.View);
-                viewController.DidMoveToParentViewController(this);
-            }
-        }
+        //public void InstallViewController(UIMiniMediaControlsViewController viewController, UIView containerView)
+        //{
+        //    if (viewController != null)
+        //    {
+        //        this.ViewController.AddChildViewController(viewController);
+        //        viewController.View.Frame = containerView.Bounds;
+        //        containerView.AddSubview(viewController.View);
+        //        viewController.DidMoveToParentViewController(this);
+        //    }
+        //}
 
         //public void UninstallViewController(UIViewController viewController)
         //{
@@ -174,20 +176,20 @@ namespace Brightcove.Forms.iOS.Renderers
         //    viewController.RemoveFromParentViewController();
         //}
 
-        public class XamGoogleCastMiniControllerDelegate : UIMiniMediaControlsViewControllerDelegate
-        {
-            PlayerPageRenderer pageRenderer;
+        //public class XamGoogleCastMiniControllerDelegate : UIMiniMediaControlsViewControllerDelegate
+        //{
+        //    PlayerPageRenderer pageRenderer;
 
-            public XamGoogleCastMiniControllerDelegate(PlayerPageRenderer pageR)
-            {
-                this.pageRenderer = pageR;
-            }
+        //    public XamGoogleCastMiniControllerDelegate(PlayerPageRenderer pageR)
+        //    {
+        //        this.pageRenderer = pageR;
+        //    }
 
-            public override void ShouldAppear(UIMiniMediaControlsViewController miniMediaControlsViewController, bool shouldItAppear)
-            {
-                pageRenderer.UpdateControlBarsVisibility();
-            }
-        }
+        //    public override void ShouldAppear(UIMiniMediaControlsViewController miniMediaControlsViewController, bool shouldItAppear)
+        //    {
+        //        //pageRenderer.UpdateControlBarsVisibility();
+        //    }
+        //}
 
         [Export("castDidChangeState:")]
         private void castDidChangeState(NSNotification obj)
@@ -204,7 +206,7 @@ namespace Brightcove.Forms.iOS.Renderers
                     Console.WriteLine("Cast Status: Connecting");
                     break;
                 case CastState.Connected:
-                    miniMediaControlsViewEnabled = true;
+                    //miniMediaControlsViewEnabled = true;
                     Console.WriteLine("Cast Status: Connected");
                     break;
             }
