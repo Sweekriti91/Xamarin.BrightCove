@@ -5,6 +5,6 @@ namespace Brightcove.Forms
     {
         void SetupChromecast();
 
-        void UpdateMiniPlayerVisibilty();
+        void CastStateReport();
     }
 }

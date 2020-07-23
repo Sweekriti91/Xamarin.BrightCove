@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Google.Cast;
+using Foundation;
 
 namespace Brightcove.Forms.iOS
 {
@@ -19,9 +20,31 @@ namespace Brightcove.Forms.iOS
         }
 
 
-        public void UpdateMiniPlayerVisibilty()
+        public void CastStateReport()
         {
-            Debug.WriteLine("UPDATE FROM SERVICE, CODE SOON");
+            NSNotificationCenter aNotificationCenter = NSNotificationCenter.DefaultCenter;
+            aNotificationCenter.AddObserver(this, new ObjCRuntime.Selector("castDidChangeState:"), CastContext.CastStateDidChangeNotification, CastContext.SharedInstance);
+
+        }
+
+        [Export("castDidChangeState:")]
+        private void castDidChangeState(NSNotification obj)
+        {
+            switch (CastContext.SharedInstance.CastState)
+            {
+                case CastState.NoDevicesAvailable:
+                    Console.WriteLine("Cast Status: No Devices Available");
+                    break;
+                case CastState.NotConnected:
+                    Console.WriteLine("Cast Status: Not Connected");
+                    break;
+                case CastState.Connecting:
+                    Console.WriteLine("Cast Status: Connecting");
+                    break;
+                case CastState.Connected:
+                    Console.WriteLine("Cast Status: Connected");
+                    break;
+            }
         }
     }
 }
