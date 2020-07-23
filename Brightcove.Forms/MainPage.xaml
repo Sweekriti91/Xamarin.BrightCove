@@ -9,6 +9,6 @@
     <StackLayout>
         <local:MyCastButton VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
         <Button Text="Play Video!" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked" />
-        <local:MiniPlayerCV VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="64"/>
+        <local:MiniPlayerCV VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="64" BackgroundColor="Green"/>
     </StackLayout>
 </ContentPage>

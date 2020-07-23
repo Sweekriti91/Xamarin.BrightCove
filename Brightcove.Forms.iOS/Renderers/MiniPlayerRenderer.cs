@@ -6,12 +6,15 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using Google.Cast;
 using UIKit;
+using CoreGraphics;
+using Microsoft.MobCAT; 
 
 [assembly: ExportRenderer(typeof(MiniPlayerCV), typeof(MiniPlayerRenderer))]
 namespace Brightcove.Forms.iOS.Renderers
 {
     public class MiniPlayerRenderer : ViewRenderer<MiniPlayerCV, UIView>
     {
+        IChromecastService _castHelper = ServiceContainer.Resolve<IChromecastService>();
         UIMiniMediaControlsViewController miniMediaControlsViewController;
         UIView miniMediaControlsContainerView;
 
@@ -25,10 +28,12 @@ namespace Brightcove.Forms.iOS.Renderers
                 {
                     var castContext = CastContext.SharedInstance;
                     miniMediaControlsViewController = castContext.CreateMiniMediaControlsViewController();
-                    miniMediaControlsViewController.Delegate = new XamGoogleCastMiniControllerDelegate();
+                    miniMediaControlsViewController.Delegate = new XamGoogleCastMiniControllerDelegate(this);
                     miniMediaControlsContainerView = new UIView();
+                    miniMediaControlsContainerView.Frame = new CGRect(0, 0, 400, 45);
                     miniMediaControlsViewController.View.Frame = miniMediaControlsContainerView.Bounds;
                     miniMediaControlsContainerView.AddSubview(miniMediaControlsViewController.View);
+                    UpdateControlBarsVisibility();
                     SetNativeControl(miniMediaControlsContainerView);
                 }
             }
@@ -36,16 +41,16 @@ namespace Brightcove.Forms.iOS.Renderers
 
         public class XamGoogleCastMiniControllerDelegate : UIMiniMediaControlsViewControllerDelegate
         {
+            MiniPlayerRenderer playerRenderer;
 
-            public XamGoogleCastMiniControllerDelegate()
+            public XamGoogleCastMiniControllerDelegate(MiniPlayerRenderer pageR)
             {
+                this.playerRenderer = pageR;
             }
 
             public override void ShouldAppear(UIMiniMediaControlsViewController miniMediaControlsViewController, bool shouldItAppear)
             {
-                //pageRenderer.UpdateControlBarsVisibility();
-                //TODO Connect service to toggle visibility
-                UpdateControlBarsVisibility();
+                playerRenderer.UpdateControlBarsVisibility();
             }
         }
 
@@ -54,25 +59,19 @@ namespace Brightcove.Forms.iOS.Renderers
             Debug.WriteLine("miniMediaControlsViewController Active : " + miniMediaControlsViewController.Active);
             if (miniMediaControlsViewController.Active)
             {
-                miniMediaControlsViewController.View.Hidden = false;
+                //Debug.WriteLine("BE VISIBILE");
+                //_castHelper.UpdateMiniPlayerVisibilty();
+                miniMediaControlsContainerView.Hidden = false;
                 //View.BringSubviewToFront(miniMediaControlsContainerView);
             }
             else
-                miniMediaControlsViewController.View.Hidden = true;
+            {
+               // _castHelper.UpdateMiniPlayerVisibilty();
+                 miniMediaControlsContainerView.Hidden = true;
+                //Debug.WriteLine("BE NOT VISIBILE");
+                //miniMediaControlsViewController.View.Hidden = false;
+            }
 
         }
-
-        //public void InstallViewController(UIMiniMediaControlsViewController viewController, UIView containerView)
-        //{
-        //    if (viewController != null)
-        //    {
-        //        this.ViewController.AddChildViewController(viewController);
-        //        viewController.View.Frame = containerView.Bounds;
-        //        containerView.AddSubview(viewController.View);
-        //        viewController.DidMoveToParentViewController(this);
-        //    }
-        //}
-
-
     }
 }

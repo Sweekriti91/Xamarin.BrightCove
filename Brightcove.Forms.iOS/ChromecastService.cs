@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Google.Cast;
 
 namespace Brightcove.Forms.iOS
@@ -15,6 +16,12 @@ namespace Brightcove.Forms.iOS
             var castOptions = new CastOptions(discoveryCriteria);
             CastContext.SetSharedInstance(castOptions);
             CastContext.SharedInstance.UseDefaultExpandedMediaControls = true;
+        }
+
+
+        public void UpdateMiniPlayerVisibilty()
+        {
+            Debug.WriteLine("UPDATE FROM SERVICE, CODE SOON");
         }
     }
 }
