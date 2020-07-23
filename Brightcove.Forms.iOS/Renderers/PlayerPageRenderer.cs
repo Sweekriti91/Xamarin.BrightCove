@@ -45,7 +45,6 @@ namespace Brightcove.Forms.iOS.Renderers
 
             try
             {
-                SetupChromecast();
                 SetupEventsAndHooks();
                 SetupUserInterface();
                 StartVideoPlayback();
