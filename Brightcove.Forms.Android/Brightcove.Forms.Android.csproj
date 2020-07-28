@@ -56,11 +56,40 @@
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.847" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="MobCAT.Forms" Version="1.0.7306" />
+    <PackageReference Include="Xamarin.AndroidX.MediaRouter">
+      <Version>1.1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData">
+      <Version>2.2.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V4">
+      <Version>1.0.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Browser">
+      <Version>1.2.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Cast">
+      <Version>71.1602.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Cast.Framework">
+      <Version>71.1602.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v4">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Google.Android.Material">
+      <Version>1.0.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ChromecastService.cs" />
+    <Compile Include="Renderer\PlayerPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -84,14 +113,35 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\values\strings.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
+    <Folder Include="Renderer\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Brightcove.Forms\Brightcove.Forms.csproj">
       <Project>{58D55ADB-70BE-410B-A0EC-5199F5AF3684}</Project>
       <Name>Brightcove.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BrightcoveSDK.Droid\BrightcoveSDK.Droid.csproj">
+      <Project>{DEA73147-883E-4A6C-9C1F-2B7CE6B13783}</Project>
+      <Name>BrightcoveSDK.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BrightcoveSDK.Droid.Cast\BrightcoveSDK.Droid.Cast.csproj">
+      <Project>{5E1F84DB-02D6-42E2-89A0-C23BC1CCC731}</Project>
+      <Name>BrightcoveSDK.Droid.Cast</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BrightcoveSDK.Droid.Exoplayer2\BrightcoveSDK.Droid.Exoplayer2.csproj">
+      <Project>{504627F1-D77C-4043-B27D-8582C1B2335C}</Project>
+      <Name>BrightcoveSDK.Droid.Exoplayer2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExoPlayer.UI\ExoPlayer.UI.csproj">
+      <Project>{67A0616A-BB76-456C-B747-D704846FDD53}</Project>
+      <Name>ExoPlayer.UI</Name>
     </ProjectReference>
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

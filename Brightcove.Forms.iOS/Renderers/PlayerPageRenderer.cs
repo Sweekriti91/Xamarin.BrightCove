@@ -18,9 +18,9 @@ namespace Brightcove.Forms.iOS.Renderers
 {
     public class PlayerPageRenderer : PageRenderer
     {
-        static string policyKEY = "";
-        static string accountID = "";
-        static string videoId = "";
+        static string policyKEY = "BCpkADawqM3YRyTQ4hZzmqTk-Oegl3lHc_iLPz29j-aHgdZy0hLaKVj-TlITBvYppMXWpz4mGh60AgWogCIF42vzi1lkj9vgAjYNjAwjd8xeW-JwTb1yI4XPq0mGXaXx4KY-Nu7MwFX0QsQi";
+        static string accountID = "6056665239001";
+        static string videoId = "6093269901001";
 
         BCOVPlayerSDKManager sDKManager = BCOVPlayerSDKManager.SharedManager();
         BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);

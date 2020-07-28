@@ -21,5 +21,6 @@
     <remove-node path="/api/package[@name='com.brightcove.player.view']/class[@name='BrightcoveSurfaceView']"/>
     <remove-node path="/api/package[@name='com.brightcove.player.event']/class[@name='EventEmitterImpl']/method[@name='getInvocationContainerByToken' and count(parameter)=2 and parameter[1][@type='java.util.List&lt;com.brightcove.player.event.InvocationContainer&gt;'] and parameter[2][@type='int']]"/>
     <remove-node path="/api/package[@name='com.brightcove.player.event']/class[@name='EventEmitterImpl']/method[@name='getInvocationContainerPositionByToken' and count(parameter)=2 and parameter[1][@type='java.util.List&lt;com.brightcove.player.event.InvocationContainer&gt;'] and parameter[2][@type='int']]"/>
+    <remove-node path="/api/package[@name='com.brightcove.player.drm']/class[@name='CustomerRightsToken']/field[@name='profile']"/>
 </metadata>
 
