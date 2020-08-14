@@ -147,5 +147,13 @@ namespace BrightcoveSDK.iOS
 		StateTracksError = 12
 	}
 
+	[Native]
+	public enum BCOVVideoType : long
+	{
+		Unknown,
+		Vod,
+		Live,
+		LiveDVR
+	}
 }
 

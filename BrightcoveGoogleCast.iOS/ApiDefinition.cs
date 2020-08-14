@@ -46,10 +46,10 @@ namespace BrightcoveGoogleCast.iOS
 		//+(BCOVGoogleCastManager *)sharedManager;
 		[Static]
 		[Export("sharedManager")]
-		//BCOVGoogleCastManager SharedManager { get; }
-		BCOVGoogleCastManager SharedManager();
+        //BCOVGoogleCastManager SharedManager { get; }
+        BCOVGoogleCastManager SharedManager();
 
-		[Wrap("WeakDelegate")]
+        [Wrap("WeakDelegate")]
 		BCOVGoogleCastManagerDelegate Delegate { get; set; }
 
 		// @property (nonatomic, weak) id<BCOVGoogleCastManagerDelegate> delegate;

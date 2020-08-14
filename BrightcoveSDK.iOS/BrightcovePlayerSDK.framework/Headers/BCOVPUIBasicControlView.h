@@ -2,7 +2,7 @@
 // BCOVPUIBasicControlView.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -177,7 +177,6 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 @property (nonatomic, weak, readonly) BCOVPUIButton *preferredBitrateButton;
 
 /** The Picture-In-Picture Button */
-/** Only appears on iPads running iOS 9.0+ **/
 @property (nonatomic, weak, readonly) BCOVPUIButton *pictureInPictureButton;
 
 /** Yes if the closedCaptionButton is visible. No if invisible. */

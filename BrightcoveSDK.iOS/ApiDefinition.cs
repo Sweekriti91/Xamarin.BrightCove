@@ -8,526 +8,6 @@ using UIKit;
 
 namespace BrightcoveSDK.iOS
 {
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern const unsigned char [] BrightcovePlayerSDKVersionString;
-    //    [Field("BrightcovePlayerSDKVersionString", "__Internal")]
-    //    byte[] BrightcovePlayerSDKVersionString { get; }
-
-    //    // extern NSString *const kBCOVCuePointTypeAdSlot;
-    //    [Field("kBCOVCuePointTypeAdSlot", "__Internal")]
-    //    NSString kBCOVCuePointTypeAdSlot { get; }
-
-    //    // extern NSString *const kBCOVCuePointTypeAdCompanion;
-    //    [Field("kBCOVCuePointTypeAdCompanion", "__Internal")]
-    //    NSString kBCOVCuePointTypeAdCompanion { get; }
-
-    //    // extern NSString *const kBCOVCuePointPropertyKeyName;
-    //    [Field("kBCOVCuePointPropertyKeyName", "__Internal")]
-    //    NSString kBCOVCuePointPropertyKeyName { get; }
-    //}
-
-    // @protocol BCOVCuePoint <NSObject>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface IBCOVCuePoint
-    {
-        // @required @property (readonly, assign, nonatomic) CMTime position;
-        [Abstract]
-        [Export("position", ArgumentSemantic.Assign)]
-        CMTime Position { get; }
-
-        // @required @property (readonly, copy, nonatomic) NSString * type;
-        [Abstract]
-        [Export("type")]
-        string Type { get; }
-
-        // @required @property (readonly, copy, nonatomic) NSDictionary * properties;
-        [Abstract]
-        [Export("properties", ArgumentSemantic.Copy)]
-        NSDictionary Properties { get; }
-
-        // @required -(instancetype)update:(void (^)(id<BCOVMutableCuePoint>))updateBlock;
-        [Abstract]
-        [Export("update:")]
-        BCOVCuePoint Update(Action<BCOVMutableCuePoint> updateBlock);
-    }
-
-    // @protocol BCOVMutableCuePoint <BCOVCuePoint>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface BCOVMutableCuePoint : IBCOVCuePoint
-    {
-        // @required @property (assign, readwrite, nonatomic) CMTime position;
-        //[Abstract]
-        //[Export("position", ArgumentSemantic.Assign)]
-        //CMTime Position { get; set; }
-
-        //// @required @property (readwrite, copy, nonatomic) NSString * type;
-        //[Abstract]
-        //[Export("type")]
-        //string Type { get; set; }
-
-        //// @required @property (readwrite, copy, nonatomic) NSDictionary * properties;
-        //[Abstract]
-        //[Export("properties", ArgumentSemantic.Copy)]
-        //NSDictionary Properties { get; set; }
-    }
-
-    // @interface BCOVCuePoint : NSObject <BCOVCuePoint, NSCopying>
-    [BaseType(typeof(NSObject))]
-    interface BCOVCuePoint : IBCOVCuePoint, INSCopying
-    {
-        // -(instancetype)initWithType:(NSString *)type position:(CMTime)position;
-        [Export("initWithType:position:")]
-        IntPtr Constructor(string type, CMTime position);
-
-        // -(instancetype)initWithType:(NSString *)type position:(CMTime)position properties:(NSDictionary *)properties;
-        [Export("initWithType:position:properties:")]
-        IntPtr Constructor(string type, CMTime position, NSDictionary properties);
-
-        // -(NSComparisonResult)compare:(BCOVCuePoint *)cuePoint;
-        [Export("compare:")]
-        NSComparisonResult Compare(BCOVCuePoint cuePoint);
-
-        // -(BOOL)hasPosition:(CMTime)position;
-        [Export("hasPosition:")]
-        bool HasPosition(CMTime position);
-
-        // -(BOOL)isEqualToCuePoint:(BCOVCuePoint *)cuePoint;
-        [Export("isEqualToCuePoint:")]
-        bool IsEqualToCuePoint(BCOVCuePoint cuePoint);
-
-        // +(BCOVCuePoint *)afterCuePointOfType:(NSString *)type properties:(NSDictionary *)properties;
-        [Static]
-        [Export("afterCuePointOfType:properties:")]
-        BCOVCuePoint AfterCuePointOfType(string type, NSDictionary properties);
-
-        // +(BCOVCuePoint *)beforeCuePointOfType:(NSString *)type properties:(NSDictionary *)properties;
-        [Static]
-        [Export("beforeCuePointOfType:properties:")]
-        BCOVCuePoint BeforeCuePointOfType(string type, NSDictionary properties);
-
-        // +(BCOVCuePoint *)cuePointWithType:(NSString *)type positionInSeconds:(NSTimeInterval)positionInSeconds properties:(NSDictionary *)properties;
-        [Static]
-        [Export("cuePointWithType:positionInSeconds:properties:")]
-        BCOVCuePoint CuePointWithType(string type, double positionInSeconds, NSDictionary properties);
-    }
-
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern NSString *const kBCOVPlaylistPropertiesKeyAccountId;
-    //    [Field("kBCOVPlaylistPropertiesKeyAccountId", "__Internal")]
-    //    NSString kBCOVPlaylistPropertiesKeyAccountId { get; }
-
-    //    // extern NSString *const kBCOVPlaylistPropertiesKeyDescription;
-    //    [Field("kBCOVPlaylistPropertiesKeyDescription", "__Internal")]
-    //    NSString kBCOVPlaylistPropertiesKeyDescription { get; }
-
-    //    // extern NSString *const kBCOVPlaylistPropertiesKeyId;
-    //    [Field("kBCOVPlaylistPropertiesKeyId", "__Internal")]
-    //    NSString kBCOVPlaylistPropertiesKeyId { get; }
-
-    //    // extern NSString *const kBCOVPlaylistPropertiesKeyName;
-    //    [Field("kBCOVPlaylistPropertiesKeyName", "__Internal")]
-    //    NSString kBCOVPlaylistPropertiesKeyName { get; }
-
-    //    // extern NSString *const kBCOVPlaylistPropertiesKeyReferenceId;
-    //    [Field("kBCOVPlaylistPropertiesKeyReferenceId", "__Internal")]
-    //    NSString kBCOVPlaylistPropertiesKeyReferenceId { get; }
-
-    //    // extern NSString *const kBCOVPlaylistPropertiesKeyType;
-    //    [Field("kBCOVPlaylistPropertiesKeyType", "__Internal")]
-    //    NSString kBCOVPlaylistPropertiesKeyType { get; }
-    //}
-
-    // @protocol BCOVPlaylist <NSObject, NSFastEnumeration>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface IBCOVPlaylist //: INSFastEnumeration
-    {
-        // @required @property (readonly, copy, nonatomic) NSArray * videos;
-        [Abstract]
-        [Export("videos", ArgumentSemantic.Copy)]
-        NSObject[] Videos { get; }
-
-        // @required @property (readonly, copy, nonatomic) NSDictionary * properties;
-        [Abstract]
-        [Export("properties", ArgumentSemantic.Copy)]
-        NSDictionary Properties { get; }
-
-        // @required -(instancetype)update:(void (^)(id<BCOVMutablePlaylist>))updateBlock;
-        [Abstract]
-        [Export("update:")]
-        BCOVPlaylist Update(Action<BCOVMutablePlaylist> updateBlock);
-    }
-
-    // @protocol BCOVMutablePlaylist <BCOVPlaylist>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface BCOVMutablePlaylist : IBCOVPlaylist
-    {
-        // @required @property (readwrite, copy, nonatomic) NSArray * videos;
-        //[Abstract]
-        //[Export("videos", ArgumentSemantic.Copy)]
-        //NSObject[] Videos { get; set; }
-
-        //// @required @property (readwrite, copy, nonatomic) NSDictionary * properties;
-        //[Abstract]
-        //[Export("properties", ArgumentSemantic.Copy)]
-        //NSDictionary Properties { get; set; }
-    }
-
-    // @interface BCOVPlaylist : NSObject <BCOVPlaylist, NSCopying>
-    [BaseType(typeof(NSObject))]
-    interface BCOVPlaylist : IBCOVPlaylist, INSCopying
-    {
-        // -(instancetype)initWithVideos:(NSArray *)videos properties:(NSDictionary *)properties;
-        [Export("initWithVideos:properties:")]
-        IntPtr Constructor(NSObject[] videos, NSDictionary properties);
-
-        // -(instancetype)initWithVideos:(NSArray *)videos;
-        [Export("initWithVideos:")]
-        IntPtr Constructor(NSObject[] videos);
-
-        // -(instancetype)initWithVideo:(BCOVVideo *)video properties:(NSDictionary *)properties;
-        [Export("initWithVideo:properties:")]
-        IntPtr Constructor(BCOVVideo video, NSDictionary properties);
-
-        // -(instancetype)initWithVideo:(BCOVVideo *)video;
-        [Export("initWithVideo:")]
-        IntPtr Constructor(BCOVVideo video);
-
-        // -(BCOVVideo *)objectAtIndexedSubscript:(NSUInteger)index;
-        [Export("objectAtIndexedSubscript:")]
-        BCOVVideo ObjectAtIndexedSubscript(nuint index);
-
-        // -(BOOL)isEqualToPlaylist:(BCOVPlaylist *)playlist;
-        [Export("isEqualToPlaylist:")]
-        bool IsEqualToPlaylist(BCOVPlaylist playlist);
-
-        // -(NSUInteger)count;
-        [Export("count")]
-        nuint Count { get; }
-    }
-
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern NSString *const kBCOVSourceURLSchemeHTTP;
-    //    [Field("kBCOVSourceURLSchemeHTTP", "__Internal")]
-    //    NSString kBCOVSourceURLSchemeHTTP { get; }
-
-    //    // extern NSString *const kBCOVSourceURLSchemeHTTPS;
-    //    [Field("kBCOVSourceURLSchemeHTTPS", "__Internal")]
-    //    NSString kBCOVSourceURLSchemeHTTPS { get; }
-
-    //    // extern NSString *const kBCOVSourceDeliveryHLS;
-    //    [Field("kBCOVSourceDeliveryHLS", "__Internal")]
-    //    NSString kBCOVSourceDeliveryHLS { get; }
-
-    //    // extern NSString *const kBCOVSourceDeliveryMP4;
-    //    [Field("kBCOVSourceDeliveryMP4", "__Internal")]
-    //    NSString kBCOVSourceDeliveryMP4 { get; }
-
-    //    // extern NSString *const kBCOVSourceDeliveryDASH;
-    //    [Field("kBCOVSourceDeliveryDASH", "__Internal")]
-    //    NSString kBCOVSourceDeliveryDASH { get; }
-
-    //    // extern NSString *const kBCOVSourceDeliveryOnce;
-    //    [Field("kBCOVSourceDeliveryOnce", "__Internal")]
-    //    NSString kBCOVSourceDeliveryOnce { get; }
-
-    //    // extern NSString *const kBCOVSourceDeliveryBoltSSAI;
-    //    [Field("kBCOVSourceDeliveryBoltSSAI", "__Internal")]
-    //    NSString kBCOVSourceDeliveryBoltSSAI { get; }
-
-    //    // extern NSString *const kBCOVSourcePropertyKeySystems;
-    //    [Field("kBCOVSourcePropertyKeySystems", "__Internal")]
-    //    NSString kBCOVSourcePropertyKeySystems { get; }
-
-    //    // extern NSString *const kBCOVSourcePropertyKeyEXTXVersion;
-    //    [Field("kBCOVSourcePropertyKeyEXTXVersion", "__Internal")]
-    //    NSString kBCOVSourcePropertyKeyEXTXVersion { get; }
-
-    //    // extern NSString *const kBCOVSourcePropertyKeyType;
-    //    [Field("kBCOVSourcePropertyKeyType", "__Internal")]
-    //    NSString kBCOVSourcePropertyKeyType { get; }
-
-    //    // extern NSString *const kBCOVSourcePropertyKeyVMAP;
-    //    [Field("kBCOVSourcePropertyKeyVMAP", "__Internal")]
-    //    NSString kBCOVSourcePropertyKeyVMAP { get; }
-    //}
-
-    // @protocol BCOVSource <NSObject>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface IBCOVSource
-    {
-        // @required @property (readonly, copy, nonatomic) NSURL * url;
-        [Abstract]
-        [Export("url", ArgumentSemantic.Copy)]
-        NSUrl Url { get; }
-
-        // @required @property (readonly, copy, nonatomic) NSString * deliveryMethod;
-        [Abstract]
-        [Export("deliveryMethod")]
-        string DeliveryMethod { get; }
-
-        // @required @property (readonly, copy, nonatomic) NSDictionary * properties;
-        [Abstract]
-        [Export("properties", ArgumentSemantic.Copy)]
-        NSDictionary Properties { get; }
-
-        // @required -(instancetype)update:(void (^)(id<BCOVMutableSource>))updateBlock;
-        [Abstract]
-        [Export("update:")]
-        BCOVSource Update(Action<BCOVMutableSource> updateBlock);
-    }
-
-    // @protocol BCOVMutableSource <BCOVSource>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface BCOVMutableSource : IBCOVSource
-    {
-        // @required @property (readwrite, copy, nonatomic) NSURL * url;
-        //[Abstract]
-        //[Export("url", ArgumentSemantic.Copy)]
-        //NSUrl Url { get; set; }
-
-        //// @required @property (readwrite, copy, nonatomic) NSString * deliveryMethod;
-        //[Abstract]
-        //[Export("deliveryMethod")]
-        //string DeliveryMethod { get; set; }
-
-        //// @required @property (readwrite, copy, nonatomic) NSDictionary * properties;
-        //[Abstract]
-        //[Export("properties", ArgumentSemantic.Copy)]
-        //NSDictionary Properties { get; set; }
-    }
-
-    // @interface BCOVSource : NSObject <BCOVSource, NSCopying>
-    [BaseType(typeof(NSObject))]
-    interface BCOVSource : IBCOVSource, INSCopying
-    {
-        // -(instancetype)initWithURL:(NSURL *)url;
-        [Export("initWithURL:")]
-        IntPtr Constructor(NSUrl url);
-
-        // -(instancetype)initWithURL:(NSURL *)url deliveryMethod:(NSString *)deliveryMethod properties:(NSDictionary *)properties;
-        [Export("initWithURL:deliveryMethod:properties:")]
-        IntPtr Constructor(NSUrl url, string deliveryMethod, NSDictionary properties);
-
-        // -(BOOL)isEqualToSource:(BCOVSource *)source;
-        [Export("isEqualToSource:")]
-        bool IsEqualToSource(BCOVSource source);
-    }
-
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern NSString *const kBCOVVideoPropertyKeyAccountId;
-    //    [Field("kBCOVVideoPropertyKeyAccountId", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyAccountId { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyDescription;
-    //    [Field("kBCOVVideoPropertyKeyDescription", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyDescription { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyDuration;
-    //    [Field("kBCOVVideoPropertyKeyDuration", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyDuration { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyEconomics;
-    //    [Field("kBCOVVideoPropertyKeyEconomics", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyEconomics { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyId;
-    //    [Field("kBCOVVideoPropertyKeyId", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyId { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyLongDescription;
-    //    [Field("kBCOVVideoPropertyKeyLongDescription", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyLongDescription { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyName;
-    //    [Field("kBCOVVideoPropertyKeyName", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyName { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyPoster;
-    //    [Field("kBCOVVideoPropertyKeyPoster", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyPoster { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyPosterSources;
-    //    [Field("kBCOVVideoPropertyKeyPosterSources", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyPosterSources { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyProjection;
-    //    [Field("kBCOVVideoPropertyKeyProjection", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyProjection { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyReferenceId;
-    //    [Field("kBCOVVideoPropertyKeyReferenceId", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyReferenceId { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyTags;
-    //    [Field("kBCOVVideoPropertyKeyTags", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyTags { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyTextTracks;
-    //    [Field("kBCOVVideoPropertyKeyTextTracks", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyTextTracks { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyThumbnail;
-    //    [Field("kBCOVVideoPropertyKeyThumbnail", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyThumbnail { get; }
-
-    //    // extern NSString *const kBCOVVideoPropertyKeyThumbnailSources;
-    //    [Field("kBCOVVideoPropertyKeyThumbnailSources", "__Internal")]
-    //    NSString kBCOVVideoPropertyKeyThumbnailSources { get; }
-    //}
-
-    // @protocol BCOVVideo <NSObject>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface IBCOVVideo
-    {
-        // @required @property (readonly, copy, nonatomic) BCOVCuePointCollection * cuePoints;
-        [Abstract]
-        [Export("cuePoints", ArgumentSemantic.Copy)]
-        BCOVCuePointCollection CuePoints { get; }
-
-        // @required @property (readonly, copy, nonatomic) NSDictionary * properties;
-        [Abstract]
-        [Export("properties", ArgumentSemantic.Copy)]
-        NSDictionary Properties { get; }
-
-        // @required @property (nonatomic) BCOVEconomics economics;
-        [Abstract]
-        [Export("economics", ArgumentSemantic.Assign)]
-        BCOVEconomics Economics { get; set; }
-
-        // @required @property (readonly, copy, nonatomic) NSArray * sources;
-        [Abstract]
-        [Export("sources", ArgumentSemantic.Copy)]
-        BCOVSource[] Sources { get; }
-
-        // @required -(instancetype)update:(void (^)(id<BCOVMutableVideo>))updateBlock;
-        [Abstract]
-        [Export("update:")]
-        BCOVVideo Update(Action<BCOVMutableVideo> updateBlock);
-    }
-
-    // @protocol BCOVMutableVideo <BCOVVideo>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface BCOVMutableVideo : IBCOVVideo
-    {
-        // @required @property (readwrite, copy, nonatomic) BCOVCuePointCollection * cuePoints;
-        //[Abstract]
-        //[Export("cuePoints", ArgumentSemantic.Copy)]
-        //BCOVCuePointCollection CuePoints { get; set; }
-
-        //// @required @property (readwrite, copy, nonatomic) NSDictionary * properties;
-        //[Abstract]
-        //[Export("properties", ArgumentSemantic.Copy)]
-        //NSDictionary Properties { get; set; }
-
-        //// @required @property (readwrite, copy, nonatomic) NSArray * sources;
-        //[Abstract]
-        //[Export("sources", ArgumentSemantic.Copy)]
-        //NSObject[] Sources { get; set; }
-    }
-
-    // @interface BCOVVideo : NSObject <BCOVVideo, NSCopying>
-    [BaseType(typeof(NSObject))]
-    interface BCOVVideo : IBCOVVideo, INSCopying
-    {
-        // @property (readonly, nonatomic) BOOL canBeDownloaded;
-        [Export("canBeDownloaded")]
-        bool CanBeDownloaded { get; }
-
-        // @property (readonly, nonatomic) BOOL usesFairPlay;
-        [Export("usesFairPlay")]
-        bool UsesFairPlay { get; }
-
-        // @property (readonly, nonatomic) BOOL offline;
-        [Export("offline")]
-        bool Offline { get; }
-
-        // @property (readonly, nonatomic) BOOL playableOffline;
-        [Export("playableOffline")]
-        bool PlayableOffline { get; }
-
-        // -(instancetype)initWithSources:(NSArray *)sources cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
-        [Export("initWithSources:cuePoints:properties:")]
-        IntPtr Constructor(BCOVSource[] sources, BCOVCuePointCollection cuePoints, NSDictionary properties);
-
-        // -(instancetype)initWithSource:(BCOVSource *)source cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
-        [Export("initWithSource:cuePoints:properties:")]
-        IntPtr Constructor(BCOVSource source, BCOVCuePointCollection cuePoints, NSDictionary properties);
-
-        // -(BOOL)isEqualToVideo:(BCOVVideo *)video;
-        [Export("isEqualToVideo:")]
-        bool IsEqualToVideo(BCOVVideo video);
-
-        // +(BCOVVideo *)videoWithURL:(NSURL *)url;
-        [Static]
-        [Export("videoWithURL:")]
-        BCOVVideo VideoWithURL(NSUrl url);
-
-        // +(BCOVVideo *)videoWithHLSSourceURL:(NSURL *)url;
-        [Static]
-        [Export("videoWithHLSSourceURL:")]
-        BCOVVideo VideoWithHLSSourceURL(NSUrl url);
-
-        // +(BCOVVideo *)videoWithURL:(NSURL *)url deliveryMethod:(NSString *)deliveryMethod;
-        [Static]
-        [Export("videoWithURL:deliveryMethod:")]
-        BCOVVideo VideoWithURL(NSUrl url, string deliveryMethod);
-    }
-
-    //[Static]
-    //partial interface Constants
-    //{
-    //    // extern NSString *const kBCOVPlaybackServiceErrorDomain;
-    //    [Field("kBCOVPlaybackServiceErrorDomain", "__Internal")]
-    //    NSString kBCOVPlaybackServiceErrorDomain { get; }
-
-    //    // extern NSString *const kBCOVPlaybackServiceErrorKeyRawResponseData;
-    //    [Field("kBCOVPlaybackServiceErrorKeyRawResponseData", "__Internal")]
-    //    NSString kBCOVPlaybackServiceErrorKeyRawResponseData { get; }
-
-    //    // extern NSString *const kBCOVPlaybackServiceErrorKeyAPIErrors;
-    //    [Field("kBCOVPlaybackServiceErrorKeyAPIErrors", "__Internal")]
-    //    NSString kBCOVPlaybackServiceErrorKeyAPIErrors { get; }
-
-    //    // extern NSString *const kBCOVPlaybackServiceErrorKeyAPIHTTPStatusCode;
-    //    [Field("kBCOVPlaybackServiceErrorKeyAPIHTTPStatusCode", "__Internal")]
-    //    NSString kBCOVPlaybackServiceErrorKeyAPIHTTPStatusCode { get; }
-
-    //    // extern NSString *const kBCOVPlaybackServiceParameterKeyLimit;
-    //    [Field("kBCOVPlaybackServiceParameterKeyLimit", "__Internal")]
-    //    NSString kBCOVPlaybackServiceParameterKeyLimit { get; }
-
-    //    // extern NSString *const kBCOVPlaybackServiceParameterKeyOffset;
-    //    [Field("kBCOVPlaybackServiceParameterKeyOffset", "__Internal")]
-    //    NSString kBCOVPlaybackServiceParameterKeyOffset { get; }
-
-    //    // extern NSString *const kBCOVPlaybackServiceParamaterKeyAdConfigId;
-    //    [Field("kBCOVPlaybackServiceParamaterKeyAdConfigId", "__Internal")]
-    //    NSString kBCOVPlaybackServiceParamaterKeyAdConfigId { get; }
-
-    //    // extern NSString *const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
-    //    [Field("kBCOVPlaybackServiceParameterKeyDeliveryConfigId", "__Internal")]
-    //    NSString kBCOVPlaybackServiceParameterKeyDeliveryConfigId { get; }
-    //}
 
     // @interface BCOVPlaybackService : NSObject
     [BaseType(typeof(NSObject))]
@@ -546,58 +26,67 @@ namespace BrightcoveSDK.iOS
         [DesignatedInitializer]
         IntPtr Constructor(BCOVPlaybackServiceRequestFactory requestFactory);
 
-        // -(void)findPlaylistWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *, NSDictionary *, NSError *))completionHandler;
+        // -(void)findPlaylistWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters completion:(void (^)(int *, NSDictionary *, NSError *))completionHandler;
         [Export("findPlaylistWithPlaylistID:parameters:completion:")]
-        void FindPlaylistWithPlaylistID(string playlistID, NSDictionary parameters, Action<BCOVPlaylist, NSDictionary, NSError> completionHandler);
+        void FindPlaylistWithPlaylistID(string playlistID, NSDictionary parameters, Action<NSObject, NSDictionary, NSError> completionHandler);
 
-        // -(void)findPlaylistWithPlaylistID:(NSString *)playlistID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *, NSDictionary *, NSError *))completionHandler;
+        // -(void)findPlaylistWithPlaylistID:(NSString *)playlistID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(int *, NSDictionary *, NSError *))completionHandler;
         [Export("findPlaylistWithPlaylistID:authToken:parameters:completion:")]
-        void FindPlaylistWithPlaylistID(string playlistID, string authToken, NSDictionary parameters, Action<BCOVPlaylist, NSDictionary, NSError> completionHandler);
+        void FindPlaylistWithPlaylistID(string playlistID, string authToken, NSDictionary parameters, Action<NSObject, NSDictionary, NSError> completionHandler);
 
-        // -(void)findPlaylistWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *, NSDictionary *, NSError *))completionHandler;
+        // -(void)findPlaylistWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(int *, NSDictionary *, NSError *))completionHandler;
         [Export("findPlaylistWithReferenceID:parameters:completion:")]
-        void FindPlaylistWithReferenceID(string referenceID, NSDictionary parameters, Action<BCOVPlaylist, NSDictionary, NSError> completionHandler);
+        void FindPlaylistWithReferenceID(string referenceID, NSDictionary parameters, Action<NSObject, NSDictionary, NSError> completionHandler);
 
-        // -(void)findPlaylistWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *, NSDictionary *, NSError *))completionHandler;
+        // -(void)findPlaylistWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(int *, NSDictionary *, NSError *))completionHandler;
         [Export("findPlaylistWithReferenceID:authToken:parameters:completion:")]
-        void FindPlaylistWithReferenceID(string referenceID, string authToken, NSDictionary parameters, Action<BCOVPlaylist, NSDictionary, NSError> completionHandler);
+        void FindPlaylistWithReferenceID(string referenceID, string authToken, NSDictionary parameters, Action<NSObject, NSDictionary, NSError> completionHandler);
 
-        // -(void)findVideoWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *, NSDictionary *, NSError *))completionHandler;
+        // -(void)findVideoWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters completion:(void (^)(int *, NSDictionary *, NSError *))completionHandler;
         [Export("findVideoWithVideoID:parameters:completion:")]
-        void FindVideoWithVideoID(string videoID, NSDictionary parameters, Action<BCOVVideo, NSDictionary, NSError> completionHandler);
+        void FindVideoWithVideoID(string videoID, NSDictionary parameters, Action<NSObject, NSDictionary, NSError> completionHandler);
 
-        // -(void)findVideoWithVideoID:(NSString *)videoID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *, NSDictionary *, NSError *))completionHandler;
+        // -(void)findVideoWithVideoID:(NSString *)videoID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(int *, NSDictionary *, NSError *))completionHandler;
         [Export("findVideoWithVideoID:authToken:parameters:completion:")]
-        void FindVideoWithVideoID(string videoID, string authToken, NSDictionary parameters, Action<BCOVVideo, NSDictionary, NSError> completionHandler);
+        void FindVideoWithVideoID(string videoID, string authToken, NSDictionary parameters, Action<NSObject, NSDictionary, NSError> completionHandler);
 
-        // -(void)findVideoWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *, NSDictionary *, NSError *))completionHandler;
+        // -(void)findVideoWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(int *, NSDictionary *, NSError *))completionHandler;
         [Export("findVideoWithReferenceID:parameters:completion:")]
-        void FindVideoWithReferenceID(string referenceID, NSDictionary parameters, Action<BCOVVideo, NSDictionary, NSError> completionHandler);
+        void FindVideoWithReferenceID(string referenceID, NSDictionary parameters, Action<NSObject, NSDictionary, NSError> completionHandler);
 
-        // -(void)findVideoWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *, NSDictionary *, NSError *))completionHandler;
+        // -(void)findVideoWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(int *, NSDictionary *, NSError *))completionHandler;
         [Export("findVideoWithReferenceID:authToken:parameters:completion:")]
-        void FindVideoWithReferenceID(string referenceID, string authToken, NSDictionary parameters, Action<BCOVVideo, NSDictionary, NSError> completionHandler);
+        void FindVideoWithReferenceID(string referenceID, string authToken, NSDictionary parameters, Action<NSObject, NSDictionary, NSError> completionHandler);
 
-        // +(BCOVSource *)sourceFromJSONDictionary:(NSDictionary *)json;
+        // +(id)sourceFromJSONDictionary:(NSDictionary *)json;
         [Static]
         [Export("sourceFromJSONDictionary:")]
         BCOVSource SourceFromJSONDictionary(NSDictionary json);
 
-        // +(BCOVCuePoint *)cuePointFromJSONDictionary:(NSDictionary *)json;
+        // +(id)cuePointFromJSONDictionary:(NSDictionary *)json;
         [Static]
         [Export("cuePointFromJSONDictionary:")]
         BCOVCuePoint CuePointFromJSONDictionary(NSDictionary json);
 
-        // +(BCOVPlaylist *)playlistFromJSONDictionary:(NSDictionary *)json;
+        // +(id)playlistFromJSONDictionary:(NSDictionary *)json;
         [Static]
         [Export("playlistFromJSONDictionary:")]
         BCOVPlaylist PlaylistFromJSONDictionary(NSDictionary json);
 
-        // +(BCOVVideo *)videoFromJSONDictionary:(NSDictionary *)json;
+        // +(id)videoFromJSONDictionary:(NSDictionary *)json;
         [Static]
         [Export("videoFromJSONDictionary:")]
         BCOVVideo VideoFromJSONDictionary(NSDictionary json);
     }
+
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern NSString *const kBCOVEdgePlaybackAuthServiceBaseURL;
+    // 	[Field ("kBCOVEdgePlaybackAuthServiceBaseURL", "__Internal")]
+    // 	NSString kBCOVEdgePlaybackAuthServiceBaseURL { get; }
+    // }
 
     // @interface BCOVPlaybackServiceRequestFactory : NSObject
     [BaseType(typeof(NSObject))]
@@ -606,6 +95,10 @@ namespace BrightcoveSDK.iOS
         // @property (readonly, copy, nonatomic) NSString * accountId;
         [Export("accountId")]
         string AccountId { get; }
+
+        // @property (readonly, copy, nonatomic) NSString * policyKey;
+        [Export("policyKey")]
+        string PolicyKey { get; }
 
         // @property (readwrite, copy, nonatomic) NSDictionary * additionalHTTPRequestHeaders;
         [Export("additionalHTTPRequestHeaders", ArgumentSemantic.Copy)]
@@ -653,17 +146,6 @@ namespace BrightcoveSDK.iOS
         NSUrlRequest RequestForVideoWithReferenceID(string referenceId, string authToken, NSDictionary parameters);
     }
 
-    // @interface BCOVURLSupport (NSDictionary)
-    //[Category]
-    [Protocol]
-    [BaseType(typeof(NSDictionary))]
-    interface NSDictionary_BCOVURLSupport
-    {
-        // -(NSString *)bcov_UTF8EncodedRequestParameterString;
-        [Export("bcov_UTF8EncodedRequestParameterString")]
-        string Bcov_UTF8EncodedRequestParameterString { get; }
-    }
-
     // @interface BCOVGlobalConfiguration : NSObject
     [BaseType(typeof(NSObject))]
     [DisableDefaultCtor]
@@ -674,176 +156,178 @@ namespace BrightcoveSDK.iOS
         [Export("sharedConfig")]
         BCOVGlobalConfiguration SharedConfig { get; }
 
-        // @property (nonatomic) NSString * _Nonnull domainNameForChinaDelivery;
-        [Export("domainNameForChinaDelivery")]
+        // @property (nonatomic) NSString * _Nullable domainNameForChinaDelivery;
+        [NullAllowed, Export("domainNameForChinaDelivery")]
         string DomainNameForChinaDelivery { get; set; }
     }
 
-    //[Static]
-    //partial interface Constants
-    //{
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventWillPauseForAd;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventWillPauseForAd", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventWillPauseForAd { get; }
-    //}
-
-    // @interface BCOVAdSequence : NSObject
+    // @interface BCOVPlayerSDKManager : NSObject
     [BaseType(typeof(NSObject))]
-    interface BCOVAdSequence
+    interface BCOVPlayerSDKManager : BCOVPlayerSDKManager_BCOVFPSAdditions, BCOVPlayerSDKManager_BCOVSSAdditions
     {
-        // @property (readonly, nonatomic) CMTime beginTime;
-        [Export("beginTime")]
-        CMTime BeginTime { get; }
+        // +(NSString *)version;
+        [Static]
+        [Export("version")]
+        string Version { get; }
 
-        // @property (readonly, nonatomic) CMTime duration;
-        [Export("duration")]
-        CMTime Duration { get; }
+        // @property (readonly, nonatomic, strong) NSString * sessionID;
+        [Export("sessionID", ArgumentSemantic.Strong)]
+        string SessionID { get; }
 
-        // @property (readonly, copy, nonatomic) NSArray * ads;
-        [Export("ads", ArgumentSemantic.Copy)]
-        NSObject[] Ads { get; }
+        // -(id)createPlaybackController;
+        [Export("createPlaybackController")]
+        //[Verify(MethodToProperty)]
+        BCOVPlaybackController CreatePlaybackController();
 
-        // @property (readonly, copy, nonatomic) NSDictionary * properties;
-        [Export("properties", ArgumentSemantic.Copy)]
-        NSDictionary Properties { get; }
+        // -(id)createPlaybackControllerWithViewStrategy:(id)viewStrategy;
+        [Export("createPlaybackControllerWithViewStrategy:")]
+        NSObject CreatePlaybackControllerWithViewStrategy(NSObject viewStrategy);
 
-        // -(instancetype)initWithAds:(NSArray *)ads properties:(NSDictionary *)properties;
-        [Export("initWithAds:properties:")]
-        IntPtr Constructor(NSObject[] ads, NSDictionary properties);
+        // -(id)createPlaybackControllerWithSessionProvider:(id<BCOVPlaybackSessionProvider>)provider viewStrategy:(id)viewStrategy;
+        [Export("createPlaybackControllerWithSessionProvider:viewStrategy:")]
+        NSObject CreatePlaybackControllerWithSessionProvider(BCOVPlaybackSessionProvider provider, NSObject viewStrategy);
 
-        // -(BOOL)isEqualToAdSequence:(BCOVAdSequence *)adSequence;
-        [Export("isEqualToAdSequence:")]
-        bool IsEqualToAdSequence(BCOVAdSequence adSequence);
+        // -(id<BCOVPlaybackSessionProvider>)createBasicSessionProviderWithOptions:(BCOVBasicSessionProviderOptions *)options;
+        [Export("createBasicSessionProviderWithOptions:")]
+        BCOVPlaybackSessionProvider CreateBasicSessionProviderWithOptions(BCOVBasicSessionProviderOptions options);
+
+        // -(void)registerComponent:(id<BCOVComponent>)component;
+        [Export("registerComponent:")]
+        void RegisterComponent(BCOVComponent component);
+
+        // +(BCOVPlayerSDKManager *)sharedManager;
+        [Static]
+        [Export("sharedManager")]
+        //Hack
+        // BCOVPlayerSDKManager SharedManager { get; }
+        BCOVPlayerSDKManager SharedManager();
+
+        // +(BCOVPlayerSDKManager *)sharedManagerWithOptions:(NSDictionary *)options;
+        [Static]
+        [Export("sharedManagerWithOptions:")]
+        BCOVPlayerSDKManager SharedManagerWithOptions(NSDictionary options);
     }
 
-    // @interface BCOVAd : NSObject
-    [BaseType(typeof(NSObject))]
-    interface BCOVAd
-    {
-        // @property (readonly, copy, nonatomic) NSString * title;
-        [Export("title")]
-        string Title { get; }
-
-        // @property (readonly, copy, nonatomic) NSString * adId;
-        [Export("adId")]
-        string AdId { get; }
-
-        // @property (readonly, nonatomic) CMTime beginTime;
-        [Export("beginTime")]
-        CMTime BeginTime { get; }
-
-        // @property (readonly, nonatomic) CMTime duration;
-        [Export("duration")]
-        CMTime Duration { get; }
-
-        // @property (readonly, copy, nonatomic) NSDictionary * properties;
-        [Export("properties", ArgumentSemantic.Copy)]
-        NSDictionary Properties { get; }
-
-        // -(instancetype)initWithTitle:(NSString *)title adId:(NSString *)adId beginTime:(CMTime)beginTime duration:(CMTime)duration properties:(NSDictionary *)properties __attribute__((objc_designated_initializer));
-        [Export("initWithTitle:adId:beginTime:duration:properties:")]
-        [DesignatedInitializer]
-        IntPtr Constructor(string title, string adId, CMTime beginTime, CMTime duration, NSDictionary properties);
-
-        // -(BOOL)isEqualToAd:(BCOVAd *)ad;
-        [Export("isEqualToAd:")]
-        bool IsEqualToAd(BCOVAd ad);
-    }
-
-    // @protocol BCOVPlaybackControllerAdsDelegate <NSObject>
+    // @protocol BCOVComponentIdentity <NSObject>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface IBCOVPlaybackControllerAdsDelegate
+    interface BCOVComponentIdentity
     {
-        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didEnterAdSequence:(BCOVAdSequence *)adSequence;
-        [Export("playbackController:playbackSession:didEnterAdSequence:")]
-        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAdSequence adSequence);
+        // @required @property (readonly, nonatomic) Class componentClass;
+        [Abstract]
+        [Export("componentClass")]
+        Class ComponentClass { get; }
 
-        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didExitAdSequence:(BCOVAdSequence *)adSequence;
-        [Export("playbackController:playbackSession:didExitAdSequence:")]
-        void PlaybackSessiondidExitAdSequence(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAdSequence adSequence);
-
-        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didEnterAd:(BCOVAd *)ad;
-        [Export("playbackController:playbackSession:didEnterAd:")]
-        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
-
-        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didExitAd:(BCOVAd *)ad;
-        [Export("playbackController:playbackSession:didExitAd:")]
-        void PlaybackSessiondidExitAd(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
-
-        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session ad:(BCOVAd *)ad didProgressTo:(NSTimeInterval)progress;
-        [Export("playbackController:playbackSession:ad:didProgressTo:")]
-        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad, double progress);
-
-        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didPauseAd:(BCOVAd *)ad;
-        [Export("playbackController:playbackSession:didPauseAd:")]
-        void PlaybackSessiondidPauseAd(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
-
-        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didResumeAd:(BCOVAd *)ad;
-        [Export("playbackController:playbackSession:didResumeAd:")]
-        void PlaybackSessiondidResumeAd(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
+        // @required @property (readonly, nonatomic) NSString * versionIdentifier;
+        [Abstract]
+        [Export("versionIdentifier")]
+        string VersionIdentifier { get; }
     }
 
-    // @protocol BCOVPlaybackSessionAdsConsumer <NSObject>
-    [Protocol, Model]
+    // @protocol BCOVComponent <NSObject>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
+    [Model, Protocol]
     [BaseType(typeof(NSObject))]
-    interface IBCOVPlaybackSessionAdsConsumer
+    interface BCOVComponent
     {
-        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didEnterAdSequence:(BCOVAdSequence *)adSequence;
-        [Export("playbackSession:didEnterAdSequence:")]
-        void DidEnterAdSequence(BCOVPlaybackSession session, BCOVAdSequence adSequence);
+        // @required @property (readonly, nonatomic) id<BCOVComponentIdentity> bcov_componentIdentity;
+        [Abstract]
+        [Export("bcov_componentIdentity")]
+        BCOVComponentIdentity Bcov_componentIdentity { get; }
 
-        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didExitAdSequence:(BCOVAdSequence *)adSequence;
-        [Export("playbackSession:didExitAdSequence:")]
-        void DidExitAdSequence(BCOVPlaybackSession session, BCOVAdSequence adSequence);
-
-        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didEnterAd:(BCOVAd *)ad;
-        [Export("playbackSession:didEnterAd:")]
-        void DidEnterAd(BCOVPlaybackSession session, BCOVAd ad);
-
-        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didExitAd:(BCOVAd *)ad;
-        [Export("playbackSession:didExitAd:")]
-        void DidExitAd(BCOVPlaybackSession session, BCOVAd ad);
-
-        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session ad:(BCOVAd *)ad didProgressTo:(NSTimeInterval)progress;
-        [Export("playbackSession:ad:didProgressTo:")]
-        void Ad(BCOVPlaybackSession session, BCOVAd ad, double progress);
-
-        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didPauseAd:(BCOVAd *)ad;
-        [Export("playbackSession:didPauseAd:")]
-        void DidPauseAd(BCOVPlaybackSession session, BCOVAd ad);
-
-        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didResumeAd:(BCOVAd *)ad;
-        [Export("playbackSession:didResumeAd:")]
-        void DidResumeAd(BCOVPlaybackSession session, BCOVAd ad);
+        // @optional -(void)bcov_setComponentContext:(NSDictionary *)componentContext;
+        [Export("bcov_setComponentContext:")]
+        void Bcov_setComponentContext(NSDictionary componentContext);
     }
 
-    // @interface Unavailable (BCOVAdSequence)
-    //[Category]
-    [Protocol]
+    // typedef BCOVSource * (^BCOVBasicSessionProviderSourceSelectionPolicy)(BCOVVideo *);
+    delegate BCOVSource BCOVBasicSessionProviderSourceSelectionPolicy(BCOVVideo arg0);
+
+    // @interface BCOVBasicSessionProvider : NSObject <BCOVPlaybackSessionProvider>
     [BaseType(typeof(NSObject))]
-    [DisableDefaultCtor]
-    interface BCOVAdSequence_Unavailable : BCOVAdSequence
+    interface BCOVBasicSessionProvider : BCOVPlaybackSessionProvider
     {
+        // -(instancetype)initWithOptions:(BCOVBasicSessionProviderOptions *)options;
+        [Export("initWithOptions:")]
+        IntPtr Constructor(BCOVBasicSessionProviderOptions options);
     }
 
-    // @interface Unavailable (BCOVAd)
-    //[Category]
-    [Protocol]
+    // @interface BCOVBasicSourceSelectionPolicy : NSObject <NSCopying>
     [BaseType(typeof(NSObject))]
-    [DisableDefaultCtor]
-    interface BCOVAd_Unavailable : BCOVAd
+    interface BCOVBasicSourceSelectionPolicy : INSCopying
     {
+        // +(BCOVBasicSessionProviderSourceSelectionPolicy)sourceSelectionHLSWithScheme:(NSString *)scheme;
+        [Static]
+        [Export("sourceSelectionHLSWithScheme:")]
+        BCOVBasicSessionProviderSourceSelectionPolicy SourceSelectionHLSWithScheme(string scheme);
+
+        // +(BCOVBasicSessionProviderSourceSelectionPolicy)sourceSelectionHLS;
+        [Static]
+        [Export("sourceSelectionHLS")]
+        // [Verify (MethodToProperty)]
+        BCOVBasicSessionProviderSourceSelectionPolicy SourceSelectionHLS { get; }
     }
 
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern const CGFloat kBCOVVideo360BaseAngleOfView;
-    //    [Field("kBCOVVideo360BaseAngleOfView", "__Internal")]
-    //    nfloat kBCOVVideo360BaseAngleOfView { get; }
-    //}
+    // @interface BCOVBasicSessionProviderOptions : NSObject
+    [BaseType(typeof(NSObject))]
+    interface BCOVBasicSessionProviderOptions
+    {
+        // @property (copy, nonatomic) BCOVSource * (^sourceSelectionPolicy)(BCOVVideo *);
+        [Export("sourceSelectionPolicy", ArgumentSemantic.Copy)]
+        Func<BCOVVideo, BCOVSource> SourceSelectionPolicy { get; set; }
+    }
+
+    // @interface BCOVCuePointProgressPolicy : NSObject
+    [BaseType(typeof(NSObject))]
+    interface BCOVCuePointProgressPolicy
+    {
+        // -(BCOVCuePointProgressPolicyResult *)applyToEvent:(NSDictionary *)cuePointEvent;
+        [Export("applyToEvent:")]
+        BCOVCuePointProgressPolicyResult ApplyToEvent(NSDictionary cuePointEvent);
+
+        // @property (readonly, nonatomic) BOOL ignoringPreviouslyProcessedCuePoints;
+        [Export("ignoringPreviouslyProcessedCuePoints")]
+        bool IgnoringPreviouslyProcessedCuePoints { get; }
+
+        // +(instancetype)progressPolicyProcessingCuePoints:(BCOVProgressPolicyCuePointsToProcess)cuePointsToProcess resumingPlaybackFrom:(BCOVProgressPolicyResumePosition)resumePosition ignoringPreviouslyProcessedCuePoints:(BOOL)ignorePrevious;
+        [Static]
+        [Export("progressPolicyProcessingCuePoints:resumingPlaybackFrom:ignoringPreviouslyProcessedCuePoints:")]
+        BCOVCuePointProgressPolicy ProgressPolicyProcessingCuePoints(BCOVProgressPolicyCuePointsToProcess cuePointsToProcess, BCOVProgressPolicyResumePosition resumePosition, bool ignorePrevious);
+    }
+
+    // @interface BCOVCuePointProgressPolicyResult : NSObject
+    [BaseType(typeof(NSObject))]
+    interface BCOVCuePointProgressPolicyResult
+    {
+        // -(instancetype)initWithCuePoints:(BCOVCuePointCollection *)cuePoints resumeCuePoint:(BCOVCuePoint *)resumeCuePoint;
+        [Export("initWithCuePoints:resumeCuePoint:")]
+        IntPtr Constructor(BCOVCuePointCollection cuePoints, BCOVCuePoint resumeCuePoint);
+
+        // @property (readonly, copy, nonatomic) BCOVCuePoint * resumeCuePoint;
+        [Export("resumeCuePoint", ArgumentSemantic.Copy)]
+        BCOVCuePoint ResumeCuePoint { get; }
+
+        // @property (readonly, copy, nonatomic) BCOVCuePointCollection * cuePoints;
+        [Export("cuePoints", ArgumentSemantic.Copy)]
+        BCOVCuePointCollection CuePoints { get; }
+    }
 
     // @interface BCOVVideo360ViewProjection : NSObject
     [BaseType(typeof(NSObject))]
@@ -887,197 +371,240 @@ namespace BrightcoveSDK.iOS
         BCOVVideo360ViewProjection ViewProjection();
     }
 
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern NSString *const kBCOVBufferOptimizerMethodKey;
-    //    [Field("kBCOVBufferOptimizerMethodKey", "__Internal")]
-    //    NSString kBCOVBufferOptimizerMethodKey { get; }
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern NSString *const kBCOVBufferOptimizerMethodKey;
+    // 	[Field ("kBCOVBufferOptimizerMethodKey", "__Internal")]
+    // 	NSString kBCOVBufferOptimizerMethodKey { get; }
 
-    //    // extern NSString *const kBCOVBufferOptimizerMinimumDurationKey;
-    //    [Field("kBCOVBufferOptimizerMinimumDurationKey", "__Internal")]
-    //    NSString kBCOVBufferOptimizerMinimumDurationKey { get; }
+    // 	// extern NSString *const kBCOVBufferOptimizerMinimumDurationKey;
+    // 	[Field ("kBCOVBufferOptimizerMinimumDurationKey", "__Internal")]
+    // 	NSString kBCOVBufferOptimizerMinimumDurationKey { get; }
 
-    //    // extern NSString *const kBCOVBufferOptimizerMaximumDurationKey;
-    //    [Field("kBCOVBufferOptimizerMaximumDurationKey", "__Internal")]
-    //    NSString kBCOVBufferOptimizerMaximumDurationKey { get; }
+    // 	// extern NSString *const kBCOVBufferOptimizerMaximumDurationKey;
+    // 	[Field ("kBCOVBufferOptimizerMaximumDurationKey", "__Internal")]
+    // 	NSString kBCOVBufferOptimizerMaximumDurationKey { get; }
 
-    //    // extern NSString *const kBCOVAVPlayerViewControllerCompatibilityKey;
-    //    [Field("kBCOVAVPlayerViewControllerCompatibilityKey", "__Internal")]
-    //    NSString kBCOVAVPlayerViewControllerCompatibilityKey { get; }
-    //}
+    // 	// extern NSString *const kBCOVAVPlayerViewControllerCompatibilityKey;
+    // 	[Field ("kBCOVAVPlayerViewControllerCompatibilityKey", "__Internal")]
+    // 	NSString kBCOVAVPlayerViewControllerCompatibilityKey { get; }
+    // }
 
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern NSString *const kBCOVDefaultFairPlayApplicationCertificateIdentifier;
-    //    [Field("kBCOVDefaultFairPlayApplicationCertificateIdentifier", "__Internal")]
-    //    NSString kBCOVDefaultFairPlayApplicationCertificateIdentifier { get; }
-    //}
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern NSString *const kBCOVDefaultFairPlayApplicationCertificateIdentifier;
+    // 	[Field ("kBCOVDefaultFairPlayApplicationCertificateIdentifier", "__Internal")]
+    // 	NSString kBCOVDefaultFairPlayApplicationCertificateIdentifier { get; }
+    // }
 
     // typedef UIView * (^BCOVPlaybackControllerViewStrategy)(UIView *, id<BCOVPlaybackController>);
     delegate UIView BCOVPlaybackControllerViewStrategy(UIView arg0, BCOVPlaybackController arg1);
 
     // @protocol BCOVPlaybackController <NSObject>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
     [Protocol]
     [BaseType(typeof(NSObject))]
     interface BCOVPlaybackController
     {
-        //[Wrap("WeakDelegate"), Abstract]
-        //HAck
+        // [Wrap ("WeakDelegate"), Abstract]
+        //Hack
         [Wrap("WeakDelegate")]
         BCOVPlaybackControllerDelegate Delegate { get; set; }
 
         // @required @property (assign, nonatomic) id<BCOVPlaybackControllerDelegate> delegate;
-        //[Abstract]
+        // [Abstract]
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
         NSObject WeakDelegate { get; set; }
 
         // @required @property (getter = isAutoAdvance, assign, nonatomic) BOOL autoAdvance;
-        //[Abstract]
+        // [Abstract]
         [Export("autoAdvance")]
         bool AutoAdvance { [Bind("isAutoAdvance")] get; set; }
 
         // @required @property (getter = isAutoPlay, assign, nonatomic) BOOL autoPlay;
-        //[Abstract]
+        // [Abstract]
         [Export("autoPlay")]
         bool AutoPlay { [Bind("isAutoPlay")] get; set; }
 
         // @required @property (readonly, nonatomic, strong) UIView * view;
-        //[Abstract]
+        // [Abstract]
         [Export("view", ArgumentSemantic.Strong)]
         UIView View { get; }
 
         // @required @property (readwrite, copy, nonatomic) NSDictionary * options;
-        //[Abstract]
+        // [Abstract]
         [Export("options", ArgumentSemantic.Copy)]
         NSDictionary Options { get; set; }
 
         // @required @property (readonly, copy, nonatomic) id<BCOVMutableAnalytics> analytics;
-        //[Abstract]
+        // [Abstract]
         [Export("analytics", ArgumentSemantic.Copy)]
         BCOVMutableAnalytics Analytics { get; }
 
         // @required @property (readwrite, nonatomic) BOOL adsDisabled;
-        //[Abstract]
+        // [Abstract]
         [Export("adsDisabled")]
         bool AdsDisabled { get; set; }
 
         // @required @property (readwrite, nonatomic) BOOL allowsBackgroundAudioPlayback;
-        //[Abstract]
+        // [Abstract]
         [Export("allowsBackgroundAudioPlayback")]
         bool AllowsBackgroundAudioPlayback { get; set; }
 
         // @required @property (readwrite, nonatomic) BOOL allowsExternalPlayback;
-        //[Abstract]
+        // [Abstract]
         [Export("allowsExternalPlayback")]
         bool AllowsExternalPlayback { get; set; }
 
         // @required @property (readwrite, nonatomic) BOOL usesExternalPlaybackWhileExternalScreenIsActive;
-        //[Abstract]
+        // [Abstract]
         [Export("usesExternalPlaybackWhileExternalScreenIsActive")]
         bool UsesExternalPlaybackWhileExternalScreenIsActive { get; set; }
 
         // @required @property (getter = isPictureInPictureActive, assign, readwrite, nonatomic) BOOL pictureInPictureActive;
-        //[Abstract]
+        // [Abstract]
         [Export("pictureInPictureActive")]
         bool PictureInPictureActive { [Bind("isPictureInPictureActive")] get; set; }
 
+        // @required -(void)setPreferredPeakBitRate:(double)preferredPeakBitRate;
+        // [Abstract]
+        [Export("setPreferredPeakBitRate:")]
+        void SetPreferredPeakBitRate(double preferredPeakBitRate);
+
+        // @required -(void)updateAudienceSegmentTargetingValues:(NSDictionary *)audienceSegmentTargetingValues;
+        // [Abstract]
+        [Export("updateAudienceSegmentTargetingValues:")]
+        void UpdateAudienceSegmentTargetingValues(NSDictionary audienceSegmentTargetingValues);
+
+        // @required @property (assign, readwrite, nonatomic) BOOL thumbnailScrubbingEnabled;
+        // [Abstract]
+        [Export("thumbnailScrubbingEnabled")]
+        bool ThumbnailScrubbingEnabled { get; set; }
+
         // @required @property (readwrite, nonatomic) BOOL shutter;
-        //[Abstract]
+        // [Abstract]
         [Export("shutter")]
         bool Shutter { get; set; }
 
         // @required @property (readwrite, nonatomic) NSTimeInterval shutterFadeTime;
-        //[Abstract]
+        // [Abstract]
         [Export("shutterFadeTime")]
         double ShutterFadeTime { get; set; }
 
         // @required @property (readwrite, copy, nonatomic) BCOVVideo360ViewProjection * viewProjection;
-        //[Abstract]
+        // [Abstract]
         [Export("viewProjection", ArgumentSemantic.Copy)]
         BCOVVideo360ViewProjection ViewProjection { get; set; }
 
         // @required -(void)addSessionConsumer:(id<BCOVPlaybackSessionConsumer>)consumer;
-        //[Abstract]
+        // [Abstract]
         [Export("addSessionConsumer:")]
         void AddSessionConsumer(BCOVPlaybackSessionConsumer consumer);
 
         // @required -(void)removeSessionConsumer:(id<BCOVPlaybackSessionConsumer>)consumer;
-        //[Abstract]
+        // [Abstract]
         [Export("removeSessionConsumer:")]
         void RemoveSessionConsumer(BCOVPlaybackSessionConsumer consumer);
 
         // @required -(void)advanceToNext;
-        //[Abstract]
+        // [Abstract]
         [Export("advanceToNext")]
         void AdvanceToNext();
 
         // @required -(void)play;
-        //[Abstract]
+        // [Abstract]
         [Export("play")]
         void Play();
 
         // @required -(void)pause;
-        //[Abstract]
+        // [Abstract]
         [Export("pause")]
         void Pause();
 
         // @required -(void)seekToTime:(CMTime)time completionHandler:(void (^)(BOOL))completionHandler;
-        //[Abstract]
+        // [Abstract]
         [Export("seekToTime:completionHandler:")]
         void SeekToTime(CMTime time, Action<bool> completionHandler);
 
         // @required -(void)seekToTime:(CMTime)time toleranceBefore:(CMTime)toleranceBefore toleranceAfter:(CMTime)toleranceAfter completionHandler:(void (^)(BOOL))completionHandler;
-        //[Abstract]
+        // [Abstract]
         [Export("seekToTime:toleranceBefore:toleranceAfter:completionHandler:")]
         void SeekToTime(CMTime time, CMTime toleranceBefore, CMTime toleranceAfter, Action<bool> completionHandler);
 
         // @required -(void)seekWithoutAds:(CMTime)time completionHandler:(void (^)(BOOL))completionHandler;
-        //[Abstract]
+        // [Abstract]
         [Export("seekWithoutAds:completionHandler:")]
         void SeekWithoutAds(CMTime time, Action<bool> completionHandler);
 
         // @required -(void)resumeVideoAtTime:(CMTime)time withAutoPlay:(BOOL)autoPlay;
-        //[Abstract]
+        // [Abstract]
         [Export("resumeVideoAtTime:withAutoPlay:")]
         void ResumeVideoAtTime(CMTime time, bool autoPlay);
 
         // @required -(void)setVideos:(id<NSFastEnumeration>)videos;
-        //[Abstract]
+        // [Abstract]
         [Export("setVideos:")]
+        //void SetVideos(NSFastEnumeration videos);
         //Hack
         void SetVideos(NSArray videos);
 
         // @required -(void)resumeAd;
-        //[Abstract]
+        // [Abstract]
         [Export("resumeAd")]
         void ResumeAd();
 
         // @required -(void)pauseAd;
-        //[Abstract]
+        // [Abstract]
         [Export("pauseAd")]
         void PauseAd();
 
         // @required -(void)addFairPlayApplicationCertificate:(NSData *)applicationCertificateData identifier:(NSString *)identifier;
-        //[Abstract]
+        // [Abstract]
         [Export("addFairPlayApplicationCertificate:identifier:")]
         void AddFairPlayApplicationCertificate(NSData applicationCertificateData, string identifier);
     }
 
-    // @protocol BCOVPlaybackSessionConsumer <BCOVPlaybackSessionBasicConsumer, BCOVPlaybackSessionAdsConsumer>
+    // @protocol BCOVPlaybackSessionConsumer <BCOVPlaybackSessionBasicConsumer>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface BCOVPlaybackSessionConsumer : IBCOVPlaybackSessionBasicConsumer, IBCOVPlaybackSessionAdsConsumer
+    interface BCOVPlaybackSessionConsumer : BCOVPlaybackSessionBasicConsumer
     {
     }
 
     // @protocol BCOVPlaybackSessionBasicConsumer <NSObject>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
     [Protocol]
     [BaseType(typeof(NSObject))]
-    interface IBCOVPlaybackSessionBasicConsumer
+    interface BCOVPlaybackSessionBasicConsumer
     {
         // @optional -(void)didAdvanceToPlaybackSession:(id<BCOVPlaybackSession>)session;
         [Export("didAdvanceToPlaybackSession:")]
@@ -1101,6 +628,7 @@ namespace BrightcoveSDK.iOS
 
         // @optional -(void)didCompletePlaylist:(id<NSFastEnumeration>)playlist;
         [Export("didCompletePlaylist:")]
+        //void DidCompletePlaylist(NSFastEnumeration playlist);
         //Hack
         void DidCompletePlaylist(NSObject playlist);
 
@@ -1110,21 +638,21 @@ namespace BrightcoveSDK.iOS
 
         // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didChangeSeekableRanges:(NSArray *)seekableRanges;
         [Export("playbackSession:didChangeSeekableRanges:")]
-        //[Verify(StronglyTypedNSArray)]
+        // [Verify (StronglyTypedNSArray)]
         void PlaybackSession(BCOVPlaybackSession session, NSObject[] seekableRanges);
     }
 
-    // @protocol BCOVPlaybackControllerDelegate <BCOVPlaybackControllerBasicDelegate, BCOVPlaybackControllerAdsDelegate>
+    // @protocol BCOVPlaybackControllerDelegate <BCOVPlaybackControllerBasicDelegate>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
-    interface BCOVPlaybackControllerDelegate : IBCOVPlaybackControllerBasicDelegate, IBCOVPlaybackControllerAdsDelegate
+    interface BCOVPlaybackControllerDelegate : BCOVPlaybackControllerBasicDelegate
     {
     }
 
     // @protocol BCOVPlaybackControllerBasicDelegate <NSObject>
-    [Protocol, Model]
+    [Protocol, Model(AutoGeneratedName = true)]
     [BaseType(typeof(NSObject))]
-    interface IBCOVPlaybackControllerBasicDelegate
+    interface BCOVPlaybackControllerBasicDelegate
     {
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller didAdvanceToPlaybackSession:(id<BCOVPlaybackSession>)session;
         [Export("playbackController:didAdvanceToPlaybackSession:")]
@@ -1148,7 +676,8 @@ namespace BrightcoveSDK.iOS
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller didCompletePlaylist:(id<NSFastEnumeration>)playlist;
         [Export("playbackController:didCompletePlaylist:")]
-        //HAck
+        //void DidCompletePlaylist(BCOVPlaybackController controller, NSFastEnumeration playlist);
+        //Hack
         void DidCompletePlaylist(BCOVPlaybackController controller, NSObject playlist);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent;
@@ -1159,9 +688,29 @@ namespace BrightcoveSDK.iOS
         [Export("playbackController:playbackSession:didChangeSeekableRanges:")]
         //[Verify(StronglyTypedNSArray)]
         void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, NSObject[] seekableRanges);
+
+        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller noPlayableVideosFound:(id<NSFastEnumeration>)unplayableVideos;
+        [Export("playbackController:noPlayableVideosFound:")]
+        //void NoPlayableVideosFound(BCOVPlaybackController controller, NSFastEnumeration unplayableVideos);
+        //Hack
+        void NoPlayableVideosFound(BCOVPlaybackController controller, NSObject unplayableVideos);
+
+
+        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller determinedVideoType:(BCOVVideoType)videoType forVideo:(BCOVVideo *)video;
+        [Export("playbackController:determinedVideoType:forVideo:")]
+        void DeterminedVideoType(BCOVPlaybackController controller, BCOVVideoType videoType, BCOVVideo video);
     }
 
     // @protocol BCOVMutableAnalytics <NSObject>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
     [Protocol]
     [BaseType(typeof(NSObject))]
     interface BCOVMutableAnalytics
@@ -1187,397 +736,220 @@ namespace BrightcoveSDK.iOS
         bool UniqueIdentifierEnabled { [Bind("isUniqueIdentifierEnabled")] get; set; }
     }
 
-    // @interface BCOVPlayerSDKManager : NSObject
-    [BaseType(typeof(NSObject))]
-    interface BCOVPlayerSDKManager : BCOVPlayerSDKManager_BCOVFPSAdditions, BCOVPlayerSDKManager_BCOVSSAdditions
-    {
-        // +(NSString *)version;
-        [Static]
-        [Export("version")]
-        string Version { get; }
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventReady;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventReady", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventReady { get; }
 
-        // @property (readonly, nonatomic, strong) NSString * sessionID;
-        [Export("sessionID", ArgumentSemantic.Strong)]
-        string SessionID { get; }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventFail;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventFail", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventFail { get; }
 
-        // -(id<BCOVPlaybackController>)createPlaybackController;
-        [Export("createPlaybackController")]
-        //[Verify(MethodToProperty)]
-        //Hack
-        BCOVPlaybackController CreatePlaybackController();
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventPlay;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventPlay", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventPlay { get; }
 
-        // -(id<BCOVPlaybackController>)createPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)viewStrategy;
-        [Export("createPlaybackControllerWithViewStrategy:")]
-        BCOVPlaybackController CreatePlaybackControllerWithViewStrategy(BCOVPlaybackControllerViewStrategy viewStrategy);
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventPause;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventPause", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventPause { get; }
 
-        // -(id<BCOVPlaybackController>)createPlaybackControllerWithSessionProvider:(id<BCOVPlaybackSessionProvider>)provider viewStrategy:(BCOVPlaybackControllerViewStrategy)viewStrategy;
-        [Export("createPlaybackControllerWithSessionProvider:viewStrategy:")]
-        BCOVPlaybackController CreatePlaybackControllerWithSessionProvider(BCOVPlaybackSessionProvider provider, BCOVPlaybackControllerViewStrategy viewStrategy);
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventPlayRequest;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventPlayRequest", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventPlayRequest { get; }
 
-        // -(id<BCOVPlaybackSessionProvider>)createBasicSessionProviderWithOptions:(BCOVBasicSessionProviderOptions *)options;
-        [Export("createBasicSessionProviderWithOptions:")]
-        BCOVPlaybackSessionProvider CreateBasicSessionProviderWithOptions(BCOVBasicSessionProviderOptions options);
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventPauseRequest;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventPauseRequest", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventPauseRequest { get; }
 
-        // -(void)registerComponent:(id<BCOVComponent>)component;
-        [Export("registerComponent:")]
-        void RegisterComponent(BCOVComponent component);
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime { get; }
 
-        // +(BCOVPlayerSDKManager *)sharedManager;
-        [Static]
-        [Export("sharedManager")]
-        //[Verify(MethodToProperty)]
-        //BCOVPlayerSDKManager SharedManager { get; }
-        BCOVPlayerSDKManager SharedManager();
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventResumeBegin;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventResumeBegin", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventResumeBegin { get; }
 
-        // +(BCOVPlayerSDKManager *)sharedManagerWithOptions:(NSDictionary *)options;
-        [Static]
-        [Export("sharedManagerWithOptions:")]
-        BCOVPlayerSDKManager SharedManagerWithOptions(NSDictionary options);
-    }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventResumeComplete;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventResumeComplete", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventResumeComplete { get; }
 
-    // @protocol BCOVComponentIdentity <NSObject>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface BCOVComponentIdentity
-    {
-        // @required @property (readonly, nonatomic) Class componentClass;
-        [Abstract]
-        [Export("componentClass")]
-        Class ComponentClass { get; }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventResumeFail;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventResumeFail", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventResumeFail { get; }
 
-        // @required @property (readonly, nonatomic) NSString * versionIdentifier;
-        [Abstract]
-        [Export("versionIdentifier")]
-        string VersionIdentifier { get; }
-    }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventEnd;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventEnd", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventEnd { get; }
 
-    // @protocol BCOVComponent <NSObject>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface BCOVComponent
-    {
-        // @required @property (readonly, nonatomic) id<BCOVComponentIdentity> bcov_componentIdentity;
-        [Abstract]
-        [Export("bcov_componentIdentity")]
-        BCOVComponentIdentity Bcov_componentIdentity { get; }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventPlaybackStalled;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventPlaybackStalled", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventPlaybackStalled { get; }
 
-        // @optional -(void)bcov_setComponentContext:(NSDictionary *)componentContext;
-        [Export("bcov_setComponentContext:")]
-        void Bcov_setComponentContext(NSDictionary componentContext);
-    }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventPlaybackRecovered;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventPlaybackRecovered", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventPlaybackRecovered { get; }
 
-    // @protocol BCOVPlaybackSessionProvider <NSObject>
-    [Protocol]
-    [BaseType(typeof(NSObject))]
-    interface BCOVPlaybackSessionProvider
-    {
-        // @required -(id)playbackSessionsForVideos:(id<NSFastEnumeration>)videos __attribute__((deprecated("Do not use")));
-        //[Abstract]
-        //[Export("playbackSessionsForVideos:")]
-        ////Hack
-        //NSObject PlaybackSessionsForVideos(NSObject videos);
-    }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty { get; }
 
-    // typedef BCOVSource * (^BCOVBasicSessionProviderSourceSelectionPolicy)(BCOVVideo *);
-    delegate BCOVSource BCOVBasicSessionProviderSourceSelectionPolicy(BCOVVideo arg0);
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp { get; }
 
-    // @interface BCOVBasicSessionProvider : NSObject <BCOVPlaybackSessionProvider>
-    [BaseType(typeof(NSObject))]
-    interface BCOVBasicSessionProvider : BCOVPlaybackSessionProvider
-    {
-        // -(instancetype)initWithOptions:(BCOVBasicSessionProviderOptions *)options;
-        [Export("initWithOptions:")]
-        IntPtr Constructor(BCOVBasicSessionProviderOptions options);
-    }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventTerminate;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventTerminate", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventTerminate { get; }
 
-    // @interface BCOVBasicSourceSelectionPolicy : NSObject <NSCopying>
-    [BaseType(typeof(NSObject))]
-    interface BCOVBasicSourceSelectionPolicy : INSCopying
-    {
-        // +(BCOVBasicSessionProviderSourceSelectionPolicy)sourceSelectionHLSWithScheme:(NSString *)scheme;
-        [Static]
-        [Export("sourceSelectionHLSWithScheme:")]
-        BCOVBasicSessionProviderSourceSelectionPolicy SourceSelectionHLSWithScheme(string scheme);
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventError;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventError", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventError { get; }
 
-        // +(BCOVBasicSessionProviderSourceSelectionPolicy)sourceSelectionHLS;
-        [Static]
-        [Export("sourceSelectionHLS")]
-        //[Verify(MethodToProperty)]
-        BCOVBasicSessionProviderSourceSelectionPolicy SourceSelectionHLS { get; }
-    }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventAdSequenceEnter;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventAdSequenceEnter", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventAdSequenceEnter { get; }
 
-    // @interface BCOVBasicSessionLoadingPolicy : NSObject <NSCopying>
-    [BaseType(typeof(NSObject))]
-    interface BCOVBasicSessionLoadingPolicy : INSCopying
-    {
-        // +(instancetype)sessionPreloadingNever;
-        [Static]
-        [Export("sessionPreloadingNever")]
-        BCOVBasicSessionLoadingPolicy SessionPreloadingNever();
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventAdSequenceExit;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventAdSequenceExit", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventAdSequenceExit { get; }
 
-        // +(instancetype)sessionPreloadingWithProgressPercentage:(NSUInteger)progressPercentage;
-        [Static]
-        [Export("sessionPreloadingWithProgressPercentage:")]
-        BCOVBasicSessionLoadingPolicy SessionPreloadingWithProgressPercentage(nuint progressPercentage);
-    }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventAdEnter;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventAdEnter", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventAdEnter { get; }
 
-    // @interface Unavailable (BCOVBasicSessionLoadingPolicy)
-    [Category]
-    [BaseType(typeof(BCOVBasicSessionLoadingPolicy))]
-    [DisableDefaultCtor]
-    interface BCOVBasicSessionLoadingPolicy_Unavailable
-    {
-    }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventAdExit;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventAdExit", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventAdExit { get; }
 
-    // @interface BCOVBasicSessionProviderOptions : NSObject
-    [BaseType(typeof(NSObject))]
-    interface BCOVBasicSessionProviderOptions
-    {
-        // @property (copy, nonatomic) BCOVSource * (^sourceSelectionPolicy)(BCOVVideo *);
-        [Export("sourceSelectionPolicy", ArgumentSemantic.Copy)]
-        Func<BCOVVideo, BCOVSource> SourceSelectionPolicy { get; set; }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventAdProgress;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventAdProgress", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventAdProgress { get; }
 
-        // @property (copy, nonatomic) BCOVBasicSessionLoadingPolicy * sessionPreloadingPolicy __attribute__((deprecated("Refer to the PreloadingVideos section of the README for guidance on using multiple playback controllers to achieve a preloading effect.")));
-        [Export("sessionPreloadingPolicy", ArgumentSemantic.Copy)]
-        BCOVBasicSessionLoadingPolicy SessionPreloadingPolicy { get; set; }
-    }
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventAdPause;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventAdPause", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventAdPause { get; }
 
-    // @interface BCOVCuePointProgressPolicy : NSObject
-    [BaseType(typeof(NSObject))]
-    interface BCOVCuePointProgressPolicy
-    {
-        // -(BCOVCuePointProgressPolicyResult *)applyToEvent:(NSDictionary *)cuePointEvent;
-        [Export("applyToEvent:")]
-        BCOVCuePointProgressPolicyResult ApplyToEvent(NSDictionary cuePointEvent);
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventAdResume;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventAdResume", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventAdResume { get; }
 
-        // +(instancetype)progressPolicyProcessingCuePoints:(BCOVProgressPolicyCuePointsToProcess)cuePointsToProcess resumingPlaybackFrom:(BCOVProgressPolicyResumePosition)resumePosition ignoringPreviouslyProcessedCuePoints:(BOOL)ignorePrevious;
-        [Static]
-        [Export("progressPolicyProcessingCuePoints:resumingPlaybackFrom:ignoringPreviouslyProcessedCuePoints:")]
-        BCOVCuePointProgressPolicy ProgressPolicyProcessingCuePoints(BCOVProgressPolicyCuePointsToProcess cuePointsToProcess, BCOVProgressPolicyResumePosition resumePosition, bool ignorePrevious);
-    }
+    // 	// extern NSString *const kBCOVPlaybackSessionEventKeyError;
+    // 	[Field ("kBCOVPlaybackSessionEventKeyError", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionEventKeyError { get; }
 
-    // @interface BCOVCuePointProgressPolicyResult : NSObject
-    [BaseType(typeof(NSObject))]
-    interface BCOVCuePointProgressPolicyResult
-    {
-        // -(instancetype)initWithCuePoints:(BCOVCuePointCollection *)cuePoints resumeCuePoint:(BCOVCuePoint *)resumeCuePoint;
-        [Export("initWithCuePoints:resumeCuePoint:")]
-        IntPtr Constructor(BCOVCuePointCollection cuePoints, BCOVCuePoint resumeCuePoint);
+    // 	// extern NSString *const kBCOVPlaybackSessionEventKeyPreviousTime;
+    // 	[Field ("kBCOVPlaybackSessionEventKeyPreviousTime", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionEventKeyPreviousTime { get; }
 
-        // @property (readonly, copy, nonatomic) BCOVCuePoint * resumeCuePoint;
-        [Export("resumeCuePoint", ArgumentSemantic.Copy)]
-        BCOVCuePoint ResumeCuePoint { get; }
+    // 	// extern NSString *const kBCOVPlaybackSessionEventKeyCurrentTime;
+    // 	[Field ("kBCOVPlaybackSessionEventKeyCurrentTime", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionEventKeyCurrentTime { get; }
 
-        // @property (readonly, copy, nonatomic) BCOVCuePointCollection * cuePoints;
-        [Export("cuePoints", ArgumentSemantic.Copy)]
-        BCOVCuePointCollection CuePoints { get; }
-    }
+    // 	// extern NSString *const kBCOVPlaybackSessionEventKeyCuePoints;
+    // 	[Field ("kBCOVPlaybackSessionEventKeyCuePoints", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionEventKeyCuePoints { get; }
 
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventReady;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventReady", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventReady { get; }
+    // 	// extern NSString *const kBCOVPlaybackSessionErrorDomain;
+    // 	[Field ("kBCOVPlaybackSessionErrorDomain", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionErrorDomain { get; }
 
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventFail;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventFail", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventFail { get; }
+    // 	// extern const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
+    // 	[Field ("kBCOVPlaybackSessionErrorCodeLoadFailed", "__Internal")]
+    // 	nint kBCOVPlaybackSessionErrorCodeLoadFailed { get; }
 
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventPlay;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventPlay", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventPlay { get; }
+    // 	// extern const NSInteger kBCOVPlaybackSessionErrorCodeFailedToPlayToEnd;
+    // 	[Field ("kBCOVPlaybackSessionErrorCodeFailedToPlayToEnd", "__Internal")]
+    // 	nint kBCOVPlaybackSessionErrorCodeFailedToPlayToEnd { get; }
 
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventPause;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventPause", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventPause { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventPlayRequest;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventPlayRequest", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventPlayRequest { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventPauseRequest;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventPauseRequest", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventPauseRequest { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventResumeBegin;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventResumeBegin", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventResumeBegin { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventResumeComplete;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventResumeComplete", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventResumeComplete { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventResumeFail;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventResumeFail", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventResumeFail { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventEnd;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventEnd", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventEnd { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventPlaybackStalled;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventPlaybackStalled", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventPlaybackStalled { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventPlaybackRecovered;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventPlaybackRecovered", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventPlaybackRecovered { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventTerminate;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventTerminate", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventTerminate { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventError;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventError", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventError { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventAdSequenceEnter;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventAdSequenceEnter", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventAdSequenceEnter { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventAdSequenceExit;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventAdSequenceExit", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventAdSequenceExit { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventAdEnter;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventAdEnter", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventAdEnter { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventAdExit;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventAdExit", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventAdExit { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventAdProgress;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventAdProgress", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventAdProgress { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventAdPause;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventAdPause", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventAdPause { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionLifecycleEventAdResume;
-    //    [Field("kBCOVPlaybackSessionLifecycleEventAdResume", "__Internal")]
-    //    NSString kBCOVPlaybackSessionLifecycleEventAdResume { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionEventKeyError;
-    //    [Field("kBCOVPlaybackSessionEventKeyError", "__Internal")]
-    //    NSString kBCOVPlaybackSessionEventKeyError { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionEventKeyPreviousTime;
-    //    [Field("kBCOVPlaybackSessionEventKeyPreviousTime", "__Internal")]
-    //    NSString kBCOVPlaybackSessionEventKeyPreviousTime { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionEventKeyCurrentTime;
-    //    [Field("kBCOVPlaybackSessionEventKeyCurrentTime", "__Internal")]
-    //    NSString kBCOVPlaybackSessionEventKeyCurrentTime { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionEventKeyCuePoints;
-    //    [Field("kBCOVPlaybackSessionEventKeyCuePoints", "__Internal")]
-    //    NSString kBCOVPlaybackSessionEventKeyCuePoints { get; }
-
-    //    // extern NSString *const kBCOVPlaybackSessionErrorDomain;
-    //    [Field("kBCOVPlaybackSessionErrorDomain", "__Internal")]
-    //    NSString kBCOVPlaybackSessionErrorDomain { get; }
-
-    //    // extern const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
-    //    [Field("kBCOVPlaybackSessionErrorCodeLoadFailed", "__Internal")]
-    //    nint kBCOVPlaybackSessionErrorCodeLoadFailed { get; }
-
-    //    // extern const NSInteger kBCOVPlaybackSessionErrorCodeFailedToPlayToEnd;
-    //    [Field("kBCOVPlaybackSessionErrorCodeFailedToPlayToEnd", "__Internal")]
-    //    nint kBCOVPlaybackSessionErrorCodeFailedToPlayToEnd { get; }
-
-    //    // extern const NSInteger kBCOVPlaybackSessionErrorCodeNoPlayableSource;
-    //    [Field("kBCOVPlaybackSessionErrorCodeNoPlayableSource", "__Internal")]
-    //    nint kBCOVPlaybackSessionErrorCodeNoPlayableSource { get; }
-    //}
+    // 	// extern const NSInteger kBCOVPlaybackSessionErrorCodeNoPlayableSource;
+    // 	[Field ("kBCOVPlaybackSessionErrorCodeNoPlayableSource", "__Internal")]
+    // 	nint kBCOVPlaybackSessionErrorCodeNoPlayableSource { get; }
+    // }
 
     // @protocol BCOVPlaybackSession <NSObject>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
     [Protocol]
     [BaseType(typeof(NSObject))]
     interface BCOVPlaybackSession
     {
         // @required @property (readonly, copy, nonatomic) BCOVVideo * video;
-        //[Abstract]
+        // [Abstract]
         [Export("video", ArgumentSemantic.Copy)]
         BCOVVideo Video { get; }
 
         // @required @property (readonly, copy, nonatomic) BCOVSource * source;
-        //[Abstract]
+        // [Abstract]
         [Export("source", ArgumentSemantic.Copy)]
         BCOVSource Source { get; }
 
         // @required @property (readonly, nonatomic, strong) AVPlayer * player;
-        //[Abstract]
+        // [Abstract]
         [Export("player", ArgumentSemantic.Strong)]
         AVPlayer Player { get; }
 
         // @required @property (readonly, nonatomic, strong) AVPlayerLayer * playerLayer;
-        //[Abstract]
+        // [Abstract]
         [Export("playerLayer", ArgumentSemantic.Strong)]
         AVPlayerLayer PlayerLayer { get; }
 
         // @required @property (readonly, nonatomic) AVMediaSelectionGroup * audibleMediaSelectionGroup;
-        //[Abstract]
+        // [Abstract]
         [Export("audibleMediaSelectionGroup")]
         AVMediaSelectionGroup AudibleMediaSelectionGroup { get; }
 
         // @required @property (readwrite, nonatomic) AVMediaSelectionOption * selectedAudibleMediaOption;
-        //[Abstract]
+        // [Abstract]
         [Export("selectedAudibleMediaOption", ArgumentSemantic.Assign)]
         AVMediaSelectionOption SelectedAudibleMediaOption { get; set; }
 
         // @required @property (readonly, nonatomic) AVMediaSelectionGroup * legibleMediaSelectionGroup;
-        //[Abstract]
+        // [Abstract]
         [Export("legibleMediaSelectionGroup")]
         AVMediaSelectionGroup LegibleMediaSelectionGroup { get; }
 
         // @required @property (readwrite, nonatomic) AVMediaSelectionOption * selectedLegibleMediaOption;
-        //[Abstract]
+        // [Abstract]
         [Export("selectedLegibleMediaOption", ArgumentSemantic.Assign)]
         AVMediaSelectionOption SelectedLegibleMediaOption { get; set; }
 
         // @required @property (readonly, nonatomic, strong) BCOVSessionProviderExtension * providerExtension;
-        //[Abstract]
+        // [Abstract]
         [Export("providerExtension", ArgumentSemantic.Strong)]
         BCOVSessionProviderExtension ProviderExtension { get; }
 
         // @required -(void)selectAudibleMediaOptionAutomatically;
-        //[Abstract]
+        // [Abstract]
         [Export("selectAudibleMediaOptionAutomatically")]
         void SelectAudibleMediaOptionAutomatically();
 
         // @required -(void)selectLegibleMediaOptionAutomatically;
-        //[Abstract]
+        // [Abstract]
         [Export("selectLegibleMediaOptionAutomatically")]
         void SelectLegibleMediaOptionAutomatically();
 
         // @required -(NSString *)displayNameFromAudibleMediaSelectionOption:(AVMediaSelectionOption *)option;
-        //[Abstract]
+        // [Abstract]
         [Export("displayNameFromAudibleMediaSelectionOption:")]
         string DisplayNameFromAudibleMediaSelectionOption(AVMediaSelectionOption option);
 
         // @required -(NSString *)displayNameFromLegibleMediaSelectionOption:(AVMediaSelectionOption *)option;
-        //[Abstract]
+        // [Abstract]
         [Export("displayNameFromLegibleMediaSelectionOption:")]
         string DisplayNameFromLegibleMediaSelectionOption(AVMediaSelectionOption option);
 
-        //@required -(void) terminate;
-        //[Abstract]
+        // @required -(void)terminate;
+        // [Abstract]
         [Export("terminate")]
         void Terminate();
     }
@@ -1614,24 +986,53 @@ namespace BrightcoveSDK.iOS
     {
     }
 
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern NSString *const _Nonnull kBCOVFPSErrorDomain;
-    //    [Field("kBCOVFPSErrorDomain", "__Internal")]
-    //    NSString kBCOVFPSErrorDomain { get; }
+    // @protocol BCOVPlaybackSessionProvider <NSObject>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
+    [Protocol]
+    [BaseType(typeof(NSObject))]
+    interface BCOVPlaybackSessionProvider
+    {
+        // @optional -(id)playbackSessionsForVideos:(id<NSFastEnumeration>)videos __attribute__((deprecated("Do not use")));
+        [Export("playbackSessionsForVideos:")]
+        //Hack
+        NSObject PlaybackSessionsForVideos(NSObject videos);
+    }
 
-    //    // extern const NSInteger kBCOVFPSErrorCodeStreamingContentKeyRequest;
-    //    [Field("kBCOVFPSErrorCodeStreamingContentKeyRequest", "__Internal")]
-    //    nint kBCOVFPSErrorCodeStreamingContentKeyRequest { get; }
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern NSString *const _Nonnull kBCOVFPSErrorDomain;
+    // 	[Field ("kBCOVFPSErrorDomain", "__Internal")]
+    // 	NSString kBCOVFPSErrorDomain { get; }
 
-    //    // extern const NSInteger kBCOVFPSErrorCodeApplicationCertificateRequest;
-    //    [Field("kBCOVFPSErrorCodeApplicationCertificateRequest", "__Internal")]
-    //    nint kBCOVFPSErrorCodeApplicationCertificateRequest { get; }
-    //}
+    // 	// extern const NSInteger kBCOVFPSErrorCodeStreamingContentKeyRequest;
+    // 	[Field ("kBCOVFPSErrorCodeStreamingContentKeyRequest", "__Internal")]
+    // 	nint kBCOVFPSErrorCodeStreamingContentKeyRequest { get; }
+
+    // 	// extern const NSInteger kBCOVFPSErrorCodeApplicationCertificateRequest;
+    // 	[Field ("kBCOVFPSErrorCodeApplicationCertificateRequest", "__Internal")]
+    // 	nint kBCOVFPSErrorCodeApplicationCertificateRequest { get; }
+    // }
 
     // @protocol BCOVFPSAuthorizationProxy <NSObject>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface BCOVFPSAuthorizationProxy
@@ -1641,25 +1042,21 @@ namespace BrightcoveSDK.iOS
         [return: NullAllowed]
         NSData ContentIdentifierFromLoadingRequest(AVAssetResourceLoadingRequest loadingRequest);
 
-        // @required -(void)encryptedContentKeyForLoadingRequest:(AVAssetResourceLoadingRequest * _Nonnull)loadingRequest contentKeyRequest:(NSData * _Nonnull)keyRequest source:(BCOVSource * _Nonnull)source completionHandler:(void (^ _Nonnull)(NSURLResponse * _Nullable, NSData * _Nullable, NSError * _Nullable))completionHandler;
-        [Abstract]
-        [Export("encryptedContentKeyForLoadingRequest:contentKeyRequest:source:completionHandler:")]
-        void EncryptedContentKeyForLoadingRequest(AVAssetResourceLoadingRequest loadingRequest, NSData keyRequest, BCOVSource source, Action<NSUrlResponse, NSData, NSError> completionHandler);
-
-        // @optional -(void)encryptedContentKeyForContentKeyIdentifier:(NSString * _Nonnull)contentKeyIdentifier contentKeyRequest:(NSData * _Nonnull)keyRequest source:(BCOVSource * _Nonnull)source options:(NSDictionary * _Nullable)options completionHandler:(void (^ _Nonnull)(NSURLResponse * _Nullable, NSData * _Nullable, NSError * _Nullable))completionHandler;
+        // @required -(void)encryptedContentKeyForContentKeyIdentifier:(NSString * _Nonnull)contentKeyIdentifier contentKeyRequest:(NSData * _Nonnull)keyRequest source:(BCOVSource * _Nonnull)source options:(NSDictionary * _Nullable)options completionHandler:(void (^ _Nonnull)(NSURLResponse * _Nullable, NSData * _Nullable, NSDate * _Nullable, NSError * _Nullable))completionHandler;
+        //[Abstract]
         [Export("encryptedContentKeyForContentKeyIdentifier:contentKeyRequest:source:options:completionHandler:")]
-        void EncryptedContentKeyForContentKeyIdentifier(string contentKeyIdentifier, NSData keyRequest, BCOVSource source, [NullAllowed] NSDictionary options, Action<NSUrlResponse, NSData, NSError> completionHandler);
+        void EncryptedContentKeyForContentKeyIdentifier(string contentKeyIdentifier, NSData keyRequest, BCOVSource source, [NullAllowed] NSDictionary options, Action<NSUrlResponse, NSData, NSDate, NSError> completionHandler);
     }
-
 
     //Hack: FPS Fix
     interface IBCOVFPSAuthorizationProxy { }
 
+
     // @interface BCOVFPSAdditions (BCOVPlayerSDKManager)
-    //[Category]
-    //[Protocol]
-    //[BaseType(typeof(NSObject))]
-    interface BCOVPlayerSDKManager_BCOVFPSAdditions //: BCOVPlayerSDKManager
+    //Hack: FPS fix
+    // [Category]
+    // [BaseType (typeof(BCOVPlayerSDKManager))]
+    interface BCOVPlayerSDKManager_BCOVFPSAdditions
     {
         // -(id<BCOVPlaybackController> _Nonnull)createFairPlayPlaybackControllerWithAuthorizationProxy:(id<BCOVFPSAuthorizationProxy> _Nonnull)proxy;
         [Export("createFairPlayPlaybackControllerWithAuthorizationProxy:")]
@@ -1678,34 +1075,34 @@ namespace BrightcoveSDK.iOS
         BCOVPlaybackSessionProvider CreateFairPlaySessionProviderWithApplicationCertificate([NullAllowed] NSData appCert, IBCOVFPSAuthorizationProxy proxy, [NullAllowed] BCOVPlaybackSessionProvider provider);
     }
 
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern NSString *const _Nonnull kBCOVSourceKeySystemFairPlayV1;
-    //    [Field("kBCOVSourceKeySystemFairPlayV1", "__Internal")]
-    //    NSString kBCOVSourceKeySystemFairPlayV1 { get; }
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern NSString *const _Nonnull kBCOVSourceKeySystemFairPlayV1;
+    // 	[Field ("kBCOVSourceKeySystemFairPlayV1", "__Internal")]
+    // 	NSString kBCOVSourceKeySystemFairPlayV1 { get; }
 
-    //    // extern NSString *const _Nonnull kBCOVSourceKeySystemFairPlayKeyRequestURLKey;
-    //    [Field("kBCOVSourceKeySystemFairPlayKeyRequestURLKey", "__Internal")]
-    //    NSString kBCOVSourceKeySystemFairPlayKeyRequestURLKey { get; }
+    // 	// extern NSString *const _Nonnull kBCOVSourceKeySystemFairPlayKeyRequestURLKey;
+    // 	[Field ("kBCOVSourceKeySystemFairPlayKeyRequestURLKey", "__Internal")]
+    // 	NSString kBCOVSourceKeySystemFairPlayKeyRequestURLKey { get; }
 
-    //    // extern NSString *const _Nonnull kBCOVFPSAuthProxyErrorDomain;
-    //    [Field("kBCOVFPSAuthProxyErrorDomain", "__Internal")]
-    //    NSString kBCOVFPSAuthProxyErrorDomain { get; }
+    // 	// extern NSString *const _Nonnull kBCOVFPSAuthProxyErrorDomain;
+    // 	[Field ("kBCOVFPSAuthProxyErrorDomain", "__Internal")]
+    // 	NSString kBCOVFPSAuthProxyErrorDomain { get; }
 
-    //    // extern const NSInteger kBCOVFPSAuthProxyErrorCodeApplicationCertificateRequestFailed;
-    //    [Field("kBCOVFPSAuthProxyErrorCodeApplicationCertificateRequestFailed", "__Internal")]
-    //    nint kBCOVFPSAuthProxyErrorCodeApplicationCertificateRequestFailed { get; }
+    // 	// extern const NSInteger kBCOVFPSAuthProxyErrorCodeApplicationCertificateRequestFailed;
+    // 	[Field ("kBCOVFPSAuthProxyErrorCodeApplicationCertificateRequestFailed", "__Internal")]
+    // 	nint kBCOVFPSAuthProxyErrorCodeApplicationCertificateRequestFailed { get; }
 
-    //    // extern const NSInteger kBCOVFPSAuthProxyErrorCodeContentKeyRequestFailed;
-    //    [Field("kBCOVFPSAuthProxyErrorCodeContentKeyRequestFailed", "__Internal")]
-    //    nint kBCOVFPSAuthProxyErrorCodeContentKeyRequestFailed { get; }
+    // 	// extern const NSInteger kBCOVFPSAuthProxyErrorCodeContentKeyRequestFailed;
+    // 	[Field ("kBCOVFPSAuthProxyErrorCodeContentKeyRequestFailed", "__Internal")]
+    // 	nint kBCOVFPSAuthProxyErrorCodeContentKeyRequestFailed { get; }
 
-    //    // extern const NSInteger kBCOVFPSAuthProxyErrorCodeContentKeyGenerationFailed;
-    //    [Field("kBCOVFPSAuthProxyErrorCodeContentKeyGenerationFailed", "__Internal")]
-    //    nint kBCOVFPSAuthProxyErrorCodeContentKeyGenerationFailed { get; }
-    //}
+    // 	// extern const NSInteger kBCOVFPSAuthProxyErrorCodeContentKeyGenerationFailed;
+    // 	[Field ("kBCOVFPSAuthProxyErrorCodeContentKeyGenerationFailed", "__Internal")]
+    // 	nint kBCOVFPSAuthProxyErrorCodeContentKeyGenerationFailed { get; }
+    // }
 
     // @interface BCOVFPSBrightcoveAuthProxy : NSObject <BCOVFPSAuthorizationProxy>
     [BaseType(typeof(NSObject))]
@@ -1733,88 +1130,79 @@ namespace BrightcoveSDK.iOS
         void RetrieveApplicationCertificate(Action<NSData, NSError> completionHandler);
     }
 
-    // @interface Unavailable (BCOVFPSBrightcoveAuthProxy)
-    //[Category]
-    [Protocol]
+    // @interface BCOVFairPlayManager : NSObject
     [BaseType(typeof(NSObject))]
-    [DisableDefaultCtor]
-    interface BCOVFPSBrightcoveAuthProxy_Unavailable : BCOVFPSBrightcoveAuthProxy
+    interface BCOVFairPlayManager
     {
+        // +(void)preloadContentKeysForVideos:(NSArray<BCOVVideo *> * _Nonnull)videos;
+        [Static]
+        [Export("preloadContentKeysForVideos:")]
+        void PreloadContentKeysForVideos(BCOVVideo[] videos);
     }
 
-    // @interface Deprecated (BCOVFPSBrightcoveAuthProxy)
-    //[Category]
-    [Protocol]
-    [BaseType(typeof(NSObject))]
-    interface BCOVFPSBrightcoveAuthProxy_Deprecated : BCOVFPSBrightcoveAuthProxy
-    {
-        // -(instancetype _Nullable)initWithApplicationId:(NSString * _Nonnull)appId publisherId:(NSString * _Nonnull)pubId __attribute__((deprecated("Use -BCOVFPSBrightcoveAuthProxy initWithPublisherId:applicationId: instead")));
-        [Export("initWithApplicationId:publisherId:")]
-        IntPtr Constructor(string appId, string pubId);
-    }
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern NSString *const kBCOVSSVideoPropertiesKeyTextTracks;
+    // 	[Field ("kBCOVSSVideoPropertiesKeyTextTracks", "__Internal")]
+    // 	NSString kBCOVSSVideoPropertiesKeyTextTracks { get; }
 
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern NSString *const kBCOVSSVideoPropertiesKeyTextTracks;
-    //    [Field("kBCOVSSVideoPropertiesKeyTextTracks", "__Internal")]
-    //    NSString kBCOVSSVideoPropertiesKeyTextTracks { get; }
+    // 	// extern NSString *const kBCOVSSTextTracksKeySource;
+    // 	[Field ("kBCOVSSTextTracksKeySource", "__Internal")]
+    // 	NSString kBCOVSSTextTracksKeySource { get; }
 
-    //    // extern NSString *const kBCOVSSTextTracksKeySource;
-    //    [Field("kBCOVSSTextTracksKeySource", "__Internal")]
-    //    NSString kBCOVSSTextTracksKeySource { get; }
+    // 	// extern NSString *const kBCOVSSTextTracksKeySourceLanguage;
+    // 	[Field ("kBCOVSSTextTracksKeySourceLanguage", "__Internal")]
+    // 	NSString kBCOVSSTextTracksKeySourceLanguage { get; }
 
-    //    // extern NSString *const kBCOVSSTextTracksKeySourceLanguage;
-    //    [Field("kBCOVSSTextTracksKeySourceLanguage", "__Internal")]
-    //    NSString kBCOVSSTextTracksKeySourceLanguage { get; }
+    // 	// extern NSString *const kBCOVSSTextTracksKeyLabel;
+    // 	[Field ("kBCOVSSTextTracksKeyLabel", "__Internal")]
+    // 	NSString kBCOVSSTextTracksKeyLabel { get; }
 
-    //    // extern NSString *const kBCOVSSTextTracksKeyLabel;
-    //    [Field("kBCOVSSTextTracksKeyLabel", "__Internal")]
-    //    NSString kBCOVSSTextTracksKeyLabel { get; }
+    // 	// extern NSString *const kBCOVSSTextTracksKeyDuration;
+    // 	[Field ("kBCOVSSTextTracksKeyDuration", "__Internal")]
+    // 	NSString kBCOVSSTextTracksKeyDuration { get; }
 
-    //    // extern NSString *const kBCOVSSTextTracksKeyDuration;
-    //    [Field("kBCOVSSTextTracksKeyDuration", "__Internal")]
-    //    NSString kBCOVSSTextTracksKeyDuration { get; }
+    // 	// extern NSString *const kBCOVSSTextTracksKeyDefault;
+    // 	[Field ("kBCOVSSTextTracksKeyDefault", "__Internal")]
+    // 	NSString kBCOVSSTextTracksKeyDefault { get; }
 
-    //    // extern NSString *const kBCOVSSTextTracksKeyDefault;
-    //    [Field("kBCOVSSTextTracksKeyDefault", "__Internal")]
-    //    NSString kBCOVSSTextTracksKeyDefault { get; }
+    // 	// extern NSString *const kBCOVSSTextTracksKeyMIMEType;
+    // 	[Field ("kBCOVSSTextTracksKeyMIMEType", "__Internal")]
+    // 	NSString kBCOVSSTextTracksKeyMIMEType { get; }
 
-    //    // extern NSString *const kBCOVSSTextTracksKeyMIMEType;
-    //    [Field("kBCOVSSTextTracksKeyMIMEType", "__Internal")]
-    //    NSString kBCOVSSTextTracksKeyMIMEType { get; }
+    // 	// extern NSString *const kBCOVSSTextTracksKeyKind;
+    // 	[Field ("kBCOVSSTextTracksKeyKind", "__Internal")]
+    // 	NSString kBCOVSSTextTracksKeyKind { get; }
 
-    //    // extern NSString *const kBCOVSSTextTracksKeyKind;
-    //    [Field("kBCOVSSTextTracksKeyKind", "__Internal")]
-    //    NSString kBCOVSSTextTracksKeyKind { get; }
+    // 	// extern NSString *const kBCOVSSTextTracksKindSubtitles;
+    // 	[Field ("kBCOVSSTextTracksKindSubtitles", "__Internal")]
+    // 	NSString kBCOVSSTextTracksKindSubtitles { get; }
 
-    //    // extern NSString *const kBCOVSSTextTracksKindSubtitles;
-    //    [Field("kBCOVSSTextTracksKindSubtitles", "__Internal")]
-    //    NSString kBCOVSSTextTracksKindSubtitles { get; }
+    // 	// extern NSString *const kBCOVSSTextTracksKindCaptions;
+    // 	[Field ("kBCOVSSTextTracksKindCaptions", "__Internal")]
+    // 	NSString kBCOVSSTextTracksKindCaptions { get; }
 
-    //    // extern NSString *const kBCOVSSTextTracksKindCaptions;
-    //    [Field("kBCOVSSTextTracksKindCaptions", "__Internal")]
-    //    NSString kBCOVSSTextTracksKindCaptions { get; }
+    // 	// extern NSString *const kBCOVSSTextTracksKeySourceType;
+    // 	[Field ("kBCOVSSTextTracksKeySourceType", "__Internal")]
+    // 	NSString kBCOVSSTextTracksKeySourceType { get; }
 
-    //    // extern NSString *const kBCOVSSTextTracksKeySourceType;
-    //    [Field("kBCOVSSTextTracksKeySourceType", "__Internal")]
-    //    NSString kBCOVSSTextTracksKeySourceType { get; }
+    // 	// extern NSString *const kBCOVSSTextTracksKeySourceTypeWebVTTURL;
+    // 	[Field ("kBCOVSSTextTracksKeySourceTypeWebVTTURL", "__Internal")]
+    // 	NSString kBCOVSSTextTracksKeySourceTypeWebVTTURL { get; }
 
-    //    // extern NSString *const kBCOVSSTextTracksKeySourceTypeWebVTTURL;
-    //    [Field("kBCOVSSTextTracksKeySourceTypeWebVTTURL", "__Internal")]
-    //    NSString kBCOVSSTextTracksKeySourceTypeWebVTTURL { get; }
-
-    //    // extern NSString *const kBCOVSSTextTracksKeySourceTypeM3U8URL;
-    //    [Field("kBCOVSSTextTracksKeySourceTypeM3U8URL", "__Internal")]
-    //    NSString kBCOVSSTextTracksKeySourceTypeM3U8URL { get; }
-    //}
+    // 	// extern NSString *const kBCOVSSTextTracksKeySourceTypeM3U8URL;
+    // 	[Field ("kBCOVSSTextTracksKeySourceTypeM3U8URL", "__Internal")]
+    // 	NSString kBCOVSSTextTracksKeySourceTypeM3U8URL { get; }
+    // }
 
     // @interface BCOVSSAdditions (BCOVPlayerSDKManager)
     //[Category]
+    //Hack
     [Protocol]
     [BaseType(typeof(NSObject))]
-    interface BCOVPlayerSDKManager_BCOVSSAdditions //: BCOVPlayerSDKManager
+    interface BCOVPlayerSDKManager_BCOVSSAdditions
     {
         // -(id<BCOVPlaybackController>)createSidecarSubtitlesPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)viewStrategy;
         [Export("createSidecarSubtitlesPlaybackControllerWithViewStrategy:")]
@@ -1827,13 +1215,138 @@ namespace BrightcoveSDK.iOS
 
     // @interface BCOVSSAdditionsDepricated (BCOVPlayerSDKManager)
     //[Category]
+    //Hack
     [Protocol]
     [BaseType(typeof(NSObject))]
-    interface BCOVPlayerSDKManager_BCOVSSAdditionsDepricated //: BCOVPlayerSDKManager
+    interface BCOVPlayerSDKManager_BCOVSSAdditionsDepricated
     {
         // -(id<BCOVPlaybackSessionProvider>)createSidecarSubtitlesSessionProviderWithOptions:(BCOVSSSessionProviderOption *)options __attribute__((deprecated("Use -[BCOVPlayerSDKManager createSidecarSubtitlesSessionWithUpstreamSessionProvider:] with a nil upstream session provider instead.")));
-        //[Export("createSidecarSubtitlesSessionProviderWithOptions:")]
+        [Export("createSidecarSubtitlesSessionProviderWithOptions:")]
         //BCOVPlaybackSessionProvider CreateSidecarSubtitlesSessionProviderWithOptions(BCOVSSSessionProviderOption options);
+        //Hack
+        BCOVPlaybackSessionProvider CreateSidecarSubtitlesSessionProviderWithOptions(NSObject options);
+    }
+
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern NSString *const kBCOVCuePointTypeAdSlot;
+    // 	[Field ("kBCOVCuePointTypeAdSlot", "__Internal")]
+    // 	NSString kBCOVCuePointTypeAdSlot { get; }
+
+    // 	// extern NSString *const kBCOVCuePointTypeAdCompanion;
+    // 	[Field ("kBCOVCuePointTypeAdCompanion", "__Internal")]
+    // 	NSString kBCOVCuePointTypeAdCompanion { get; }
+
+    // 	// extern NSString *const kBCOVCuePointPropertyKeyName;
+    // 	[Field ("kBCOVCuePointPropertyKeyName", "__Internal")]
+    // 	NSString kBCOVCuePointPropertyKeyName { get; }
+    // }
+
+    // @protocol BCOVCuePoint <NSObject>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IBCOVCuePoint
+    {
+        // @required @property (readonly, assign, nonatomic) CMTime position;
+        [Abstract]
+        [Export("position", ArgumentSemantic.Assign)]
+        CMTime Position { get; }
+
+        // @required @property (readonly, copy, nonatomic) NSString * type;
+        [Abstract]
+        [Export("type")]
+        string Type { get; }
+
+        // @required @property (readonly, copy, nonatomic) NSDictionary * properties;
+        [Abstract]
+        [Export("properties", ArgumentSemantic.Copy)]
+        NSDictionary Properties { get; }
+
+        // @required -(instancetype)update:(void (^)(id<BCOVMutableCuePoint>))updateBlock;
+        [Abstract]
+        [Export("update:")]
+        BCOVCuePoint Update(Action<BCOVMutableCuePoint> updateBlock);
+    }
+
+    // @protocol BCOVMutableCuePoint <BCOVCuePoint>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface BCOVMutableCuePoint : IBCOVCuePoint
+    {
+        // // @required @property (assign, readwrite, nonatomic) CMTime position;
+        // [Abstract]
+        // [Export ("position", ArgumentSemantic.Assign)]
+        // CMTime Position { get; set; }
+
+        // // @required @property (readwrite, copy, nonatomic) NSString * type;
+        // [Abstract]
+        // [Export ("type")]
+        // string Type { get; set; }
+
+        // // @required @property (readwrite, copy, nonatomic) NSDictionary * properties;
+        // [Abstract]
+        // [Export ("properties", ArgumentSemantic.Copy)]
+        // NSDictionary Properties { get; set; }
+    }
+
+    // @interface BCOVCuePoint : NSObject <BCOVCuePoint, NSCopying>
+    [BaseType(typeof(NSObject))]
+    interface BCOVCuePoint : IBCOVCuePoint, INSCopying
+    {
+        // -(instancetype)initWithType:(NSString *)type position:(CMTime)position;
+        [Export("initWithType:position:")]
+        IntPtr Constructor(string type, CMTime position);
+
+        // -(instancetype)initWithType:(NSString *)type position:(CMTime)position properties:(NSDictionary *)properties;
+        [Export("initWithType:position:properties:")]
+        IntPtr Constructor(string type, CMTime position, NSDictionary properties);
+
+        // -(NSComparisonResult)compare:(BCOVCuePoint *)cuePoint;
+        [Export("compare:")]
+        NSComparisonResult Compare(BCOVCuePoint cuePoint);
+
+        // -(BOOL)hasPosition:(CMTime)position;
+        [Export("hasPosition:")]
+        bool HasPosition(CMTime position);
+
+        // -(BOOL)isEqualToCuePoint:(BCOVCuePoint *)cuePoint;
+        [Export("isEqualToCuePoint:")]
+        bool IsEqualToCuePoint(BCOVCuePoint cuePoint);
+
+        // +(BCOVCuePoint *)afterCuePointOfType:(NSString *)type properties:(NSDictionary *)properties;
+        [Static]
+        [Export("afterCuePointOfType:properties:")]
+        BCOVCuePoint AfterCuePointOfType(string type, NSDictionary properties);
+
+        // +(BCOVCuePoint *)beforeCuePointOfType:(NSString *)type properties:(NSDictionary *)properties;
+        [Static]
+        [Export("beforeCuePointOfType:properties:")]
+        BCOVCuePoint BeforeCuePointOfType(string type, NSDictionary properties);
+
+        // +(BCOVCuePoint *)cuePointWithType:(NSString *)type positionInSeconds:(NSTimeInterval)positionInSeconds properties:(NSDictionary *)properties;
+        [Static]
+        [Export("cuePointWithType:positionInSeconds:properties:")]
+        BCOVCuePoint CuePointWithType(string type, double positionInSeconds, NSDictionary properties);
     }
 
     // @interface BCOVCuePointCollection : NSObject <NSCopying, NSFastEnumeration>
@@ -1842,6 +1355,7 @@ namespace BrightcoveSDK.iOS
     {
         // -(instancetype)initWithArray:(NSArray *)cuePoints;
         [Export("initWithArray:")]
+        // [Verify (StronglyTypedNSArray)]
         IntPtr Constructor(NSObject[] cuePoints);
 
         // -(instancetype)initWithCuePoint:(BCOVCuePoint *)cuePoint;
@@ -1850,12 +1364,12 @@ namespace BrightcoveSDK.iOS
 
         // -(NSArray *)array;
         [Export("array")]
-        //[Verify(MethodToProperty), Verify(StronglyTypedNSArray)]
+        // [Verify (MethodToProperty), Verify (StronglyTypedNSArray)]
         NSObject[] Array { get; }
 
         // -(NSUInteger)count;
         [Export("count")]
-        //[Verify(MethodToProperty)]
+        // [Verify (MethodToProperty)]
         nuint Count { get; }
 
         // -(instancetype)cuePointsAfterTime:(CMTime)time;
@@ -1888,11 +1402,11 @@ namespace BrightcoveSDK.iOS
 
         // -(instancetype)cuePointsAtOrAfterTime:(CMTime)lowerBound beforeTime:(CMTime)upperBound;
         [Export("cuePointsAtOrAfterTime:beforeTime:")]
-        BCOVCuePointCollection CuePointsAtOrAfterTimebeforeTime(CMTime lowerBound, CMTime upperBound);
+        BCOVCuePointCollection CuePointsAtOrAfterTime(CMTime lowerBound, CMTime upperBound);
 
         // -(instancetype)cuePointsAtOrAfterTime:(CMTime)lowerBound atOrBeforeTime:(CMTime)upperBound;
         [Export("cuePointsAtOrAfterTime:atOrBeforeTime:")]
-        BCOVCuePointCollection CuePointsAtOrAfterTime(CMTime lowerBound, CMTime upperBound);
+        BCOVCuePointCollection CuePointsAtOrAfterTimeatOrBeforeTime(CMTime lowerBound, CMTime upperBound);
 
         // -(instancetype)cuePointsOfType:(NSString *)type;
         [Export("cuePointsOfType:")]
@@ -1906,16 +1420,657 @@ namespace BrightcoveSDK.iOS
         [Export("objectAtIndexedSubscript:")]
         BCOVCuePoint ObjectAtIndexedSubscript(nuint index);
 
+        // @property (assign, nonatomic) BOOL ignoreCuePoints;
+        [Export("ignoreCuePoints")]
+        bool IgnoreCuePoints { get; set; }
+
         // +(instancetype)collectionWithArray:(NSArray *)cuePoints;
         [Static]
         [Export("collectionWithArray:")]
-        //[Verify(StronglyTypedNSArray)]
+        // [Verify (StronglyTypedNSArray)]
         BCOVCuePointCollection CollectionWithArray(NSObject[] cuePoints);
 
         // +(instancetype)emptyCollection;
         [Static]
         [Export("emptyCollection")]
         BCOVCuePointCollection EmptyCollection();
+    }
+
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern NSString *const kBCOVPlaylistPropertiesKeyAccountId;
+    // 	[Field ("kBCOVPlaylistPropertiesKeyAccountId", "__Internal")]
+    // 	NSString kBCOVPlaylistPropertiesKeyAccountId { get; }
+
+    // 	// extern NSString *const kBCOVPlaylistPropertiesKeyDescription;
+    // 	[Field ("kBCOVPlaylistPropertiesKeyDescription", "__Internal")]
+    // 	NSString kBCOVPlaylistPropertiesKeyDescription { get; }
+
+    // 	// extern NSString *const kBCOVPlaylistPropertiesKeyId;
+    // 	[Field ("kBCOVPlaylistPropertiesKeyId", "__Internal")]
+    // 	NSString kBCOVPlaylistPropertiesKeyId { get; }
+
+    // 	// extern NSString *const kBCOVPlaylistPropertiesKeyName;
+    // 	[Field ("kBCOVPlaylistPropertiesKeyName", "__Internal")]
+    // 	NSString kBCOVPlaylistPropertiesKeyName { get; }
+
+    // 	// extern NSString *const kBCOVPlaylistPropertiesKeyReferenceId;
+    // 	[Field ("kBCOVPlaylistPropertiesKeyReferenceId", "__Internal")]
+    // 	NSString kBCOVPlaylistPropertiesKeyReferenceId { get; }
+
+    // 	// extern NSString *const kBCOVPlaylistPropertiesKeyType;
+    // 	[Field ("kBCOVPlaylistPropertiesKeyType", "__Internal")]
+    // 	NSString kBCOVPlaylistPropertiesKeyType { get; }
+    // }
+
+    // @protocol BCOVPlaylist <NSObject, NSFastEnumeration>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IBCOVPlaylist //: INSFastEnumeration
+    {
+        // @required @property (readonly, copy, nonatomic) NSArray * videos;
+        [Abstract]
+        [Export("videos", ArgumentSemantic.Copy)]
+        // [Verify (StronglyTypedNSArray)]
+        NSObject[] Videos { get; }
+
+        // @required @property (readonly, copy, nonatomic) NSDictionary * properties;
+        [Abstract]
+        [Export("properties", ArgumentSemantic.Copy)]
+        NSDictionary Properties { get; }
+
+        // @required @property (readonly, nonatomic) NSArray<BCOVVideo *> * allPlayableVideos;
+        [Abstract]
+        [Export("allPlayableVideos")]
+        BCOVVideo[] AllPlayableVideos { get; }
+
+        // @required @property (readonly, nonatomic) NSArray<BCOVVideo *> * allFailedVideos;
+        [Abstract]
+        [Export("allFailedVideos")]
+        BCOVVideo[] AllFailedVideos { get; }
+
+        // @required -(instancetype)update:(void (^)(id<BCOVFPS>))updateBlock;
+        [Abstract]
+        [Export("update:")]
+        BCOVPlaylist Update(Action<BCOVMutablePlaylist> updateBlock);
+
+        // @required +(NSArray<BCOVVideo *> *)allPlayableVideosFrom:(id<NSFastEnumeration>)videos;
+        //[Static, Abstract]
+        //Hack
+        [Abstract]
+        [Export("allPlayableVideosFrom:")]
+        //Hack
+        BCOVVideo[] AllPlayableVideosFrom(NSObject videos);
+        //BCOVVideo[] AllPlayableVideosFrom(NSFastEnumeration videos);
+
+        // @required +(NSArray<BCOVVideo *> *)allFailedVideosFrom:(id<NSFastEnumeration>)videos;
+        //[Static, Abstract]
+        //Hack
+        [Abstract]
+        [Export("allFailedVideosFrom:")]
+        //BCOVVideo[] AllFailedVideosFrom(NSFastEnumeration videos);
+        //Hack
+        BCOVVideo[] AllFailedVideosFrom(NSObject videos);
+    }
+
+    // @protocol BCOVMutablePlaylist <BCOVPlaylist>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface BCOVMutablePlaylist : IBCOVPlaylist
+    {
+        // @required @property (readwrite, copy, nonatomic) NSArray * videos;
+        // 	[Abstract]
+        // 	[Export ("videos", ArgumentSemantic.Copy)]
+        // 	[Verify (StronglyTypedNSArray)]
+        // 	NSObject[] Videos { get; set; }
+
+        // 	// @required @property (readwrite, copy, nonatomic) NSDictionary * properties;
+        // 	[Abstract]
+        // 	[Export ("properties", ArgumentSemantic.Copy)]
+        // 	NSDictionary Properties { get; set; }
+    }
+
+    // @interface BCOVPlaylist : NSObject <BCOVPlaylist, NSCopying>
+    [BaseType(typeof(NSObject))]
+    interface BCOVPlaylist : IBCOVPlaylist, INSCopying
+    {
+        // -(instancetype)initWithVideos:(NSArray *)videos properties:(NSDictionary *)properties;
+        [Export("initWithVideos:properties:")]
+        // [Verify (StronglyTypedNSArray)]
+        IntPtr Constructor(NSObject[] videos, NSDictionary properties);
+
+        // -(instancetype)initWithVideos:(NSArray *)videos;
+        [Export("initWithVideos:")]
+        // [Verify (StronglyTypedNSArray)]
+        IntPtr Constructor(NSObject[] videos);
+
+        // -(instancetype)initWithVideo:(BCOVVideo *)video properties:(NSDictionary *)properties;
+        [Export("initWithVideo:properties:")]
+        IntPtr Constructor(BCOVVideo video, NSDictionary properties);
+
+        // -(instancetype)initWithVideo:(BCOVVideo *)video;
+        [Export("initWithVideo:")]
+        IntPtr Constructor(BCOVVideo video);
+
+        // -(BCOVVideo *)objectAtIndexedSubscript:(NSUInteger)index;
+        [Export("objectAtIndexedSubscript:")]
+        BCOVVideo ObjectAtIndexedSubscript(nuint index);
+
+        // -(BOOL)isEqualToPlaylist:(BCOVPlaylist *)playlist;
+        [Export("isEqualToPlaylist:")]
+        bool IsEqualToPlaylist(BCOVPlaylist playlist);
+
+        // -(NSUInteger)count;
+        [Export("count")]
+        // [Verify (MethodToProperty)]
+        nuint Count { get; }
+    }
+
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern NSString *const kBCOVSourceURLSchemeHTTP;
+    // 	[Field ("kBCOVSourceURLSchemeHTTP", "__Internal")]
+    // 	NSString kBCOVSourceURLSchemeHTTP { get; }
+
+    // 	// extern NSString *const kBCOVSourceURLSchemeHTTPS;
+    // 	[Field ("kBCOVSourceURLSchemeHTTPS", "__Internal")]
+    // 	NSString kBCOVSourceURLSchemeHTTPS { get; }
+
+    // 	// extern NSString *const kBCOVSourceDeliveryHLS;
+    // 	[Field ("kBCOVSourceDeliveryHLS", "__Internal")]
+    // 	NSString kBCOVSourceDeliveryHLS { get; }
+
+    // 	// extern NSString *const kBCOVSourceDeliveryMP4;
+    // 	[Field ("kBCOVSourceDeliveryMP4", "__Internal")]
+    // 	NSString kBCOVSourceDeliveryMP4 { get; }
+
+    // 	// extern NSString *const kBCOVSourceDeliveryDASH;
+    // 	[Field ("kBCOVSourceDeliveryDASH", "__Internal")]
+    // 	NSString kBCOVSourceDeliveryDASH { get; }
+
+    // 	// extern NSString *const kBCOVSourceDeliveryOnce;
+    // 	[Field ("kBCOVSourceDeliveryOnce", "__Internal")]
+    // 	NSString kBCOVSourceDeliveryOnce { get; }
+
+    // 	// extern NSString *const kBCOVSourceDeliveryBoltSSAI;
+    // 	[Field ("kBCOVSourceDeliveryBoltSSAI", "__Internal")]
+    // 	NSString kBCOVSourceDeliveryBoltSSAI { get; }
+
+    // 	// extern NSString *const kBCOVSourcePropertyKeySystems;
+    // 	[Field ("kBCOVSourcePropertyKeySystems", "__Internal")]
+    // 	NSString kBCOVSourcePropertyKeySystems { get; }
+
+    // 	// extern NSString *const kBCOVSourcePropertyKeyEXTXVersion;
+    // 	[Field ("kBCOVSourcePropertyKeyEXTXVersion", "__Internal")]
+    // 	NSString kBCOVSourcePropertyKeyEXTXVersion { get; }
+
+    // 	// extern NSString *const kBCOVSourcePropertyKeyType;
+    // 	[Field ("kBCOVSourcePropertyKeyType", "__Internal")]
+    // 	NSString kBCOVSourcePropertyKeyType { get; }
+
+    // 	// extern NSString *const kBCOVSourcePropertyKeyVMAP;
+    // 	[Field ("kBCOVSourcePropertyKeyVMAP", "__Internal")]
+    // 	NSString kBCOVSourcePropertyKeyVMAP { get; }
+    // }
+
+    // @protocol BCOVSource <NSObject>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
+    [Protocol]
+    [BaseType(typeof(NSObject))]
+    interface IBCOVSource
+    {
+        // @required @property (readonly, copy, nonatomic) NSURL * url;
+        [Abstract]
+        [Export("url", ArgumentSemantic.Copy)]
+        NSUrl Url { get; }
+
+        // @required @property (readonly, copy, nonatomic) NSString * deliveryMethod;
+        [Abstract]
+        [Export("deliveryMethod")]
+        string DeliveryMethod { get; }
+
+        // @required @property (readonly, copy, nonatomic) NSDictionary * properties;
+        [Abstract]
+        [Export("properties", ArgumentSemantic.Copy)]
+        NSDictionary Properties { get; }
+
+        // @required -(instancetype)update:(void (^)(id<BCOVMutableSource>))updateBlock;
+        [Abstract]
+        [Export("update:")]
+        BCOVSource Update(Action<BCOVMutableSource> updateBlock);
+    }
+
+    // @protocol BCOVMutableSource <BCOVSource>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface BCOVMutableSource : IBCOVSource
+    {
+        // // @required @property (readwrite, copy, nonatomic) NSURL * url;
+        // [Abstract]
+        // [Export ("url", ArgumentSemantic.Copy)]
+        // NSUrl Url { get; set; }
+
+        // // @required @property (readwrite, copy, nonatomic) NSString * deliveryMethod;
+        // [Abstract]
+        // [Export ("deliveryMethod")]
+        // string DeliveryMethod { get; set; }
+
+        // // @required @property (readwrite, copy, nonatomic) NSDictionary * properties;
+        // [Abstract]
+        // [Export ("properties", ArgumentSemantic.Copy)]
+        // NSDictionary Properties { get; set; }
+    }
+
+    // @interface BCOVSource : NSObject <BCOVSource, NSCopying>
+    //[Protocol]
+    [BaseType(typeof(NSObject))]
+    interface BCOVSource : IBCOVSource, INSCopying
+    {
+        // -(instancetype)initWithURL:(NSURL *)url;
+        [Export("initWithURL:")]
+        IntPtr Constructor(NSUrl url);
+
+        // -(instancetype)initWithURL:(NSURL *)url deliveryMethod:(NSString *)deliveryMethod properties:(NSDictionary *)properties;
+        [Export("initWithURL:deliveryMethod:properties:")]
+        IntPtr Constructor(NSUrl url, string deliveryMethod, NSDictionary properties);
+
+        // -(BOOL)isEqualToSource:(BCOVSource *)source;
+        [Export("isEqualToSource:")]
+        bool IsEqualToSource(BCOVSource source);
+    }
+
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern NSString *const kBCOVVideoPropertyKeyAccountId;
+    // 	[Field ("kBCOVVideoPropertyKeyAccountId", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyAccountId { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyDescription;
+    // 	[Field ("kBCOVVideoPropertyKeyDescription", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyDescription { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyDuration;
+    // 	[Field ("kBCOVVideoPropertyKeyDuration", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyDuration { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyEconomics;
+    // 	[Field ("kBCOVVideoPropertyKeyEconomics", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyEconomics { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyId;
+    // 	[Field ("kBCOVVideoPropertyKeyId", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyId { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyLongDescription;
+    // 	[Field ("kBCOVVideoPropertyKeyLongDescription", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyLongDescription { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyName;
+    // 	[Field ("kBCOVVideoPropertyKeyName", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyName { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyPoster;
+    // 	[Field ("kBCOVVideoPropertyKeyPoster", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyPoster { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyPosterSources;
+    // 	[Field ("kBCOVVideoPropertyKeyPosterSources", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyPosterSources { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyProjection;
+    // 	[Field ("kBCOVVideoPropertyKeyProjection", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyProjection { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyReferenceId;
+    // 	[Field ("kBCOVVideoPropertyKeyReferenceId", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyReferenceId { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyTags;
+    // 	[Field ("kBCOVVideoPropertyKeyTags", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyTags { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyTextTracks;
+    // 	[Field ("kBCOVVideoPropertyKeyTextTracks", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyTextTracks { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyThumbnail;
+    // 	[Field ("kBCOVVideoPropertyKeyThumbnail", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyThumbnail { get; }
+
+    // 	// extern NSString *const kBCOVVideoPropertyKeyThumbnailSources;
+    // 	[Field ("kBCOVVideoPropertyKeyThumbnailSources", "__Internal")]
+    // 	NSString kBCOVVideoPropertyKeyThumbnailSources { get; }
+    // }
+
+    // @protocol BCOVVideo <NSObject>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IBCOVVideo
+    {
+        // @required @property (readonly, copy, nonatomic) BCOVCuePointCollection * cuePoints;
+        [Abstract]
+        [Export("cuePoints", ArgumentSemantic.Copy)]
+        BCOVCuePointCollection CuePoints { get; }
+
+        // @required @property (readonly, copy, nonatomic) NSDictionary * properties;
+        [Abstract]
+        [Export("properties", ArgumentSemantic.Copy)]
+        NSDictionary Properties { get; }
+
+        // @required @property (nonatomic) BCOVEconomics economics;
+        [Abstract]
+        [Export("economics", ArgumentSemantic.Assign)]
+        BCOVEconomics Economics { get; set; }
+
+        // @required @property (readonly, copy, nonatomic) NSArray<BCOVSource *> * sources;
+        [Abstract]
+        [Export("sources", ArgumentSemantic.Copy)]
+        BCOVSource[] Sources { get; }
+
+        // @required -(instancetype)update:(void (^)(id<BCOVMutableVideo>))updateBlock;
+        [Abstract]
+        [Export("update:")]
+        BCOVVideo Update(Action<BCOVMutableVideo> updateBlock);
+    }
+
+    // @protocol BCOVMutableVideo <BCOVVideo>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
+    [Protocol]
+    [BaseType(typeof(NSObject))]
+    interface BCOVMutableVideo : IBCOVVideo
+    {
+        // // @required @property (readwrite, copy, nonatomic) BCOVCuePointCollection * cuePoints;
+        // [Abstract]
+        // [Export ("cuePoints", ArgumentSemantic.Copy)]
+        // BCOVCuePointCollection CuePoints { get; set; }
+
+        // // @required @property (readwrite, copy, nonatomic) NSDictionary * properties;
+        // [Abstract]
+        // [Export ("properties", ArgumentSemantic.Copy)]
+        // NSDictionary Properties { get; set; }
+
+        // // @required @property (readwrite, copy, nonatomic) NSArray * sources;
+        // [Abstract]
+        // [Export ("sources", ArgumentSemantic.Copy)]
+        // [Verify (StronglyTypedNSArray)]
+        // NSObject[] Sources { get; set; }
+    }
+
+    // @interface BCOVVideo : NSObject <BCOVVideo, NSCopying>
+    [BaseType(typeof(NSObject))]
+    interface BCOVVideo : IBCOVVideo, INSCopying
+    {
+        // @property (readonly, nonatomic) BOOL canBeDownloaded;
+        [Export("canBeDownloaded")]
+        bool CanBeDownloaded { get; }
+
+        // @property (readonly, nonatomic) BOOL usesFairPlay;
+        [Export("usesFairPlay")]
+        bool UsesFairPlay { get; }
+
+        // @property (readonly, nonatomic) BOOL offline;
+        [Export("offline")]
+        bool Offline { get; }
+
+        // @property (readonly, nonatomic) BOOL playableOffline;
+        [Export("playableOffline")]
+        bool PlayableOffline { get; }
+
+        // @property (copy, nonatomic) NSString * errorCode;
+        [Export("errorCode")]
+        string ErrorCode { get; set; }
+
+        // @property (copy, nonatomic) NSString * errorSubCode;
+        [Export("errorSubCode")]
+        string ErrorSubCode { get; set; }
+
+        // @property (copy, nonatomic) NSString * errorMessage;
+        [Export("errorMessage")]
+        string ErrorMessage { get; set; }
+
+        // @property (readonly, nonatomic) BOOL hasError;
+        [Export("hasError")]
+        bool HasError { get; }
+
+        // -(instancetype)initWithSources:(NSArray<BCOVSource *> *)sources cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
+        [Export("initWithSources:cuePoints:properties:")]
+        IntPtr Constructor(BCOVSource[] sources, BCOVCuePointCollection cuePoints, NSDictionary properties);
+
+        // -(instancetype)initWithSource:(BCOVSource *)source cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
+        [Export("initWithSource:cuePoints:properties:")]
+        IntPtr Constructor(BCOVSource source, BCOVCuePointCollection cuePoints, NSDictionary properties);
+
+        // -(instancetype)initWithErrorCode:(NSString *)errorCode errorSubCode:(NSString *)errorSubCode errorMessage:(NSString *)errorMessage properties:(NSDictionary *)properties;
+        [Export("initWithErrorCode:errorSubCode:errorMessage:properties:")]
+        IntPtr Constructor(string errorCode, string errorSubCode, string errorMessage, NSDictionary properties);
+
+        // -(BOOL)isEqualToVideo:(BCOVVideo *)video;
+        [Export("isEqualToVideo:")]
+        bool IsEqualToVideo(BCOVVideo video);
+
+        // +(BCOVVideo *)videoWithURL:(NSURL *)url;
+        [Static]
+        [Export("videoWithURL:")]
+        BCOVVideo VideoWithURL(NSUrl url);
+
+        // +(BCOVVideo *)videoWithHLSSourceURL:(NSURL *)url;
+        [Static]
+        [Export("videoWithHLSSourceURL:")]
+        BCOVVideo VideoWithHLSSourceURL(NSUrl url);
+
+        // +(BCOVVideo *)videoWithURL:(NSURL *)url deliveryMethod:(NSString *)deliveryMethod;
+        [Static]
+        [Export("videoWithURL:deliveryMethod:")]
+        BCOVVideo VideoWithURL(NSUrl url, string deliveryMethod);
+    }
+
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern NSString *const kBCOVPlaybackSessionLifecycleEventWillPauseForAd;
+    // 	[Field ("kBCOVPlaybackSessionLifecycleEventWillPauseForAd", "__Internal")]
+    // 	NSString kBCOVPlaybackSessionLifecycleEventWillPauseForAd { get; }
+    // }
+
+    // @interface BCOVAdSequence : NSObject
+    [BaseType(typeof(NSObject))]
+    interface BCOVAdSequence
+    {
+        // @property (readonly, nonatomic) CMTime beginTime;
+        [Export("beginTime")]
+        CMTime BeginTime { get; }
+
+        // @property (readonly, nonatomic) CMTime duration;
+        [Export("duration")]
+        CMTime Duration { get; }
+
+        // @property (readonly, copy, nonatomic) NSArray * ads;
+        [Export("ads", ArgumentSemantic.Copy)]
+        // [Verify (StronglyTypedNSArray)]
+        NSObject[] Ads { get; }
+
+        // @property (readonly, copy, nonatomic) NSDictionary * properties;
+        [Export("properties", ArgumentSemantic.Copy)]
+        NSDictionary Properties { get; }
+
+        // -(instancetype)initWithAds:(NSArray *)ads properties:(NSDictionary *)properties;
+        [Export("initWithAds:properties:")]
+        // [Verify (StronglyTypedNSArray)]
+        IntPtr Constructor(NSObject[] ads, NSDictionary properties);
+
+        // -(BOOL)isEqualToAdSequence:(BCOVAdSequence *)adSequence;
+        [Export("isEqualToAdSequence:")]
+        bool IsEqualToAdSequence(BCOVAdSequence adSequence);
+    }
+
+    // @interface BCOVAd : NSObject
+    [BaseType(typeof(NSObject))]
+    interface BCOVAd
+    {
+        // @property (readonly, copy, nonatomic) NSString * title;
+        [Export("title")]
+        string Title { get; }
+
+        // @property (readonly, copy, nonatomic) NSString * adId;
+        [Export("adId")]
+        string AdId { get; }
+
+        // @property (readonly, nonatomic) CMTime beginTime;
+        [Export("beginTime")]
+        CMTime BeginTime { get; }
+
+        // @property (readonly, nonatomic) CMTime duration;
+        [Export("duration")]
+        CMTime Duration { get; }
+
+        // @property (readonly, copy, nonatomic) NSDictionary * properties;
+        [Export("properties", ArgumentSemantic.Copy)]
+        NSDictionary Properties { get; }
+
+        // -(instancetype)initWithTitle:(NSString *)title adId:(NSString *)adId beginTime:(CMTime)beginTime duration:(CMTime)duration properties:(NSDictionary *)properties __attribute__((objc_designated_initializer));
+        [Export("initWithTitle:adId:beginTime:duration:properties:")]
+        [DesignatedInitializer]
+        IntPtr Constructor(string title, string adId, CMTime beginTime, CMTime duration, NSDictionary properties);
+
+        // -(BOOL)isEqualToAd:(BCOVAd *)ad;
+        [Export("isEqualToAd:")]
+        bool IsEqualToAd(BCOVAd ad);
+    }
+
+    // @protocol BCOVPlaybackControllerAdsDelegate <NSObject>
+    [Protocol, Model(AutoGeneratedName = true)]
+    [BaseType(typeof(NSObject))]
+    interface IBCOVPlaybackControllerAdsDelegate
+    {
+        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didEnterAdSequence:(BCOVAdSequence *)adSequence;
+        [Export("playbackController:playbackSession:didEnterAdSequence:")]
+        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAdSequence adSequence);
+
+        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didExitAdSequence:(BCOVAdSequence *)adSequence;
+        [Export("playbackController:playbackSession:didExitAdSequence:")]
+        void PlaybackSessiondidExitAdSequence(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAdSequence adSequence);
+
+        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didEnterAd:(BCOVAd *)ad;
+        [Export("playbackController:playbackSession:didEnterAd:")]
+        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
+
+        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didExitAd:(BCOVAd *)ad;
+        [Export("playbackController:playbackSession:didExitAd:")]
+        void PlaybackSessiondidExitAd(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
+
+        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session ad:(BCOVAd *)ad didProgressTo:(NSTimeInterval)progress;
+        [Export("playbackController:playbackSession:ad:didProgressTo:")]
+        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad, double progress);
+
+        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didPauseAd:(BCOVAd *)ad;
+        [Export("playbackController:playbackSession:didPauseAd:")]
+        void PlaybackSessionplaybackSessiondidPauseAd(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
+
+        // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didResumeAd:(BCOVAd *)ad;
+        [Export("playbackController:playbackSession:didResumeAd:")]
+        void PlaybackSessionplaybackSessiondidResumeAd(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
+    }
+
+    // @protocol BCOVPlaybackSessionAdsConsumer <NSObject>
+    /*
+      Check whether adding [Model] to this declaration is appropriate.
+      [Model] is used to generate a C# class that implements this protocol,
+      and might be useful for protocols that consumers are supposed to implement,
+      since consumers can subclass the generated class instead of implementing
+      the generated interface. If consumers are not supposed to implement this
+      protocol, then [Model] is redundant and will generate code that will never
+      be used.
+    */
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IBCOVPlaybackSessionAdsConsumer
+    {
+        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didEnterAdSequence:(BCOVAdSequence *)adSequence;
+        [Export("playbackSession:didEnterAdSequence:")]
+        void DidEnterAdSequence(BCOVPlaybackSession session, BCOVAdSequence adSequence);
+
+        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didExitAdSequence:(BCOVAdSequence *)adSequence;
+        [Export("playbackSession:didExitAdSequence:")]
+        void DidExitAdSequence(BCOVPlaybackSession session, BCOVAdSequence adSequence);
+
+        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didEnterAd:(BCOVAd *)ad;
+        [Export("playbackSession:didEnterAd:")]
+        void DidEnterAd(BCOVPlaybackSession session, BCOVAd ad);
+
+        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didExitAd:(BCOVAd *)ad;
+        [Export("playbackSession:didExitAd:")]
+        void DidExitAd(BCOVPlaybackSession session, BCOVAd ad);
+
+        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session ad:(BCOVAd *)ad didProgressTo:(NSTimeInterval)progress;
+        [Export("playbackSession:ad:didProgressTo:")]
+        void Ad(BCOVPlaybackSession session, BCOVAd ad, double progress);
+
+        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didPauseAd:(BCOVAd *)ad;
+        [Export("playbackSession:didPauseAd:")]
+        void DidPauseAd(BCOVPlaybackSession session, BCOVAd ad);
+
+        // @optional -(void)playbackSession:(id<BCOVPlaybackSession>)session didResumeAd:(BCOVAd *)ad;
+        [Export("playbackSession:didResumeAd:")]
+        void DidResumeAd(BCOVPlaybackSession session, BCOVAd ad);
     }
 
     // @interface BCOVPUICommon : NSObject
@@ -1925,7 +2080,7 @@ namespace BrightcoveSDK.iOS
         // +(UIFont *)iconFont;
         [Static]
         [Export("iconFont")]
-        //[Verify(MethodToProperty)]
+        // [Verify (MethodToProperty)]
         UIFont IconFont { get; }
 
         // +(UIFont *)iconFontWithSize:(CGFloat)fontSize;
@@ -1941,49 +2096,49 @@ namespace BrightcoveSDK.iOS
         // +(UIColor *)controlColorForNormalState;
         [Static]
         [Export("controlColorForNormalState")]
-        //[Verify(MethodToProperty)]
+        // [Verify (MethodToProperty)]
         UIColor ControlColorForNormalState { get; }
 
         // +(UIColor *)controlColorForSelectedState;
         [Static]
         [Export("controlColorForSelectedState")]
-        //[Verify(MethodToProperty)]
+        // [Verify (MethodToProperty)]
         UIColor ControlColorForSelectedState { get; }
 
         // +(UIColor *)controlColorForHighlightedState;
         [Static]
         [Export("controlColorForHighlightedState")]
-        //[Verify(MethodToProperty)]
+        // [Verify (MethodToProperty)]
         UIColor ControlColorForHighlightedState { get; }
 
         // +(UIColor *)controlColorForDisabledState;
         [Static]
         [Export("controlColorForDisabledState")]
-        //[Verify(MethodToProperty)]
+        // [Verify (MethodToProperty)]
         UIColor ControlColorForDisabledState { get; }
 
         // +(UIColor *)liveViewTitleColorForLive;
         [Static]
         [Export("liveViewTitleColorForLive")]
-        //[Verify(MethodToProperty)]
+        // [Verify (MethodToProperty)]
         UIColor LiveViewTitleColorForLive { get; }
 
         // +(UIColor *)progressSliderMaximumTrackTintColor;
         [Static]
         [Export("progressSliderMaximumTrackTintColor")]
-        //[Verify(MethodToProperty)]
+        // [Verify (MethodToProperty)]
         UIColor ProgressSliderMaximumTrackTintColor { get; }
 
         // +(UIColor *)progressSliderMinimumTrackTintColor;
         [Static]
         [Export("progressSliderMinimumTrackTintColor")]
-        //[Verify(MethodToProperty)]
+        // [Verify (MethodToProperty)]
         UIColor ProgressSliderMinimumTrackTintColor { get; }
 
         // +(UIColor *)progressSliderBufferProgressTintColor;
         [Static]
         [Export("progressSliderBufferProgressTintColor")]
-        //[Verify(MethodToProperty)]
+        // [Verify (MethodToProperty)]
         UIColor ProgressSliderBufferProgressTintColor { get; }
 
         // +(UIImage *)imageForVolumeViewWithFontSize:(CGFloat)fontSize color:(UIColor *)color;
@@ -1994,13 +2149,13 @@ namespace BrightcoveSDK.iOS
         // +(CGFloat)defaultFontSizeForLabel;
         [Static]
         [Export("defaultFontSizeForLabel")]
-        //[Verify(MethodToProperty)]
+        // [Verify (MethodToProperty)]
         nfloat DefaultFontSizeForLabel { get; }
 
         // +(CGFloat)defaultFontSizeForButton;
         [Static]
         [Export("defaultFontSizeForButton")]
-        //[Verify(MethodToProperty)]
+        // [Verify (MethodToProperty)]
         nfloat DefaultFontSizeForButton { get; }
     }
 
@@ -2077,14 +2232,14 @@ namespace BrightcoveSDK.iOS
         void SetTextColorForControls(UIColor textColor, UIControlState state);
     }
 
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern CGFloat kBCOVPUILayoutUseDefaultValue;
-    //    [Field("kBCOVPUILayoutUseDefaultValue", "__Internal")]
-    //    nfloat kBCOVPUILayoutUseDefaultValue { get; }
-    //}
+    // [Static]
+    // [Verify (ConstantsInterfaceAssociation)]
+    // partial interface Constants
+    // {
+    // 	// extern CGFloat kBCOVPUILayoutUseDefaultValue;
+    // 	[Field ("kBCOVPUILayoutUseDefaultValue", "__Internal")]
+    // 	nfloat kBCOVPUILayoutUseDefaultValue { get; }
+    // }
 
     // @interface BCOVPUIControlLayout : NSObject <NSCopying>
     [BaseType(typeof(NSObject))]
@@ -2276,7 +2431,7 @@ namespace BrightcoveSDK.iOS
     }
 
     // @protocol BCOVPUIButtonAccessibilityDelegate <NSObject>
-    [Protocol, Model]
+    [Protocol, Model(AutoGeneratedName = true)]
     [BaseType(typeof(NSObject))]
     interface BCOVPUIButtonAccessibilityDelegate
     {
@@ -2328,7 +2483,7 @@ namespace BrightcoveSDK.iOS
     }
 
     // @protocol BCOVPUIPlayerViewDelegate <NSObject>
-    [Protocol, Model]
+    [Protocol, Model(AutoGeneratedName = true)]
     [BaseType(typeof(NSObject))]
     interface BCOVPUIPlayerViewDelegate
     {
@@ -2347,6 +2502,10 @@ namespace BrightcoveSDK.iOS
         // @optional -(void)playerView:(BCOVPUIPlayerView *)playerView controlsFadingViewDidFadeIn:(UIView *)controlsFadingView;
         [Export("playerView:controlsFadingViewDidFadeIn:")]
         void PlayerViewcontrolsFadingViewDidFadeIn(BCOVPUIPlayerView playerView, UIView controlsFadingView);
+
+        // @optional -(CGRect)playerViewShouldDisplayThumbnailPreviewWithRect:(BCOVPUIPlayerView *)playerView;
+        [Export("playerViewShouldDisplayThumbnailPreviewWithRect:")]
+        NSObject PlayerViewShouldDisplayThumbnailPreviewWithRect(BCOVPUIPlayerView playerView);
 
         // @optional -(void)willOpenInAppBrowserWithAd:(BCOVAd *)ad;
         [Export("willOpenInAppBrowserWithAd:")]
@@ -2372,13 +2531,11 @@ namespace BrightcoveSDK.iOS
         [Export("didReturnFromExternalBrowserWithAd:")]
         void DidReturnFromExternalBrowserWithAd(BCOVAd ad);
 
-        // @optional -(void)routePickerViewWillBeginPresentingRoutes:(AVRoutePickerView *)routePickerView __attribute__((availability(ios, introduced=11)));
-        [iOS(11, 0)]
+        // @optional -(void)routePickerViewWillBeginPresentingRoutes:(AVRoutePickerView *)routePickerView;
         [Export("routePickerViewWillBeginPresentingRoutes:")]
         void RoutePickerViewWillBeginPresentingRoutes(AVRoutePickerView routePickerView);
 
-        // @optional -(void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView __attribute__((availability(ios, introduced=11)));
-        [iOS(11, 0)]
+        // @optional -(void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView;
         [Export("routePickerViewDidEndPresentingRoutes:")]
         void RoutePickerViewDidEndPresentingRoutes(AVRoutePickerView routePickerView);
 
@@ -2405,6 +2562,18 @@ namespace BrightcoveSDK.iOS
         // @optional -(void)pictureInPictureController:(AVPictureInPictureController *)pictureInPictureController failedToStartPictureInPictureWithError:(NSError *)error;
         [Export("pictureInPictureController:failedToStartPictureInPictureWithError:")]
         void PictureInPictureController(AVPictureInPictureController pictureInPictureController, NSError error);
+
+        // @optional -(void)progressSliderDidTouchDown:(UISlider *)slider;
+        [Export("progressSliderDidTouchDown:")]
+        void ProgressSliderDidTouchDown(UISlider slider);
+
+        // @optional -(void)progressSliderDidTouchUp:(UISlider *)slider;
+        [Export("progressSliderDidTouchUp:")]
+        void ProgressSliderDidTouchUp(UISlider slider);
+
+        // @optional -(void)progressSliderDidChangeValue:(UISlider *)slider;
+        [Export("progressSliderDidChangeValue:")]
+        void ProgressSliderDidChangeValue(UISlider slider);
     }
 
     // @interface BCOVPreferredBitrateConfig : NSObject
@@ -2419,10 +2588,19 @@ namespace BrightcoveSDK.iOS
         [Export("bitrateOptions", ArgumentSemantic.Strong)]
         NSDictionary<NSString, NSNumber>[] BitrateOptions { get; set; }
 
+        // @property (readonly, assign, nonatomic) NSUInteger initialSelectionIndex;
+        [Export("initialSelectionIndex")]
+        nuint InitialSelectionIndex { get; }
+
         // +(BCOVPreferredBitrateConfig *)configWithMenuTitle:(NSString *)menuTitle andBitrateOptions:(NSArray<NSDictionary<NSString *,NSNumber *> *> *)bitrateOptions;
         [Static]
         [Export("configWithMenuTitle:andBitrateOptions:")]
         BCOVPreferredBitrateConfig ConfigWithMenuTitle(string menuTitle, NSDictionary<NSString, NSNumber>[] bitrateOptions);
+
+        // +(BCOVPreferredBitrateConfig *)configWithMenuTitle:(NSString *)menuTitle bitrateOptions:(NSArray<NSDictionary<NSString *,NSNumber *> *> *)bitrateOptions andIndexofInitialSelection:(NSInteger)initialSelectionIndex;
+        [Static]
+        [Export("configWithMenuTitle:bitrateOptions:andIndexofInitialSelection:")]
+        BCOVPreferredBitrateConfig ConfigWithMenuTitle(string menuTitle, NSDictionary<NSString, NSNumber>[] bitrateOptions, nint initialSelectionIndex);
     }
 
     // @interface BCOVPUIPlayerViewOptions : NSObject
@@ -2640,215 +2818,6 @@ namespace BrightcoveSDK.iOS
         void SetCustomMaximumTrackImage(UIImage image, UIControlState state);
     }
 
-    //[Static]
-    //[Verify(ConstantsInterfaceAssociation)]
-    //partial interface Constants
-    //{
-    //    // extern NSString *const kBCOVOfflineVideoManagerErrorDomain;
-    //    [Field("kBCOVOfflineVideoManagerErrorDomain", "__Internal")]
-    //    NSString kBCOVOfflineVideoManagerErrorDomain { get; }
-
-    //    // extern const NSInteger kBCOVOfflineVideoManagerErrorCodeInvalidParameter;
-    //    [Field("kBCOVOfflineVideoManagerErrorCodeInvalidParameter", "__Internal")]
-    //    nint kBCOVOfflineVideoManagerErrorCodeInvalidParameter { get; }
-
-    //    // extern const NSInteger kBCOVOfflineVideoManagerErrorCodeUnsupported;
-    //    [Field("kBCOVOfflineVideoManagerErrorCodeUnsupported", "__Internal")]
-    //    nint kBCOVOfflineVideoManagerErrorCodeUnsupported { get; }
-
-    //    // extern const NSInteger kBCOVOfflineVideoManagerErrorCodeDownloadFailure;
-    //    [Field("kBCOVOfflineVideoManagerErrorCodeDownloadFailure", "__Internal")]
-    //    nint kBCOVOfflineVideoManagerErrorCodeDownloadFailure { get; }
-
-    //    // extern const NSInteger kBCOVOfflineVideoManagerErrorCodeExpiredLicense;
-    //    [Field("kBCOVOfflineVideoManagerErrorCodeExpiredLicense", "__Internal")]
-    //    nint kBCOVOfflineVideoManagerErrorCodeExpiredLicense { get; }
-
-    //    // extern const NSInteger kBCOVOfflineVideoManagerErrorCodeInvalidLicense;
-    //    [Field("kBCOVOfflineVideoManagerErrorCodeInvalidLicense", "__Internal")]
-    //    nint kBCOVOfflineVideoManagerErrorCodeInvalidLicense { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoManagerAnalyticsStorageFullWarningNotification;
-    //    [Field("kBCOVOfflineVideoManagerAnalyticsStorageFullWarningNotification", "__Internal")]
-    //    NSString kBCOVOfflineVideoManagerAnalyticsStorageFullWarningNotification { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoManagerAllowsCellularDownloadKey;
-    //    [Field("kBCOVOfflineVideoManagerAllowsCellularDownloadKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoManagerAllowsCellularDownloadKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoManagerAllowsCellularPlaybackKey;
-    //    [Field("kBCOVOfflineVideoManagerAllowsCellularPlaybackKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoManagerAllowsCellularPlaybackKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoManagerAllowsCellularAnalyticsKey;
-    //    [Field("kBCOVOfflineVideoManagerAllowsCellularAnalyticsKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoManagerAllowsCellularAnalyticsKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoManagerAnalyticsStorageLimitKey;
-    //    [Field("kBCOVOfflineVideoManagerAnalyticsStorageLimitKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoManagerAnalyticsStorageLimitKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoManagerRequestedBitrateKey;
-    //    [Field("kBCOVOfflineVideoManagerRequestedBitrateKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoManagerRequestedBitrateKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoManagerDisplayNameKey;
-    //    [Field("kBCOVOfflineVideoManagerDisplayNameKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoManagerDisplayNameKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoManagerSubtitleLanguagesKey;
-    //    [Field("kBCOVOfflineVideoManagerSubtitleLanguagesKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoManagerSubtitleLanguagesKey { get; }
-
-    //    // extern NSString *const kBCOVFairPlayLicensePurchaseKey;
-    //    [Field("kBCOVFairPlayLicensePurchaseKey", "__Internal")]
-    //    NSString kBCOVFairPlayLicensePurchaseKey { get; }
-
-    //    // extern NSString *const kBCOVFairPlayLicenseRentalDurationKey;
-    //    [Field("kBCOVFairPlayLicenseRentalDurationKey", "__Internal")]
-    //    NSString kBCOVFairPlayLicenseRentalDurationKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey;
-    //    [Field("kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoTokenPropertyKey;
-    //    [Field("kBCOVOfflineVideoTokenPropertyKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoTokenPropertyKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoLicenseRequestTimePropertyKey;
-    //    [Field("kBCOVOfflineVideoLicenseRequestTimePropertyKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoLicenseRequestTimePropertyKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoLicenseAbsoluteExpirationTimePropertyKey;
-    //    [Field("kBCOVOfflineVideoLicenseAbsoluteExpirationTimePropertyKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoLicenseAbsoluteExpirationTimePropertyKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoDownloadStartTimePropertyKey;
-    //    [Field("kBCOVOfflineVideoDownloadStartTimePropertyKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoDownloadStartTimePropertyKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoDownloadEndTimePropertyKey;
-    //    [Field("kBCOVOfflineVideoDownloadEndTimePropertyKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoDownloadEndTimePropertyKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoOnlineSourceURLPropertyKey;
-    //    [Field("kBCOVOfflineVideoOnlineSourceURLPropertyKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoOnlineSourceURLPropertyKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoThumbnailNamePropertyKey;
-    //    [Field("kBCOVOfflineVideoThumbnailNamePropertyKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoThumbnailNamePropertyKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoThumbnailFilePathPropertyKey;
-    //    [Field("kBCOVOfflineVideoThumbnailFilePathPropertyKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoThumbnailFilePathPropertyKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoPosterNamePropertyKey;
-    //    [Field("kBCOVOfflineVideoPosterNamePropertyKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoPosterNamePropertyKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoPosterFilePathPropertyKey;
-    //    [Field("kBCOVOfflineVideoPosterFilePathPropertyKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoPosterFilePathPropertyKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoRelativeFilePathPropertyKey;
-    //    [Field("kBCOVOfflineVideoRelativeFilePathPropertyKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoRelativeFilePathPropertyKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoFilePathPropertyKey;
-    //    [Field("kBCOVOfflineVideoFilePathPropertyKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoFilePathPropertyKey { get; }
-
-    //    // extern NSString *const kBCOVOfflineVideoUsesSidebandSubtitleKey;
-    //    [Field("kBCOVOfflineVideoUsesSidebandSubtitleKey", "__Internal")]
-    //    NSString kBCOVOfflineVideoUsesSidebandSubtitleKey { get; }
-    //}
-
-    // @protocol BCOVOfflineVideoManagerDelegate <NSObject>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface BCOVOfflineVideoManagerDelegate
-    {
-        // @optional -(void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken downloadTask:(AVAssetDownloadTask *)downloadTask didProgressTo:(NSTimeInterval)progressPercent __attribute__((availability(ios, introduced=10.0)));
-        [iOS(10, 0)]
-        [Export("offlineVideoToken:downloadTask:didProgressTo:")]
-        void OfflineVideoToken(string offlineVideoToken, AVAssetDownloadTask downloadTask, double progressPercent);
-
-        // @optional -(void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken didFinishDownloadWithError:(NSError *)error;
-        [Export("offlineVideoToken:didFinishDownloadWithError:")]
-        void OfflineVideoToken(string offlineVideoToken, NSError error);
-
-        // @optional -(void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken aggregateDownloadTask:(AVAggregateAssetDownloadTask *)aggregateDownloadTask didProgressTo:(NSTimeInterval)progressPercent forMediaSelection:(AVMediaSelection *)mediaSelection __attribute__((availability(ios, introduced=11.0)));
-        [iOS(11, 0)]
-        [Export("offlineVideoToken:aggregateDownloadTask:didProgressTo:forMediaSelection:")]
-        void OfflineVideoToken(string offlineVideoToken, AVAggregateAssetDownloadTask aggregateDownloadTask, double progressPercent, AVMediaSelection mediaSelection);
-
-        // @optional -(void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken didFinishMediaSelectionDownload:(AVMediaSelection *)mediaSelection __attribute__((availability(ios, introduced=11.0)));
-        [iOS(11, 0)]
-        [Export("offlineVideoToken:didFinishMediaSelectionDownload:")]
-        void OfflineVideoToken(string offlineVideoToken, AVMediaSelection mediaSelection);
-
-        // @optional -(void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken didFinishAggregateDownloadWithError:(NSError *)error __attribute__((availability(ios, introduced=11.0)));
-        [iOS(11, 0)]
-        [Export("offlineVideoToken:didFinishAggregateDownloadWithError:")]
-        void OfflineVideoTokendidFinishAggregateDownloadWithError(string offlineVideoToken, NSError error);
-
-        // @optional -(void)didDownloadStaticImagesWithOfflineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken;
-        [Export("didDownloadStaticImagesWithOfflineVideoToken:")]
-        void DidDownloadStaticImagesWithOfflineVideoToken(string offlineVideoToken);
-
-        // @optional -(BOOL)shouldDeleteVideoPackage:(NSString *)videoPackagePath;
-        [Export("shouldDeleteVideoPackage:")]
-        bool ShouldDeleteVideoPackage(string videoPackagePath);
-
-        // @optional -(void)didCreateSharedBackgroundSesssionConfiguration:(NSURLSessionConfiguration *)backgroundSessionConfiguration;
-        [Export("didCreateSharedBackgroundSesssionConfiguration:")]
-        void DidCreateSharedBackgroundSesssionConfiguration(NSUrlSessionConfiguration backgroundSessionConfiguration);
-
-        // @optional -(void)offlineVideoStorageDidChange;
-        [Export("offlineVideoStorageDidChange")]
-        void OfflineVideoStorageDidChange();
-    }
-
-    // @interface BCOVOfflineVideoStatus : NSObject <NSCopying>
-    [BaseType(typeof(NSObject))]
-    interface BCOVOfflineVideoStatus : INSCopying
-    {
-        // @property (readonly, nonatomic) BCOVOfflineVideoToken offlineVideoToken;
-        [Export("offlineVideoToken")]
-        string OfflineVideoToken { get; }
-
-        // @property (readonly, nonatomic) BCOVOfflineVideoDownloadState downloadState;
-        [Export("downloadState")]
-        BCOVOfflineVideoDownloadState DownloadState { get; }
-
-        // @property (readonly, nonatomic) NSDate * downloadStartTime;
-        [Export("downloadStartTime")]
-        NSDate DownloadStartTime { get; }
-
-        // @property (readonly, nonatomic) NSDate * downloadEndTime;
-        [Export("downloadEndTime")]
-        NSDate DownloadEndTime { get; }
-
-        // @property (readonly, nonatomic) CGFloat downloadPercent;
-        [Export("downloadPercent")]
-        nfloat DownloadPercent { get; }
-
-        // @property (readonly, nonatomic) AVAssetDownloadTask * downloadTask;
-        [Export("downloadTask")]
-        AVAssetDownloadTask DownloadTask { get; }
-
-        // @property (readonly, nonatomic) AVAggregateAssetDownloadTask * aggregateDownloadTask __attribute__((availability(ios, introduced=11.0)));
-        [iOS(11, 0)]
-        [Export("aggregateDownloadTask")]
-        AVAggregateAssetDownloadTask AggregateDownloadTask { get; }
-
-        // @property (readonly, nonatomic) NSError * error;
-        [Export("error")]
-        NSError Error { get; }
-    }
-
     // @interface BCOVOfflineVideoManager : NSObject
     [BaseType(typeof(NSObject))]
     interface BCOVOfflineVideoManager
@@ -2858,25 +2827,68 @@ namespace BrightcoveSDK.iOS
         BCOVFPSAuthorizationProxy AuthProxy { get; set; }
 
         [Wrap("WeakDelegate")]
-        BCOVOfflineVideoManagerDelegate Delegate { get; set; }
+        NSObject Delegate { get; set; }
 
-        // @property (assign, nonatomic) id<BCOVOfflineVideoManagerDelegate> delegate;
+        // @property (assign, nonatomic) id delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
         NSObject WeakDelegate { get; set; }
 
-        // @property (readonly, nonatomic) NSArray<BCOVOfflineVideoToken> * offlineVideoTokens;
+        // @property (readonly, nonatomic) NSArray * offlineVideoTokens;
         [Export("offlineVideoTokens")]
-        string[] OfflineVideoTokens { get; }
+        // [Verify (StronglyTypedNSArray)]
+        NSObject[] OfflineVideoTokens { get; }
 
         // +(BCOVOfflineVideoManager *)sharedManager;
         [Static]
         [Export("sharedManager")]
+        // [Verify (MethodToProperty)]
         BCOVOfflineVideoManager SharedManager { get; }
 
-        // +(void)initializeOfflineVideoManagerWithDelegate:(id<BCOVOfflineVideoManagerDelegate>)delegate options:(NSDictionary *)options;
+        // +(void)initializeOfflineVideoManagerWithDelegate:(id)delegate options:(NSDictionary *)options;
         [Static]
         [Export("initializeOfflineVideoManagerWithDelegate:options:")]
-        void InitializeOfflineVideoManagerWithDelegate(BCOVOfflineVideoManagerDelegate @delegate, NSDictionary options);
+        void InitializeOfflineVideoManagerWithDelegate(NSObject @delegate, NSDictionary options);
+
+        // -(void)requestVideoDownload:(BCOVVideo *)video mediaSelections:(NSArray<AVMediaSelection *> *)mediaSelections parameters:(NSDictionary *)parameters completion:(void (^)(int, NSError *))completionHandler;
+        [Export("requestVideoDownload:mediaSelections:parameters:completion:")]
+        void RequestVideoDownload(BCOVVideo video, AVMediaSelection[] mediaSelections, NSDictionary parameters, Action<int, NSError> completionHandler);
+
+        // -(NSArray *)offlineVideoStatus;
+        [Export("offlineVideoStatus")]
+        // [Verify (MethodToProperty), Verify (StronglyTypedNSArray)]
+        NSObject[] OfflineVideoStatus { get; }
+
+        // -(id)offlineVideoStatusForToken:(id)offlineVideoToken;
+        [Export("offlineVideoStatusForToken:")]
+        NSObject OfflineVideoStatusForToken(NSObject offlineVideoToken);
+
+        // -(void)pauseVideoDownload:(id)offlineVideoToken;
+        [Export("pauseVideoDownload:")]
+        void PauseVideoDownload(NSObject offlineVideoToken);
+
+        // -(void)resumeVideoDownload:(id)offlineVideoToken;
+        [Export("resumeVideoDownload:")]
+        void ResumeVideoDownload(NSObject offlineVideoToken);
+
+        // -(void)cancelVideoDownload:(id)offlineVideoToken;
+        [Export("cancelVideoDownload:")]
+        void CancelVideoDownload(NSObject offlineVideoToken);
+
+        // -(void)deleteOfflineVideo:(id)offlineVideoToken;
+        [Export("deleteOfflineVideo:")]
+        void DeleteOfflineVideo(NSObject offlineVideoToken);
+
+        // -(void)forceStopAllDownloadTasks;
+        [Export("forceStopAllDownloadTasks")]
+        void ForceStopAllDownloadTasks();
+
+        // -(void)estimateDownloadSize:(BCOVVideo *)video options:(NSDictionary *)options completion:(void (^)(double, NSError *))completionHandler;
+        [Export("estimateDownloadSize:options:completion:")]
+        void EstimateDownloadSize(BCOVVideo video, NSDictionary options, Action<double, NSError> completionHandler);
+
+        // -(AVURLAsset *)urlAssetForVideo:(BCOVVideo *)video error:(NSError **)error;
+        [Export("urlAssetForVideo:error:")]
+        AVUrlAsset UrlAssetForVideo(BCOVVideo video, out NSError error);
 
         // -(void)variantAttributesDictionariesForVideo:(BCOVVideo *)video completion:(void (^)(NSArray<NSDictionary *> *, NSError *))completionHandler;
         [Export("variantAttributesDictionariesForVideo:completion:")]
@@ -2890,86 +2902,41 @@ namespace BrightcoveSDK.iOS
         [Export("variantBitratesForVideo:completion:")]
         void VariantBitratesForVideo(BCOVVideo video, Action<NSArray<NSNumber>, NSError> completionHandler);
 
-        // -(void)estimateDownloadSize:(BCOVVideo *)video options:(NSDictionary *)options completion:(void (^)(double, NSError *))completionHandler;
-        [Export("estimateDownloadSize:options:completion:")]
-        void EstimateDownloadSize(BCOVVideo video, NSDictionary options, Action<double, NSError> completionHandler);
-
-        // -(NSArray<BCOVOfflineVideoStatus *> *)offlineVideoStatus;
-        [Export("offlineVideoStatus")]
-        //[Verify(MethodToProperty)]
-        BCOVOfflineVideoStatus[] OfflineVideoStatus { get; }
-
-        // -(BCOVOfflineVideoStatus *)offlineVideoStatusForToken:(BCOVOfflineVideoToken)offlineVideoToken;
-        [Export("offlineVideoStatusForToken:")]
-        BCOVOfflineVideoStatus OfflineVideoStatusForToken(string offlineVideoToken);
-
-        // -(void)preloadFairPlayLicense:(BCOVVideo *)video parameters:(NSDictionary *)parameters completion:(void (^)(BCOVOfflineVideoToken, NSError *))completionHandler;
-        [Export("preloadFairPlayLicense:parameters:completion:")]
-        void PreloadFairPlayLicense(BCOVVideo video, NSDictionary parameters, Action<NSString, NSError> completionHandler);
-
-        // -(void)requestVideoDownload:(BCOVVideo *)video parameters:(NSDictionary *)parameters completion:(void (^)(BCOVOfflineVideoToken, NSError *))completionHandler;
-        [Export("requestVideoDownload:parameters:completion:")]
-        void RequestVideoDownload(BCOVVideo video, NSDictionary parameters, Action<NSString, NSError> completionHandler);
-
-        // -(void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken video:(BCOVVideo *)video parameters:(NSDictionary *)parameters completion:(void (^)(BCOVOfflineVideoToken, NSError *))completionHandler;
-        [Export("renewFairPlayLicense:video:parameters:completion:")]
-        void RenewFairPlayLicense(string offlineVideoToken, BCOVVideo video, NSDictionary parameters, Action<NSString, NSError> completionHandler);
-
-        // -(void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken video:(BCOVVideo *)video authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVOfflineVideoToken, NSError *))completionHandler;
-        [Export("renewFairPlayLicense:video:authToken:parameters:completion:")]
-        void RenewFairPlayLicense(string offlineVideoToken, BCOVVideo video, string authToken, NSDictionary parameters, Action<NSString, NSError> completionHandler);
-
-        // -(void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVOfflineVideoToken, NSError *))completionHandler __attribute__((deprecated("")));
-        [Export("renewFairPlayLicense:parameters:completion:")]
-        void RenewFairPlayLicense(string offlineVideoToken, NSDictionary parameters, Action<NSString, NSError> completionHandler);
-
-        // -(void)invalidateFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken;
-        [Export("invalidateFairPlayLicense:")]
-        void InvalidateFairPlayLicense(string offlineVideoToken);
-
-        // -(NSDate *)fairPlayLicenseExpiration:(BCOVOfflineVideoToken)offlineVideoToken;
-        [Export("fairPlayLicenseExpiration:")]
-        NSDate FairPlayLicenseExpiration(string offlineVideoToken);
-
-        // -(void)pauseVideoDownload:(BCOVOfflineVideoToken)offlineVideoToken;
-        [Export("pauseVideoDownload:")]
-        void PauseVideoDownload(string offlineVideoToken);
-
-        // -(void)resumeVideoDownload:(BCOVOfflineVideoToken)offlineVideoToken;
-        [Export("resumeVideoDownload:")]
-        void ResumeVideoDownload(string offlineVideoToken);
-
-        // -(void)cancelVideoDownload:(BCOVOfflineVideoToken)offlineVideoToken;
-        [Export("cancelVideoDownload:")]
-        void CancelVideoDownload(string offlineVideoToken);
-
-        // -(void)forceStopAllDownloadTasks;
-        [Export("forceStopAllDownloadTasks")]
-        void ForceStopAllDownloadTasks();
-
-        // -(BCOVVideo *)videoObjectFromOfflineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken;
+        // -(BCOVVideo *)videoObjectFromOfflineVideoToken:(id)offlineVideoToken;
         [Export("videoObjectFromOfflineVideoToken:")]
-        BCOVVideo VideoObjectFromOfflineVideoToken(string offlineVideoToken);
+        BCOVVideo VideoObjectFromOfflineVideoToken(NSObject offlineVideoToken);
 
-        // -(void)deleteOfflineVideo:(BCOVOfflineVideoToken)offlineVideoToken;
-        [Export("deleteOfflineVideo:")]
-        void DeleteOfflineVideo(string offlineVideoToken);
+        // -(void)preloadFairPlayLicense:(BCOVVideo *)video parameters:(NSDictionary *)parameters completion:(void (^)(int, NSError *))completionHandler;
+        [Export("preloadFairPlayLicense:parameters:completion:")]
+        void PreloadFairPlayLicense(BCOVVideo video, NSDictionary parameters, Action<int, NSError> completionHandler);
+
+        // -(void)renewFairPlayLicense:(id)offlineVideoToken video:(BCOVVideo *)video parameters:(NSDictionary *)parameters completion:(void (^)(int, NSError *))completionHandler;
+        [Export("renewFairPlayLicense:video:parameters:completion:")]
+        void RenewFairPlayLicense(NSObject offlineVideoToken, BCOVVideo video, NSDictionary parameters, Action<int, NSError> completionHandler);
+
+        // -(void)renewFairPlayLicense:(id)offlineVideoToken video:(BCOVVideo *)video authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(int, NSError *))completionHandler;
+        [Export("renewFairPlayLicense:video:authToken:parameters:completion:")]
+        void RenewFairPlayLicense(NSObject offlineVideoToken, BCOVVideo video, string authToken, NSDictionary parameters, Action<int, NSError> completionHandler);
 
         // -(void)addFairPlayApplicationCertificate:(NSData *)applicationCertificateData identifier:(NSString *)identifier;
         [Export("addFairPlayApplicationCertificate:identifier:")]
         void AddFairPlayApplicationCertificate(NSData applicationCertificateData, string identifier);
 
-        // -(AVMediaSelectionGroup *)mediaSelectionGroupForMediaCharacteristic:(NSString *)mediaCharacteristic offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken;
+        // -(void)invalidateFairPlayLicense:(id)offlineVideoToken;
+        [Export("invalidateFairPlayLicense:")]
+        void InvalidateFairPlayLicense(NSObject offlineVideoToken);
+
+        // -(NSDate *)fairPlayLicenseExpiration:(id)offlineVideoToken;
+        [Export("fairPlayLicenseExpiration:")]
+        NSDate FairPlayLicenseExpiration(NSObject offlineVideoToken);
+
+        // -(AVMediaSelectionGroup *)mediaSelectionGroupForMediaCharacteristic:(NSString *)mediaCharacteristic offlineVideoToken:(id)offlineVideoToken;
         [Export("mediaSelectionGroupForMediaCharacteristic:offlineVideoToken:")]
-        AVMediaSelectionGroup MediaSelectionGroupForMediaCharacteristic(string mediaCharacteristic, string offlineVideoToken);
+        AVMediaSelectionGroup MediaSelectionGroupForMediaCharacteristic(string mediaCharacteristic, NSObject offlineVideoToken);
 
-        // -(NSArray<AVMediaSelectionOption *> *)downloadedMediaSelectionOptionsForMediaCharacteristic:(NSString *)mediaCharacteristic offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken;
+        // -(NSArray<AVMediaSelectionOption *> *)downloadedMediaSelectionOptionsForMediaCharacteristic:(NSString *)mediaCharacteristic offlineVideoToken:(id)offlineVideoToken;
         [Export("downloadedMediaSelectionOptionsForMediaCharacteristic:offlineVideoToken:")]
-        AVMediaSelectionOption[] DownloadedMediaSelectionOptionsForMediaCharacteristic(string mediaCharacteristic, string offlineVideoToken);
-
-        // -(void)requestMediaSelectionsDownload:(NSArray<AVMediaSelection *> *)mediaSelections offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken;
-        [Export("requestMediaSelectionsDownload:offlineVideoToken:")]
-        void RequestMediaSelectionsDownload(AVMediaSelection[] mediaSelections, string offlineVideoToken);
+        AVMediaSelectionOption[] DownloadedMediaSelectionOptionsForMediaCharacteristic(string mediaCharacteristic, NSObject offlineVideoToken);
     }
 
     // @interface BCOVUILabel : UILabel
@@ -2982,4 +2949,3 @@ namespace BrightcoveSDK.iOS
     }
 
 }
-

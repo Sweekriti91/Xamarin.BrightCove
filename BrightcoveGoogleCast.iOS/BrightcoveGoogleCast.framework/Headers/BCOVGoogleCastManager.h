@@ -2,11 +2,11 @@
 // BCOVGoogleCastManager.h
 // BrightcoveGoogleCast
 //
-// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
-#import <BCOVPlaybackController.h>
+#import <BrightcovePlayerSDK/BCOVPlaybackController.h>
 
 @class GCKUICastButton, GCKImage;
 
@@ -74,11 +74,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BCOVGoogleCastManager : NSObject<BCOVPlaybackSessionConsumer>
 
 /**
- * Returns the Google Cast Manager singleton.
+ * @abstract Resets the state of the BCOVGoogleCastManager instance
  *
- * @return The Google Cast Manager singleton.
+ * @discussion If using a shared BCOVGoogleCastManager instance across
+ * view controllers you can call this method as needed to clear out data pertaining
+ * to the previously casted video.
  */
-+ (BCOVGoogleCastManager *)sharedManager;
+- (void)prepareForReuse;
 
 /**
  * The delegate object that will receive events from the manager
