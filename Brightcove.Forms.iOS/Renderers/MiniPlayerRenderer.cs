@@ -59,17 +59,17 @@ namespace Brightcove.Forms.iOS.Renderers
             Debug.WriteLine("miniMediaControlsViewController Active : " + miniMediaControlsViewController.Active);
             if (miniMediaControlsViewController.Active)
             {
-                //Debug.WriteLine("BE VISIBILE");
-                //_castHelper.UpdateMiniPlayerVisibilty();
-                miniMediaControlsContainerView.Hidden = false;
-                //View.BringSubviewToFront(miniMediaControlsContainerView);
+                Debug.WriteLine("TRUE YES MINI");
+                miniMediaControlsContainerView.Frame = new CGRect(0, 0, 400, 55);
+                miniMediaControlsContainerView.SetNeedsDisplay();
+                miniMediaControlsContainerView.LayoutIfNeeded();
             }
             else
             {
-               // _castHelper.UpdateMiniPlayerVisibilty();
-                 miniMediaControlsContainerView.Hidden = true;
-                //Debug.WriteLine("BE NOT VISIBILE");
-                //miniMediaControlsViewController.View.Hidden = false;
+                Debug.WriteLine("FALSE NO MINI");
+                miniMediaControlsContainerView.Frame = new CGRect(0, 0, 400, 0);
+                miniMediaControlsContainerView.SetNeedsDisplay();
+                miniMediaControlsContainerView.LayoutIfNeeded();
             }
 
         }
