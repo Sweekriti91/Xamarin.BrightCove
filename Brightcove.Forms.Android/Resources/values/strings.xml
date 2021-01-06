@@ -3,5 +3,5 @@
     <string name="app_name">Brightcove.Forms.Android</string>
     <string name="action_settings">Settings</string>
   <!-- The application ID for the receiver applicaton. -->
-  <string name="cast_receiver_app_id">17F1E2B1</string>
+  <string name="cast_receiver_app_id">0A6928D1</string>
 </resources>

@@ -35,6 +35,11 @@ namespace Sample.Brightcove.Droid
         //static string accountID = "3636334163001";
         //string videoId = "3637773814001";
 
+
+        static string policyKEY = "BCpkADawqM3YRyTQ4hZzmqTk-Oegl3lHc_iLPz29j-aHgdZy0hLaKVj-TlITBvYppMXWpz4mGh60AgWogCIF42vzi1lkj9vgAjYNjAwjd8xeW-JwTb1yI4XPq0mGXaXx4KY-Nu7MwFX0QsQi";
+        static string accountID = "6056665239001";
+        string videoId = "6169021538001";
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
