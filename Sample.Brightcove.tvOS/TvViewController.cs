@@ -12,24 +12,24 @@ namespace Sample.Brightcove.tvOS
     {
         public class BCPlaybackControllerDelegate : BCOVPlaybackControllerDelegate
         {
-            public override void DidAdvanceToPlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session)
+            public override void DidAdvanceToPlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session)
             {
                 Debug.WriteLine("ViewController Debug - Advanced to new session.");
             }
 
-            public override void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVPlaybackSessionLifecycleEvent lifecycleEvent)
+            public override void PlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session, BCOVPlaybackSessionLifecycleEvent lifecycleEvent)
             {
                 Debug.WriteLine($"Event : {lifecycleEvent.EventType}");
             }
         }
 
-        static string policyKEY = "BCpkADawqM3YRyTQ4hZzmqTk-Oegl3lHc_iLPz29j-aHgdZy0hLaKVj-TlITBvYppMXWpz4mGh60AgWogCIF42vzi1lkj9vgAjYNjAwjd8xeW-JwTb1yI4XPq0mGXaXx4KY-Nu7MwFX0QsQi";
-        static string accountID = "6056665239001";
-        string videoId = "6169021538001";
+        static string policyKEY = "";
+        static string accountID = "";
+        string videoId = "";
 
         BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
 
-        BCOVPlaybackController playbackController;
+        IBCOVPlaybackController playbackController;
         BCOVPlayerSDKManager sdkManager = BCOVPlayerSDKManager.SharedManager();
 
         public override void ViewDidLoad()
@@ -46,7 +46,7 @@ namespace Sample.Brightcove.tvOS
             playbackController = sdkManager.CreateFairPlayPlaybackControllerWithAuthorizationProxy(fairPlayAuthProxy);
             playbackController.SetAutoPlay(true);
             playbackController.SetAutoAdvance(false);
-            playbackController.Delegate = new BCPlaybackControllerDelegate();
+            playbackController.SetWeakDelegate(new BCPlaybackControllerDelegate());
 
             //create the playerview
             var options = new BCOVTVPlayerViewOptions() { PresentingViewController = this, };

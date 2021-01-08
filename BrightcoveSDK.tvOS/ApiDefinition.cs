@@ -1271,31 +1271,31 @@ namespace BrightcoveSDK.tvOS
     {
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didEnterAdSequence:(BCOVAdSequence *)adSequence;
         [Export("playbackController:playbackSession:didEnterAdSequence:")]
-        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAdSequence adSequence);
+        void PlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAdSequence adSequence);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didExitAdSequence:(BCOVAdSequence *)adSequence;
         [Export("playbackController:playbackSession:didExitAdSequence:")]
-        void PlaybackSessiondidExitAdSequence(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAdSequence adSequence);
+        void PlaybackSessiondidExitAdSequence(IBCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAdSequence adSequence);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didEnterAd:(BCOVAd *)ad;
         [Export("playbackController:playbackSession:didEnterAd:")]
-        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
+        void PlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didExitAd:(BCOVAd *)ad;
         [Export("playbackController:playbackSession:didExitAd:")]
-        void PlaybackSessiondidExitAd(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
+        void PlaybackSessiondidExitAd(IBCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session ad:(BCOVAd *)ad didProgressTo:(NSTimeInterval)progress;
         [Export("playbackController:playbackSession:ad:didProgressTo:")]
-        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad, double progress);
+        void PlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad, double progress);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didPauseAd:(BCOVAd *)ad;
         [Export("playbackController:playbackSession:didPauseAd:")]
-        void PlaybackSessiondidPauseAd(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
+        void PlaybackSessiondidPauseAd(IBCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didResumeAd:(BCOVAd *)ad;
         [Export("playbackController:playbackSession:didResumeAd:")]
-        void PlaybackSessiondidResumeAd(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
+        void PlaybackSessiondidResumeAd(IBCOVPlaybackController controller, BCOVPlaybackSession session, BCOVAd ad);
     }
 
     // @protocol BCOVPlaybackSessionAdsConsumer <NSObject>
@@ -1443,7 +1443,7 @@ namespace BrightcoveSDK.tvOS
     }
 
     // typedef UIView * (^BCOVPlaybackControllerViewStrategy)(UIView *, id<BCOVPlaybackController>);
-    delegate UIView BCOVPlaybackControllerViewStrategy(UIView arg0, BCOVPlaybackController arg1);
+    delegate UIView BCOVPlaybackControllerViewStrategy(UIView arg0, IBCOVPlaybackController arg1);
 
     // @protocol BCOVPlaybackController <NSObject>
     /*
@@ -1455,8 +1455,11 @@ namespace BrightcoveSDK.tvOS
       protocol, then [Model] is redundant and will generate code that will never
       be used.
     */
+
+    interface IBCOVPlaybackController { }
+
     [Protocol]
-    [BaseType(typeof(NSObject))]
+    //[BaseType(typeof(NSObject))]
     interface BCOVPlaybackController
     {
         //[Wrap("WeakDelegate"), Abstract]
@@ -1681,37 +1684,37 @@ namespace BrightcoveSDK.tvOS
     {
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller didAdvanceToPlaybackSession:(id<BCOVPlaybackSession>)session;
         [Export("playbackController:didAdvanceToPlaybackSession:")]
-        void DidAdvanceToPlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session);
+        void DidAdvanceToPlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didChangeDuration:(NSTimeInterval)duration;
         [Export("playbackController:playbackSession:didChangeDuration:")]
-        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, double duration);
+        void PlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session, double duration);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didChangeExternalPlaybackActive:(BOOL)externalPlaybackActive;
         [Export("playbackController:playbackSession:didChangeExternalPlaybackActive:")]
-        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, bool externalPlaybackActive);
+        void PlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session, bool externalPlaybackActive);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didPassCuePoints:(NSDictionary *)cuePointInfo;
         [Export("playbackController:playbackSession:didPassCuePoints:")]
-        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, NSDictionary cuePointInfo);
+        void PlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session, NSDictionary cuePointInfo);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didProgressTo:(NSTimeInterval)progress;
         [Export("playbackController:playbackSession:didProgressTo:")]
-        void PlaybackSessiondidProgressTo(BCOVPlaybackController controller, BCOVPlaybackSession session, double progress);
+        void PlaybackSessiondidProgressTo(IBCOVPlaybackController controller, BCOVPlaybackSession session, double progress);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller didCompletePlaylist:(id<NSFastEnumeration>)playlist;
         [Export("playbackController:didCompletePlaylist:")]
         //Hack
-        void DidCompletePlaylist(BCOVPlaybackController controller, NSObject playlist);
+        void DidCompletePlaylist(IBCOVPlaybackController controller, NSObject playlist);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent;
         [Export("playbackController:playbackSession:didReceiveLifecycleEvent:")]
-        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVPlaybackSessionLifecycleEvent lifecycleEvent);
+        void PlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session, BCOVPlaybackSessionLifecycleEvent lifecycleEvent);
 
         // @optional -(void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didChangeSeekableRanges:(NSArray *)seekableRanges;
         [Export("playbackController:playbackSession:didChangeSeekableRanges:")]
         //[Verify(StronglyTypedNSArray)]
-        void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, NSObject[] seekableRanges);
+        void PlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session, NSObject[] seekableRanges);
     }
 
     // @protocol BCOVMutableAnalytics <NSObject>
@@ -1767,15 +1770,15 @@ namespace BrightcoveSDK.tvOS
         // -(id<BCOVPlaybackController>)createPlaybackController;
         [Export("createPlaybackController")]
         //[Verify(MethodToProperty)]
-        BCOVPlaybackController CreatePlaybackController();
+        IBCOVPlaybackController CreatePlaybackController();
 
         // -(id<BCOVPlaybackController>)createPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)viewStrategy;
         [Export("createPlaybackControllerWithViewStrategy:")]
-        BCOVPlaybackController CreatePlaybackControllerWithViewStrategy(BCOVPlaybackControllerViewStrategy viewStrategy);
+        IBCOVPlaybackController CreatePlaybackControllerWithViewStrategy(BCOVPlaybackControllerViewStrategy viewStrategy);
 
         // -(id<BCOVPlaybackController>)createPlaybackControllerWithSessionProvider:(id<BCOVPlaybackSessionProvider>)provider viewStrategy:(BCOVPlaybackControllerViewStrategy)viewStrategy;
         [Export("createPlaybackControllerWithSessionProvider:viewStrategy:")]
-        BCOVPlaybackController CreatePlaybackControllerWithSessionProvider(BCOVPlaybackSessionProvider provider, BCOVPlaybackControllerViewStrategy viewStrategy);
+        IBCOVPlaybackController CreatePlaybackControllerWithSessionProvider(BCOVPlaybackSessionProvider provider, BCOVPlaybackControllerViewStrategy viewStrategy);
 
         // -(id<BCOVPlaybackSessionProvider>)createBasicSessionProviderWithOptions:(BCOVBasicSessionProviderOptions *)options;
         [Export("createBasicSessionProviderWithOptions:")]
@@ -2237,7 +2240,7 @@ namespace BrightcoveSDK.tvOS
     {
         // -(id<BCOVPlaybackController> _Nonnull)createFairPlayPlaybackControllerWithAuthorizationProxy:(id<BCOVFPSAuthorizationProxy> _Nonnull)proxy;
         [Export("createFairPlayPlaybackControllerWithAuthorizationProxy:")]
-        BCOVPlaybackController CreateFairPlayPlaybackControllerWithAuthorizationProxy(IBCOVFPSAuthorizationProxy proxy);
+        IBCOVPlaybackController CreateFairPlayPlaybackControllerWithAuthorizationProxy(IBCOVFPSAuthorizationProxy proxy);
 
         // -(id<BCOVPlaybackSessionProvider> _Nonnull)createFairPlaySessionProviderWithAuthorizationProxy:(id<BCOVFPSAuthorizationProxy> _Nonnull)proxy upstreamSessionProvider:(id<BCOVPlaybackSessionProvider> _Nullable)provider;
         [Export("createFairPlaySessionProviderWithAuthorizationProxy:upstreamSessionProvider:")]
@@ -2245,7 +2248,7 @@ namespace BrightcoveSDK.tvOS
 
         // -(id<BCOVPlaybackController> _Nonnull)createFairPlayPlaybackControllerWithApplicationCertificate:(NSData * _Nullable)appCert authorizationProxy:(id<BCOVFPSAuthorizationProxy> _Nonnull)proxy viewStrategy:(BCOVPlaybackControllerViewStrategy _Nullable)viewStrategy;
         [Export("createFairPlayPlaybackControllerWithApplicationCertificate:authorizationProxy:viewStrategy:")]
-        BCOVPlaybackController CreateFairPlayPlaybackControllerWithApplicationCertificate([NullAllowed] NSData appCert, IBCOVFPSAuthorizationProxy proxy, [NullAllowed] BCOVPlaybackControllerViewStrategy viewStrategy);
+        IBCOVPlaybackController CreateFairPlayPlaybackControllerWithApplicationCertificate([NullAllowed] NSData appCert, IBCOVFPSAuthorizationProxy proxy, [NullAllowed] BCOVPlaybackControllerViewStrategy viewStrategy);
 
 
 
@@ -2398,7 +2401,7 @@ namespace BrightcoveSDK.tvOS
     {
         // -(id<BCOVPlaybackController>)createSidecarSubtitlesPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)viewStrategy;
         [Export("createSidecarSubtitlesPlaybackControllerWithViewStrategy:")]
-        BCOVPlaybackController CreateSidecarSubtitlesPlaybackControllerWithViewStrategy(BCOVPlaybackControllerViewStrategy viewStrategy);
+        IBCOVPlaybackController CreateSidecarSubtitlesPlaybackControllerWithViewStrategy(BCOVPlaybackControllerViewStrategy viewStrategy);
 
         // -(id<BCOVPlaybackSessionProvider>)createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:(id<BCOVPlaybackSessionProvider>)provider;
         [Export("createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:")]
@@ -2631,7 +2634,7 @@ namespace BrightcoveSDK.tvOS
     {
         // @property (nonatomic, weak) id<BCOVPlaybackController> playbackController;
         [Export("playbackController", ArgumentSemantic.Weak)]
-        BCOVPlaybackController PlaybackController { get; set; }
+        IBCOVPlaybackController PlaybackController { get; set; }
 
         [Wrap("WeakDelegate")]
         BCOVTVPlayerViewDelegate Delegate { get; set; }
