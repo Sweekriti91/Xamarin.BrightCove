@@ -34,6 +34,8 @@ namespace Brightcove.Forms.Droid.Renderer
                     linearLayout = new LinearLayout(Context);
                     linearLayout.AddView(mediaRouteButton);
 
+
+                    var test3 = Context;
                     SetNativeControl(linearLayout);
                 }
             }

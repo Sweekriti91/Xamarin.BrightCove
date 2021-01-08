@@ -12,8 +12,6 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>MinimumOSVersion</key>
-	<string>12.1</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>3</integer>
@@ -31,5 +29,7 @@
 		<key>Allow Arbitrary Loads</key>
 		<true/>
 	</dict>
+	<key>MinimumOSVersion</key>
+	<string>11.0</string>
 </dict>
 </plist>

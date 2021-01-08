@@ -28,9 +28,10 @@ namespace Brightcove.Forms.Droid.Renderer
         global::Android.Views.View view;
         Activity activity;
 
-        static string policyKEY = "";
-        static string accountID = "";
-        string videoId = "";
+        static string policyKEY = "BCpkADawqM3YRyTQ4hZzmqTk-Oegl3lHc_iLPz29j-aHgdZy0hLaKVj-TlITBvYppMXWpz4mGh60AgWogCIF42vzi1lkj9vgAjYNjAwjd8xeW-JwTb1yI4XPq0mGXaXx4KY-Nu7MwFX0QsQi";
+        static string accountID = "6056665239001";
+        string videoId = "6169021538001";
+
         static BrightcoveExoPlayerVideoView brightcoveVideoView;
         static MediaRouteButton castButton;
         public PlayerPageRenderer(Context context) : base(context)
@@ -73,8 +74,6 @@ namespace Brightcove.Forms.Droid.Renderer
             view = activity.LayoutInflater.Inflate(Resource.Layout.activity_main, this, false);
             //activity.SetContentView(view);
 
-            castButton = (MediaRouteButton)view.FindViewById(Resource.Id.media_route_button);
-            CastButtonFactory.SetUpMediaRouteButton(activity.ApplicationContext, castButton);
 
 
             brightcoveVideoView = view.FindViewById<BrightcoveExoPlayerVideoView>(Resource.Id.brightcove_video_view);
@@ -82,6 +81,13 @@ namespace Brightcove.Forms.Droid.Renderer
             Catalog catalog = new Catalog(eventEmitter, accountID, policyKEY);
 
             catalog.FindVideoByID(videoID: videoId, new VideoListenerR());
+
+
+            castButton = (MediaRouteButton)view.FindViewById(Resource.Id.media_route_button);
+            CastButtonFactory.SetUpMediaRouteButton(Context, castButton);
+
+            var test = Context;
+            var test2 = Xamarin.Essentials.Platform.CurrentActivity;
         }
 
         public partial class VideoListenerR : VideoListener
@@ -104,7 +110,8 @@ namespace Brightcove.Forms.Droid.Renderer
 
                 Source source = findCastableSource(video);
 
-                GoogleCastComponent googleCastComponent = new GoogleCastComponent(eventEmitter, Xamarin.Essentials.Platform.AppContext);
+                GoogleCastComponent googleCastComponent = new GoogleCastComponent(eventEmitter, Xamarin.Essentials.Platform.CurrentActivity);
+
                 MediaInfo mediaInfo = CastMediaUtil.ToMediaInfo(video, source, null, null);
                 googleCastComponent.LoadMediaInfo(mediaInfo);
 

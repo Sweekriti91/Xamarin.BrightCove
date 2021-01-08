@@ -25,11 +25,10 @@ namespace Sample.Brightcove.tvOS
         {
         }
 
-        string policyKEY = "BCpkADawqM3n0ImwKortQqSZCgJMcyVbb8lJVwt0z16UD0a_h8MpEYcHyKbM8CGOPxBRp0nfSVdfokXBrUu3Sso7Nujv3dnLo0JxC_lNXCl88O7NJ0PR0z2AprnJ_Lwnq7nTcy1GBUrQPr5e";
-        string accountID = "4800266849001";
-        string videoId = "5754208017001";
 
-
+        static string policyKEY = "BCpkADawqM0T8lW3nMChuAbrcunBBHmh4YkNl5e6ZrKQwPiK_Y83RAOF4DP5tyBF_ONBVgrEjqW6fbV0nKRuHvjRU3E8jdT9WMTOXfJODoPML6NUDCYTwTHxtNlr5YdyGYaCPLhMUZ3Xu61L";
+        static string accountID = "5434391461001";
+        static string videoId = "6140448705001";
 
         public override void ViewDidLoad()
         {

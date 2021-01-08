@@ -97,6 +97,7 @@
     <Compile Include="Renderer\PlayerPageRenderer.cs" />
     <Compile Include="Renderer\MyCastButtonRender.cs" />
     <Compile Include="Renderer\MiniPlayerRenderer.cs" />
+    <Compile Include="CastOptionsProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
