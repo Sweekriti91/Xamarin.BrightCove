@@ -26,9 +26,9 @@ namespace Sample.Brightcove.tvOS
 
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
             //fairplay player
-            //Window.RootViewController = new TvViewController();
+            Window.RootViewController = new TvViewController();
             // uncomment for BasicPlayer
-            Window.RootViewController = new BasicPlayerViewController();
+            //Window.RootViewController = new BasicPlayerViewController();
             Window.MakeKeyAndVisible();
 
             return true;
