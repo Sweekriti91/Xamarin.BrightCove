@@ -2,7 +2,7 @@
 // BCOVTVControlsView.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -60,5 +60,22 @@
  *  UILabel that displays advertisement info, 360 Video, or a Live indicator.
  */
 @property (nonatomic, weak, readonly) UILabel *descriptionLabel;
+
+/**
+ * UIImageView to display action hints on the right side of the current time label.
+ * These include the fast-fowarding icon and the jump-forward icon.
+ */
+@property (nonatomic, weak, readonly) UIImageView *actionIconImageViewRight;
+
+/**
+ * UIImageView to display action hints on the left side of the current time label.
+ * These include the rewinding icon and the jump-backward icon.
+*/
+@property (nonatomic, weak, readonly) UIImageView *actionIconImageViewLeft;
+
+/**
+ * UIStackView containing currentTimeLabel, actionIconImageViewRight and actionIconImageViewLeft
+ */
+@property (nonatomic, weak, readonly) UIStackView *currentTimeStackView;
 
 @end

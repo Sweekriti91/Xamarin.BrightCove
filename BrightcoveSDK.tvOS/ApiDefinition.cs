@@ -2220,12 +2220,12 @@ namespace BrightcoveSDK.tvOS
         [Export("encryptedContentKeyForLoadingRequest:contentKeyRequest:source:completionHandler:")]
         void EncryptedContentKeyForLoadingRequest(AVAssetResourceLoadingRequest loadingRequest, NSData keyRequest, BCOVSource source, Action<NSUrlResponse, NSData, NSError> completionHandler);
 
-        // @optional -(void)encryptedContentKeyForContentKeyIdentifier:(NSString * _Nonnull)contentKeyIdentifier contentKeyRequest:(NSData * _Nonnull)keyRequest source:(BCOVSource * _Nonnull)source options:(NSDictionary * _Nullable)options completionHandler:(void (^ _Nonnull)(NSURLResponse * _Nullable, NSData * _Nullable, NSError * _Nullable))completionHandler;
+        // @required -(void)encryptedContentKeyForContentKeyIdentifier:(NSString * _Nonnull)contentKeyIdentifier contentKeyRequest:(NSData * _Nonnull)keyRequest source:(BCOVSource * _Nonnull)source options:(NSDictionary * _Nullable)options completionHandler:(void (^ _Nonnull)(NSURLResponse * _Nullable, NSData * _Nullable, NSDate * _Nullable, NSError * _Nullable))completionHandler;
+        //[Abstract]
         [Export("encryptedContentKeyForContentKeyIdentifier:contentKeyRequest:source:options:completionHandler:")]
-        void EncryptedContentKeyForContentKeyIdentifier(string contentKeyIdentifier, NSData keyRequest, BCOVSource source, [NullAllowed] NSDictionary options, Action<NSUrlResponse, NSData, NSError> completionHandler);
+        void EncryptedContentKeyForContentKeyIdentifier(string contentKeyIdentifier, NSData keyRequest, BCOVSource source, [NullAllowed] NSDictionary options, Action<NSUrlResponse, NSData, NSDate, NSError> completionHandler);
     }
 
-    //Hack: FPS Fix
     interface IBCOVFPSAuthorizationProxy { }
 
     // @interface BCOVFPSAdditions (BCOVPlayerSDKManager)

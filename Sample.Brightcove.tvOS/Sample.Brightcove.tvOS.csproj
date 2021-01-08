@@ -72,7 +72,7 @@
         <DefineConstants>DEBUG;</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
-        <CodesignKey>iPhone Developer: Sweekriti Satpathy (9Z5LT543NS)</CodesignKey>
+        <CodesignKey>iPhone Developer</CodesignKey>
         <DeviceSpecificBuild>true</DeviceSpecificBuild>
         <MtouchDebug>true</MtouchDebug>
         <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
@@ -84,7 +84,6 @@
         <PlatformTarget>x86</PlatformTarget>
         <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
         <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
-        <CodesignProvision>VS: tvOS WildCard Development</CodesignProvision>
         <MtouchExtraArgs>-gcc_flags "-ObjC -framework AVFoundation -framework CoreMedia -framework GLKit -framework MediaPlayer" -v</MtouchExtraArgs>
     </PropertyGroup>
     <ItemGroup>

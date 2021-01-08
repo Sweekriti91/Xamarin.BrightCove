@@ -25,10 +25,9 @@ namespace Sample.Brightcove.tvOS
         {
         }
 
-        string policyKEY = "BCpkADawqM3n0ImwKortQqSZCgJMcyVbb8lJVwt0z16UD0a_h8MpEYcHyKbM8CGOPxBRp0nfSVdfokXBrUu3Sso7Nujv3dnLo0JxC_lNXCl88O7NJ0PR0z2AprnJ_Lwnq7nTcy1GBUrQPr5e";
-        string accountID = "4800266849001";
-        string videoId = "5754208017001";
-
+        string policyKey = "BCpkADawqM0T8lW3nMChuAbrcunBBHmh4YkNl5e6ZrKQwPiK_Y83RAOF4DP5tyBF_ONBVgrEjqW6fbV0nKRuHvjRU3E8jdT9WMTOXfJODoPML6NUDCYTwTHxtNlr5YdyGYaCPLhMUZ3Xu61L";
+        string accountID = "5434391461001";
+        string videoID = "6140448705001";
 
 
         public override void ViewDidLoad()
@@ -42,8 +41,8 @@ namespace Sample.Brightcove.tvOS
             playbackController.SetAutoAdvance(true);
             playbackController.Delegate = new BCPlaybackControllerDelegate();
 
-            BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
-            playbackService.FindVideoWithVideoID(videoID: videoId, parameters: new NSDictionary(), completionHandler: (arg1, arg2, arg3) =>
+            BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKey);
+            playbackService.FindVideoWithVideoID(videoID: videoID, parameters: new NSDictionary(), completionHandler: (arg1, arg2, arg3) =>
             {
                 if (arg1 != null)
                 {

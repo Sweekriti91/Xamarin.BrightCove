@@ -2,7 +2,7 @@
 // BCOVPlaybackService.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -115,6 +115,13 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyOffset;
  */
 extern NSString * const kBCOVPlaybackServiceParamaterKeyAdConfigId;
 
+/**
+ * Parameter dictionary key for BCOVPlaybackService methods that return a playlist or video.
+ * This key enables Dynamic Delivery Rules for just-in-time manifest generation.
+ * This constant can be used in place of the string value "config_id".
+ */
+extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
+
 
 /**
  * The BCOVPlaybackService class provides asynchronous methods for retrieving 
@@ -134,9 +141,11 @@ extern NSString * const kBCOVPlaybackServiceParamaterKeyAdConfigId;
  * Initializes a BCOVPlaybackService. It uses the accountId and policyKey
  * to create a BCOVPlaybackServiceRequestFactory internally.
  *
+ * If using the Edge Playback Service, the policyKey value should be nil
+ *
  *
  * @param accountId Account Id to be used for each request. Must not be nil.
- * @param policyKey PolicyKey to be used for each request. Must not be nil.
+ * @param policyKey PolicyKey to be used for each request. May be nil.
  * @return An initialized instance.
  */
 - (instancetype)initWithAccountId:(NSString *)accountId policyKey:(NSString *)policyKey;
