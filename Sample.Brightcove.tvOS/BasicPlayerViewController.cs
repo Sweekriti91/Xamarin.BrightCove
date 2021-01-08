@@ -29,7 +29,6 @@ namespace Sample.Brightcove.tvOS
         string accountID = "5434391461001";
         string videoID = "6140448705001";
 
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();

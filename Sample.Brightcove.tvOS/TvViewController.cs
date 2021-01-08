@@ -23,9 +23,9 @@ namespace Sample.Brightcove.tvOS
             }
         }
 
-        static string policyKEY = "";
-        static string accountID = "";
-        string videoId = "";
+        static string policyKEY = "BCpkADawqM3YRyTQ4hZzmqTk-Oegl3lHc_iLPz29j-aHgdZy0hLaKVj-TlITBvYppMXWpz4mGh60AgWogCIF42vzi1lkj9vgAjYNjAwjd8xeW-JwTb1yI4XPq0mGXaXx4KY-Nu7MwFX0QsQi";
+        static string accountID = "6056665239001";
+        string videoId = "6169021538001";
 
         BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKEY);
 
