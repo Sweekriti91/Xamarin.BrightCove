@@ -10,12 +10,12 @@ namespace Sample.Brightcove.tvOS
     {
         public class BCPlaybackControllerDelegate : BCOVPlaybackControllerDelegate
         {
-            public override void DidAdvanceToPlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session)
+            public override void DidAdvanceToPlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session)
             {
                 Debug.WriteLine("ViewController Debug - Advanced to new session.");
             }
 
-            public override void PlaybackSession(BCOVPlaybackController controller, BCOVPlaybackSession session, BCOVPlaybackSessionLifecycleEvent lifecycleEvent)
+            public override void PlaybackSession(IBCOVPlaybackController controller, BCOVPlaybackSession session, BCOVPlaybackSessionLifecycleEvent lifecycleEvent)
             {
                 Debug.WriteLine($"Event : {lifecycleEvent.EventType}");
             }
@@ -38,7 +38,7 @@ namespace Sample.Brightcove.tvOS
             var playbackController = BCOVPlayerSDKManager.SharedManager().CreatePlaybackController();
             playbackController.SetAutoPlay(true);
             playbackController.SetAutoAdvance(true);
-            playbackController.Delegate = new BCPlaybackControllerDelegate();
+            playbackController.SetWeakDelegate(new BCPlaybackControllerDelegate());
 
             BCOVPlaybackService playbackService = new BCOVPlaybackService(accountId: accountID, policyKey: policyKey);
             playbackService.FindVideoWithVideoID(videoID: videoID, parameters: new NSDictionary(), completionHandler: (arg1, arg2, arg3) =>

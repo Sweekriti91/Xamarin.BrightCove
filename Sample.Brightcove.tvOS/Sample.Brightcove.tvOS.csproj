@@ -79,7 +79,7 @@
         <MtouchFastDev>true</MtouchFastDev>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
         <IOSDebuggerPort>26001</IOSDebuggerPort>
-        <MtouchLink>None</MtouchLink>
+        <MtouchLink>SdkOnly</MtouchLink>
         <MtouchArch>ARM64</MtouchArch>
         <PlatformTarget>x86</PlatformTarget>
         <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
@@ -163,6 +163,10 @@
         <Compile Include="AppDelegate.cs" />
         <Compile Include="TvViewController.cs" />
         <Compile Include="BasicPlayerViewController.cs" />
+        <Compile Include="MainPageButtons.cs" />
+        <Compile Include="MainPageButtons.designer.cs">
+          <DependentUpon>MainPageButtons.cs</DependentUpon>
+        </Compile>
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\BrightcoveSDK.tvOS\BrightcoveSDK.tvOS.csproj">
@@ -172,6 +176,9 @@
     </ItemGroup>
     <ItemGroup>
       <BundleResource Include="Resources\bcovpuiiconfont.ttf" />
+    </ItemGroup>
+    <ItemGroup>
+      <InterfaceDefinition Include="MainPageButtons.xib" />
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\TVOS\Xamarin.TVOS.CSharp.targets" />
 </Project>
