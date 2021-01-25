@@ -13,4 +13,10 @@
          which is used to tint widgets -->
         <!--<item name="colorAccent">#FF4081</item>-->
     </style>
+
+     <style name="MyTheme.Player" parent="MainTheme">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowActionBar">false</item>
+    <item name="android:colorPrimary">#5A8622</item>
+  </style>
 </resources>

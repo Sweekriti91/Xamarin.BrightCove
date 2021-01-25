@@ -1,23 +1,20 @@
 ﻿using System;
-using Xamarin.Forms;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using Android.App;
+using Android.Content;
+using Android.Gms.Cast.Framework;
+using Android.Views;
 using Brightcove.Forms;
 using Brightcove.Forms.Droid.Renderer;
-using Xamarin.Forms.Platform.Android;
-using Android.Graphics;
-using Android.Content;
-using Android.Views;
-using Com.Brightcove.Player.View;
-using Com.Brightcove.Player.Edge;
-using Com.Brightcove.Player.Model;
 using Com.Brightcove.Cast;
-using Android.Gms.Cast;
-using Xamarin.Essentials;
-using Com.Brightcove.Cast.Util;
-using System.Collections.Generic;
-using System.Linq;
-using Android.Gms.Cast.Framework;
-using Android.Support.V7.App;
-using Android.App;
+using Com.Brightcove.Player.Edge;
+using Com.Brightcove.Player.Events;
+using Com.Brightcove.Player.Model;
+using Com.Brightcove.Player.View;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 using MediaRouteButton = Android.Support.V7.App.MediaRouteButton;
 
 [assembly: ExportRenderer(typeof(PlayerPage), typeof(PlayerPageRenderer))]
@@ -28,14 +25,17 @@ namespace Brightcove.Forms.Droid.Renderer
         global::Android.Views.View view;
         Activity activity;
 
-        static string policyKEY = "BCpkADawqM3YRyTQ4hZzmqTk-Oegl3lHc_iLPz29j-aHgdZy0hLaKVj-TlITBvYppMXWpz4mGh60AgWogCIF42vzi1lkj9vgAjYNjAwjd8xeW-JwTb1yI4XPq0mGXaXx4KY-Nu7MwFX0QsQi";
-        static string accountID = "6056665239001";
-        string videoId = "6169021538001";
+     
 
         static BrightcoveExoPlayerVideoView brightcoveVideoView;
         static MediaRouteButton castButton;
+        static GoogleCastComponent googleCastComponent;
+        public static CastContext castContext;
+        CastStateListener listenerCast;
+
         public PlayerPageRenderer(Context context) : base(context)
         {
+
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Page> e)
@@ -51,6 +51,7 @@ namespace Brightcove.Forms.Droid.Renderer
             {
                 SetupUserInterface();
                 AddView(view);
+                SetupCast();
 
             }
             catch (Exception ex)
@@ -73,8 +74,10 @@ namespace Brightcove.Forms.Droid.Renderer
             activity = this.Context as Activity;
             view = activity.LayoutInflater.Inflate(Resource.Layout.activity_main, this, false);
             //activity.SetContentView(view);
+            castContext = CastContext.SharedInstance;
 
-
+            listenerCast = new CastStateListener();
+            castContext.AddCastStateListener(listenerCast);
 
             brightcoveVideoView = view.FindViewById<BrightcoveExoPlayerVideoView>(Resource.Id.brightcove_video_view);
             var eventEmitter = brightcoveVideoView.EventEmitter;
@@ -84,10 +87,15 @@ namespace Brightcove.Forms.Droid.Renderer
 
 
             castButton = (MediaRouteButton)view.FindViewById(Resource.Id.media_route_button);
+            castButton.SetBackgroundColor(Android.Graphics.Color.Aqua);
             CastButtonFactory.SetUpMediaRouteButton(Context, castButton);
 
-            var test = Context;
-            var test2 = Xamarin.Essentials.Platform.CurrentActivity;
+            CustomCastMediaManager customCastMediaManager = new CustomCastMediaManager(Context, eventEmitter);
+            googleCastComponent = new GoogleCastComponent(eventEmitter, Context, customCastMediaManager);
+
+            // listen for cast started and ended events
+            eventEmitter.On(GoogleCastEventType.CastSessionStarted, new CastSessionStartedListener());
+
         }
 
         public partial class VideoListenerR : VideoListener
@@ -96,61 +104,53 @@ namespace Brightcove.Forms.Droid.Renderer
             {
                 brightcoveVideoView.Add(video);
                 brightcoveVideoView.Start();
-                SetupCast(video);
             }
 
             public override void OnError(string error)
             {
                 throw new Java.Lang.RuntimeException(error);
             }
-
-            public void SetupCast(Video video)
-            {
-                var eventEmitter = brightcoveVideoView.EventEmitter;
-
-                Source source = findCastableSource(video);
-
-                GoogleCastComponent googleCastComponent = new GoogleCastComponent(eventEmitter, Xamarin.Essentials.Platform.CurrentActivity);
-
-                MediaInfo mediaInfo = CastMediaUtil.ToMediaInfo(video, source, null, null);
-                googleCastComponent.LoadMediaInfo(mediaInfo);
-
-                //You can check if there is a session available
-                //googleCastComponent.isSessionAvailable();
-            }
         }
 
-        public static Source findCastableSource(Video video)
+        public void SetupCast()
         {
-            Source savedDashSource = null;
+      
 
-            if (video.SourceCollections.Count != 0
-                    && video.SourceCollections.ContainsKey(DeliveryType.Dash)
-                    && video.SourceCollections.Values.Where(c => c.DeliveryType == DeliveryType.Dash) != null)
+            Intent intent = new Intent();
+            var intentToJoinUri = Android.Net.Uri.Parse("https://castvideos.com/cast/join");
+            System.Diagnostics.Debug.WriteLine(" URI Passed : " + intentToJoinUri);
+            castContext.SessionManager.StartSession(intent);
+            System.Diagnostics.Debug.WriteLine("URI Joined : " + intentToJoinUri);
+
+       
+
+        }
+
+        public partial class CastSessionStartedListener : BackgroundEventListener
+        {
+            public override void BackgroundProcessEvent(Event p0)
             {
-                var dashSourceCollections = video.SourceCollections.Values.Where(c => c.DeliveryType == DeliveryType.Dash);
-                List<Source> dashSource = new List<Source>();
-                foreach (var d in dashSourceCollections)
-                {
-                    var item = d.Sources.Where(a => a.Url.Contains("dash")).ToList<Source>();
-                    dashSource = item;
-                }
+                CastSession castSession = castContext.SessionManager.CurrentCastSession;
+                System.Diagnostics.Debug.WriteLine("TEST");
 
-                foreach (var src in dashSource)
+                Microsoft.MobCAT.MainThread.Run(() =>
                 {
-                    savedDashSource = src;
-
-                    if (src.Url.Contains("ac-3_avc1_ec-3_mp4a"))
+                    if (googleCastComponent.IsSessionAvailable && (castContext.SessionManager != null) && (castContext.SessionManager.CurrentCastSession != null))
                     {
-                        Console.WriteLine("SOURCE :: " + src);
-                        return src;
+                        CastSession castSession = castContext.SessionManager.CurrentCastSession;
+                        System.Diagnostics.Debug.WriteLine("Connected!");
                     }
-                }
+                });
 
-                Console.WriteLine("SOURCE :: " + savedDashSource);
-                return savedDashSource;
             }
-            return null;
+        }
+    }
+
+    public class CastStateListener : Java.Lang.Object, ICastStateListener
+    {
+        public void OnCastStateChanged(int newState)
+        {
+            Debug.WriteLine(newState);
         }
     }
 }

@@ -98,6 +98,8 @@
     <Compile Include="Renderer\MyCastButtonRender.cs" />
     <Compile Include="Renderer\MiniPlayerRenderer.cs" />
     <Compile Include="CastOptionsProvider.cs" />
+    <Compile Include="CustomCastMediaManager.cs" />
+    <Compile Include="Renderer\PlayerActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

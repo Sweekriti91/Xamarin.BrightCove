@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#FFFFFF"
         android:orientation="vertical"
     >
 <!--    <include
@@ -16,6 +16,12 @@
         android:layout_height="280dp"
         android:layout_marginTop="20dp"/>
 
+    <Button
+		android:text="Back"
+        android:id="@+id/backButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+
          <android.support.v7.app.MediaRouteButton
        android:id="@+id/media_route_button"
        android:layout_width="wrap_content"
@@ -23,5 +29,13 @@
        android:layout_weight="1"
        android:mediaRouteTypes="user"
        android:layout_marginTop="20dp"/>
+
+      <fragment
+      android:id="@+id/castMiniController"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:visibility="gone"
+      class="com.google.android.gms.cast.framework.media.widget.MiniControllerFragment" />
 
 </LinearLayout>

@@ -4,5 +4,6 @@ namespace Brightcove.Forms
     public interface IChromecastService
     {
         void SetupChromecast();
+        void OpenPlayerPage();
     }
 }

@@ -11,6 +11,11 @@ namespace Brightcove.Forms.iOS
         {
         }
 
+        public void OpenPlayerPage()
+        {
+            throw new NotImplementedException();
+        }
+
         public void SetupChromecast()
         {
             var discoveryCriteria = new DiscoveryCriteria("17F1E2B1");

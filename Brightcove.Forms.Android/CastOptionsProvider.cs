@@ -30,19 +30,21 @@ namespace Brightcove.Forms.Droid
                 .SetExpandedControllerActivityClassName(typeof(DefaultExpandedControllerActivity).Name)
                 .Build();
 
-            var launchOptions = new LaunchOptions.Builder().Build();
-
-            //return new CastOptions.Builder()
-            //    .SetLaunchOptions(launchOptions)
-            //    .SetReceiverApplicationId("0A6928D1")
-            //    .SetCastMediaOptions(mediaOptions)
-            //    .Build();
-
-            var castOptions = new CastOptions.Builder()
-                .SetReceiverApplicationId("0A6928D1")
+            var launchOptions = new LaunchOptions.Builder()
                 .Build();
 
-            return castOptions;
+            return new CastOptions.Builder()
+                .SetLaunchOptions(launchOptions)
+                .SetReceiverApplicationId("0A6928D1")
+                .SetCastMediaOptions(mediaOptions)
+                .Build();
+
+            //var castOptions = new CastOptions.Builder()
+            //     .SetLaunchOptions(launchOptions)
+            //    .SetReceiverApplicationId("0A6928D1")
+            //    .Build();
+
+            //return castOptions;
 
         }
     }

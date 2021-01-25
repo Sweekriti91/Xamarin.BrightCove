@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.MobCAT;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Brightcove.Forms
@@ -24,7 +25,10 @@ namespace Brightcove.Forms
 
         void Button_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new PlayerPage());
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
+                Navigation.PushAsync(new PlayerPage());
+            else
+                _castHelper.OpenPlayerPage();
         }
     }
 }

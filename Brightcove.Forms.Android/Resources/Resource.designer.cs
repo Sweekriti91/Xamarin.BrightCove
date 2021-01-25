@@ -10587,8 +10587,8 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f10003c
 			public const int accessibility_custom_action_9 = 2131755068;
 			
-			// aapt resource value: 0x7f10018a
-			public const int action0 = 2131755402;
+			// aapt resource value: 0x7f10018b
+			public const int action0 = 2131755403;
 			
 			// aapt resource value: 0x7f10007f
 			public const int action_add_to_queue = 2131755135;
@@ -10614,17 +10614,17 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000d8
 			public const int action_bar_title = 2131755224;
 			
-			// aapt resource value: 0x7f100187
-			public const int action_container = 2131755399;
+			// aapt resource value: 0x7f100188
+			public const int action_container = 2131755400;
 			
 			// aapt resource value: 0x7f1000fd
 			public const int action_context_bar = 2131755261;
 			
-			// aapt resource value: 0x7f10018e
-			public const int action_divider = 2131755406;
+			// aapt resource value: 0x7f10018f
+			public const int action_divider = 2131755407;
 			
-			// aapt resource value: 0x7f100188
-			public const int action_image = 2131755400;
+			// aapt resource value: 0x7f100189
+			public const int action_image = 2131755401;
 			
 			// aapt resource value: 0x7f10000a
 			public const int action_menu_divider = 2131755018;
@@ -10644,32 +10644,32 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f100080
 			public const int action_play_now = 2131755136;
 			
-			// aapt resource value: 0x7f100189
-			public const int action_text = 2131755401;
+			// aapt resource value: 0x7f10018a
+			public const int action_text = 2131755402;
 			
-			// aapt resource value: 0x7f100197
-			public const int actions = 2131755415;
+			// aapt resource value: 0x7f100198
+			public const int actions = 2131755416;
 			
 			// aapt resource value: 0x7f1000db
 			public const int activity_chooser_view_content = 2131755227;
 			
-			// aapt resource value: 0x7f100121
-			public const int ad_container = 2131755297;
-			
-			// aapt resource value: 0x7f100124
-			public const int ad_image_view = 2131755300;
-			
 			// aapt resource value: 0x7f100123
-			public const int ad_in_progress_label = 2131755299;
-			
-			// aapt resource value: 0x7f100122
-			public const int ad_label = 2131755298;
+			public const int ad_container = 2131755299;
 			
 			// aapt resource value: 0x7f100126
-			public const int ad_skip_button = 2131755302;
+			public const int ad_image_view = 2131755302;
 			
 			// aapt resource value: 0x7f100125
-			public const int ad_skip_text = 2131755301;
+			public const int ad_in_progress_label = 2131755301;
+			
+			// aapt resource value: 0x7f100124
+			public const int ad_label = 2131755300;
+			
+			// aapt resource value: 0x7f100128
+			public const int ad_skip_button = 2131755304;
+			
+			// aapt resource value: 0x7f100127
+			public const int ad_skip_text = 2131755303;
 			
 			// aapt resource value: 0x7f1000a0
 			public const int add = 2131755168;
@@ -10692,14 +10692,14 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000c3
 			public const int async = 2131755203;
 			
+			// aapt resource value: 0x7f1001a8
+			public const int audioTracksGroup = 2131755432;
+			
 			// aapt resource value: 0x7f1001a7
-			public const int audioTracksGroup = 2131755431;
+			public const int audioTracksTitle = 2131755431;
 			
-			// aapt resource value: 0x7f1001a6
-			public const int audioTracksTitle = 2131755430;
-			
-			// aapt resource value: 0x7f10013e
-			public const int audio_list_view = 2131755326;
+			// aapt resource value: 0x7f100140
+			public const int audio_list_view = 2131755328;
 			
 			// aapt resource value: 0x7f10006e
 			public const int audio_tracks = 2131755118;
@@ -10707,11 +10707,14 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f10008a
 			public const int auto = 2131755146;
 			
-			// aapt resource value: 0x7f10011c
-			public const int background_image_view = 2131755292;
+			// aapt resource value: 0x7f10010d
+			public const int backButton = 2131755277;
 			
-			// aapt resource value: 0x7f100120
-			public const int background_place_holder_image_view = 2131755296;
+			// aapt resource value: 0x7f10011e
+			public const int background_image_view = 2131755294;
+			
+			// aapt resource value: 0x7f100122
+			public const int background_place_holder_image_view = 2131755298;
 			
 			// aapt resource value: 0x7f1000b2
 			public const int beginning = 2131755186;
@@ -10719,80 +10722,80 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000c4
 			public const int blocking = 2131755204;
 			
-			// aapt resource value: 0x7f10011d
-			public const int blurred_background_image_view = 2131755293;
+			// aapt resource value: 0x7f10011f
+			public const int blurred_background_image_view = 2131755295;
 			
 			// aapt resource value: 0x7f10008e
 			public const int bottom = 2131755150;
 			
-			// aapt resource value: 0x7f10010e
-			public const int bottomtab_navarea = 2131755278;
+			// aapt resource value: 0x7f100110
+			public const int bottomtab_navarea = 2131755280;
 			
-			// aapt resource value: 0x7f10010f
-			public const int bottomtab_tabbar = 2131755279;
+			// aapt resource value: 0x7f100111
+			public const int bottomtab_tabbar = 2131755281;
 			
-			// aapt resource value: 0x7f100135
-			public const int brightcove_control_bar = 2131755317;
+			// aapt resource value: 0x7f100137
+			public const int brightcove_control_bar = 2131755319;
 			
 			// aapt resource value: 0x7f10010c
 			public const int brightcove_video_view = 2131755276;
 			
-			// aapt resource value: 0x7f100112
-			public const int browser_actions_header_text = 2131755282;
+			// aapt resource value: 0x7f100114
+			public const int browser_actions_header_text = 2131755284;
+			
+			// aapt resource value: 0x7f100117
+			public const int browser_actions_menu_item_icon = 2131755287;
+			
+			// aapt resource value: 0x7f100116
+			public const int browser_actions_menu_item_text = 2131755286;
 			
 			// aapt resource value: 0x7f100115
-			public const int browser_actions_menu_item_icon = 2131755285;
-			
-			// aapt resource value: 0x7f100114
-			public const int browser_actions_menu_item_text = 2131755284;
+			public const int browser_actions_menu_items = 2131755285;
 			
 			// aapt resource value: 0x7f100113
-			public const int browser_actions_menu_items = 2131755283;
+			public const int browser_actions_menu_view = 2131755283;
 			
-			// aapt resource value: 0x7f100111
-			public const int browser_actions_menu_view = 2131755281;
-			
-			// aapt resource value: 0x7f100134
-			public const int button = 2131755316;
+			// aapt resource value: 0x7f100136
+			public const int button = 2131755318;
 			
 			// aapt resource value: 0x7f1000e1
 			public const int buttonPanel = 2131755233;
 			
-			// aapt resource value: 0x7f10012e
-			public const int button_0 = 2131755310;
-			
-			// aapt resource value: 0x7f10012f
-			public const int button_1 = 2131755311;
+			// aapt resource value: 0x7f100130
+			public const int button_0 = 2131755312;
 			
 			// aapt resource value: 0x7f100131
-			public const int button_2 = 2131755313;
+			public const int button_1 = 2131755313;
+			
+			// aapt resource value: 0x7f100133
+			public const int button_2 = 2131755315;
+			
+			// aapt resource value: 0x7f100134
+			public const int button_3 = 2131755316;
 			
 			// aapt resource value: 0x7f100132
-			public const int button_3 = 2131755314;
+			public const int button_play_pause_toggle = 2131755314;
 			
-			// aapt resource value: 0x7f100130
-			public const int button_play_pause_toggle = 2131755312;
+			// aapt resource value: 0x7f10018c
+			public const int cancel_action = 2131755404;
 			
-			// aapt resource value: 0x7f10018b
-			public const int cancel_action = 2131755403;
+			// aapt resource value: 0x7f10011a
+			public const int caption_block = 2131755290;
 			
 			// aapt resource value: 0x7f100118
-			public const int caption_block = 2131755288;
-			
-			// aapt resource value: 0x7f100116
-			public const int caption_prefs_frag = 2131755286;
+			public const int caption_prefs_frag = 2131755288;
 			
 			// aapt resource value: 0x7f10006f
 			public const int captions = 2131755119;
 			
+			// aapt resource value: 0x7f1001aa
+			public const int captionsGroup = 2131755434;
+			
 			// aapt resource value: 0x7f1001a9
-			public const int captionsGroup = 2131755433;
+			public const int captionsTitle = 2131755433;
 			
-			// aapt resource value: 0x7f1001a8
-			public const int captionsTitle = 2131755432;
-			
-			// aapt resource value: 0x7f100151
-			public const int castMiniController = 2131755345;
+			// aapt resource value: 0x7f10010f
+			public const int castMiniController = 2131755279;
 			
 			// aapt resource value: 0x7f10004a
 			public const int cast_button_type_closed_caption = 2131755082;
@@ -10848,11 +10851,11 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000f5
 			public const int checkbox = 2131755253;
 			
-			// aapt resource value: 0x7f1001aa
-			public const int @checked = 2131755434;
+			// aapt resource value: 0x7f1001ab
+			public const int @checked = 2131755435;
 			
-			// aapt resource value: 0x7f100193
-			public const int chronometer = 2131755411;
+			// aapt resource value: 0x7f100194
+			public const int chronometer = 2131755412;
 			
 			// aapt resource value: 0x7f1000bf
 			public const int clip_horizontal = 2131755199;
@@ -10866,20 +10869,20 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000bb
 			public const int collapseActionView = 2131755195;
 			
-			// aapt resource value: 0x7f10019c
-			public const int color_preview = 2131755420;
+			// aapt resource value: 0x7f10019d
+			public const int color_preview = 2131755421;
 			
-			// aapt resource value: 0x7f10013f
-			public const int color_swatch = 2131755327;
+			// aapt resource value: 0x7f100141
+			public const int color_swatch = 2131755329;
 			
-			// aapt resource value: 0x7f100144
-			public const int container = 2131755332;
+			// aapt resource value: 0x7f100146
+			public const int container = 2131755334;
 			
-			// aapt resource value: 0x7f100136
-			public const int container_all = 2131755318;
+			// aapt resource value: 0x7f100138
+			public const int container_all = 2131755320;
 			
-			// aapt resource value: 0x7f100137
-			public const int container_current = 2131755319;
+			// aapt resource value: 0x7f100139
+			public const int container_current = 2131755321;
 			
 			// aapt resource value: 0x7f1000f1
 			public const int content = 2131755249;
@@ -10887,11 +10890,11 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000e4
 			public const int contentPanel = 2131755236;
 			
-			// aapt resource value: 0x7f10011f
-			public const int controllers = 2131755295;
+			// aapt resource value: 0x7f100121
+			public const int controllers = 2131755297;
 			
-			// aapt resource value: 0x7f100145
-			public const int coordinator = 2131755333;
+			// aapt resource value: 0x7f100147
+			public const int coordinator = 2131755335;
 			
 			// aapt resource value: 0x7f100071
 			public const int current_time = 2131755121;
@@ -10911,23 +10914,23 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000de
 			public const int default_activity_button = 2131755230;
 			
-			// aapt resource value: 0x7f100147
-			public const int design_bottom_sheet = 2131755335;
+			// aapt resource value: 0x7f100149
+			public const int design_bottom_sheet = 2131755337;
+			
+			// aapt resource value: 0x7f10014e
+			public const int design_menu_item_action_area = 2131755342;
+			
+			// aapt resource value: 0x7f10014d
+			public const int design_menu_item_action_area_stub = 2131755341;
 			
 			// aapt resource value: 0x7f10014c
-			public const int design_menu_item_action_area = 2131755340;
+			public const int design_menu_item_text = 2131755340;
 			
 			// aapt resource value: 0x7f10014b
-			public const int design_menu_item_action_area_stub = 2131755339;
+			public const int design_navigation_view = 2131755339;
 			
-			// aapt resource value: 0x7f10014a
-			public const int design_menu_item_text = 2131755338;
-			
-			// aapt resource value: 0x7f100149
-			public const int design_navigation_view = 2131755337;
-			
-			// aapt resource value: 0x7f100141
-			public const int dialog_button = 2131755329;
+			// aapt resource value: 0x7f100143
+			public const int dialog_button = 2131755331;
 			
 			// aapt resource value: 0x7f1000aa
 			public const int disableHome = 2131755178;
@@ -10938,11 +10941,11 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f100089
 			public const int end = 2131755145;
 			
-			// aapt resource value: 0x7f100199
-			public const int end_padder = 2131755417;
+			// aapt resource value: 0x7f10019a
+			public const int end_padder = 2131755418;
 			
-			// aapt resource value: 0x7f10012b
-			public const int end_text = 2131755307;
+			// aapt resource value: 0x7f10012d
+			public const int end_text = 2131755309;
 			
 			// aapt resource value: 0x7f100072
 			public const int end_time = 2131755122;
@@ -11022,8 +11025,8 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f10006c
 			public const int exo_subtitles = 2131755116;
 			
-			// aapt resource value: 0x7f10014e
-			public const int exo_track_selection_view = 2131755342;
+			// aapt resource value: 0x7f100150
+			public const int exo_track_selection_view = 2131755344;
 			
 			// aapt resource value: 0x7f10006d
 			public const int exo_vr = 2131755117;
@@ -11031,8 +11034,8 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000dc
 			public const int expand_activities_button = 2131755228;
 			
-			// aapt resource value: 0x7f10011b
-			public const int expanded_controller_layout = 2131755291;
+			// aapt resource value: 0x7f10011d
+			public const int expanded_controller_layout = 2131755293;
 			
 			// aapt resource value: 0x7f1000f4
 			public const int expanded_menu = 2131755252;
@@ -11064,11 +11067,11 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000d1
 			public const int fixed_width = 2131755217;
 			
-			// aapt resource value: 0x7f10014f
-			public const int flyoutcontent_appbar = 2131755343;
+			// aapt resource value: 0x7f100151
+			public const int flyoutcontent_appbar = 2131755345;
 			
-			// aapt resource value: 0x7f100150
-			public const int flyoutcontent_recycler = 2131755344;
+			// aapt resource value: 0x7f100152
+			public const int flyoutcontent_recycler = 2131755346;
 			
 			// aapt resource value: 0x7f1000c5
 			public const int forever = 2131755205;
@@ -11094,14 +11097,14 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000e0
 			public const int icon = 2131755232;
 			
-			// aapt resource value: 0x7f100198
-			public const int icon_group = 2131755416;
+			// aapt resource value: 0x7f100199
+			public const int icon_group = 2131755417;
 			
 			// aapt resource value: 0x7f1000c9
 			public const int icon_only = 2131755209;
 			
-			// aapt resource value: 0x7f100138
-			public const int icon_view = 2131755320;
+			// aapt resource value: 0x7f10013a
+			public const int icon_view = 2131755322;
 			
 			// aapt resource value: 0x7f1000bc
 			public const int ifRoom = 2131755196;
@@ -11109,8 +11112,8 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000dd
 			public const int image = 2131755229;
 			
-			// aapt resource value: 0x7f100194
-			public const int info = 2131755412;
+			// aapt resource value: 0x7f100195
+			public const int info = 2131755413;
 			
 			// aapt resource value: 0x7f1000c6
 			public const int italic = 2131755206;
@@ -11121,8 +11124,8 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f10008b
 			public const int labeled = 2131755147;
 			
-			// aapt resource value: 0x7f100143
-			public const int largeLabel = 2131755331;
+			// aapt resource value: 0x7f100145
+			public const int largeLabel = 2131755333;
 			
 			// aapt resource value: 0x7f100092
 			public const int left = 2131755154;
@@ -11145,38 +11148,38 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f100075
 			public const int live = 2131755125;
 			
-			// aapt resource value: 0x7f10012c
-			public const int live_stream_indicator = 2131755308;
+			// aapt resource value: 0x7f10012e
+			public const int live_stream_indicator = 2131755310;
 			
-			// aapt resource value: 0x7f10012d
-			public const int live_stream_seek_bar = 2131755309;
+			// aapt resource value: 0x7f10012f
+			public const int live_stream_seek_bar = 2131755311;
 			
-			// aapt resource value: 0x7f100127
-			public const int loading_indicator = 2131755303;
-			
-			// aapt resource value: 0x7f10019e
-			public const int main_appbar = 2131755422;
-			
-			// aapt resource value: 0x7f1001a0
-			public const int main_tablayout = 2131755424;
+			// aapt resource value: 0x7f100129
+			public const int loading_indicator = 2131755305;
 			
 			// aapt resource value: 0x7f10019f
-			public const int main_toolbar = 2131755423;
+			public const int main_appbar = 2131755423;
 			
 			// aapt resource value: 0x7f1001a1
-			public const int main_viewpager = 2131755425;
+			public const int main_tablayout = 2131755425;
 			
-			// aapt resource value: 0x7f1001af
-			public const int masked = 2131755439;
+			// aapt resource value: 0x7f1001a0
+			public const int main_toolbar = 2131755424;
 			
-			// aapt resource value: 0x7f10018d
-			public const int media_actions = 2131755405;
-			
-			// aapt resource value: 0x7f10010d
-			public const int media_route_button = 2131755277;
+			// aapt resource value: 0x7f1001a2
+			public const int main_viewpager = 2131755426;
 			
 			// aapt resource value: 0x7f1001b0
-			public const int media_route_menu_item = 2131755440;
+			public const int masked = 2131755440;
+			
+			// aapt resource value: 0x7f10018e
+			public const int media_actions = 2131755406;
+			
+			// aapt resource value: 0x7f10010e
+			public const int media_route_button = 2131755278;
+			
+			// aapt resource value: 0x7f1001b1
+			public const int media_route_menu_item = 2131755441;
 			
 			// aapt resource value: 0x7f10010b
 			public const int message = 2131755275;
@@ -11187,161 +11190,161 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f100099
 			public const int mini = 2131755161;
 			
-			// aapt resource value: 0x7f100173
-			public const int mr_art = 2131755379;
-			
-			// aapt resource value: 0x7f100166
-			public const int mr_cast_checkbox = 2131755366;
-			
-			// aapt resource value: 0x7f10015e
-			public const int mr_cast_close_button = 2131755358;
-			
-			// aapt resource value: 0x7f10015a
-			public const int mr_cast_divider = 2131755354;
-			
-			// aapt resource value: 0x7f100153
-			public const int mr_cast_group_icon = 2131755347;
-			
-			// aapt resource value: 0x7f100155
-			public const int mr_cast_group_name = 2131755349;
-			
-			// aapt resource value: 0x7f100154
-			public const int mr_cast_group_progress_bar = 2131755348;
-			
-			// aapt resource value: 0x7f10015b
-			public const int mr_cast_header_name = 2131755355;
-			
-			// aapt resource value: 0x7f100152
-			public const int mr_cast_list = 2131755346;
-			
-			// aapt resource value: 0x7f10015f
-			public const int mr_cast_meta_art = 2131755359;
-			
-			// aapt resource value: 0x7f10015c
-			public const int mr_cast_meta_background = 2131755356;
-			
-			// aapt resource value: 0x7f10015d
-			public const int mr_cast_meta_black_scrim = 2131755357;
-			
-			// aapt resource value: 0x7f100161
-			public const int mr_cast_meta_subtitle = 2131755361;
-			
-			// aapt resource value: 0x7f100160
-			public const int mr_cast_meta_title = 2131755360;
-			
-			// aapt resource value: 0x7f100158
-			public const int mr_cast_mute_button = 2131755352;
-			
-			// aapt resource value: 0x7f100163
-			public const int mr_cast_route_icon = 2131755363;
-			
-			// aapt resource value: 0x7f100165
-			public const int mr_cast_route_name = 2131755365;
-			
-			// aapt resource value: 0x7f100164
-			public const int mr_cast_route_progress_bar = 2131755364;
-			
-			// aapt resource value: 0x7f100162
-			public const int mr_cast_stop_button = 2131755362;
-			
-			// aapt resource value: 0x7f100157
-			public const int mr_cast_volume_layout = 2131755351;
-			
-			// aapt resource value: 0x7f100159
-			public const int mr_cast_volume_slider = 2131755353;
-			
-			// aapt resource value: 0x7f100168
-			public const int mr_chooser_list = 2131755368;
-			
-			// aapt resource value: 0x7f10016b
-			public const int mr_chooser_route_desc = 2131755371;
-			
-			// aapt resource value: 0x7f100169
-			public const int mr_chooser_route_icon = 2131755369;
-			
-			// aapt resource value: 0x7f10016a
-			public const int mr_chooser_route_name = 2131755370;
+			// aapt resource value: 0x7f100174
+			public const int mr_art = 2131755380;
 			
 			// aapt resource value: 0x7f100167
-			public const int mr_chooser_title = 2131755367;
+			public const int mr_cast_checkbox = 2131755367;
 			
-			// aapt resource value: 0x7f100170
-			public const int mr_close = 2131755376;
+			// aapt resource value: 0x7f10015f
+			public const int mr_cast_close_button = 2131755359;
 			
-			// aapt resource value: 0x7f100176
-			public const int mr_control_divider = 2131755382;
+			// aapt resource value: 0x7f10015b
+			public const int mr_cast_divider = 2131755355;
 			
-			// aapt resource value: 0x7f100182
-			public const int mr_control_playback_ctrl = 2131755394;
-			
-			// aapt resource value: 0x7f100185
-			public const int mr_control_subtitle = 2131755397;
-			
-			// aapt resource value: 0x7f100184
-			public const int mr_control_title = 2131755396;
-			
-			// aapt resource value: 0x7f100183
-			public const int mr_control_title_container = 2131755395;
-			
-			// aapt resource value: 0x7f100171
-			public const int mr_custom_control = 2131755377;
-			
-			// aapt resource value: 0x7f100172
-			public const int mr_default_control = 2131755378;
-			
-			// aapt resource value: 0x7f10016d
-			public const int mr_dialog_area = 2131755373;
-			
-			// aapt resource value: 0x7f10016c
-			public const int mr_expandable_area = 2131755372;
-			
-			// aapt resource value: 0x7f100186
-			public const int mr_group_expand_collapse = 2131755398;
+			// aapt resource value: 0x7f100154
+			public const int mr_cast_group_icon = 2131755348;
 			
 			// aapt resource value: 0x7f100156
-			public const int mr_group_volume_route_name = 2131755350;
+			public const int mr_cast_group_name = 2131755350;
 			
-			// aapt resource value: 0x7f100174
-			public const int mr_media_main_control = 2131755380;
+			// aapt resource value: 0x7f100155
+			public const int mr_cast_group_progress_bar = 2131755349;
 			
-			// aapt resource value: 0x7f10016f
-			public const int mr_name = 2131755375;
+			// aapt resource value: 0x7f10015c
+			public const int mr_cast_header_name = 2131755356;
 			
-			// aapt resource value: 0x7f10017c
-			public const int mr_picker_close_button = 2131755388;
+			// aapt resource value: 0x7f100153
+			public const int mr_cast_list = 2131755347;
 			
-			// aapt resource value: 0x7f10017e
-			public const int mr_picker_header_name = 2131755390;
+			// aapt resource value: 0x7f100160
+			public const int mr_cast_meta_art = 2131755360;
 			
-			// aapt resource value: 0x7f10017d
-			public const int mr_picker_list = 2131755389;
+			// aapt resource value: 0x7f10015d
+			public const int mr_cast_meta_background = 2131755357;
 			
-			// aapt resource value: 0x7f10017f
-			public const int mr_picker_route_icon = 2131755391;
+			// aapt resource value: 0x7f10015e
+			public const int mr_cast_meta_black_scrim = 2131755358;
 			
-			// aapt resource value: 0x7f100181
-			public const int mr_picker_route_name = 2131755393;
+			// aapt resource value: 0x7f100162
+			public const int mr_cast_meta_subtitle = 2131755362;
 			
-			// aapt resource value: 0x7f100180
-			public const int mr_picker_route_progress_bar = 2131755392;
+			// aapt resource value: 0x7f100161
+			public const int mr_cast_meta_title = 2131755361;
 			
-			// aapt resource value: 0x7f100175
-			public const int mr_playback_control = 2131755381;
+			// aapt resource value: 0x7f100159
+			public const int mr_cast_mute_button = 2131755353;
 			
-			// aapt resource value: 0x7f10016e
-			public const int mr_title_bar = 2131755374;
+			// aapt resource value: 0x7f100164
+			public const int mr_cast_route_icon = 2131755364;
+			
+			// aapt resource value: 0x7f100166
+			public const int mr_cast_route_name = 2131755366;
+			
+			// aapt resource value: 0x7f100165
+			public const int mr_cast_route_progress_bar = 2131755365;
+			
+			// aapt resource value: 0x7f100163
+			public const int mr_cast_stop_button = 2131755363;
+			
+			// aapt resource value: 0x7f100158
+			public const int mr_cast_volume_layout = 2131755352;
+			
+			// aapt resource value: 0x7f10015a
+			public const int mr_cast_volume_slider = 2131755354;
+			
+			// aapt resource value: 0x7f100169
+			public const int mr_chooser_list = 2131755369;
+			
+			// aapt resource value: 0x7f10016c
+			public const int mr_chooser_route_desc = 2131755372;
+			
+			// aapt resource value: 0x7f10016a
+			public const int mr_chooser_route_icon = 2131755370;
+			
+			// aapt resource value: 0x7f10016b
+			public const int mr_chooser_route_name = 2131755371;
+			
+			// aapt resource value: 0x7f100168
+			public const int mr_chooser_title = 2131755368;
+			
+			// aapt resource value: 0x7f100171
+			public const int mr_close = 2131755377;
 			
 			// aapt resource value: 0x7f100177
-			public const int mr_volume_control = 2131755383;
+			public const int mr_control_divider = 2131755383;
+			
+			// aapt resource value: 0x7f100183
+			public const int mr_control_playback_ctrl = 2131755395;
+			
+			// aapt resource value: 0x7f100186
+			public const int mr_control_subtitle = 2131755398;
+			
+			// aapt resource value: 0x7f100185
+			public const int mr_control_title = 2131755397;
+			
+			// aapt resource value: 0x7f100184
+			public const int mr_control_title_container = 2131755396;
+			
+			// aapt resource value: 0x7f100172
+			public const int mr_custom_control = 2131755378;
+			
+			// aapt resource value: 0x7f100173
+			public const int mr_default_control = 2131755379;
+			
+			// aapt resource value: 0x7f10016e
+			public const int mr_dialog_area = 2131755374;
+			
+			// aapt resource value: 0x7f10016d
+			public const int mr_expandable_area = 2131755373;
+			
+			// aapt resource value: 0x7f100187
+			public const int mr_group_expand_collapse = 2131755399;
+			
+			// aapt resource value: 0x7f100157
+			public const int mr_group_volume_route_name = 2131755351;
+			
+			// aapt resource value: 0x7f100175
+			public const int mr_media_main_control = 2131755381;
+			
+			// aapt resource value: 0x7f100170
+			public const int mr_name = 2131755376;
+			
+			// aapt resource value: 0x7f10017d
+			public const int mr_picker_close_button = 2131755389;
+			
+			// aapt resource value: 0x7f10017f
+			public const int mr_picker_header_name = 2131755391;
+			
+			// aapt resource value: 0x7f10017e
+			public const int mr_picker_list = 2131755390;
+			
+			// aapt resource value: 0x7f100180
+			public const int mr_picker_route_icon = 2131755392;
+			
+			// aapt resource value: 0x7f100182
+			public const int mr_picker_route_name = 2131755394;
+			
+			// aapt resource value: 0x7f100181
+			public const int mr_picker_route_progress_bar = 2131755393;
+			
+			// aapt resource value: 0x7f100176
+			public const int mr_playback_control = 2131755382;
+			
+			// aapt resource value: 0x7f10016f
+			public const int mr_title_bar = 2131755375;
 			
 			// aapt resource value: 0x7f100178
-			public const int mr_volume_group_list = 2131755384;
+			public const int mr_volume_control = 2131755384;
 			
-			// aapt resource value: 0x7f10017a
-			public const int mr_volume_item_icon = 2131755386;
+			// aapt resource value: 0x7f100179
+			public const int mr_volume_group_list = 2131755385;
 			
 			// aapt resource value: 0x7f10017b
-			public const int mr_volume_slider = 2131755387;
+			public const int mr_volume_item_icon = 2131755387;
+			
+			// aapt resource value: 0x7f10017c
+			public const int mr_volume_slider = 2131755388;
 			
 			// aapt resource value: 0x7f100000
 			public const int mtrl_child_content_container = 2131755008;
@@ -11352,8 +11355,8 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000a1
 			public const int multiply = 2131755169;
 			
-			// aapt resource value: 0x7f100148
-			public const int navigation_header_container = 2131755336;
+			// aapt resource value: 0x7f10014a
+			public const int navigation_header_container = 2131755338;
 			
 			// aapt resource value: 0x7f1000bd
 			public const int never = 2131755197;
@@ -11364,20 +11367,20 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f10009a
 			public const int normal = 2131755162;
 			
-			// aapt resource value: 0x7f100196
-			public const int notification_background = 2131755414;
+			// aapt resource value: 0x7f100197
+			public const int notification_background = 2131755415;
+			
+			// aapt resource value: 0x7f100191
+			public const int notification_main_column = 2131755409;
 			
 			// aapt resource value: 0x7f100190
-			public const int notification_main_column = 2131755408;
+			public const int notification_main_column_container = 2131755408;
 			
-			// aapt resource value: 0x7f10018f
-			public const int notification_main_column_container = 2131755407;
+			// aapt resource value: 0x7f1001ae
+			public const int off = 2131755438;
 			
 			// aapt resource value: 0x7f1001ad
-			public const int off = 2131755437;
-			
-			// aapt resource value: 0x7f1001ac
-			public const int on = 2131755436;
+			public const int on = 2131755437;
 			
 			// aapt resource value: 0x7f1000ce
 			public const int one = 2131755214;
@@ -11406,32 +11409,32 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f100078
 			public const int play = 2131755128;
 			
+			// aapt resource value: 0x7f10019c
+			public const int playerItemGroup = 2131755420;
+			
 			// aapt resource value: 0x7f10019b
-			public const int playerItemGroup = 2131755419;
+			public const int playerItemTitle = 2131755419;
 			
-			// aapt resource value: 0x7f10019a
-			public const int playerItemTitle = 2131755418;
-			
-			// aapt resource value: 0x7f1001a5
-			public const int playerOptions = 2131755429;
+			// aapt resource value: 0x7f1001a6
+			public const int playerOptions = 2131755430;
 			
 			// aapt resource value: 0x7f100079
 			public const int player_options = 2131755129;
 			
-			// aapt resource value: 0x7f100110
-			public const int player_view = 2131755280;
+			// aapt resource value: 0x7f100112
+			public const int player_view = 2131755282;
 			
-			// aapt resource value: 0x7f10019d
-			public const int preview = 2131755421;
+			// aapt resource value: 0x7f10019e
+			public const int preview = 2131755422;
+			
+			// aapt resource value: 0x7f10011b
+			public const int preview_text = 2131755291;
 			
 			// aapt resource value: 0x7f100119
-			public const int preview_text = 2131755289;
+			public const int preview_viewport = 2131755289;
 			
-			// aapt resource value: 0x7f100117
-			public const int preview_viewport = 2131755287;
-			
-			// aapt resource value: 0x7f10013b
-			public const int progressBar = 2131755323;
+			// aapt resource value: 0x7f10013d
+			public const int progressBar = 2131755325;
 			
 			// aapt resource value: 0x7f10000d
 			public const int progress_circular = 2131755021;
@@ -11439,8 +11442,8 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f10000e
 			public const int progress_horizontal = 2131755022;
 			
-			// aapt resource value: 0x7f10011a
-			public const int properties_fragment = 2131755290;
+			// aapt resource value: 0x7f10011c
+			public const int properties_fragment = 2131755292;
 			
 			// aapt resource value: 0x7f1000f6
 			public const int radio = 2131755254;
@@ -11451,11 +11454,11 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f100093
 			public const int right = 2131755155;
 			
-			// aapt resource value: 0x7f100195
-			public const int right_icon = 2131755413;
+			// aapt resource value: 0x7f100196
+			public const int right_icon = 2131755414;
 			
-			// aapt resource value: 0x7f100191
-			public const int right_side = 2131755409;
+			// aapt resource value: 0x7f100192
+			public const int right_side = 2131755410;
 			
 			// aapt resource value: 0x7f100015
 			public const int save_non_transition_alpha = 2131755029;
@@ -11514,8 +11517,8 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f10007b
 			public const int seek_bar = 2131755131;
 			
-			// aapt resource value: 0x7f100129
-			public const int seek_bar_controls = 2131755305;
+			// aapt resource value: 0x7f10012b
+			public const int seek_bar_controls = 2131755307;
 			
 			// aapt resource value: 0x7f10010a
 			public const int select_dialog_listview = 2131755274;
@@ -11523,11 +11526,11 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f10008c
 			public const int selected = 2131755148;
 			
-			// aapt resource value: 0x7f1001a2
-			public const int shellcontent_appbar = 2131755426;
-			
 			// aapt resource value: 0x7f1001a3
-			public const int shellcontent_toolbar = 2131755427;
+			public const int shellcontent_appbar = 2131755427;
+			
+			// aapt resource value: 0x7f1001a4
+			public const int shellcontent_toolbar = 2131755428;
 			
 			// aapt resource value: 0x7f1000f2
 			public const int shortcut = 2131755250;
@@ -11541,11 +11544,11 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000ae
 			public const int showTitle = 2131755182;
 			
-			// aapt resource value: 0x7f1001a4
-			public const int sliding_tabs = 2131755428;
+			// aapt resource value: 0x7f1001a5
+			public const int sliding_tabs = 2131755429;
 			
-			// aapt resource value: 0x7f100142
-			public const int smallLabel = 2131755330;
+			// aapt resource value: 0x7f100144
+			public const int smallLabel = 2131755332;
 			
 			// aapt resource value: 0x7f100002
 			public const int snackbar_action = 2131755010;
@@ -11583,14 +11586,14 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f100094
 			public const int start = 2131755156;
 			
+			// aapt resource value: 0x7f10012c
+			public const int start_text = 2131755308;
+			
+			// aapt resource value: 0x7f10018d
+			public const int status_bar_latest_event_content = 2131755405;
+			
 			// aapt resource value: 0x7f10012a
-			public const int start_text = 2131755306;
-			
-			// aapt resource value: 0x7f10018c
-			public const int status_bar_latest_event_content = 2131755404;
-			
-			// aapt resource value: 0x7f100128
-			public const int status_text = 2131755304;
+			public const int status_text = 2131755306;
 			
 			// aapt resource value: 0x7f10009c
 			public const int stretch = 2131755164;
@@ -11601,11 +11604,11 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f100107
 			public const int submit_area = 2131755271;
 			
-			// aapt resource value: 0x7f10013a
-			public const int subtitle_view = 2131755322;
+			// aapt resource value: 0x7f10013c
+			public const int subtitle_view = 2131755324;
 			
-			// aapt resource value: 0x7f100140
-			public const int summary = 2131755328;
+			// aapt resource value: 0x7f100142
+			public const int summary = 2131755330;
 			
 			// aapt resource value: 0x7f1000d4
 			public const int surface_view = 2131755220;
@@ -11613,8 +11616,8 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000a9
 			public const int tabMode = 2131755177;
 			
-			// aapt resource value: 0x7f10013c
-			public const int tab_host = 2131755324;
+			// aapt resource value: 0x7f10013e
+			public const int tab_host = 2131755326;
 			
 			// aapt resource value: 0x7f10003f
 			public const int tag_accessibility_actions = 2131755071;
@@ -11655,14 +11658,14 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f10009b
 			public const int textStart = 2131755163;
 			
-			// aapt resource value: 0x7f100133
-			public const int textTitle = 2131755315;
+			// aapt resource value: 0x7f100135
+			public const int textTitle = 2131755317;
 			
-			// aapt resource value: 0x7f10014d
-			public const int text_input_password_toggle = 2131755341;
+			// aapt resource value: 0x7f10014f
+			public const int text_input_password_toggle = 2131755343;
 			
-			// aapt resource value: 0x7f10013d
-			public const int text_list_view = 2131755325;
+			// aapt resource value: 0x7f10013f
+			public const int text_list_view = 2131755327;
 			
 			// aapt resource value: 0x7f100004
 			public const int textinput_counter = 2131755012;
@@ -11676,8 +11679,8 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000d5
 			public const int texture_view = 2131755221;
 			
-			// aapt resource value: 0x7f100192
-			public const int time = 2131755410;
+			// aapt resource value: 0x7f100193
+			public const int time = 2131755411;
 			
 			// aapt resource value: 0x7f10007c
 			public const int time_separator = 2131755132;
@@ -11691,11 +11694,11 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000ed
 			public const int title_template = 2131755245;
 			
-			// aapt resource value: 0x7f100139
-			public const int title_view = 2131755321;
+			// aapt resource value: 0x7f10013b
+			public const int title_view = 2131755323;
 			
-			// aapt resource value: 0x7f10011e
-			public const int toolbar = 2131755294;
+			// aapt resource value: 0x7f100120
+			public const int toolbar = 2131755296;
 			
 			// aapt resource value: 0x7f100095
 			public const int top = 2131755157;
@@ -11703,8 +11706,8 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f1000ec
 			public const int topPanel = 2131755244;
 			
-			// aapt resource value: 0x7f100146
-			public const int touch_outside = 2131755334;
+			// aapt resource value: 0x7f100148
+			public const int touch_outside = 2131755336;
 			
 			// aapt resource value: 0x7f100017
 			public const int transition_current_scene = 2131755031;
@@ -11724,8 +11727,8 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f10007d
 			public const int two_line_spacer = 2131755133;
 			
-			// aapt resource value: 0x7f1001ab
-			public const int @unchecked = 2131755435;
+			// aapt resource value: 0x7f1001ac
+			public const int @unchecked = 2131755436;
 			
 			// aapt resource value: 0x7f1000b0
 			public const int uniform = 2131755184;
@@ -11745,11 +11748,11 @@ namespace Brightcove.Forms.Droid
 			// aapt resource value: 0x7f100007
 			public const int view_offset_helper = 2131755015;
 			
-			// aapt resource value: 0x7f1001ae
-			public const int visible = 2131755438;
+			// aapt resource value: 0x7f1001af
+			public const int visible = 2131755439;
 			
-			// aapt resource value: 0x7f100179
-			public const int volume_item_container = 2131755385;
+			// aapt resource value: 0x7f10017a
+			public const int volume_item_container = 2131755386;
 			
 			// aapt resource value: 0x7f10007e
 			public const int vr_mode = 2131755134;
@@ -13861,6 +13864,9 @@ namespace Brightcove.Forms.Droid
 			
 			// aapt resource value: 0x7f0f0213
 			public const int MainTheme_Base = 2131690003;
+			
+			// aapt resource value: 0x7f0f0237
+			public const int MyTheme_Player = 2131690039;
 			
 			// aapt resource value: 0x7f0f0118
 			public const int Platform_AppCompat = 2131689752;
