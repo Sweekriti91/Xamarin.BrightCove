@@ -21,13 +21,13 @@ namespace Brightcove.Forms.Droid
         {
             var notificationOptions = new NotificationOptions.Builder()
                 .SetActions(new List<string>() { MediaIntentReceiver.ActionSkipNext, MediaIntentReceiver.ActionTogglePlayback, MediaIntentReceiver.ActionStopCasting }, new int[] { 1, 2 })
-                .SetTargetActivityClassName(typeof(DefaultExpandedControllerActivity).Name)
+                .SetTargetActivityClassName("com.brightcove.cast.DefaultExpandedControllerActivity")
                 .Build();
 
             var mediaOptions = new CastMediaOptions.Builder()
                 .SetImagePicker(new ImagePickerImpl())
                 .SetNotificationOptions(notificationOptions)
-                .SetExpandedControllerActivityClassName(typeof(DefaultExpandedControllerActivity).Name)
+                .SetExpandedControllerActivityClassName("com.brightcove.cast.DefaultExpandedControllerActivity")
                 .Build();
 
             var launchOptions = new LaunchOptions.Builder()

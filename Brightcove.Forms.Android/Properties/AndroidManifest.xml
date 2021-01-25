@@ -3,13 +3,13 @@
 	<uses-sdk android:minSdkVersion="24" android:targetSdkVersion="30" />
 	<application android:label="Brightcove.Forms.Android" android:theme="@style/Theme.AppCompat">
 		<meta-data android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME" android:value="Brightcove.Forms.Droid.CastOptionsProvider" />
-		<!-- <activity android:name="com.brightcove.cast.DefaultExpandedControllerActivity" android:label="@string/app_name" android:launchMode="singleTask" android:theme="@style/Theme.BrightcoveCast" android:screenOrientation="portrait" android:parentActivityName=".MainActivity">
+		<activity android:name="com.brightcove.cast.DefaultExpandedControllerActivity" android:label="@string/app_name" android:launchMode="singleTask" android:theme="@style/Theme.BrightcoveCast" android:screenOrientation="portrait" android:parentActivityName=".MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 			</intent-filter>
 		</activity>
 		<meta-data android:name="com.brightcove.cast.DefaultOptionsProvider.EXPANDED_CONTROLLER_ACTIVITY_CLASS_NAME" android:value="com.brightcove.cast.DefaultExpandedControllerActivity" />
-		<meta-data android:name="com.brightcove.cast.DefaultOptionsProvider.NOTIFICATION_TARGET_ACTIVITY_CLASS_NAME" android:value="com.brightcove.cast.BrightcoveControllerActivity" /> -->
+		<meta-data android:name="com.brightcove.cast.DefaultOptionsProvider.NOTIFICATION_TARGET_ACTIVITY_CLASS_NAME" android:value="com.brightcove.cast.BrightcoveControllerActivity" />
 	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />

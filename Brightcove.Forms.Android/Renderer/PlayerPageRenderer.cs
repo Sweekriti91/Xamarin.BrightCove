@@ -25,7 +25,9 @@ namespace Brightcove.Forms.Droid.Renderer
         global::Android.Views.View view;
         Activity activity;
 
-     
+        static string policyKEY = "";
+        static string accountID = "";
+        string videoId = "";
 
         static BrightcoveExoPlayerVideoView brightcoveVideoView;
         static MediaRouteButton castButton;

@@ -25,11 +25,9 @@ namespace Brightcove.Forms.Droid.Renderer
     [Activity(Label = "PlayerActivity", Theme = "@style/MyTheme.Player")]
     public class PlayerActivity : AppCompatActivity
     {
-
-        global::Android.Views.View view;
-        Activity activity;
-
-       
+        static string policyKEY = "";
+        static string accountID = "";
+        string videoId = "";
 
         static BrightcoveExoPlayerVideoView brightcoveVideoView;
         static MediaRouteButton castButton;
