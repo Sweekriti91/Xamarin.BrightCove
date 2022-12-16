@@ -141,10 +141,6 @@
       <Project>{504627f1-d77c-4043-b27d-8582c1b2335c}</Project>
       <Name>BrightcoveSDK.Droid.Exoplayer2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ExoPlayer.UI\ExoPlayer.UI.csproj">
-      <Project>{67A0616A-BB76-456C-B747-D704846FDD53}</Project>
-      <Name>ExoPlayer.UI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BrightcoveSDK.Droid\BrightcoveSDK.Droid.csproj">
       <Project>{DEA73147-883E-4A6C-9C1F-2B7CE6B13783}</Project>
       <Name>BrightcoveSDK.Droid</Name>
