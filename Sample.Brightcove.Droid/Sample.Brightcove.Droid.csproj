@@ -145,6 +145,9 @@
       <Project>{67a0616a-bb76-456c-b747-d704846fdd53}</Project>
       <Name>ExoPlayer.UI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BrightcoveSDK.Droid.AppCompat\BrightcoveSDK.Droid.AppCompat.csproj">
+      <Name>BrightcoveSDK.Droid.AppCompat</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\main.xml" />

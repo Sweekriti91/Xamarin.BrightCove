@@ -31,5 +31,7 @@
     <remove-node path="/api/package[@name='com.brightcove.player.concurrency']/class[@name='HeartbeatStopperTask']" />
     <remove-node path="/api/package[@name='com.brightcove.player.concurrency']/class[@name='HeartbeatTask']/field[@name='listener']" />
     <remove-node path="/api/package[@name='com.brightcove.player.drm']/class[@name='CustomerRightsToken']/field[@name='profile']" />
+    <remove-node path="/api/package[@name='com.brightcove.player.analytics']/interface[@name='IAnalyticsHandler.ProcessListener']" />
+    <remove-node path="/api/package[@name='com.brightcove.player.analytics']/interface[@name='IAnalyticsHandler.ProcessListener.Outcome']" />
 </metadata>
 

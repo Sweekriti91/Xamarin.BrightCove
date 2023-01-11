@@ -1,7 +1,9 @@
 ﻿using Android.App;
 using Android.OS;
 using Android.Runtime;
+using Com.Brightcove.Player;
 using Com.Brightcove.Player.Edge;
+//using Com.Brightcove.Exoplayer;
 using Com.Brightcove.Player.View;
 using Com.Brightcove.Player.Model;
 using Android.Views;
@@ -30,9 +32,11 @@ namespace Sample.Brightcove.Droid
         //string videoId = "4283173439001";
 
         //Non-DRM Asset
-        //static string policyKEY = "BCpkADawqM1W-vUOMe6RSA3pA6Vw-VWUNn5rL0lzQabvrI63-VjS93gVUugDlmBpHIxP16X8TSe5LSKM415UHeMBmxl7pqcwVY_AZ4yKFwIpZPvXE34TpXEYYcmulxJQAOvHbv2dpfq-S_cm";
-        //static string accountID = "3636334163001";
-        //string videoId = "3637773814001";
+        // from sample app https://github.com/BrightcoveOS/android-player-samples/blob/master/brightcove-exoplayer/BasicSampleApp/src/main/res/values/strings.xml
+
+        static string policyKEY = "BCpkADawqM1W-vUOMe6RSA3pA6Vw-VWUNn5rL0lzQabvrI63-VjS93gVUugDlmBpHIxP16X8TSe5LSKM415UHeMBmxl7pqcwVY_AZ4yKFwIpZPvXE34TpXEYYcmulxJQAOvHbv2dpfq-S_cm";
+        static string accountID = "3636334163001";
+        string videoId = "3637773814001";
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -70,10 +74,10 @@ namespace Sample.Brightcove.Droid
                 //SetupCast(video);
             }
 
-            public override void OnError(string error)
-            {
-                throw new Java.Lang.RuntimeException(error);
-            }
+            //public override void OnError(string error)
+            //{
+            //    throw new Java.Lang.RuntimeException(error);
+            //}
 
             //public void SetupCast(Video video)
             //{

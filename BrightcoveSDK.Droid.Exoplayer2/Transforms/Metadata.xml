@@ -18,4 +18,6 @@
   <!--<remove-node path="/api/package[@name='com.brightcove.player.ads']/class[@name='ExoAdPlayer']/method[@name='loadAd' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.ads.AdAsset']]" />-->
 
   <remove-node path="/api/package[@name='com.brightcove.player.drm']/interface[@name='DrmSession']" />
+
+  <remove-node path="/api/package[@name='com.brightcove.player.display']/interface[@name='ExoPlayerVideoDisplayComponent.InternalErrorListener']" />
 </metadata>
