@@ -5,14 +5,13 @@ using Com.Brightcove.Player.Edge;
 using Com.Brightcove.Player.View;
 using Com.Brightcove.Player.Model;
 using Android.Views;
-using Com.Brightcove.Cast;
 using Com.Brightcove.Player.Events;
 using AndroidX.Fragment.App;
 using Android.Gms.Cast.Framework.Media.Widget;
 using AndroidX.AppCompat.App;
 using Android.Gms.Cast;
 using Xamarin.Essentials;
-using Com.Brightcove.Cast.Util;
+//using Com.Brightcove.Cast.Util;
 using System.Linq;
 using System.Collections.Generic;
 using Android.Media;
@@ -55,7 +54,7 @@ namespace Sample.Brightcove.Droid
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            GoogleCastComponent.SetUpMediaRouteButton(this, menu);
+            //GoogleCastComponent.SetUpMediaRouteButton(this, menu);
 
             this.MenuInflater.Inflate(Resource.Menu.main, menu);
 
@@ -68,7 +67,7 @@ namespace Sample.Brightcove.Droid
             {
                 brightcoveVideoView.Add(video);
                 brightcoveVideoView.Start();
-                SetupCast(video);
+                //SetupCast(video);
             }
 
             public override void OnError(string error)
@@ -76,53 +75,53 @@ namespace Sample.Brightcove.Droid
                 throw new Java.Lang.RuntimeException(error);
             }
 
-            public void SetupCast(Video video)
-            {
-                var eventEmitter = brightcoveVideoView.EventEmitter;
+            //public void SetupCast(Video video)
+            //{
+            //    var eventEmitter = brightcoveVideoView.EventEmitter;
 
-                Source source = findCastableSource(video);
+            //    Source source = findCastableSource(video);
 
-                GoogleCastComponent googleCastComponent = new GoogleCastComponent(eventEmitter, Platform.AppContext);
-                MediaInfo mediaInfo = CastMediaUtil.ToMediaInfo(video, source, null, null);
-                googleCastComponent.LoadMediaInfo(mediaInfo);
+            //    GoogleCastComponent googleCastComponent = new GoogleCastComponent(eventEmitter, Platform.AppContext);
+            //    MediaInfo mediaInfo = CastMediaUtil.ToMediaInfo(video, source, null, null);
+            //    googleCastComponent.LoadMediaInfo(mediaInfo);
 
-                //You can check if there is a session available
-                //googleCastComponent.isSessionAvailable();
-            }
+            //    //You can check if there is a session available
+            //    //googleCastComponent.isSessionAvailable();
+            //}
         }
 
-        public static Source findCastableSource(Video video)
-        {
-            Source savedDashSource = null;
+        //public static Source findCastableSource(Video video)
+        //{
+        //    Source savedDashSource = null;
 
-            if (video.SourceCollections.Count != 0
-                    && video.SourceCollections.ContainsKey(DeliveryType.Dash)
-                    && video.SourceCollections.Values.Where(c => c.DeliveryType == DeliveryType.Dash) != null) 
-            {
-                var dashSourceCollections = video.SourceCollections.Values.Where(c => c.DeliveryType == DeliveryType.Dash);
-                List<Source> dashSource = new List<Source>();
-                foreach(var d in dashSourceCollections)
-                {
-                    var item = d.Sources.Where(a => a.Url.Contains("dash")).ToList<Source>();
-                    dashSource = item;
-                }
+        //    if (video.SourceCollections.Count != 0
+        //            && video.SourceCollections.ContainsKey(DeliveryType.Dash)
+        //            && video.SourceCollections.Values.Where(c => c.DeliveryType == DeliveryType.Dash) != null) 
+        //    {
+        //        var dashSourceCollections = video.SourceCollections.Values.Where(c => c.DeliveryType == DeliveryType.Dash);
+        //        List<Source> dashSource = new List<Source>();
+        //        foreach(var d in dashSourceCollections)
+        //        {
+        //            var item = d.Sources.Where(a => a.Url.Contains("dash")).ToList<Source>();
+        //            dashSource = item;
+        //        }
                 
-                foreach (var src in dashSource)
-                {
-                    savedDashSource = src;
+        //        foreach (var src in dashSource)
+        //        {
+        //            savedDashSource = src;
 
-                    if (src.Url.Contains("ac-3_avc1_ec-3_mp4a"))
-                    {
-                        Console.WriteLine("SOURCE :: " + src);
-                        return src;
-                    }
-                }
+        //            if (src.Url.Contains("ac-3_avc1_ec-3_mp4a"))
+        //            {
+        //                Console.WriteLine("SOURCE :: " + src);
+        //                return src;
+        //            }
+        //        }
 
-                Console.WriteLine("SOURCE :: " + savedDashSource);
-                return savedDashSource;
-            }
-            return null;
-        }
+        //        Console.WriteLine("SOURCE :: " + savedDashSource);
+        //        return savedDashSource;
+        //    }
+        //    return null;
+        //}
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

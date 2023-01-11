@@ -47,7 +47,6 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="Jars\android-exoplayer2-player-6.12.0.aar" />
   </ItemGroup>
   <ItemGroup>
     <TransformFile Include="Transforms\Metadata.xml" />
@@ -62,15 +61,20 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedReferenceJar Include="Jars\auto-parcel-0.3.jar" />
-    <EmbeddedReferenceJar Include="Jars\classes.jar" />
-    <EmbeddedReferenceJar Include="Jars\gson-2.8.5.jar" />
-    <EmbeddedReferenceJar Include="Jars\offline.jar" />
-    <EmbeddedReferenceJar Include="Jars\requery-1.4.0.jar" />
-    <EmbeddedReferenceJar Include="Jars\requery-android.jar" />
-    <EmbeddedReferenceJar Include="Jars\rxandroid-2.0.1.jar" />
-    <EmbeddedReferenceJar Include="Jars\rxjava-2.0.1.jar" />
-    <EmbeddedReferenceJar Include="Jars\exoplayerdash.jar" />
-    <EmbeddedReferenceJar Include="Jars\exo-core.jar" />
+    <EmbeddedReferenceJar Include="Jars\jetified-offline-playback-7.1.4.jar" />
+    <EmbeddedReferenceJar Include="Jars\jetified-exoplayer-hls-2.17.1.jar" />
+    <EmbeddedReferenceJar Include="Jars\jetified-exoplayer-dash-2.17.1.jar" />
+    <EmbeddedReferenceJar Include="Jars\jetified-exoplayer-core-2.17.1.jar" />
+    <EmbeddedReferenceJar Include="Jars\javax.inject-1.jar" />
+    <EmbeddedReferenceJar Include="Jars\dagger-2.11.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.AndroidX.Annotation">
+      <Version>1.1.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <LibraryProjectZip Include="Jars\android-exoplayer2-player-7.1.4.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

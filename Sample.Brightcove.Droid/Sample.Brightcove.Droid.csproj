@@ -133,10 +133,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BrightcoveSDK.Droid.Cast\BrightcoveSDK.Droid.Cast.csproj">
-      <Project>{5e1f84db-02d6-42e2-89a0-c23bc1ccc731}</Project>
-      <Name>BrightcoveSDK.Droid.Cast</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BrightcoveSDK.Droid.Exoplayer2\BrightcoveSDK.Droid.Exoplayer2.csproj">
       <Project>{504627f1-d77c-4043-b27d-8582c1b2335c}</Project>
       <Name>BrightcoveSDK.Droid.Exoplayer2</Name>
