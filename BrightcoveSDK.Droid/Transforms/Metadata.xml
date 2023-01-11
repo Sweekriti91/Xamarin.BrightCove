@@ -7,11 +7,13 @@
     <attr name="managedType" path="/api/package[@name='com.brightcove.player.model']/class[@name='CuePoint']/method[@name='compareTo' and count(parameter)=1 and parameter[1][@type='com.brightcove.player.model.CuePoint']]/parameter[1]">Java.Lang.Object</attr>
     <attr name="visibility" path="/api/package[@name='com.brightcove.player.mediacontroller.buttons']/class[@name='SeekButtonController']/method[@name='getDidSeekHandler' and count(parameter)=0]">public</attr>
     <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='Catalog.Builder']/method[@name='self' and count(parameter)=0]" />
-<!--    <remove-node path="/api/package[@name='com.brightcove.player.display.tasks']/class[@name='LoadImageTask']"/>-->
+    <remove-node path="/api/package[@name='com.brightcove.player.display.tasks']/class[@name='LoadImageTask']/method[@name='DoInBackground' and count(parameter)=1 and parameter[1][@type='org.json.JSONObject']]"/>
     <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetPlaylistTask']"/>
 
 <!--    <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']"/>-->
-    <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/method[@name='processData' and count(parameter)=1 and parameter[1][@type='org.json.JSONObject']]"/>
+    <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/method[@name='processData' and count(parameter)=1 and parameter[1][@type='java.lang.object']]"/>
+
+        <remove-node path="/api/package[@name='com.brightcove.player.edge']/class[@name='GetVideoTask']/method[@name='DoInBackground' and count(parameter)=1 and parameter[1][@type='java.lang.object']]"/>
     
     <remove-node path="/api/package[@name='com.brightcove.player.captioning.tasks']/class[@name='LoadCaptionsTask']"/>
     <remove-node path="/api/package[@name='com.brightcove.player.captioning.preferences']/class[@name='ListDialogPreference']"/>
@@ -21,5 +23,7 @@
     <remove-node path="/api/package[@name='com.brightcove.player.view']/class[@name='BrightcoveSurfaceView']"/>
     <remove-node path="/api/package[@name='com.brightcove.player.event']/class[@name='EventEmitterImpl']/method[@name='getInvocationContainerByToken' and count(parameter)=2 and parameter[1][@type='java.util.List&lt;com.brightcove.player.event.InvocationContainer&gt;'] and parameter[2][@type='int']]"/>
     <remove-node path="/api/package[@name='com.brightcove.player.event']/class[@name='EventEmitterImpl']/method[@name='getInvocationContainerPositionByToken' and count(parameter)=2 and parameter[1][@type='java.util.List&lt;com.brightcove.player.event.InvocationContainer&gt;'] and parameter[2][@type='int']]"/>
+
+    <remove-node path="/api/package[@name='com.google.common.graph']/class[@name='AbstractGraph']" />
 </metadata>
 

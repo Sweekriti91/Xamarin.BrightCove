@@ -54,9 +54,6 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\exoplayer-2.11.3.aar" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ExoPlayer.Dash\ExoPlayer.Dash.csproj">
       <Project>{966278DA-7E5D-4CA6-BB77-85E3BA40B0F0}</Project>
       <Name>ExoPlayer.Dash</Name>
@@ -73,6 +70,9 @@
       <Project>{67A0616A-BB76-456C-B747-D704846FDD53}</Project>
       <Name>ExoPlayer.UI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <LibraryProjectZip Include="Jars\exoplayer-2.18.2.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
