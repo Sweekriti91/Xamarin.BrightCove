@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!--<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,14 +11,18 @@
         android:layout_height="280dp"
         android:layout_gravity="center_horizontal|top"/>
 
+</RelativeLayout>-->
 
-<!--  --> The minicontroller widget used to control playback on a cast device. <!--
-  <fragment
-      android:id="@+id/castMiniController"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+  <com.brightcove.player.view.BrightcoveExoPlayerVideoView
+      android:id="@+id/brightcove_video_view"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
-      android:visibility="gone"
-      class="com.google.android.gms.cast.framework.media.widget.MiniControllerFragment" />-->
-
-</RelativeLayout>
+      android:layout_height="280dp"
+      android:layout_gravity="center_horizontal|top"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

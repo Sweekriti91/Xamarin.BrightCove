@@ -14,7 +14,7 @@
     <AssemblyName>BrightcoveSDK.Droid.Exoplayer2</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <Deterministic>True</Deterministic>
-    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v13.0</TargetFrameworkVersion>
     <AndroidClassParser>class-parse</AndroidClassParser>
     <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
@@ -67,10 +67,14 @@
     <EmbeddedReferenceJar Include="Jars\jetified-exoplayer-core-2.17.1.jar" />
     <EmbeddedReferenceJar Include="Jars\javax.inject-1.jar" />
     <EmbeddedReferenceJar Include="Jars\dagger-2.11.jar" />
+    <EmbeddedReferenceJar Include="Jars\jetified-exoplayer-common-2.17.1.jar" />
+    <EmbeddedReferenceJar Include="Jars\guava-31.0.1-android.jar" />
+    <EmbeddedReferenceJar Include="Jars\failureaccess-1.0.1.jar" />
+    <EmbeddedReferenceJar Include="Jars\listenablefuture.jar" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.AndroidX.Annotation">
-      <Version>1.1.0</Version>
+      <Version>1.5.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
