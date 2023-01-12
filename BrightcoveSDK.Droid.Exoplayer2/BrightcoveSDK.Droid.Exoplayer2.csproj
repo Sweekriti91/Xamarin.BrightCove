@@ -27,8 +27,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-     <!--<XamarinGoogleGuavaOptOut>true</XamarinGoogleGuavaOptOut>-->
-    <!--<XamarinGoogleGuavaListenableFutureOptOut>true</XamarinGoogleGuavaListenableFutureOptOut>-->
+   <!--  <XamarinGoogleGuavaOptOut>true</XamarinGoogleGuavaOptOut>
+    <XamarinGoogleGuavaListenableFutureOptOut>true</XamarinGoogleGuavaListenableFutureOptOut>-->
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>portable</DebugType>
@@ -37,8 +37,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-     <!--<XamarinGoogleGuavaOptOut>true</XamarinGoogleGuavaOptOut>-->
-    <!--<XamarinGoogleGuavaListenableFutureOptOut>true</XamarinGoogleGuavaListenableFutureOptOut>-->
+     <!--<XamarinGoogleGuavaOptOut>true</XamarinGoogleGuavaOptOut>
+    <XamarinGoogleGuavaListenableFutureOptOut>true</XamarinGoogleGuavaListenableFutureOptOut>-->
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
