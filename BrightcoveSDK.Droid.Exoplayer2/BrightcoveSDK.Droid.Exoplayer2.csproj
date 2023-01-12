@@ -18,10 +18,6 @@
     <AndroidClassParser>class-parse</AndroidClassParser>
     <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-
-<!--    <XamarinGoogleGuavaOptOut>true</XamarinGoogleGuavaOptOut>
-    <XamarinGoogleGuavaListenableFutureOptOut>true</XamarinGoogleGuavaListenableFutureOptOut>-->
-
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +27,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+     <XamarinGoogleGuavaOptOut>true</XamarinGoogleGuavaOptOut>
+    <XamarinGoogleGuavaListenableFutureOptOut>true</XamarinGoogleGuavaListenableFutureOptOut>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>portable</DebugType>
@@ -39,6 +37,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+     <XamarinGoogleGuavaOptOut>true</XamarinGoogleGuavaOptOut>
+    <XamarinGoogleGuavaListenableFutureOptOut>true</XamarinGoogleGuavaListenableFutureOptOut>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -72,17 +72,24 @@
     <EmbeddedReferenceJar Include="Jars\javax.inject-1.jar" />
     <EmbeddedReferenceJar Include="Jars\dagger-2.11.jar" />
     <EmbeddedReferenceJar Include="Jars\jetified-exoplayer-common-2.17.1.jar" />
+    <EmbeddedReferenceJar Include="Jars\jetified-exoplayer-decoder-2.17.1.jar" />
+    <EmbeddedReferenceJar Include="Jars\jetified-exoplayer-extractor-2.17.1.jar" />
+    <EmbeddedReferenceJar Include="Jars\jetified-exoplayer-datasource-2.17.1.jar" />
+    <EmbeddedReferenceJar Include="Jars\jetified-exoplayer-database-2.17.1.jar" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.AndroidX.Annotation">
       <Version>1.5.0.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Google.Guava">
+    <PackageReference Include="Xamarin.Google.Guava" ExcludeAssets="all">
       <Version>31.1.0.4</Version>
     </PackageReference>
-     <PackageReference Include="Xamarin.Google.Guava.ListenableFuture" ExcludeAssets="build;buildTransitive">
-       <Version>1.0.0.10</Version>
-     </PackageReference>
+    <PackageReference Include="Xamarin.Google.Guava.ListenableFuture">
+      <Version>1.0.0.10</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Google.Guava.FailureAccess">
+      <Version>1.0.1.8</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <LibraryProjectZip Include="Jars\android-exoplayer2-player-7.1.4.aar" />
