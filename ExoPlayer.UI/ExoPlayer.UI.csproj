@@ -58,6 +58,9 @@
     <PackageReference Include="Xamarin.AndroidX.Media">
       <Version>1.6.0.2</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.RecyclerView">
+      <Version>1.2.1.8</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <LibraryProjectZip Include="Jars\exoplayer-ui-2.18.2.aar" />

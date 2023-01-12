@@ -9,15 +9,15 @@ using Com.Brightcove.Player.Model;
 using Android.Views;
 using Com.Brightcove.Player.Events;
 using AndroidX.Fragment.App;
-using Android.Gms.Cast.Framework.Media.Widget;
+//using Android.Gms.Cast.Framework.Media.Widget;
 using AndroidX.AppCompat.App;
-using Android.Gms.Cast;
+//using Android.Gms.Cast;
 using Xamarin.Essentials;
 //using Com.Brightcove.Cast.Util;
 using System.Linq;
 using System.Collections.Generic;
 using Android.Media;
-using MediaInfo = Android.Gms.Cast.MediaInfo;
+//using MediaInfo = Android.Gms.Cast.MediaInfo;
 using System;
 
 namespace Sample.Brightcove.Droid
