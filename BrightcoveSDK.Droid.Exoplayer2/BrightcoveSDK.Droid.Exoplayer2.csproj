@@ -81,7 +81,7 @@
     <PackageReference Include="Xamarin.AndroidX.Annotation">
       <Version>1.5.0.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Google.Guava" ExcludeAssets="all">
+    <PackageReference Include="Xamarin.Google.Guava">
       <Version>31.1.0.4</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Google.Guava.ListenableFuture">
